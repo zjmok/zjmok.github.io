@@ -11,8 +11,7 @@
 #    |  |  \   --. /  .'.  \  |  |
 #    `--'   `----''--'   '--' `--'
 
-
-
+# 更多配置 参考：https://kitian616.github.io/jekyll-TeXt-theme/docs/zh/configuration
 
 ## => Site Settings
 ##############################
@@ -20,12 +19,12 @@
 text_skin: ocean # "default" (default), "dark", "forest", "ocean", "chocolate", "orange"
 # 代码高亮主题
 highlight_theme: tomorrow-night # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"
-url     : # the base hostname & protocol for your site e.g. https://www.someone.com
-baseurl : # does not include hostname
-title   : Your Site Title
+url     : https://zjmok.github.io # the base hostname & protocol for your site e.g. https://www.someone.com
+baseurl : / # does not include hostname
+title   : Mok's Blog
 description: > # this means to ignore newlines until "Language & timezone"
-  Your Site Description
-
+  我的技术笔记
+#  Your Site Description
 
 ## => Language and Timezone
 ##############################
@@ -37,11 +36,11 @@ timezone: Asia/Hong_Kong # Asia/Shanghai # see https://en.wikipedia.org/wiki/Lis
 ##############################
 author:
   type      : # "person" (default), "organization"
-  name      : Your Name
-  url       :
-  avatar    : # path or url of avatar image (square)
+  name      : Mok # Your Name
+  url       : https://github.com/zjmok
+  avatar    : https://avatars0.githubusercontent.com/u/27819746?s=460&v=4 # path or url of avatar image (square)
   bio       : I am an amazing person.
-  email     :
+  email     : mzx0766@163.com
   facebook  : # "user_name" the last part of your profile url, e.g. https://www.facebook.com/user_name
   twitter   : # "user_name" the last part of your profile url, e.g. https://twitter.com/user_name
   weibo     : # "user_id"   the last part of your profile url, e.g. https://www.weibo.com/user_id/profile?...
@@ -51,14 +50,13 @@ author:
   zhihu     : # "user_name" the last part of your profile url, e.g. https://www.zhihu.com/people/user_name
   douban    : # "user_name" the last part of your profile url, e.g. https://www.douban.com/people/user_name
   linkedin  : # "user_name" the last part of your profile url, e.g. https://www.linkedin.com/in/user_name
-  github    : # "user_name" the last part of your profile url, e.g. https://github.com/user_name
+  github    : zjmok # "user_name" the last part of your profile url, e.g. https://github.com/user_name
   npm       : # "user_name" the last part of your profile url, e.g. https://www.npmjs.com/~user_name
-
 
 ## => GitHub Repository (if the site is hosted by GitHub)
 ##############################
-repository: user_name/repo_name
-repository_tree: master
+repository: zjmok/zjmok.github.io
+repository_tree: blog
 
 
 ## => Paths
