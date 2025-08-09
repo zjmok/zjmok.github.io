@@ -200,13 +200,15 @@ exclude:
   - /screenshots
   - /test
   - /vendor
+#  - "*.txt" # 排除 *.txt 文件
 
 defaults:
   - scope:
       path: ""
       type: posts
     values:
-      layout: article
+      layout: none # 默认使用 none.html 渲染，会直接渲染原内容，可以直接展示 txt 文件内容
+#      layout: article # 默认使用 article.html 渲染，txt 文件也会渲染为 html 内容，但 Content-Type 是 text/plain，浏览器会展示源码内容
       sharing: true
       license: true
       aside:
