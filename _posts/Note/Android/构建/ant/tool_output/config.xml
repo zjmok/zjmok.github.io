@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resproguard>
+    
+    <issue id="property">
+        <seventzip value="false"/>
+        <metaname value="META-INF"/>
+        <keeproot value="false"/>
+    </issue>
+
+    <!-- 配置混淆需要的keystore -->
+    <issue id="sign" isactive="true">
+        <path value="E:\Workspace\WorkspaceForADT\day06_MobileSafe36\mzhx.jks"/>
+        <storepass value="ks621537"/>
+        <keypass value="621537"/>
+        <alias value="mzhx"/>
+    </issue>
+
+</resproguard>

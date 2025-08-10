@@ -1,0 +1,1320 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+     
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    
+<head>  
+
+    <script type="text/javascript" src="http://c.csdnimg.cn/pubfooter/js/tracking.js" charset="utf-8"></script>  
+
+    <script type="text/javascript">
+        var protocol = window.location.protocol;
+        document.write('<script type="text/javascript" src="' + protocol + '//csdnimg.cn/pubfooter/js/repoAddr2.js?v=' + Math.random() + '"></' + 'script>');
+    </script>
+
+  
+ <meta http-equiv="Cache-Control" content="no-siteapp" /><link rel="alternate" media="handheld" href="#" />
+
+    <title>一个小菜鸟的Android Studio2.3升级之旅，附赠升级之后Gradle的配置方法 - hylczp的博客
+        - 博客频道 - CSDN.NET</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="正确升级Android Studio2.3的姿势，完美解决一直refreshing或者一直building的问题。" />
+    <script src="http://static.blog.csdn.net/scripts/jquery.js" type="text/javascript"></script>
+      <script type="text/javascript" src="http://static.blog.csdn.net/scripts/jquery-version.js"></script>
+    <script type="text/javascript" src="http://static.blog.csdn.net/scripts/ad.js?v=1.1"></script>
+        <!--new top-->
+               <link rel="stylesheet" href="http://c.csdnimg.cn/public/common/toolbar/css/index.css">        <!--new top-->
+    
+      <!-- ad begin -->
+         <script language="javascript" type="text/javascript" src="http://ads.csdn.net/js/tracking.js"></script>
+    <!-- ad end-->
+
+    <link rel="Stylesheet" type="text/css" href="http://static.blog.csdn.net/skin/default/css/style.css?v=1.1" />
+    <link id="RSSLink" title="RSS" type="application/rss+xml" rel="alternate" href="/hylczp/rss/list" />
+    <link rel="shortcut icon" href="http://c.csdnimg.cn/public/favicon.ico" />
+    <link type="text/css" rel="stylesheet" href="http://static.blog.csdn.net/scripts/SyntaxHighlighter/styles/default.css" />
+ 
+
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?6bcd52f51e9b3dce32bec4a3997715ac";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+</head>
+<body>
+
+
+    <!-- 广告位开始 -->
+        <ins data-revive-zoneid="149" data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57"></ins>
+    <!-- 广告位结束 -->
+
+    
+   
+      <!--new top-->
+    <script id="toolbar-tpl-scriptId" fixed="true" prod="blog" skin="black" src="http://c.csdnimg.cn/public/common/toolbar/js/html.js" type="text/javascript"></script>
+     <!--new top-->
+    <div id="container">
+        <div id="header">
+    <div class="header">
+        <div id="blog_title">
+            <h2>
+                <a href="http://blog.csdn.net/hylczp">hylczp的博客</a></h2>
+            <h3></h3>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+        
+     
+    </div>
+</div>
+<div id="navigator">
+    <div class="navigator_bg">
+    </div>
+    <div class="navigator">
+        <ul>           
+                <li id="btnContents"><a href="http://blog.csdn.net/hylczp?viewmode=contents"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_mulu'])">
+                    <img src="http://static.blog.csdn.net/images/ico_list.gif">目录视图</span></a></li>
+                <li id="btnView"><a href="http://blog.csdn.net/hylczp?viewmode=list"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_zhaiyao'])">
+                    <img src="http://static.blog.csdn.net/images/ico_summary.gif">摘要视图</span></a></li>
+                <li id="btnRss"><a href="http://blog.csdn.net/hylczp/rss/list"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_RSS'])">
+                    <img src="http://static.blog.csdn.net/images/ico_rss.gif">订阅</span></a></li>                
+            
+
+            </ul>
+    </div>
+</div>
+<script type="text/javascript">
+    var username = "hylczp";
+    var _blogger = username;
+    var blog_address = "http://blog.csdn.net/hylczp";
+    var static_host = "http://static.blog.csdn.net";
+    var currentUserName = "";  
+</script>
+
+        <div id="body">
+            <div id="main">
+                <div class="main">
+                        <div class="ad_class">
+<div class="notice tracking-ad" data-mod='popu_3' > 
+
+
+<a href="http://blog.csdn.net/blogdevteam/article/details/61435419">
+<font color=red> CSDN日报20170311——《程序员每天累成狗，是为了什么》</font></a>
+
+&nbsp;&nbsp;&nbsp;&nbsp
+
+<a href="http://blog.csdn.net/turingbooks/article/details/58072986">
+<font color=blue>程序员2月书讯
+</font></a>
+
+&nbsp;&nbsp;&nbsp;
+
+<a href="http://edu.csdn.net/huiyiCourse/detail/284?ref=blog&loc=r3">
+<font color=red>【直播】用面向协议的思想简化网络请求
+</font></a>
+&nbsp;&nbsp;&nbsp;
+
+<a href="http://blog.csdn.net/blogdevteam/article/details/60961185">
+<font color=blue>博客一键搬家活动开始啦
+</font></a>
+
+</div>                        </div>
+                        
+
+
+
+  
+<link href="http://static.blog.csdn.net/css/comment1.css" type="text/css" rel="stylesheet" />
+<link href="http://static.blog.csdn.net/css/style1.css" type="text/css" rel="stylesheet" />
+<script language='JavaScript' type='text/javascript' src='http://download.csdn.net/js/jquery.cookie.js'></script>
+<script type="text/javascript" src="http://c.csdnimg.cn/rabbit/search-service/main.js"></script>
+<link rel="stylesheet" href="http://static.blog.csdn.net/public/res-min/markdown_views.css?v=1.0" />
+<link rel="stylesheet" href="http://static.blog.csdn.net/css/category.css?v=1.0" />
+<script type="text/javascript" src="http://static.blog.csdn.net/public/res/bower-libs/MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/web-storage-cache.min.js"></script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/replace.min.js"></script>
+
+
+
+
+  <script type="text/ecmascript">
+      window.quickReplyflag = true;
+           
+            var isBole = false;
+            
+      
+      var fasrc="http://my.csdn.net/my/favorite/miniadd?t=%e4%b8%80%e4%b8%aa%e5%b0%8f%e8%8f%9c%e9%b8%9f%e7%9a%84Android+Studio2.3%e5%8d%87%e7%ba%a7%e4%b9%8b%e6%97%85%ef%bc%8c%e9%99%84%e8%b5%a0%e5%8d%87%e7%ba%a7%e4%b9%8b%e5%90%8eGradle%e7%9a%84%e9%85%8d%e7%bd%ae%e6%96%b9%e6%b3%95&u=http://blog.csdn.net/hylczp/article/details/60137958"
+
+    </script>
+<div id="article_details" class="details">
+    <div class="article_title">   
+         <span class="ico ico_type_Original"></span>
+
+
+    <h1>
+        <span class="link_title"><a href="/hylczp/article/details/60137958">
+        一个小菜鸟的Android Studio2.3升级之旅，附赠升级之后Gradle的配置方法            
+        </a></span>
+    </h1>
+</div>
+
+   
+
+        <div class="article_manage clearfix">
+        <div class="article_l">
+            <span class="link_categories">
+            标签：
+              <a href='http://www.csdn.net/tag/gradle' target=_blank onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);">gradle</a><a href='http://www.csdn.net/tag/android%20studio2.3' target=_blank onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);">android studio2.3</a><a href='http://www.csdn.net/tag/%e4%b8%80%e7%9b%b4refreshing' target=_blank onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);">一直refreshing</a><a href='http://www.csdn.net/tag/%e4%b8%80%e7%9b%b4building' target=_blank onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);">一直building</a>
+            </span>
+        </div>
+        <div class="article_r">
+            <span class="link_postdate">2017-03-03 12:49</span>
+            <span class="link_view" title="阅读次数">2586人阅读</span>
+            <span class="link_comments" title="评论次数"> <a href="#comments" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_pinglun'])">评论</a>(34)</span>
+            <span class="link_collect tracking-ad" data-mod="popu_171"> <a href="javascript:void(0);" onclick="javascript:collectArticle('%e4%b8%80%e4%b8%aa%e5%b0%8f%e8%8f%9c%e9%b8%9f%e7%9a%84Android+Studio2.3%e5%8d%87%e7%ba%a7%e4%b9%8b%e6%97%85%ef%bc%8c%e9%99%84%e8%b5%a0%e5%8d%87%e7%ba%a7%e4%b9%8b%e5%90%8eGradle%e7%9a%84%e9%85%8d%e7%bd%ae%e6%96%b9%e6%b3%95','60137958');return false;" title="收藏">收藏</a></span>
+             <span class="link_report"> <a href="#report" onclick="javascript:report(60137958,2);return false;" title="举报">举报</a></span>
+
+        </div>
+    </div>
+    <div class="embody"  style="display:none" id="embody">
+        <span class="embody_t">本文章已收录于：</span>
+        <div class="embody_c" id="lib" value="{&quot;err&quot;:0,&quot;msg&quot;:&quot;ok&quot;,&quot;data&quot;:[]}"></div>
+    </div>
+    <style type="text/css">        
+            .embody{
+                padding:10px 10px 10px;
+                margin:0 -20px;
+                border-bottom:solid 1px #ededed;                
+            }
+            .embody_b{
+                margin:0 ;
+                padding:10px 0;
+            }
+            .embody .embody_t,.embody .embody_c{
+                display: inline-block;
+                margin-right:10px;
+            }
+            .embody_t{
+                font-size: 12px;
+                color:#999;
+            }
+            .embody_c{
+                font-size: 12px;
+            }
+            .embody_c img,.embody_c em{
+                display: inline-block;
+                vertical-align: middle;               
+            }
+             .embody_c img{               
+                width:30px;
+                height:30px;
+            }
+            .embody_c em{
+                margin: 0 20px 0 10px;
+                color:#333;
+                font-style: normal;
+            }
+    </style>
+    <script  type="text/javascript">
+        $(function () {
+            try
+            {
+                var lib = eval("("+$("#lib").attr("value")+")");
+                var html = "";
+                if (lib.err == 0) {
+                    $.each(lib.data, function (i) {
+                        var obj = lib.data[i];
+                        //html += '<img src="' + obj.logo + '"/>' + obj.name + "&nbsp;&nbsp;";
+                        html += ' <a href="' + obj.url + '" target="_blank">';
+                        html += ' <img src="' + obj.logo + '">';
+                        html += ' <em><b>' + obj.name + '</b></em>';
+                        html += ' </a>';
+                    });
+                    if (html != "") {
+                        setTimeout(function () {
+                            $("#lib").html(html);                      
+                            $("#embody").show();
+                        }, 100);
+                    }
+                }      
+            } catch (err)
+            { }
+            
+        });
+    </script>
+    <script   type="text/javascript" src="http://static.blog.csdn.net/scripts/category.js"></script>  
+        <div   class="bog_copyright">         
+            <p  class="copyright_p" >版权声明：本文为博主原创文章，未经博主允许不得转载。</p>
+        </div>
+
+  
+
+  
+  
+     
+
+<div id="article_content" class="article_content">
+
+<p>Android Studio 2.3已经发布了</p>
+<p>相信各位小伙伴们也已经迫不及待的升级到2.3</p>
+<p>今天早上打开Android Studio</p>
+<p>也收到了升级通知</p>
+<p>一大堆英文</p>
+<p>无非就是</p>
+<p>升级之后 多了好多功能啊 稳定性提高了N倍啊 运行更流畅啊</p>
+<p>别问我为什么英语那么好</p>
+<p>因为我是猜的</p>
+<p>本着小白精神</p>
+<p>毫不犹豫的点了下</p>
+<p><img src="http://img.blog.csdn.net/20170303163050089" alt=""></p>
+<p>升级的过程<br>
+</p>
+<p>轻松愉快带有点小小的激动</p>
+<p>升级完之后重启</p>
+<p>噩梦开始了</p>
+<p>打开Android Studio之后</p>
+<p>一直卡在Refreshing gradle project.......（后接一堆英文）</p>
+<p>喔 原来是这样啊</p>
+<p>我一副很懂的样子</p>
+<p>我知道怎么解决</p>
+<p>右上角红色叉叉</p>
+<p><img src="" alt=""><img src="http://img.blog.csdn.net/20170303162942775" alt=""><br>
+</p>
+<p>小手一点</p>
+<p>重启大法</p>
+<p>我会！</p>
+<p>再次打开</p>
+<p>恩恩？</p>
+<p>还要Refreshing</p>
+<p>我开始慌了&nbsp;</p>
+<p>等待了十几分钟</p>
+<p>我得出了个结论</p>
+<p>一定是我打方式不对！</p>
+<p>机智的我这次点击File→Close Project</p>
+<p><img src="" alt=""><img src="http://img.blog.csdn.net/20170303163137394" alt=""><br>
+</p>
+<p>哼 把你关了</p>
+<p>看你还怎么refreshing</p>
+<p>关了之后</p>
+<p>机智的我准备重新创建了个Project</p>
+<p><img src="" alt=""><img src="http://img.blog.csdn.net/20170303163234348" alt=""><br>
+</p>
+<p>全新的 不含杂质的 没有添加剂的</p>
+<p>这下你不用刷新了吧</p>
+<p>我都被自己的智商所折服</p>
+<p>直到出现了这个</p>
+<p><img src="" alt=""><img src="http://img.blog.csdn.net/20170303164529990" alt=""><br>
+</p>
+<p>嗯 你就build吧 你慢慢build 反正不是refreshing就好</p>
+<p>过了几分钟</p>
+<p>嗯？你怎么还在build 有那么难吗？</p>
+<p>又过了几分钟</p>
+<p>满脸黑人问号</p>
+<p>再过了几分钟</p>
+<p>我开始慌了</p>
+<p>怎么现在又一直卡在Building gradle project info</p>
+<p>我已经换了一种打开方式了啊！</p>
+<p>欺负我菜啊</p>
+<p>没办法了</p>
+<p>只能拿出压箱绝学</p>
+<p>万能重启电脑大法！</p>
+<p>我果断左下角重启电脑</p>
+<p>这下行了吧</p>
+<p>我顿时长舒一口气</p>
+<p>他强由他强</p>
+<p>他横任他横</p>
+<p>重启大法出</p>
+<p>你能奈我何</p>
+<p>然后现实是残酷的</p>
+<p>问题依旧没有得到解决</p>
+<p>我只好寻求度娘的帮助</p>
+<p>说是要把gradle-wrapper.properties里的gradle版本要和Android Studio安装目录下面的gradle版本一致</p>
+<p>否则就会下载gradle-wrapper.properties里所指定的版本</p>
+<p>但是由于收到某种神秘力量的影响</p>
+<p>下载速度奇慢</p>
+<p>所以就一直卡在Building 和Refreshing&nbsp;</p>
+<p>于是乎</p>
+<p>我马上找到自己项目的gradle-wrapper.properties一看究竟</p>
+<p><img src="http://img.blog.csdn.net/20170303164659626" alt=""><img src="" alt=""></p>
+<p>双击打开</p>
+<p><img src="" alt=""><img src="http://img.blog.csdn.net/20170303164720626" alt=""><br>
+</p>
+<p>再看看Android Studio里查看gradle版本</p>
+<p><img src="" alt=""><img src="http://img.blog.csdn.net/20170303164755103" alt=""><br>
+</p>
+<p>哟 还真不一样&nbsp;</p>
+<p>于是马上把gradle-wrapper.properties的gradle版本改成3.2</p>
+<p><img src="" alt=""><img src="http://img.blog.csdn.net/20170303164831298" alt=""><br>
+</p>
+<p>然后满心欢喜打开Android Studio</p>
+<p>结果 还是一直卡在Refreshing 。。。</p>
+<p>此时的我 &nbsp;满脸黑线 黑人问号</p>
+<p>明明版本号都已经匹配了&nbsp;</p>
+<p>Android Studio安装目录已经有现成的gradle了</p>
+<p>为什么它那么任性 还要去下载？？？</p>
+<p>我很生气</p>
+<p>我很想重装Android Studio了</p>
+<p>别问我为什么一有问题就知道重启 重装</p>
+<p>因为这是最快最优的解决问题的办法（不信你往下看）</p>
+<p>后来忽然转念一想</p>
+<p>是不是Android Studio没有找到本地的gradle</p>
+<p>所以才企图冲破神秘力量的阻碍去下载</p>
+<p>于是打开Android Studio的Setting</p>
+<p>一顿乱点</p>
+<p>点到一个叫Gradle的设置项时</p>
+<p><img src="" alt=""><img src="http://img.blog.csdn.net/20170303164910642" alt=""><br>
+</p>
+<p>右边的一个红色框框提示引起了我的注意</p>
+<p>仔细一看</p>
+<p>哎呀</p>
+<p><img src="" alt=""><img src="http://img.blog.csdn.net/20170303164919480" alt=""><br>
+</p>
+<p>这里选择使用本地gradle配置</p>
+<p>但是却提示Gradle位置不正确（翻译的还可以吧 哈哈）</p>
+<p>原来啊</p>
+<p>升级之前我的Android Studio的Gradle版本是2.14.1</p>
+<p>所以Gradle home是D:\AndroidStudio\gradle\gradle-2.14.1</p>
+<p>而当升级到2.3的时候</p>
+<p>原来的2.14.1版本的gradle被删了</p>
+<p>并且自动下载了最新的gradle-3.2</p>
+<p>但是！但是！但是！</p>
+<p>粗心大意的Android Studio没有将Gradle home也改成D:\AndroidStudio\gradle\gradle-3.2</p>
+<p>所以就一直到不到本地gradle</p>
+<p>更所以就一直去下载</p>
+<p>呃</p>
+<p>好吧</p>
+<p>我承认粗心大意的是我&nbsp;</p>
+<p>这个目录是要自己手动设置的</p>
+<p>这锅。。。。我背了</p>
+<p>正确选择好gradle目录之后</p>
+<p><img src="" alt=""><img src="http://img.blog.csdn.net/20170303164935408" alt=""><br>
+</p>
+<p>轻轻点击 ok</p>
+<p><img src="http://img.blog.csdn.net/20170303165003127" alt=""><img src="" alt=""></p>
+<p>天啊撸</p>
+<p>黑人问号脸</p>
+<p>怎么还不行</p>
+<p><img src="" alt=""><img src="http://img.blog.csdn.net/20170303165036002" alt=""><br>
+</p>
+<p>还多出了一个refreshing</p>
+<p>问题更严重了</p>
+<p>Android Studio傻了？短路了？</p>
+<p>我内心是崩溃的 无助的</p>
+<p>这个时候</p>
+<p>有一个声音在我脑中浮现</p>
+<p>重启 重启 重启！</p>
+<p>是啊</p>
+<p>我的绝招都还没出呢</p>
+<p>我怎么能放弃</p>
+<p>我果断右上角叉叉</p>
+<p><img src="" alt=""><img src="http://img.blog.csdn.net/20170303165055014" alt=""><br>
+</p>
+<p>什么？</p>
+<p>问我sure不sure啊</p>
+<p>废话</p>
+<p>我就没怂过</p>
+<p>sure！</p>
+<p>轻轻点击Exit</p>
+<p>嗯？</p>
+<p>卡住了？</p>
+<p>andro Studio卡住了！</p>
+<p>造反了？</p>
+<p>画面不动 点啥都没反应</p>
+<p>鼠标的都变成字母&nbsp;Ⅰ了</p>
+<p>你以为这就能吓到我吗</p>
+<p>我可是程序员！这能难倒我吗？</p>
+<p>我上去就二话不说</p>
+<p>电源一拔 屏幕一黑</p>
+<p>重启开机</p>
+<p>再次轻轻点击中间那个贱人</p>
+<p><img src="" alt=""><img src="http://img.blog.csdn.net/20170303165137640" alt=""><br>
+</p>
+<p>哟</p>
+<p>Refreshing 不见了 消失了 它怂了 哈哈</p>
+<p>我赢了 赢得很彻底 舒服 跟我斗 你还是嫩了点</p>
+<p>毕竟你才2.3 我可是23了 姜还是老的辣啊</p>
+<p>还记得我上面说什么嘛？</p>
+<p>重启 重启 重启！还是厉害的嘛</p>
+<p>Refreshing 消失之后<br>
+</p>
+<p>紧接着就是一顿downloading各种乱七八糟的东西</p>
+<p>我的小心脏又扑通扑通的跳起来了</p>
+<p>突然！！！</p>
+<p>一个灰色小方框跳了出来</p>
+<p><img src="" alt=""><img src="http://img.blog.csdn.net/20170303165154737" alt=""><br>
+</p>
+<p>我的小心脏狠狠的抽搐了一下</p>
+<p>不是又出了什么问题吧</p>
+<p>仔细一看 也就看懂了update</p>
+<p>什么？又要升级？</p>
+<p>#……%￥……%#%￥……&amp;%</p>
+<p>升就升 不怂 干！</p>
+<p>颤抖着点了下update</p>
+<p>谢天谢地没有出现该死的refreshing</p>
+<p>突然！</p>
+<p>弹出了一个窗口</p>
+<p><img src="" alt=""><img src="http://img.blog.csdn.net/20170303165421127" alt=""><br>
+</p>
+<p>啥？</p>
+<p>3.2不支持，要3.3？</p>
+<p>行！我跟你干到底</p>
+<p>再次麻烦了下度娘</p>
+<p>找来了 gradle 3.3</p>
+<p><img src="" alt=""><img src="http://img.blog.csdn.net/20170303170125507" alt=""><br>
+</p>
+<p>解压出来一个</p>
+<p><img src="" alt=""><img src="http://img.blog.csdn.net/20170303170158132" alt=""><br>
+</p>
+<p>嗯？</p>
+<p>嗅觉灵敏的我&nbsp;</p>
+<p>好像在哪看到过这个东西</p>
+<p>喔 &nbsp;Android Studio 的安装目录下也有这个东西</p>
+<p>不是过是3.2的</p>
+<p>那么根据 人以类聚 物以群分 的办法</p>
+<p>我果断把这个文件夹移到了Android Studio 的安装目录下&nbsp;</p>
+<p><img src="" alt=""><img src="http://img.blog.csdn.net/20170303165546770" alt=""><br>
+</p>
+<p>好了</p>
+<p>这下有3.3了 这可难不倒我</p>
+<p>我知道我知道</p>
+<p>还要改gradle-wrapper.properties和Gradle home目录</p>
+<p>我机智着呢</p>
+<p><img src="http://img.blog.csdn.net/20170303165636020" alt=""><br>
+</p>
+<p><img src="" alt=""><img src="http://img.blog.csdn.net/20170303165603504" alt=""><br>
+</p>
+<p>轻轻点击 ok</p>
+<p><img src="" alt=""><img src="http://img.blog.csdn.net/20170303165720178" alt=""><br>
+</p>
+<p>哇塞 成了！</p>
+<p>我太厉害了！</p>
+<p>再也没有任何警告任何提示</p>
+<p>它屈服了 ！它怂了！</p>
+<p><br>
+</p>
+<p>Android Studio2.3升级之旅 正式告一段落 &nbsp;历时2小时30分</p>
+<p><br>
+</p>
+<p>总结：</p>
+<p>从这次的升级过程中，我明白了一个道理，遇到挫折困难的时候，不要怂不要怕不要退缩 就是干 因为我有重启大法。</p>
+<p><br>
+</p>
+<p><br>
+</p>
+<p>————————————————————————————————华丽分割线———————————————————————————————————————</p>
+<p>顿时化身金牌讲师&nbsp;</p>
+<p>要想完美升级Android Studio 2.3</p>
+<p>请先下载好gradle-3.3-all.zip &nbsp;下载地址请自行百度</p>
+<p>（或者gradle-3.3以上 最新的貌&#20284;是3.4）</p>
+<p>解压到任意文件夹&nbsp;</p>
+<p>我这里是放到D:\AndroidStudio\gradle下 跟gradle-3.2同一个目录</p>
+<p>修改项目下面的gradle-wrapper.properties文件&nbsp;</p>
+<p>文件地址为 &nbsp; 项目根目录\项目名称\gradle\wrapper\gradle-wrapper.properties</p>
+<p>改成distributionUrl=https\://services.gradle.org/distributions/gradle-3.3-all.zip</p>
+<p>注意版本号要一致</p>
+<p>修改项目下面的build.gradle文件</p>
+<p>文件地址为 &nbsp;项目根目录\项目\build.gradle</p>
+<p>把dependencies闭包内的classpath 由2.2.3改成2.3</p>
+<p>（可能你的不是2.2.3，没关系，不管是啥都改成2.3就好了，因为我在升级2.3之前，是2.2.3版本）</p>
+<p><img src="" alt=""><img src="http://img.blog.csdn.net/20170303165912974" alt=""><br>
+</p>
+<p>然后启动Android Studio 打开刚刚改好的项目&nbsp;</p>
+<p>出现refreshing &nbsp;没关系 先让他嘚瑟一会</p>
+<p>打开Setting→ Build→Gradle 修改Gradle home目录为gradle-3.3所在的目录</p>
+<p><img src="" alt=""><img src="http://img.blog.csdn.net/20170303170001182" alt=""><br>
+</p>
+<p><img src="" alt=""><img src="http://img.blog.csdn.net/20170303170008135" alt=""><br>
+</p>
+<p>如果打开gradle-3.3所在的目录，却没有发现gradle-3.3 请点击刷新按钮</p>
+<p><img src="" alt=""><img src="http://img.blog.csdn.net/20170303170045866" alt=""><br>
+</p>
+<p>然后点击ok</p>
+<p>什么？搞定了？还没！</p>
+<p>最重要的一步来了！</p>
+<p>大声告诉我是什么！</p>
+<p>对！重启！</p>
+<p>呃</p>
+<p>&nbsp;重启Android Studio就好了</p>
+<p>不用重启电脑</p>
+<p>完事~</p>
+<p>——————————————————————————————— &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 华丽分割线————————————————————————————————————</p>
+<p><br>
+</p>
+<p><br>
+</p>
+<p><br>
+</p>
+<p><br>
+</p>
+<p>后记：</p>
+<p>上面的步骤，是我2个半小时升级之旅得出来的最佳最快的升级办法</p>
+<p>如果行不通</p>
+<p>请不要来找我</p>
+<p>因为</p>
+<p>我也没试过</p>
+<p>大不了你也按照我的升级之路</p>
+<p>一步一步来呗</p>
+<p>反正就多重启几次电脑而已嘛</p>
+<p>哈哈哈哈哈</p>
+<p><br>
+</p>
+<p><br>
+</p>
+<p>后后记：</p>
+<p>有撸友反应，更新到2.3之后，可能会有如下提示：</p>
+<p><img src="http://img.blog.csdn.net/20170307151833581" alt=""><br>
+</p>
+<p>我做了个测试。换回之后2.2.3该不会报该错误了</p>
+<p><img src="http://img.blog.csdn.net/20170307152025586" alt=""><br>
+</p>
+<p>所以本菜大胆猜测可能是2.3的硬性要求。</p>
+<p>本菜本着实事求是的精神</p>
+<p>突破神秘力量的约束</p>
+<p>去Android Studio官网查证</p>
+<p>看到了如下几句关键的话</p>
+<p><img src="http://img.blog.csdn.net/20170307153214040" alt=""><br>
+</p>
+<p>上面说 2.3.0的插件需要Gradle3.3或者更高；Build Tools 25.0.0或更高</p>
+<p>（由于我用的一直是25.0.2的Build Tools，所以不会出现上述错误）</p>
+<p>所以</p>
+<p>完美升级2.3还需要需要加上一步</p>
+<p>检查项目的buildToolsVersion 如果低于25..0.0</p>
+<p>请下载25.0.0或以上的BuildTools</p>
+<p>我这里下载的最新的25.0.2</p>
+<p><img src="http://img.blog.csdn.net/20170307153710391" alt=""><br>
+</p>
+<p>将项目下面的buildToolsVersion 改为25.0.2</p>
+<p><img src="" alt=""><br>
+</p>
+<p>这次应该真的完美了</p>
+<p><br>
+</p>
+<p><br>
+</p>
+   
+</div>
+
+
+
+
+<!-- Baidu Button BEGIN -->
+
+
+
+
+<div class="bdsharebuttonbox tracking-ad" style="float: right;" data-mod="popu_172">
+<a href="#" class="bds_more" data-cmd="more" style="background-position:0 0 !important; background-image: url(http://bdimg.share.baidu.com/static/api/img/share/icons_0_16.png?v=d754dcc0.png) !important"></a>
+<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"  style="background-position:0 -52px !important"></a>
+<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"style="background-position:0 -104px !important"></a>
+<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"style="background-position:0 -260px !important"></a>
+<a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"style="background-position:0 -208px !important"></a>
+<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"style="background-position:0 -1612px !important" ></a>
+</div>
+<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+<!-- Baidu Button END -->
+
+   <link rel="stylesheet" href="http://static.blog.csdn.net/css/blog_detail.css" />
+
+    
+<!--172.16.140.11-->
+
+<!-- Baidu Button BEGIN -->
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=1536434" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->
+
+ 
+
+
+        <div id="digg" ArticleId="60137958" >
+            <dl id="btnDigg" class="digg digg_disable"  onclick="btndigga();">
+               
+                 <dt>顶</dt>
+                <dd>12</dd>
+            </dl>
+           
+              
+            <dl id="btnBury" class="digg digg_disable"  onclick="btnburya();">
+              
+                  <dt>踩</dt>
+                <dd>0</dd>               
+            </dl>
+            
+        </div>
+     <div class="tracking-ad" data-mod="popu_222"><a href="javascript:void(0);" >&nbsp;</a>   </div>
+    <div class="tracking-ad" data-mod="popu_223"> <a href="javascript:void(0);" >&nbsp;</a></div>
+    <script type="text/javascript">
+                function btndigga() {
+                    $(".tracking-ad[data-mod='popu_222'] a").click();
+                }
+                function btnburya() {
+                    $(".tracking-ad[data-mod='popu_223'] a").click();
+                }
+            </script>
+
+   <ul class="article_next_prev">
+                <li class="prev_article"><span  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian']);location.href='/hylczp/article/details/51232389';">上一篇</span><a href="/hylczp/article/details/51232389" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian'])">每天一道编程题</a></li>
+    </ul>
+
+    <div style="clear:both; height:10px;"></div>
+
+
+      
+</div>
+
+    <div>
+            <ins data-revive-zoneid="205" data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57"></ins> 
+     </div>
+
+<div id="suggest"></div>
+         <script  language="javascript" type='text/javascript'>     
+             $(function(){
+                 $.get("/hylczp/svc/GetSuggestContent/60137958",function(data){
+                     $("#suggest").html(data);
+                 });     
+             });             
+         </script>  
+
+
+<style>
+.blog-ass-articl dd {
+color: #369;
+width: 99%; /*修改行*/
+float: left;
+overflow: hidden;
+font: normal normal 12px/23px "SimSun";
+height: 23px;
+margin: 0;
+padding: 0 0 0 10px;
+margin-right: 30px;
+background: url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;
+}
+</style>
+
+ <link rel="stylesheet" href="http://static.blog.csdn.net/css/replace.css"/>
+<div id="relate" data-mod="popu_218"  class="tracking-ad">
+        <div class="relate_t">
+            <h3><span>参考知识库</span></h3>
+        </div>
+        <div class="relate_c">
+        </div>
+</div>
+ 
+
+<dl class="blog-ass-articl" id="res-relatived" > 
+    <div class="embody embody_b" id="libkeyparent"  style="display:none">
+            <span class="embody_t">更多资料请参考：</span>
+            <div class="embody_c" id="libkey"></div>
+    </div>
+
+
+     <dt><span>猜你在找</span></dt>    
+
+
+   
+
+
+    <div id="adCollege" style="width: 42%;float: left;"> 
+        <script src="http://csdnimg.cn/jobreco/job_reco.js" type="text/javascript"></script> 
+        <script type="text/javascript">
+            csdn.position.showEdu({
+                sourceType: "blog",
+                searchType: "detail",
+                searchKey: "60137958",
+                username: "",
+                recordcount: "5",
+                containerId: "adCollege" //容器DIV的id。 
+            });
+            
+            setEduLoc();
+
+            function setEduLoc() {               
+                var edus = $("#adCollege div dd a");
+                if (edus.length == 0) {
+                    setTimeout(function () {
+                        setEduLoc();
+                    }, 500);
+                }
+                else {
+                    var eduLoc = "?ref=blog&loc=0";
+                    $.each(edus, function (index,item) {
+                        var href = $(this).attr("href") + eduLoc;
+                        $(this).attr("href", href);
+                    });
+                }
+            }
+
+        </script> 
+    </div>  
+
+    
+     <div id="res"  data-mod="popu_36"  class="tracking-ad" style="width: 42%;float: left;margin-right: 30px;"></div>
+   
+</dl>
+
+
+<script type="text/javascript">
+    $(function () {
+        setTimeout(function () {
+            var searchtitletags = '一个小菜鸟的Android Studio2.3升级之旅，附赠升级之后Gradle的配置方法' + ',' + $("#tags").html();
+            searchService({
+                index: 'blog',
+                query: searchtitletags,
+                from: 5,
+                size: 5,
+                appendTo: '#res',
+                url: 'recommend',
+                his: 2,
+                client: "blog_cf_enhance",
+                tmpl: '<dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;"><a href="#{ url }" title="#{ title }" strategy="#{ strategy }">#{ title }</a></dd>'
+            });
+        }, 500);
+    });    
+
+ </script>  
+
+
+    <div id="ad_cen">        
+<ins data-revive-zoneid="71" data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57"></ins>    </div>  
+
+    <!-- 广告位开始 -->
+    <ins data-revive-zoneid="72" data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57"></ins>
+    <!-- 广告位结束 -->
+
+<div class="comment_class">
+    <div id="comment_title" class="panel_head">
+        <span class="see_comment">查看评论</span><a name="comments"></a></div>
+    <div id="comment_list">
+    </div>
+    <div id="comment_bar">
+    </div>
+    <div id="comment_form">
+    </div>
+    <div class="announce">
+        * 以上用户言论只代表其个人观点，不代表CSDN网站的观点或立场<a name="reply"></a><a name="quote"></a></div>
+</div>
+
+<script type="text/javascript">
+    var fileName = '60137958';
+    var commentscount = 34;
+    var islock = false
+</script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/comment.js"></script>
+    <div id="ad_bot">
+    </div>
+<div id="report_dialog">
+</div>
+
+<div id="d-top"  style="bottom:60px;">
+
+        <a id="quick-reply" class="btn btn-top q-reply" title="快速回复" style="display:none;">
+            <img src="http://static.blog.csdn.net/images/blog-icon-reply.png" alt="快速回复">
+        </a>    
+    <a id="d-top-a" class="btn btn-top backtop"  style="display: none;" title="返回顶部" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_huidaodingbu'])" style="">         
+         <img src="http://static.blog.csdn.net/images/top.png" alt="TOP">
+    </a>
+</div>
+<script type="text/javascript">
+    $(function ()
+    {
+        $("#ad_frm_0").height("90px");
+        
+        setTimeout(function(){
+            $("#ad_frm_2").height("200px");
+        },1000);    
+    });
+  
+</script>
+<style type="text/css">
+    .tag_list
+    {
+        background: none repeat scroll 0 0 #FFFFFF;
+        border: 1px solid #D7CBC1;
+        color: #000000;
+        font-size: 12px;
+        line-height: 20px;
+        list-style: none outside none;
+        margin: 10px 2% 0 1%;
+        padding: 1px;
+    }
+    .tag_list h5
+    {
+        background: none repeat scroll 0 0 #E0DBD3;
+        color: #47381C;
+        font-size: 12px;
+        height: 24px;
+        line-height: 24px;
+        padding: 0 5px;
+        margin: 0;
+    }
+    .tag_list h5 a
+    {
+        color: #47381C;
+    }
+    .classify
+    {
+        margin: 10px 0;
+        padding: 4px 12px 8px;
+    }
+    .classify a
+    {
+        margin-right: 20px;
+        white-space: nowrap;
+    }
+</style>
+
+
+<div class="tag_list" style="display:none"></div>
+  <script  language="javascript" type='text/javascript'>     
+      $(function(){
+              setTimeout(function(){
+                  $.get("/hylczp/svc/GetTagContent",function(data){
+                      $(".tag_list").html(data).show();
+                  });     
+              });
+          },500);                       
+ </script> 
+
+
+<div id="pop_win" style="display:none ;position: absolute; z-index: 10000; border: 1px solid rgb(220, 220, 220); top: 222.5px; left: 630px; opacity: 1; background: none 0px 0px repeat scroll rgb(255, 255, 255);">
+    
+</div>
+<div id="popup_mask"></div>
+<style>
+    #popup_mask
+    {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        z-index: 9999;
+        left: 0px;
+        top: 0px;
+        opacity: 0.3;
+        filter: alpha(opacity=30);
+        display: none;
+    }
+
+</style>
+
+
+
+
+<script type="text/javascript">
+    $(function(){
+        setTimeout(function(){
+            $(".comment_body:contains('回复')").each(function(index,item){
+                var u=$(this).text().split('：')[0].toString().replace("回复","")
+                var thisComment=$(this);
+                if(u)
+                {
+                    $.getJSON("https://passport.csdn.net/get/nick?callback=?", {users: u}, function(a) {
+                        if(a!=null&&a.data!=null&&a.data.length>0)
+                        {
+                            nick=a.data[0].n; 
+                            if(u!=nick)
+                            {
+                                thisComment.text(thisComment.text().replace(u,nick));  
+                            }
+                        }       
+                    });  
+                }
+            });         
+
+        },200);  
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },5000);
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },10000);
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },15000);
+        
+        setTimeout(function(){
+            $("a img[src='http://js.tongji.linezing.com/stats.gif']").parent().css({"position":"absolute","left":"50%"});
+        },300);
+    });
+
+    function loginbox(){
+        var $logpop=$("#pop_win");
+        $logpop.html('<iframe src="https://passport.csdn.net/account/loginbox?service=http://static.blog.csdn.net/callback.htm" frameborder="0" height="600" width="400" scrolling="no"></iframe>');
+
+        $('#popup_mask').css({
+            opacity: 0.5,
+            width: $( document ).width() + 'px',
+            height:  $( document ).height() + 'px'
+        });
+        $('#popup_mask').css("display","block");
+ 
+        $logpop.css( {
+            top: ($( window ).height() - $logpop.height())/ 2  + $( window 
+       ).scrollTop() + 'px',
+            left:($( window ).width() - $logpop.width())/ 2
+        } );
+ 
+        setTimeout( function () {
+            $logpop.show();
+            $logpop.css( {
+                opacity: 1
+            } );
+        }, 200 );
+ 
+        $('#popup_mask').unbind("click");
+        $('#popup_mask').bind("click", function(){
+            $('#popup_mask').hide();
+            var $clopop = $("#pop_win");
+            $("#common_ask_div_sc").css("display","none");
+            $clopop.css( {
+                opacity: 0
+            } );
+            setTimeout( function () {
+                $clopop.hide();
+            }, 350 );
+            return false;
+        });
+    }   
+
+</script>
+ <script language="javascript" type="text/javascript" src="http://ads.csdn.net/js/async_new.js"></script>      
+
+
+
+
+                        <div class="clear">
+                        </div>
+                    </div>                   
+                
+            </div>
+                   
+           <div id="side">
+               
+    <div class="side">
+<div id="panel_Profile" class="panel">
+<ul class="panel_head"><span>个人资料</span></ul>
+<ul class="panel_body profile">
+<div id="blog_userface">
+    <a href="http://my.csdn.net/hylczp" target="_blank">
+    <img src="http://avatar.csdn.net/D/7/F/1_hylczp.jpg" title="访问我的空间" style="max-width:90%"/>
+    </a>
+    <br />
+    <span><a href="http://my.csdn.net/hylczp" class="user_name" target="_blank">hylczp</a></span>
+</div>
+<div class="interact">
+
+    <a href="javascript:void(0);" class="attent" id="span_add_follow" title="[加关注]"></a>
+
+ <a href="javascript:void(0);" class="letter"  title="[发私信]" onclick="window.open('http://msg.csdn.net/letters/model?receiver=hylczp','_blank','height=350,width=700');_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_sixin'])"></a>  
+</div>
+<div id="blog_medal">
+                <div id="bms_box">
+               </div>
+</div>
+<ul id="blog_rank">
+    <li>访问：<span>3316次</span></li>
+    <li>积分：<span>118</span> </li>    
+    <li >等级： <span style="position:relative;display:inline-block;z-index:1" >
+            <img src="http://c.csdnimg.cn/jifen/images/xunzhang/jianzhang/blog2.png" alt="" style="vertical-align: middle;" id="leveImg">
+            <div id="smallTittle" style=" position: absolute;  left: -24px;  top: 25px;  text-align: center;  width: 101px;  height: 32px;  background-color: #fff;  line-height: 32px;  border: 2px #DDDDDD solid;  box-shadow: 0px 2px 2px rgba (0,0,0,0.1);  display: none;   z-index: 999;">
+            <div style="left: 42%;  top: -8px;  position: absolute;  width: 0;  height: 0;  border-left: 10px solid transparent;  border-right: 10px solid transparent;  border-bottom: 8px solid #EAEAEA;"></div>
+            积分：118 </div>
+        </span>  </li>
+    <li>排名：<span>千里之外</span></li>
+</ul>
+<ul id="blog_statistics">
+    <li>原创：<span>6篇</span></li>
+    <li>转载：<span>0篇</span></li>
+    <li>译文：<span>0篇</span></li>
+    <li>评论：<span>34条</span></li>
+</ul>
+</ul>
+</div>
+
+
+<div class="panel" id="panel_Search">
+    <ul class="panel_head"><span>文章搜索</span></ul>
+    <ul class="panel_body">
+        <form id="frmSearch" action="http://so.csdn.net/search" class="form_search" target="_blank">
+        <span><input id="inputSearch" type="text" class="blogsearch" title="请输入关键字" /></span>
+        <input id="btnSubmit" type="button" value="搜索" title="search in blog" />
+        <input type="hidden" name="q" id="inputQ" />
+        <input type="hidden" name="t" value="blog" />
+        <a id="btnSearchBlog" target="_blank"></a>
+        </form>
+    </ul>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $("#btnSubmit").click(function () {           
+            search();
+        });
+
+        $("#frmSearch").submit(function () {
+            search();
+            return false;
+        });
+
+        function search()
+        {
+            var url = "http://so.csdn.net/so/search/s.do?q=" + encodeURIComponent($("#inputSearch").val()) + "&u=" + username + "&t=blog";
+            window.location.href = url;
+        }   
+    });
+</script><div id="panel_Archive" class="panel">
+<ul class="panel_head"><span>文章存档</span></ul>
+<ul class="panel_body">
+<div id="archive_list">
+<!--归档统计-->
+<li><a href="/hylczp/article/month/2017/03">2017年03月</a><span>(1)</span></li><li><a href="/hylczp/article/month/2016/04">2016年04月</a><span>(1)</span></li><li><a href="/hylczp/article/month/2016/03">2016年03月</a><span>(2)</span></li><li><a href="/hylczp/article/month/2016/02">2016年02月</a><span>(1)</span></li><li><a href="/hylczp/article/month/2015/11">2015年11月</a><span>(1)</span></li>
+</div>
+</ul>
+</div>
+<div id="hotarticls" class="panel">
+<ul class="panel_head">
+    <span>       
+阅读排行    </span>
+</ul>
+
+<ul class="panel_body itemlist">
+<li>
+<a href="/hylczp/article/details/60137958" title="一个小菜鸟的Android Studio2.3升级之旅，附赠升级之后Gradle的配置方法">一个小菜鸟的Android Studio2.3升级之旅，附赠升级之后Gradle的配置方法</a><span>(2555)</span>
+</li>
+<li>
+<a href="/hylczp/article/details/50754554" title="2048游戏源代码分析与总结">2048游戏源代码分析与总结</a><span>(197)</span>
+</li>
+<li>
+<a href="/hylczp/article/details/49640067" title="一些零散的方法——收集于《android应用开发范例精解》">一些零散的方法——收集于《android应用开发范例精解》</a><span>(138)</span>
+</li>
+<li>
+<a href="/hylczp/article/details/50881705" title="项目总结与分析——基于图灵机器人API的聊天机器人">项目总结与分析——基于图灵机器人API的聊天机器人</a><span>(62)</span>
+</li>
+<li>
+<a href="/hylczp/article/details/50908485" title="一个很捞的引导界面——代码分享+要点解析">一个很捞的引导界面——代码分享+要点解析</a><span>(59)</span>
+</li>
+<li>
+<a href="/hylczp/article/details/51232389" title="每天一道编程题">每天一道编程题</a><span>(46)</span>
+</li>
+</ul>
+</div>
+<div id="hotarticls2" class="panel">
+<ul class="panel_head"><span>评论排行</span></ul>
+<ul class="panel_body itemlist">
+<li>
+<a href="/hylczp/article/details/60137958" title="一个小菜鸟的Android Studio2.3升级之旅，附赠升级之后Gradle的配置方法">一个小菜鸟的Android Studio2.3升级之旅，附赠升级之后Gradle的配置方法</a><span>(34)</span>
+</li>
+<li>
+<a href="/hylczp/article/details/49640067" title="一些零散的方法——收集于《android应用开发范例精解》">一些零散的方法——收集于《android应用开发范例精解》</a><span>(0)</span>
+</li>
+<li>
+<a href="/hylczp/article/details/50754554" title="2048游戏源代码分析与总结">2048游戏源代码分析与总结</a><span>(0)</span>
+</li>
+<li>
+<a href="/hylczp/article/details/50881705" title="项目总结与分析——基于图灵机器人API的聊天机器人">项目总结与分析——基于图灵机器人API的聊天机器人</a><span>(0)</span>
+</li>
+<li>
+<a href="/hylczp/article/details/50908485" title="一个很捞的引导界面——代码分享+要点解析">一个很捞的引导界面——代码分享+要点解析</a><span>(0)</span>
+</li>
+<li>
+<a href="/hylczp/article/details/51232389" title="每天一道编程题">每天一道编程题</a><span>(0)</span>
+</li>
+</ul>
+</div>
+<div id="homepageArticles" class="panel tracking-ad" data-mod="popu_4">
+<ul class="panel_head"><span>推荐文章</span></ul>
+<ul class="panel_body" id="ad_commend">
+<ul>
+<li><a href="http://blog.csdn.net/blogdevteam/article/details/60576936" target="_blank">* CSDN日报20170306——《程序员转行为什么这么难》</a></li>
+<li><a href="http://blog.csdn.net/hejjunlin/article/details/60480109" 
+target="_blank">* 直播技术总结（四）音视频数据压缩及编解码基础 </a></li>
+<li><a href="http://blog.csdn.net/qibin0506/article/details/60478869"target="_blank">* 第一个PWA程序-聊天室</a></li>
+<li><a href="http://blog.csdn.net/cyq1162/article/details/60578454" target="_blank">* 一个想法照进现实-《IT连》创业项目：万事开头难</a></li>
+<li><a href="http://blog.csdn.net/jiangwei0910410003/article/details/54879836" 
+target="_blank">* Android"挂逼"修炼之行---防自动抢红包外挂原理解析</a></li>
+
+
+</ul></ul>
+</div>
+
+
+<div id="newcomments" class="panel">
+<ul class="panel_head"><span>最新评论</span></ul>
+<ul class="panel_body itemlist">
+    <li>
+   
+         <a href="/hylczp/article/details/60137958#comments">一个小菜鸟的Android Studio2.3升级之旅，附赠升级之后Gradle的配置方法</a>
+    <p style="margin:0px;"><a href="/explorerqp" class="user_name">explorerqp</a>:
+这口才白瞎了，AS2.3同时可能会遇到以下错误：Error running app: This ve...
+    </p>
+    </li>
+    <li>
+   
+         <a href="/hylczp/article/details/60137958#comments">一个小菜鸟的Android Studio2.3升级之旅，附赠升级之后Gradle的配置方法</a>
+    <p style="margin:0px;"><a href="/whlei01" class="user_name">whlei01</a>:
+66666666666666
+    </p>
+    </li>
+    <li>
+   
+         <a href="/hylczp/article/details/60137958#comments">一个小菜鸟的Android Studio2.3升级之旅，附赠升级之后Gradle的配置方法</a>
+    <p style="margin:0px;"><a href="/sinat_30448969" class="user_name">sinat_30448969</a>:
+@hylczp:解决了，把3.3.zip放到C盘相应目录才行。就是file-&gt;setting里面的d...
+    </p>
+    </li>
+    <li>
+   
+         <a href="/hylczp/article/details/60137958#comments">一个小菜鸟的Android Studio2.3升级之旅，附赠升级之后Gradle的配置方法</a>
+    <p style="margin:0px;"><a href="/hylczp" class="user_name">hylczp</a>:
+@sinat_30448969:应该不会的呀。你检查下你新建项目的gradle版本和本地的gradl...
+    </p>
+    </li>
+    <li>
+   
+         <a href="/hylczp/article/details/60137958#comments">一个小菜鸟的Android Studio2.3升级之旅，附赠升级之后Gradle的配置方法</a>
+    <p style="margin:0px;"><a href="/sinat_30448969" class="user_name">sinat_30448969</a>:
+新建项目的时候还是一直building怎么办
+    </p>
+    </li>
+    <li>
+   
+         <a href="/hylczp/article/details/60137958#comments">一个小菜鸟的Android Studio2.3升级之旅，附赠升级之后Gradle的配置方法</a>
+    <p style="margin:0px;"><a href="/qq_27656585" class="user_name">qq_27656585</a>:
+这口才当程序员太亏了
+    </p>
+    </li>
+    <li>
+   
+         <a href="/hylczp/article/details/60137958#comments">一个小菜鸟的Android Studio2.3升级之旅，附赠升级之后Gradle的配置方法</a>
+    <p style="margin:0px;"><a href="/AUTUWAT" class="user_name">AUTUWAT</a>:
+相声界的大师....不更新2.3就没问题.如果更新了2.3,更改了gradle配置后,不要再点击更新...
+    </p>
+    </li>
+    <li>
+   
+         <a href="/hylczp/article/details/60137958#comments">一个小菜鸟的Android Studio2.3升级之旅，附赠升级之后Gradle的配置方法</a>
+    <p style="margin:0px;"><a href="/qqLeMa" class="user_name">qqLeMa</a>:
+这一个被code耽误了的相声大师
+    </p>
+    </li>
+    <li>
+   
+         <a href="/hylczp/article/details/60137958#comments">一个小菜鸟的Android Studio2.3升级之旅，附赠升级之后Gradle的配置方法</a>
+    <p style="margin:0px;"><a href="/qq_35103506" class="user_name">qq_35103506</a>:
+谢谢楼主把我拯救
+    </p>
+    </li>
+    <li>
+   
+         <a href="/hylczp/article/details/60137958#comments">一个小菜鸟的Android Studio2.3升级之旅，附赠升级之后Gradle的配置方法</a>
+    <p style="margin:0px;"><a href="/qq_24077637" class="user_name">qq_24077637</a>:
+我全都做了但是在运行的时候发生了application installation failed错误，...
+    </p>
+    </li>
+</ul>
+</div>
+    </div>
+    <div class="clear">
+    </div>
+
+
+                   <!-- 广告位开始 --> 
+                    <ins data-revive-zoneid="190" data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57"></ins> 
+                    <!-- 广告位结束 -->
+
+           </div>   
+
+            <div class="clear">
+            </div>
+        </div>
+
+        
+
+<script type="text/javascript" src="http://c.csdnimg.cn/rabbit/cnick/cnick.js"></script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/newblog.min.js"></script>
+
+
+<script type="text/javascript" src="http://medal.blog.csdn.net/showblogmedal.ashx?blogid=5550253"></script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/JavaScript1.js"></script>
+
+    <script type="text/javascript" src="http://passport.csdn.net/content/loginbox/login.js"></script>
+<script type="text/javascript">document.write("<img src=http://counter.csdn.net/pv.aspx?id=24 border=0 width=0 height=0>");</script>
+<script type="text/javascript" src="http://www.csdn.net/ui/scripts/Csdn/counter.js"></script>
+<script type="text/javascript" src="http://ad.csdn.net/scripts/ad-blog.js"></script>
+<script type="text/javascript">
+    $(function () {
+        function __get_code_toolbar(snippet_id) {
+            return $("<span class='tracking-ad' data-mod='popu_167'><a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "' target='_blank' title='在CODE上查看代码片'  style='text-indent:0;'><img src='https://code.csdn.net/assets/CODE_ico.png' width=12 height=12 alt='在CODE上查看代码片' style='position:relative;top:1px;left:2px;'/></a></span>"
+                    + "<span class='tracking-ad' data-mod='popu_170'><a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "/fork' target='_blank' title='派生到我的代码片' style='text-indent:0;'><img src='https://code.csdn.net/assets/ico_fork.svg' width=12 height=12 alt='派生到我的代码片' style='position:relative;top:2px;left:2px;'/></a></span>");
+        }
+        
+        $("[code_snippet_id]").each(function () {
+            __s_id = $(this).attr("code_snippet_id");
+            if (__s_id != null && __s_id != "" && __s_id != 0 && parseInt(__s_id) > 70020) {
+                __code_tool = __get_code_toolbar(__s_id);
+                $(this).prev().find(".tools").append(__code_tool);
+            }
+        });
+
+        $(".bar").show();
+    });
+</script>
+
+
+
+
+
+    </div>
+      <!--new top-->
+    
+    <script id="csdn-toolbar-id" btnId="header_notice_num" wrapId="note1" count="5" subCount="5" type="text/javascript" src="http://c.csdnimg.cn/public/common/toolbar/js/toolbar.js"></script>     <!--new top-->
+   
+    <link href="http://c.csdnimg.cn/comm_ask/css/ask_float_block.css" type="text/css" rel="stylesheet" />
+    <script language='JavaScript' type='text/javascript' src='http://c.csdnimg.cn/comm_ask/js/libs/wmd.js'></script>
+    <script language='JavaScript' type='text/javascript' src='http://c.csdnimg.cn/comm_ask/js/libs/showdown.js'></script>
+    <script language='JavaScript' type='text/javascript' src='http://c.csdnimg.cn/comm_ask/js/libs/prettify.js'></script>
+    <script language='JavaScript' type='text/javascript' src='http://c.csdnimg.cn/comm_ask/js/apps/ask_float_block.js'></script>
+   
+
+   
+
+  <div id="a52b5334d" style="width: 1px; height: 1px; display: none;">
+                    <script id="adJs52b5334"></script>
+                    <script>document.getElementById("adJs52b5334").src = "http://ads.csdn.net/js/opt/52b5334.js?t=" + Math.random();</script>
+   </div>
+
+    <link rel="stylesheet" href="http://static.blog.csdn.net/css/blog_code.css" />
+    <script type="text/javascript" src="http://static.blog.csdn.net/scripts/saveToCode.js"></script>
+      <script type="text/javascript" src="//csdnimg.cn/rabbit/tracking-ad/main.js?75eacd8"></script>
+
+     <link rel="stylesheet" href="http://static.blog.csdn.net/css/fa.css" />
+
+    <div class="pop_CA_cover"  style="display:none"></div>
+    <div class="pop pop_CA"  style="display:none">
+          <div class="CA_header">
+            收藏助手
+            <span class="cancel_icon"  id="fapancle"  onclick="$('.pop_CA').hide();$('.pop_CA_cover').hide();"></span>
+          </div>
+          <iframe src="" id="fa" frameborder="0" width="100%" height="360"  scrolling="no" />
+    </div>
+</body>
+</html>   
+ 

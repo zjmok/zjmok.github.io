@@ -1,0 +1,33 @@
+.commentform {
+	
+}
+.commentform UL {
+	FONT: 12px/24px Arial, Helvetica, sans-serif; CLEAR: both; MARGIN: 0px 20px 5px
+}
+.commentform .left {
+	WIDTH: 80px; FLOAT: left; DISPLAY: block
+}
+.commentform .right {
+	MARGIN-LEFT: 90px; DISPLAY: block
+}
+.commentform TEXTAREA {
+	BORDER-TOP: #ddd 1px solid; BORDER-RIGHT: #ddd 1px solid; BORDER-BOTTOM: #ddd 1px solid; COLOR: #555; PADDING-BOTTOM: 5px; PADDING-TOP: 5px; FONT: 14px/24px Arial, Helvetica, sans-serif; PADDING-LEFT: 5px; BORDER-LEFT: #ddd 1px solid; PADDING-RIGHT: 5px
+}
+#lang_list {
+	FONT-SIZE: 12px; BORDER-TOP: #ccc 1px solid; BORDER-RIGHT: #ccc 1px solid; WIDTH: 388px; BORDER-BOTTOM: #ccc 1px solid; BORDER-LEFT: #ccc 1px solid; BACKGROUND-COLOR: #ffffff
+}
+#lang_list A {
+	CURSOR: pointer; BORDER-RIGHT: #ccc 1px solid; BORDER-BOTTOM: #ccc 1px solid; FLOAT: left; PADDING-BOTTOM: 0px; TEXT-ALIGN: center; PADDING-TOP: 0px; PADDING-LEFT: 5px; DISPLAY: inline-block; PADDING-RIGHT: 5px
+}
+#lang_list A:hover {
+	COLOR: #fff; BACKGROUND-COLOR: #666
+}
+.long_name {
+	WIDTH: 70px
+}
+.duan_name {
+	WIDTH: 25px
+}
+.zhong_name {
+	WIDTH: 48px
+}

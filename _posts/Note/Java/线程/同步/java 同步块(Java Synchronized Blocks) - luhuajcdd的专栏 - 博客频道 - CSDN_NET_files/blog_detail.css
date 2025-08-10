@@ -1,0 +1,87 @@
+.mod_zhuanjia_dianping {
+	FONT-SIZE: 12px; BORDER-TOP: #fbf5dd 1px solid; BORDER-BOTTOM: #fbf5dd 1px solid; COLOR: #656565; MARGIN-TOP: 80px; BACKGROUND-COLOR: #fffdf5
+}
+.mod_zhuanjia_dianping UL {
+	LIST-STYLE-TYPE: none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
+}
+.mod_zhuanjia_dianping LI {
+	LIST-STYLE-TYPE: none; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
+}
+.mod_zhuanjia_dianping IMG {
+	BORDER-TOP-STYLE: none; BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none
+}
+.mod_zhuanjia_dianping .dianping_title {
+	HEIGHT: 40px; BORDER-BOTTOM: #ccc 2px solid; LINE-HEIGHT: 40px
+}
+.mod_zhuanjia_dianping .dianping_title .dianping_title_left {
+	FONT-SIZE: 16px; BORDER-BOTTOM: #cb0000 2px solid; FLOAT: left
+}
+.mod_zhuanjia_dianping .dianping_title .dianping_title_right {
+	FONT-SIZE: 14px; FLOAT: right; FONT-WEIGHT: normal; COLOR: #656565
+}
+.mod_zhuanjia_dianping .dianping_title .dianping_title_right .red {
+	COLOR: #cb0000; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px
+}
+.mod_zhuanjia_dianping .dianping_title .dianping_title_right IMG {
+	VERTICAL-ALIGN: -2px; PADDING-RIGHT: 5px
+}
+.mod_zhuanjia_dianping .dianping_content {
+	OVERFLOW: hidden; HEIGHT: 240px; MAX-HEIGHT: 800px
+}
+.mod_zhuanjia_dianping .dianping_content .dianping_content_list {
+	BORDER-TOP: #dedcdd 1px dashed; WIDTH: 100%; FLOAT: left; PADDING-BOTTOM: 20px; PADDING-TOP: 20px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px
+}
+.mod_zhuanjia_dianping .dianping_content .dianping_content_list_left {
+	WIDTH: 40px; FLOAT: left; MARGIN-LEFT: -100%; MARGIN-TOP: 20px
+}
+.mod_zhuanjia_dianping .dianping_content .dianping_content_list_left .name {
+	WIDTH: 40px; COLOR: #000; TEXT-ALIGN: center; MARGIN-TOP: 10px; DISPLAY: inline-block
+}
+.mod_zhuanjia_dianping .dianping_content .dianping_content_list .dianping_content_list_right {
+	PADDING-LEFT: 20px; MARGIN-LEFT: 40px
+}
+.mod_zhuanjia_dianping .dianping_content .dianping_content_list .dianping_content_list_right .time {
+	COLOR: #7795a5
+}
+.mod_zhuanjia_dianping .dianping_content .dianping_content_list .dianping_content_list_right .time .time_desc {
+	PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px
+}
+.mod_zhuanjia_dianping .dianping_content .dianping_content_list .dianping_content_list_right .dianping_content_list_right_content {
+	MARGIN-TOP: 10px; LINE-HEIGHT: 18px
+}
+.mod_zhuanjia_dianping .dianping_content .dianping_content_list .dianping_content_list_right .time IMG {
+	VERTICAL-ALIGN: -2px
+}
+.mod_zhuanjia_dianping .more {
+	WIDTH: 100%; POSITION: relative; TEXT-ALIGN: center
+}
+.mod_zhuanjia_dianping .more IMG {
+	CURSOR: pointer; POSITION: relative; BOTTOM: -20px
+}
+.mod_more_detail {
+	FONT-SIZE: 12px; BORDER-TOP: #e8e8e8 1px solid; BORDER-RIGHT: #e8e8e8 1px solid; BORDER-BOTTOM: #e8e8e8 1px solid; COLOR: #333; BORDER-LEFT: #e8e8e8 1px solid; MARGIN-TOP: 50px
+}
+.mod_more_detail UL {
+	LIST-STYLE-TYPE: none; OVERFLOW: hidden; HEIGHT: 24px; WHITE-SPACE: nowrap; TEXT-OVERFLOW: ellipsis; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px
+}
+.mod_more_detail LI {
+	LIST-STYLE-TYPE: none; OVERFLOW: hidden; HEIGHT: 24px; WHITE-SPACE: nowrap; TEXT-OVERFLOW: ellipsis; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 0px
+}
+.mod_more_detail LI A {
+	COLOR: #333
+}
+.mod_more_detail .mod_more_detail_title {
+	HEIGHT: 40px; LINE-HEIGHT: 40px; BACKGROUND-COLOR: #f1f1f1; TEXT-INDENT: 10px
+}
+.mod_more_detail .mod_more_detail_title .mod_more_detail_left {
+	FONT-SIZE: 16px; FLOAT: left; COLOR: #000
+}
+.mod_more_detail .mod_more_detail_content {
+	OVERFLOW: hidden; PADDING-BOTTOM: 20px; PADDING-TOP: 20px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px
+}
+.mod_more_detail .mod_more_detail_content .mod_more_detail_content_left {
+	BOX-SIZING: border-box; BORDER-RIGHT: #e8e8e8 1px solid; WIDTH: 50%; FLOAT: left; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 20px; PADDING-RIGHT: 20px
+}
+.mod_more_detail .mod_more_detail_content .mod_more_detail_content_right {
+	BOX-SIZING: border-box; WIDTH: 50%; FLOAT: left; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 20px; PADDING-RIGHT: 20px
+}

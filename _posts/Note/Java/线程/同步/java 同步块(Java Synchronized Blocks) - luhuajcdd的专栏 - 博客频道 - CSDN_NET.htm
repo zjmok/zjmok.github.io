@@ -1,0 +1,1236 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0054)http://blog.csdn.net/luhuajcdd/article/details/9179511 -->
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><META content="IE=7.0000" 
+http-equiv="X-UA-Compatible">
+<TITLE>java 同步块(Java Synchronized Blocks) - luhuajcdd的专栏 - 博客频道 - CSDN.NET</TITLE>
+<SCRIPT type=text/javascript charset=utf-8 
+src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/tracking.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+        var protocol = window.location.protocol;
+        document.write('<script type="text/javascript" src="' + protocol + '//csdnimg.cn/pubfooter/js/repoAddr2.js?v=' + Math.random() + '"></' + 'script>');
+    </SCRIPT>
+
+<META content=no-siteapp http-equiv=Cache-Control><LINK rel=alternate href="#" 
+media=handheld>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<META name=description 
+content="假若我要删除用户表的所有用户记录。使用HQL中使用 delete from User &nbsp;，因为HQL是绕过session和sessionFactory缓存（如果有的话),这意味着，session将不会觉察到user的变化，若当时session缓存里有user的数据，那将是过时的数据，库表里已经不存在了。那么session连user不在也不知道，更不用说user一对多关联的 order表的记">
+<SCRIPT type=text/javascript 
+src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/jquery.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/jquery-version.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/ad.js"></SCRIPT>
+<!--new top--><LINK rel=stylesheet 
+href="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/index.css"><!--new top--><!-- ad begin -->
+<SCRIPT language=javascript type=text/javascript 
+src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/tracking(1).js"></SCRIPT>
+<!-- ad end--><LINK rel=Stylesheet type=text/css 
+href="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/style.css"><LINK 
+id=RSSLink title=RSS rel=alternate type=application/rss+xml 
+href="/luhuajcdd/rss/list"><LINK rel="shortcut icon" 
+href="http://c.csdnimg.cn/public/favicon.ico"><LINK rel=stylesheet type=text/css 
+href="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/default.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18212"></HEAD>
+<BODY><!-- 广告位开始 --><INS data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57" 
+data-revive-zoneid="149"></INS><!-- 广告位结束 --><!--new top-->
+<SCRIPT id=toolbar-tpl-scriptId type=text/javascript 
+src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/html.js" 
+skin="black" prod="blog" fixed="true"></SCRIPT>
+<!--new top-->
+<DIV id=container>
+<DIV id=header>
+<DIV class=header>
+<DIV id=blog_title>
+<H2><A href="http://blog.csdn.net/luhuajcdd">luhuajcdd的专栏</A></H2>
+<H3></H3>
+<DIV class=clear></DIV></DIV>
+<DIV class=clear></DIV></DIV></DIV>
+<DIV id=navigator>
+<DIV class=navigator_bg></DIV>
+<DIV class=navigator>
+<UL>
+  <LI id=btnContents><A 
+  href="http://blog.csdn.net/luhuajcdd?viewmode=contents"><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_mulu'])"><IMG 
+  src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/ico_list.gif">目录视图</SPAN></A> 
+  </LI>
+  <LI id=btnView><A href="http://blog.csdn.net/luhuajcdd?viewmode=list"><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_zhaiyao'])"><IMG 
+  src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/ico_summary.gif">摘要视图</SPAN></A> 
+  </LI>
+  <LI id=btnRss><A href="http://blog.csdn.net/luhuajcdd/rss/list"><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_RSS'])"><IMG 
+  src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/ico_rss.gif">订阅</SPAN></A> 
+  </LI></UL></DIV></DIV>
+<SCRIPT type=text/javascript>
+    var username = "luhuajcdd";
+    var _blogger = username;
+    var blog_address = "http://blog.csdn.net/luhuajcdd";
+    var static_host = "http://static.blog.csdn.net";
+    var currentUserName = "";  
+</SCRIPT>
+
+<DIV id=body>
+<DIV id=main>
+<DIV class=main>
+<DIV class=ad_class>
+<DIV class="notice tracking-ad" data-mod="popu_3"><A 
+href="http://blog.csdn.net/winner.html"><FONT color=red>【1024程序员节】获奖结果公布 
+</FONT></A>&nbsp;&nbsp;&nbsp; <A href="http://blog.csdn.net/PK.html"><FONT 
+color=blue>【观点】有了深度学习，你还学传统机器学习算法么？ </FONT></A>&nbsp;&nbsp;&nbsp; <A 
+href="http://lib.csdn.net/base/reactnative"><FONT color=red>【资源库】火爆了的React 
+Native都在研究什么 </FONT></A></FONT></A></DIV></DIV><!-- 广告位开始 --><INS 
+data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57" data-revive-zoneid="72"></INS><!-- 广告位结束 --><LINK rel=stylesheet type=text/css 
+href="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/comment1.css"><LINK 
+rel=stylesheet type=text/css 
+href="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/style1.css">
+<SCRIPT language=JavaScript type=text/javascript 
+src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/jquery.cookie.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/main.js"></SCRIPT>
+<LINK rel=stylesheet 
+href="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/markdown_views.css"><LINK 
+rel=stylesheet 
+href="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/category.css">
+<SCRIPT type=text/javascript 
+src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/MathJax.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/web-storage-cache.min.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/replace.min.js"></SCRIPT>
+
+<SCRIPT type=text/ecmascript>
+      window.quickReplyflag = true;
+           
+            var isBole = false;
+            
+          
+    </SCRIPT>
+
+<DIV id=article_details class=details>
+<DIV class=article_title><SPAN class="ico ico_type_Original"></SPAN>
+<H1><SPAN class=link_title><A 
+href="http://blog.csdn.net/luhuajcdd/article/details/9179511">java 同步块(Java 
+Synchronized Blocks) </A></SPAN></H1></DIV>
+<DIV class="article_manage clearfix">
+<DIV class=article_l><SPAN class=link_categories>标签： <A 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);" 
+href="http://www.csdn.net/tag/Java" target=_blank>Java</A><A 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);" 
+href="http://www.csdn.net/tag/synchronized" target=_blank>synchronized</A> 
+</SPAN></DIV>
+<DIV class=article_r><SPAN class=link_postdate>2013-06-27 15:26</SPAN> <SPAN 
+title=阅读次数 class=link_view>15462人阅读</SPAN> <SPAN title=评论次数 
+class=link_comments><A 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_pinglun'])" 
+href="http://blog.csdn.net/luhuajcdd/article/details/9179511#comments">评论</A>(1)</SPAN> 
+<SPAN class="link_collect tracking-ad" data-mod="popu_171"><A 
+onclick="javascript:collectArticle('java 同步块(Java Synchronized Blocks)','9179511');return false;" 
+title=收藏 href="javascript:void(0);">收藏</A></SPAN> <SPAN class=link_report><A 
+onclick="javascript:report(9179511,2);return false;" title=举报 
+href="http://blog.csdn.net/luhuajcdd/article/details/9179511#report">举报</A></SPAN> 
+</DIV></DIV>
+<DIV id=embody class=embody style="DISPLAY: none"><SPAN 
+class=embody_t>本文章已收录于：</SPAN> 
+<DIV id=lib class=embody_c value='{"err":0,"msg":"ok","data":[]}'></DIV></DIV>
+<STYLE type=text/css>.embody {
+	BORDER-BOTTOM: #ededed 1px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 0px -20px; PADDING-RIGHT: 10px
+}
+.embody_b {
+	PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
+}
+.embody .embody_t {
+	DISPLAY: inline-block; MARGIN-RIGHT: 10px
+}
+.embody .embody_c {
+	DISPLAY: inline-block; MARGIN-RIGHT: 10px
+}
+.embody_t {
+	FONT-SIZE: 12px; COLOR: #999
+}
+.embody_c {
+	FONT-SIZE: 12px
+}
+.embody_c IMG {
+	VERTICAL-ALIGN: middle; DISPLAY: inline-block
+}
+.embody_c EM {
+	VERTICAL-ALIGN: middle; DISPLAY: inline-block
+}
+.embody_c IMG {
+	HEIGHT: 30px; WIDTH: 30px
+}
+.embody_c EM {
+	COLOR: #333; FONT-STYLE: normal; MARGIN: 0px 20px 0px 10px
+}
+</STYLE>
+
+<SCRIPT type=text/javascript>
+        $(function () {
+            try
+            {
+                var lib = eval("("+$("#lib").attr("value")+")");
+                var html = "";
+                if (lib.err == 0) {
+                    $.each(lib.data, function (i) {
+                        var obj = lib.data[i];
+                        //html += '<img src="' + obj.logo + '"/>' + obj.name + "&nbsp;&nbsp;";
+                        html += ' <a href="' + obj.url + '" target="_blank">';
+                        html += ' <img src="' + obj.logo + '">';
+                        html += ' <em><b>' + obj.name + '</b></em>';
+                        html += ' </a>';
+                    });
+                    if (html != "") {
+                        setTimeout(function () {
+                            $("#lib").html(html);                      
+                            $("#embody").show();
+                        }, 100);
+                    }
+                }      
+            } catch (err)
+            { }
+            
+        });
+    </SCRIPT>
+
+<DIV class="category clearfix">
+<DIV class=category_l><IMG 
+src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/category_icon.jpg"> 
+<SPAN>分类：</SPAN> </DIV>
+<DIV class=category_r><LABEL 
+onclick="GetCategoryArticles('947411','luhuajcdd','top','9179511');"><SPAN 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_fenlei']);">Java<EM>（12）</EM></SPAN> 
+<IMG class=arrow-down style="DISPLAY: inline" 
+src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/arrow_triangle%2520_down.jpg"> 
+<IMG class=arrow-up style="DISPLAY: none" 
+src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/arrow_triangle_up.jpg"> 
+
+<DIV class=subItem>
+<DIV class=subItem_t><A 
+href="http://blog.csdn.net/luhuajcdd/article/category/947411" 
+target=_blank>作者同类文章</A><I class=J_close>X</I></DIV>
+<UL id=top_947411 class=subItem_l></UL></DIV></LABEL></DIV></DIV>
+<SCRIPT type=text/javascript 
+src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/category.js"></SCRIPT>
+
+<DIV class=bog_copyright>
+<P class=copyright_p>版权声明：本文为博主原创文章，未经博主允许不得转载。</P></DIV>
+<DIV id=article_content class=article_content>
+<H1>java 同步块(Java Synchronized Blocks)</H1>
+<P style="FONT-SIZE: 14px; FONT-FAMILY: Arial">Java 同步块包括方法同步和代码块同步。java 
+同步可以避免资源竞争，避免死锁。</P>
+<P style="FONT-SIZE: 14px; FONT-FAMILY: Arial">主题包括的主要内容:</P>
+<DIV style="FONT-SIZE: 14px; FONT-FAMILY: Arial">
+<UL style="PADDING-BOTTOM: 10px; PADDING-TOP: 10px">
+  <LI style="PADDING-BOTTOM: 10px"><A 
+  style="FONT-SIZE: 1em; TEXT-DECORATION: none; FONT-WEIGHT: bold; COLOR: rgb(0,45,98)" 
+  href="http://tutorials.jenkov.com/java-concurrency/synchronized.html#synchronized-keyword"><CODE 
+  style="FONT-SIZE: 1.2em">synchronized</CODE>&nbsp;关键</A>字
+  <LI style="PADDING-BOTTOM: 10px"><A 
+  style="FONT-SIZE: 1em; TEXT-DECORATION: none; FONT-WEIGHT: bold; COLOR: rgb(0,45,98)" 
+  href="http://tutorials.jenkov.com/java-concurrency/synchronized.html#synchronized-instance-methods">Synchronized 
+  实例</A>方法
+  <LI style="PADDING-BOTTOM: 10px"><A 
+  style="FONT-SIZE: 1em; TEXT-DECORATION: none; FONT-WEIGHT: bold; COLOR: rgb(0,45,98)" 
+  href="http://tutorials.jenkov.com/java-concurrency/synchronized.html#synchronized-static-methods">Synchronized 
+  static methods</A>
+  <LI style="PADDING-BOTTOM: 10px"><A 
+  style="FONT-SIZE: 1em; TEXT-DECORATION: none; FONT-WEIGHT: bold; COLOR: rgb(0,45,98)" 
+  href="http://tutorials.jenkov.com/java-concurrency/synchronized.html#synchronized-blocks-instance-methods">Synchronized 
+  blocks in instance methods</A>
+  <LI style="PADDING-BOTTOM: 10px"><A 
+  style="FONT-SIZE: 1em; TEXT-DECORATION: none; FONT-WEIGHT: bold; COLOR: rgb(0,45,98)" 
+  href="http://tutorials.jenkov.com/java-concurrency/synchronized.html#synchronized-blocks-static-methods">Synchronized 
+  blocks in static methods</A>
+  <LI style="PADDING-BOTTOM: 10px"><A 
+  style="FONT-SIZE: 1em; TEXT-DECORATION: none; FONT-WEIGHT: bold; COLOR: rgb(0,45,98)" 
+  href="http://tutorials.jenkov.com/java-concurrency/synchronized.html#java-synchronized-example">Java 
+  Synchronized Example</A></LI></UL></DIV>
+<H2 id=synchronized-keyword 
+style="MARGIN-BOTTOM: 15px; FONT-SIZE: 1.4em; FONT-FAMILY: Arial; MARGIN-TOP: 30px">The 
+Java synchronized Keyword</H2>
+<P style="FONT-SIZE: 14px; FONT-FAMILY: Arial">在java中，同步是用&nbsp;<CODE 
+style="FONT-SIZE: 1.2em">synchronized</CODE>&nbsp;关键字代表的. 
+同步是针对对象和类来说的。一个对象上的<SPAN 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial">所有同步块只能被一个线程锁住。</SPAN>其他所有的线程试图访问同步块的方法，都要等到占用资源的线程释放了才能访问。</P>
+<P style="FONT-SIZE: 14px; FONT-FAMILY: Arial"><CODE 
+style="FONT-SIZE: 1.2em">synchronized</CODE>关键字可以用到4个种场景:</P>
+<OL 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial; PADDING-BOTTOM: 10px; PADDING-TOP: 10px">
+  <LI style="PADDING-BOTTOM: 10px">Instance methods
+  <LI style="PADDING-BOTTOM: 10px">Static methods
+  <LI style="PADDING-BOTTOM: 10px">Code blocks inside instance methods
+  <LI style="PADDING-BOTTOM: 10px">Code blocks inside static methods</LI></OL>
+<P style="FONT-SIZE: 14px; FONT-FAMILY: Arial"><SPAN 
+style="FONT-SIZE: 1.4em">Synchronized Instance Methods</SPAN></P>
+<P style="FONT-SIZE: 14px; FONT-FAMILY: Arial">Here is a synchronized instance 
+method:</P><PRE class=codeBox style="MARGIN-BOTTOM: 30px; FONT-SIZE: 0.9em; BORDER-TOP: black 1px solid; BORDER-RIGHT: black 1px solid; BORDER-BOTTOM: black 1px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; BORDER-LEFT: black 1px solid; MARGIN-TOP: 30px; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(238,238,255)">  public <STRONG>synchronized</STRONG> void add(int value){
+      this.count += value;
+  }
+</PRE>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial">当一个方法上用到synchronized关键字，Java才能知道它是个同步方法。</P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial">一个实例同步方法只属于实例本身。每个实例都有自己的同步方法。</P>
+<H2 id=synchronized-static-methods 
+style="MARGIN-BOTTOM: 15px; FONT-SIZE: 1.4em; FONT-FAMILY: Arial; MARGIN-TOP: 30px">Synchronized 
+Static Methods</H2>
+<P style="FONT-SIZE: 14px; FONT-FAMILY: Arial">Static methods are marked as 
+synchronized just like instance methods using the<CODE 
+style="FONT-SIZE: 1.2em">synchronized</CODE>&nbsp;keyword. Here is a Java 
+synchronized static method example:</P><PRE class=codeBox style="MARGIN-BOTTOM: 30px; FONT-SIZE: 0.9em; BORDER-TOP: black 1px solid; BORDER-RIGHT: black 1px solid; BORDER-BOTTOM: black 1px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; BORDER-LEFT: black 1px solid; MARGIN-TOP: 30px; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(238,238,255)">  public <STRONG>static synchronized</STRONG> void add(int value){
+      count += value;
+  }
+</PRE>
+<P style="FONT-SIZE: 14px; FONT-FAMILY: Arial">同样&nbsp;<CODE 
+style="FONT-SIZE: 1.2em">synchronized</CODE>&nbsp;告诉Java 这是一个同步方法。</P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial">同步静态方法属于类对象。在VM中只有一个类对象，因此只能有一个线程执行静态同步方法。</P>
+<H2 id=synchronized-blocks-instance-methods 
+style="MARGIN-BOTTOM: 15px; FONT-SIZE: 1.4em; FONT-FAMILY: Arial; MARGIN-TOP: 30px">Synchronized 
+Blocks in Instance Methods</H2>
+<P style="FONT-SIZE: 14px; FONT-FAMILY: Arial">有时候， 
+不需要同步整个方法，只需要同步方法里面的一部分，可以借助同步块来完成工作。</P>
+<P style="FONT-SIZE: 14px; FONT-FAMILY: Arial">Here is a synchronized block of 
+Java code inside an unsynchronized Java method:</P><PRE class=codeBox style="MARGIN-BOTTOM: 30px; FONT-SIZE: 0.9em; BORDER-TOP: black 1px solid; BORDER-RIGHT: black 1px solid; BORDER-BOTTOM: black 1px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; BORDER-LEFT: black 1px solid; MARGIN-TOP: 30px; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(238,238,255)">  public void add(int value){
+
+    <STRONG>synchronized(this){</STRONG>
+       this.count += value;   
+    <STRONG>}</STRONG>
+  }
+</PRE>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial">这个例子是用同步块标记一块同步代码。这个同步块代码就相当于同步方法。</P>
+<P style="FONT-SIZE: 14px; FONT-FAMILY: Arial">Notice how the Java synchronized 
+block construct takes an object in parentheses. In the example "this" is used, 
+which is the instance the add method is called on. The object taken in the 
+parentheses by the synchronized construct is called a monitor object. The code 
+is said to be synchronized on the monitor object. A synchronized instance method 
+uses the object it belongs to as monitor object.</P>
+<P style="FONT-SIZE: 14px; FONT-FAMILY: Arial">对于同一个对象只能有一个线程访问同步块。</P>
+<P style="FONT-SIZE: 14px; FONT-FAMILY: Arial">下面两个方法的代码，效果是一样的。</P><PRE class=codeBox style="MARGIN-BOTTOM: 30px; FONT-SIZE: 0.9em; BORDER-TOP: black 1px solid; BORDER-RIGHT: black 1px solid; BORDER-BOTTOM: black 1px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; BORDER-LEFT: black 1px solid; MARGIN-TOP: 30px; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(238,238,255)"> 
+  public class MyClass {
+  
+    public <STRONG>synchronized</STRONG> void log1(String msg1, String msg2){
+       log.writeln(msg1);
+       log.writeln(msg2);
+    }
+
+  
+    public void log2(String msg1, String msg2){
+       <STRONG>synchronized(this){</STRONG>
+          log.writeln(msg1);
+          log.writeln(msg2);
+       <STRONG>}</STRONG>
+    }
+  }
+</PRE>
+<P style="FONT-SIZE: 14px; FONT-FAMILY: Arial">只能有一个线程执行(针对同一个对象) ;</P>
+<P 
+style="FONT-SIZE: 14px; FONT-FAMILY: Arial">第二个方法是不同的线程执行的时候会在同步块里面发生等待(针对同一对象)。</P>
+<H2 id=synchronized-blocks-static-methods 
+style="MARGIN-BOTTOM: 15px; FONT-SIZE: 1.4em; FONT-FAMILY: Arial; MARGIN-TOP: 30px">Synchronized 
+Blocks in Static Methods</H2>
+<P style="FONT-SIZE: 14px; FONT-FAMILY: Arial">下面两个静态方法是在类对象上的:</P><PRE class=codeBox style="MARGIN-BOTTOM: 30px; FONT-SIZE: 0.9em; BORDER-TOP: black 1px solid; BORDER-RIGHT: black 1px solid; BORDER-BOTTOM: black 1px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; BORDER-LEFT: black 1px solid; MARGIN-TOP: 30px; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(238,238,255)">  public class MyClass {
+
+    public static synchronized void log1(String msg1, String msg2){
+       log.writeln(msg1);
+       log.writeln(msg2);
+    }
+
+  
+    public static void log2(String msg1, String msg2){
+       synchronized(MyClass.class){
+          log.writeln(msg1);
+          log.writeln(msg2);  
+       }
+    }
+  }
+</PRE>
+<P style="FONT-SIZE: 14px; FONT-FAMILY: Arial">一个线程只能在同一时间执行上面的任何一个方法。</P>
+<P style="FONT-SIZE: 14px; FONT-FAMILY: Arial">对于第二个方法：只能有一个线程在代码块里面执行。</P>
+<H2 id=java-synchronized-example 
+style="MARGIN-BOTTOM: 15px; FONT-SIZE: 1.4em; FONT-FAMILY: Arial; MARGIN-TOP: 30px">Java 
+Synchronized Example</H2>
+<P style="FONT-SIZE: 14px; FONT-FAMILY: Arial"><BR></P><PRE class=codeBox style="MARGIN-BOTTOM: 30px; FONT-SIZE: 0.9em; BORDER-TOP: black 1px solid; BORDER-RIGHT: black 1px solid; BORDER-BOTTOM: black 1px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; BORDER-LEFT: black 1px solid; MARGIN-TOP: 30px; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(238,238,255)">  public class MyClass {
+
+
+&nbsp; &nbsp; public static synchronized void log1(String msg1, String msg2){
+<SPAN style="WHITE-SPACE: pre">	</SPAN> try {
+<SPAN style="WHITE-SPACE: pre">	</SPAN> &nbsp; &nbsp;<SPAN style="WHITE-SPACE: pre">	</SPAN> &nbsp; &nbsp;TimeUnit.SECONDS.sleep(5) ;
+<SPAN style="WHITE-SPACE: pre">	</SPAN> &nbsp; &nbsp;<SPAN style="WHITE-SPACE: pre">	</SPAN>} catch (InterruptedException e) {
+<SPAN style="WHITE-SPACE: pre">	</SPAN> &nbsp; &nbsp;<SPAN style="WHITE-SPACE: pre">	</SPAN> &nbsp; &nbsp;e.printStackTrace();
+<SPAN style="WHITE-SPACE: pre">	</SPAN> &nbsp; &nbsp;<SPAN style="WHITE-SPACE: pre">	</SPAN>}
+&nbsp; &nbsp; &nbsp; &nbsp;System.out.println(msg1);
+&nbsp; &nbsp; &nbsp; &nbsp;System.out.println(msg2);
+&nbsp; &nbsp; }
+&nbsp; &nbsp;&nbsp;
+&nbsp; &nbsp; public static synchronized void log3(String msg1, String msg2){
+<SPAN style="WHITE-SPACE: pre">	</SPAN> &nbsp; &nbsp;System.out.println(msg1);
+<SPAN style="WHITE-SPACE: pre">	</SPAN> &nbsp; &nbsp;System.out.println(msg2); &nbsp;
+&nbsp; &nbsp; }
+&nbsp;&nbsp;
+&nbsp; &nbsp; public static void log2(String msg1, String msg2){
+&nbsp; &nbsp; &nbsp; &nbsp;synchronized(MyClass.class){
+<SPAN style="WHITE-SPACE: pre">	</SPAN> &nbsp; try {
+<SPAN style="WHITE-SPACE: pre">	</SPAN> &nbsp; &nbsp;<SPAN style="WHITE-SPACE: pre">	</SPAN> &nbsp; &nbsp;TimeUnit.SECONDS.sleep(3) ;
+<SPAN style="WHITE-SPACE: pre">	</SPAN> &nbsp; &nbsp;<SPAN style="WHITE-SPACE: pre">	</SPAN>} catch (InterruptedException e) {
+<SPAN style="WHITE-SPACE: pre">	</SPAN> &nbsp; &nbsp;<SPAN style="WHITE-SPACE: pre">	</SPAN> &nbsp; &nbsp;e.printStackTrace();
+<SPAN style="WHITE-SPACE: pre">	</SPAN> &nbsp; &nbsp;<SPAN style="WHITE-SPACE: pre">	</SPAN>}
+<SPAN style="WHITE-SPACE: pre">	</SPAN> &nbsp; System.out.println(msg1);
+<SPAN style="WHITE-SPACE: pre">	</SPAN> &nbsp; System.out.println(msg2); &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp;}
+&nbsp; &nbsp; }
+&nbsp; &nbsp;&nbsp;
+&nbsp; &nbsp; public static void log4(String msg1, String msg2){
+<SPAN style="WHITE-SPACE: pre">	</SPAN>synchronized(MyClass.class){
+<SPAN style="WHITE-SPACE: pre">	</SPAN> &nbsp; &nbsp;
+<SPAN style="WHITE-SPACE: pre">	</SPAN> &nbsp; &nbsp;System.out.println(msg1);
+<SPAN style="WHITE-SPACE: pre">	</SPAN> &nbsp; &nbsp;System.out.println(msg2); &nbsp;
+<SPAN style="WHITE-SPACE: pre">	</SPAN>}
+&nbsp; &nbsp; }
+&nbsp; &nbsp;&nbsp;
+&nbsp; &nbsp;
+&nbsp; &nbsp; public void log5(String msg1, String msg2){
+<SPAN style="WHITE-SPACE: pre">	</SPAN>synchronized(this){
+<SPAN style="WHITE-SPACE: pre">	</SPAN> &nbsp; &nbsp;System.out.println(msg1);
+<SPAN style="WHITE-SPACE: pre">	</SPAN> &nbsp; &nbsp;System.out.println(msg2); &nbsp;
+<SPAN style="WHITE-SPACE: pre">	</SPAN>}
+&nbsp; &nbsp; }
+&nbsp; &nbsp;&nbsp;
+&nbsp; }</PRE><PRE class=codeBox style="MARGIN-BOTTOM: 30px; FONT-SIZE: 0.9em; BORDER-TOP: black 1px solid; BORDER-RIGHT: black 1px solid; BORDER-BOTTOM: black 1px solid; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 10px; BORDER-LEFT: black 1px solid; MARGIN-TOP: 30px; PADDING-RIGHT: 10px; BACKGROUND-COLOR: rgb(238,238,255)">  public class SynchronizedTest {
+
+
+&nbsp; &nbsp; Thread t1 = new Thread(new Runnable() {
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; @Override
+&nbsp; &nbsp; &nbsp; &nbsp; public void run() {
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MyClass.log1("msg11", "msg12") ;
+&nbsp; &nbsp; &nbsp; &nbsp; }
+&nbsp; &nbsp; }) ;
+&nbsp; &nbsp; Thread t2 = new Thread(new Runnable() {
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; @Override
+&nbsp; &nbsp; &nbsp; &nbsp; public void run() {
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MyClass.log2("msg21", "msg22") ;
+&nbsp; &nbsp; &nbsp; &nbsp; }
+&nbsp; &nbsp; }) ;
+&nbsp; &nbsp; Thread t3 = new Thread(new Runnable() {
+<SPAN style="WHITE-SPACE: pre">	</SPAN>
+<SPAN style="WHITE-SPACE: pre">	</SPAN>@Override
+<SPAN style="WHITE-SPACE: pre">	</SPAN>public void run() {
+<SPAN style="WHITE-SPACE: pre">	</SPAN> &nbsp; &nbsp;
+<SPAN style="WHITE-SPACE: pre">	</SPAN> &nbsp; &nbsp;MyClass.log3("msg31", "msg32") ;
+<SPAN style="WHITE-SPACE: pre">	</SPAN>}
+&nbsp; &nbsp; }) ;
+&nbsp; &nbsp;&nbsp;
+&nbsp; &nbsp; Thread t4 = new Thread(new Runnable() {
+<SPAN style="WHITE-SPACE: pre">	</SPAN>
+<SPAN style="WHITE-SPACE: pre">	</SPAN>@Override
+<SPAN style="WHITE-SPACE: pre">	</SPAN>public void run() {
+<SPAN style="WHITE-SPACE: pre">	</SPAN> &nbsp; &nbsp;
+<SPAN style="WHITE-SPACE: pre">	</SPAN> &nbsp; &nbsp;MyClass.log4("msg41", "msg42") ;
+<SPAN style="WHITE-SPACE: pre">	</SPAN>}
+&nbsp; &nbsp; }) ;
+&nbsp; &nbsp;&nbsp;
+&nbsp; &nbsp; Thread t5 = new Thread(new Runnable() {
+<SPAN style="WHITE-SPACE: pre">	</SPAN>
+<SPAN style="WHITE-SPACE: pre">	</SPAN>@Override
+<SPAN style="WHITE-SPACE: pre">	</SPAN>public void run() {
+<SPAN style="WHITE-SPACE: pre">	</SPAN> &nbsp; &nbsp;
+<SPAN style="WHITE-SPACE: pre">	</SPAN> &nbsp; new &nbsp;MyClass().log5("msg51", "msg52") ;
+<SPAN style="WHITE-SPACE: pre">	</SPAN>}
+&nbsp; &nbsp; }) ;
+&nbsp; &nbsp;&nbsp;
+&nbsp; &nbsp; public static void main(String[] args) {
+<SPAN style="WHITE-SPACE: pre">	</SPAN>SynchronizedTest st = new SynchronizedTest() ;
+<SPAN style="WHITE-SPACE: pre">	</SPAN>
+<SPAN style="WHITE-SPACE: pre">	</SPAN>st.t1.start() ;
+//<SPAN style="WHITE-SPACE: pre">	</SPAN>st.t3.start() ;
+<SPAN style="WHITE-SPACE: pre">	</SPAN>
+//<SPAN style="WHITE-SPACE: pre">	</SPAN>st.t2.start() ;
+//<SPAN style="WHITE-SPACE: pre">	</SPAN>st.t4.start() ;
+<SPAN style="WHITE-SPACE: pre">	</SPAN>st.t5.start() ;
+<SPAN style="WHITE-SPACE: pre">	</SPAN>
+<SPAN style="WHITE-SPACE: pre">	</SPAN>
+<SPAN style="WHITE-SPACE: pre">	</SPAN> int i = 0 ;
+<SPAN style="WHITE-SPACE: pre">		</SPAN>while(true){
+<SPAN style="WHITE-SPACE: pre">		</SPAN> &nbsp; &nbsp;try {
+<SPAN style="WHITE-SPACE: pre">			</SPAN>TimeUnit.SECONDS.sleep(1) ;
+<SPAN style="WHITE-SPACE: pre">			</SPAN>System.out.println("---------------&gt; " + i);
+<SPAN style="WHITE-SPACE: pre">			</SPAN>i ++ ;
+<SPAN style="WHITE-SPACE: pre">			</SPAN>
+<SPAN style="WHITE-SPACE: pre">		</SPAN> &nbsp; &nbsp;} catch (InterruptedException e) {
+<SPAN style="WHITE-SPACE: pre">			</SPAN>e.printStackTrace();
+<SPAN style="WHITE-SPACE: pre">		</SPAN> &nbsp; &nbsp;}
+<SPAN style="WHITE-SPACE: pre">		</SPAN> &nbsp; &nbsp;if(i &gt; 10 ){
+<SPAN style="WHITE-SPACE: pre">			</SPAN> &nbsp; &nbsp;break ;
+<SPAN style="WHITE-SPACE: pre">		</SPAN> &nbsp; &nbsp;}
+<SPAN style="WHITE-SPACE: pre">		</SPAN>}
+<SPAN style="WHITE-SPACE: pre">		</SPAN>
+<SPAN style="WHITE-SPACE: pre">	</SPAN>
+<SPAN style="WHITE-SPACE: pre">	</SPAN>
+&nbsp; &nbsp; }
+&nbsp; &nbsp;&nbsp;
+}
+</PRE>
+<P style="FONT-SIZE: 14px; FONT-FAMILY: Arial">测试组合：</P>
+<P style="FONT-SIZE: 14px; FONT-FAMILY: Arial">1. 测试实例方法组合；</P>
+<P style="FONT-SIZE: 14px; FONT-FAMILY: Arial">2. 测试静态方法组合；</P>
+<P style="FONT-SIZE: 14px; FONT-FAMILY: Arial">3. 测试实例方法和静态方法组合；(注意方法里面的 sleep, 
+是为了做到更好的测试效果)。</P></DIV><!-- Baidu Button BEGIN -->
+<DIV class="bdsharebuttonbox tracking-ad" style="FLOAT: right" 
+data-mod="popu_172"><A class=bds_more 
+style="BACKGROUND-IMAGE: url(http://bdimg.share.baidu.com/static/api/img/share/icons_0_16.png?v=d754dcc0.png); BACKGROUND-POSITION: 0px 0px" 
+href="http://blog.csdn.net/luhuajcdd/article/details/9179511#" 
+data-cmd="more"></A><A title=分享到QQ空间 class=bds_qzone 
+style="BACKGROUND-POSITION: 0px -52px" 
+href="http://blog.csdn.net/luhuajcdd/article/details/9179511#" 
+data-cmd="qzone"></A><A title=分享到新浪微博 class=bds_tsina 
+style="BACKGROUND-POSITION: 0px -104px" 
+href="http://blog.csdn.net/luhuajcdd/article/details/9179511#" 
+data-cmd="tsina"></A><A title=分享到腾讯微博 class=bds_tqq 
+style="BACKGROUND-POSITION: 0px -260px" 
+href="http://blog.csdn.net/luhuajcdd/article/details/9179511#" 
+data-cmd="tqq"></A><A title=分享到人人网 class=bds_renren 
+style="BACKGROUND-POSITION: 0px -208px" 
+href="http://blog.csdn.net/luhuajcdd/article/details/9179511#" 
+data-cmd="renren"></A><A title=分享到微信 class=bds_weixin 
+style="BACKGROUND-POSITION: 0px -1612px" 
+href="http://blog.csdn.net/luhuajcdd/article/details/9179511#" 
+data-cmd="weixin"></A></DIV>
+<SCRIPT>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</SCRIPT>
+<!-- Baidu Button END --><LINK rel=stylesheet 
+href="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/blog_detail.css"><!--172.16.140.14--><!-- Baidu Button BEGIN -->
+<SCRIPT id=bdshare_js type=text/javascript 
+data="type=tools&amp;uid=1536434"></SCRIPT>
+
+<SCRIPT id=bdshell_js type=text/javascript></SCRIPT>
+
+<SCRIPT type=text/javascript>
+    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</SCRIPT>
+<!-- Baidu Button END -->
+<DIV id=digg ArticleId="9179511">
+<DL onclick=btndigga(); id=btnDigg class="digg digg_disable">
+  <DT>顶 
+  <DD>2 </DD></DL>
+<DL onclick=btnburya(); id=btnBury class="digg digg_disable">
+  <DT>踩 
+  <DD>0 </DD></DL></DIV>
+<DIV class=tracking-ad data-mod="popu_222"><A href="javascript:void(0);"></A> 
+</DIV>
+<DIV class=tracking-ad data-mod="popu_223"><A 
+href="javascript:void(0);"></A>&nbsp;</DIV>
+<SCRIPT type=text/javascript>
+                function btndigga() {
+                    $(".tracking-ad[data-mod='popu_222'] a").click();
+                }
+                function btnburya() {
+                    $(".tracking-ad[data-mod='popu_223'] a").click();
+                }
+            </SCRIPT>
+
+<UL class=article_next_prev>
+  <LI class=prev_article><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian']);location.href='/luhuajcdd/article/details/9170831';">上一篇</SPAN><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian'])" 
+  href="http://blog.csdn.net/luhuajcdd/article/details/9170831">签名应用例子</A> </LI>
+  <LI class=next_article><SPAN 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian']);location.href='/luhuajcdd/article/details/9241113';">下一篇</SPAN><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian'])" 
+  href="http://blog.csdn.net/luhuajcdd/article/details/9241113">无法找到脚本引擎Jscript解决</A> 
+  </LI></UL>
+<DIV style="HEIGHT: 10px; CLEAR: both"></DIV>
+<DIV class=similar_article style="DISPLAY: none">
+<H4>我的同类文章</H4>
+<DIV class=similar_c style="MARGIN: 20px 0px 0px">
+<DIV class=similar_c_t><LABEL class=similar_cur><SPAN 
+onclick="GetCategoryArticles('947411','luhuajcdd','foot','9179511');" 
+style="CURSOR: pointer">Java<EM>（12）</EM></SPAN> </LABEL></DIV>
+<DIV class="similar_wrap tracking-ad" style="MAX-HEIGHT: 195px" 
+data-mod="popu_141"><A style="DISPLAY: none" 
+href="http://blog.csdn.net/">http://blog.csdn.net/</A> 
+<UL class="similar_list fl"></UL>
+<UL class="similar_list fr"></UL></DIV></DIV></DIV>
+<SCRIPT type=text/javascript>
+        $(function () {
+            GetCategoryArticles('947411', 'luhuajcdd','foot','9179511');
+        });
+    </SCRIPT>
+</DIV>
+<DIV id=suggest></DIV>
+<SCRIPT language=javascript type=text/javascript>     
+             $(function(){
+                 $.get("/luhuajcdd/svc/GetSuggestContent/9179511",function(data){
+                     $("#suggest").html(data);
+                 });     
+             });             
+         </SCRIPT>
+
+<STYLE>.blog-ass-articl DD {
+	OVERFLOW: hidden; HEIGHT: 23px; WIDTH: 99%; BACKGROUND: url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0px 10px; FLOAT: left; COLOR: #369; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT: 12px/23px "SimSun"; PADDING-LEFT: 10px; MARGIN: 0px 30px 0px 0px; PADDING-RIGHT: 0px
+}
+</STYLE>
+<LINK rel=stylesheet 
+href="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/replace.css">
+<DIV id=relate class=tracking-ad data-mod="popu_218">
+<DIV class=relate_t>
+<H3><SPAN>参考知识库</SPAN></H3></DIV>
+<DIV class=relate_c></DIV></DIV>
+<DL id=res-relatived class=blog-ass-articl>
+  <DIV id=libkeyparent class="embody embody_b" style="DISPLAY: none"><SPAN 
+  class=embody_t>更多资料请参考：</SPAN> 
+  <DIV id=libkey class=embody_c></DIV></DIV>
+  <DT><SPAN>猜你在找</SPAN> 
+  <DIV id=adCollege style="WIDTH: 42%; FLOAT: left">
+  <SCRIPT type=text/javascript 
+  src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/job_reco.js"></SCRIPT>
+
+  <SCRIPT type=text/javascript>
+            csdn.position.showEdu({
+                sourceType: "blog",
+                searchType: "detail",
+                searchKey: "9179511",
+                username: "",
+                recordcount: "5",
+                containerId: "adCollege" //容器DIV的id。 
+            });
+        </SCRIPT>
+  </DIV>
+  <DIV id=res class=tracking-ad 
+  style="WIDTH: 42%; FLOAT: left; MARGIN-RIGHT: 30px" 
+  data-mod="popu_36"></DIV></DT></DL>
+<SCRIPT type=text/javascript>
+    $(function () {
+        setTimeout(function () {
+            var searchtitletags = 'java 同步块(Java Synchronized Blocks)' + ',' + $("#tags").html();
+            searchService({
+                index: 'blog',
+                query: searchtitletags,
+                from: 5,
+                size: 5,
+                appendTo: '#res',
+                url: 'recommend',
+                his: 2,
+                client: "blog_cf_enhance",
+                tmpl: '<dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;"><a href="#{ url }" title="#{ title }" strategy="#{ strategy }">#{ title }</a></dd>'
+            });
+        }, 500);
+    });    
+
+ </SCRIPT>
+
+<DIV id=ad_cen><!-- 广告位开始 --><INS 
+data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57" data-revive-zoneid="71"></INS><!-- 广告位结束 --></DIV>
+<DIV class=comment_class>
+<DIV id=comment_title class=panel_head><SPAN class=see_comment>查看评论</SPAN><A 
+name=comments></A></DIV>
+<DIV id=comment_list></DIV>
+<DIV id=comment_bar></DIV>
+<DIV id=comment_form></DIV>
+<DIV class=announce>* 以上用户言论只代表其个人观点，不代表CSDN网站的观点或立场<A name=reply></A><A 
+name=quote></A></DIV></DIV>
+<SCRIPT type=text/javascript>
+    var fileName = '9179511';
+    var commentscount = 1;
+    var islock = false
+</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/comment.js"></SCRIPT>
+
+<DIV id=ad_bot></DIV>
+<DIV id=report_dialog></DIV>
+<DIV id=d-top style="BOTTOM: 60px"><A id=quick-reply title=快速回复 
+class="btn btn-top q-reply" style="DISPLAY: none"><IMG alt=快速回复 
+src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/blog-icon-reply.png"> 
+</A><A 
+onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_huidaodingbu'])" 
+id=d-top-a title=返回顶部 class="btn btn-top backtop" style="DISPLAY: none"><IMG 
+alt=TOP 
+src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/top.png"> 
+</A></DIV>
+<SCRIPT type=text/javascript>
+    $(function ()
+    {
+        $("#ad_frm_0").height("90px");
+        
+        setTimeout(function(){
+            $("#ad_frm_2").height("200px");
+        },1000);    
+    });
+  
+</SCRIPT>
+
+<STYLE type=text/css>.tag_list {
+	FONT-SIZE: 12px; BORDER-TOP: #d7cbc1 1px solid; BORDER-RIGHT: #d7cbc1 1px solid; BACKGROUND: #ffffff 0px 0px; BORDER-BOTTOM: #d7cbc1 1px solid; COLOR: #000000; PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; MARGIN: 10px 2% 0px 1%; BORDER-LEFT: #d7cbc1 1px solid; LIST-STYLE: none none outside; LINE-HEIGHT: 20px; PADDING-RIGHT: 1px
+}
+.tag_list H5 {
+	FONT-SIZE: 12px; HEIGHT: 24px; BACKGROUND: #e0dbd3 0px 0px; COLOR: #47381c; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; MARGIN: 0px; LINE-HEIGHT: 24px; PADDING-RIGHT: 5px
+}
+.tag_list H5 A {
+	COLOR: #47381c
+}
+.classify {
+	PADDING-BOTTOM: 8px; PADDING-TOP: 4px; PADDING-LEFT: 12px; MARGIN: 10px 0px; PADDING-RIGHT: 12px
+}
+.classify A {
+	WHITE-SPACE: nowrap; MARGIN-RIGHT: 20px
+}
+</STYLE>
+
+<DIV class=tag_list style="DISPLAY: none"></DIV>
+<SCRIPT language=javascript type=text/javascript>     
+      $(function(){
+              setTimeout(function(){
+                  $.get("/luhuajcdd/svc/GetTagContent",function(data){
+                      $(".tag_list").html(data).show();
+                  });     
+              });
+          },500);                       
+ </SCRIPT>
+
+<DIV id=pop_win 
+style="BORDER-TOP: rgb(220,220,220) 1px solid; BORDER-RIGHT: rgb(220,220,220) 1px solid; BACKGROUND: rgb(255,255,255) 0px 0px; BORDER-BOTTOM: rgb(220,220,220) 1px solid; POSITION: absolute; LEFT: 630px; BORDER-LEFT: rgb(220,220,220) 1px solid; Z-INDEX: 10000; DISPLAY: none; TOP: 222px; opacity: 1"></DIV>
+<DIV id=popup_mask></DIV>
+<STYLE>#popup_mask {
+	HEIGHT: 100%; WIDTH: 100%; BACKGROUND: #000; POSITION: absolute; LEFT: 0px; FILTER: alpha(opacity=30); Z-INDEX: 9999; DISPLAY: none; TOP: 0px; opacity: 0.3
+}
+</STYLE>
+
+<SCRIPT type=text/javascript>
+    $(function(){
+        setTimeout(function(){
+            $(".comment_body:contains('回复')").each(function(index,item){
+                var u=$(this).text().split('：')[0].toString().replace("回复","")
+                var thisComment=$(this);
+                if(u)
+                {
+                    $.getJSON("https://passport.csdn.net/get/nick?callback=?", {users: u}, function(a) {
+                        if(a!=null&&a.data!=null&&a.data.length>0)
+                        {
+                            nick=a.data[0].n; 
+                            if(u!=nick)
+                            {
+                                thisComment.text(thisComment.text().replace(u,nick));  
+                            }
+                        }       
+                    });  
+                }
+            });         
+
+        },200);  
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },5000);
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },10000);
+
+        setTimeout(function(){
+            $(".math").each(function(index,value){$(this).find("span").last().css("color","#fff"); })
+        },15000);
+        
+        setTimeout(function(){
+            $("a img[src='http://js.tongji.linezing.com/stats.gif']").parent().css({"position":"absolute","left":"50%"});
+        },300);
+    });
+
+    function loginbox(){
+        var $logpop=$("#pop_win");
+        $logpop.html('<iframe src="https://passport.csdn.net/account/loginbox?service=http://static.blog.csdn.net/callback.htm" frameborder="0" height="600" width="400" scrolling="no"></iframe>');
+
+        $('#popup_mask').css({
+            opacity: 0.5,
+            width: $( document ).width() + 'px',
+            height:  $( document ).height() + 'px'
+        });
+        $('#popup_mask').css("display","block");
+ 
+        $logpop.css( {
+            top: ($( window ).height() - $logpop.height())/ 2  + $( window 
+       ).scrollTop() + 'px',
+            left:($( window ).width() - $logpop.width())/ 2
+        } );
+ 
+        setTimeout( function () {
+            $logpop.show();
+            $logpop.css( {
+                opacity: 1
+            } );
+        }, 200 );
+ 
+        $('#popup_mask').unbind("click");
+        $('#popup_mask').bind("click", function(){
+            $('#popup_mask').hide();
+            var $clopop = $("#pop_win");
+            $("#common_ask_div_sc").css("display","none");
+            $clopop.css( {
+                opacity: 0
+            } );
+            setTimeout( function () {
+                $clopop.hide();
+            }, 350 );
+            return false;
+        });
+    }   
+
+</SCRIPT>
+
+<SCRIPT language=javascript type=text/javascript 
+src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/async_new.js"></SCRIPT>
+
+<DIV class=clear></DIV></DIV></DIV>
+<DIV id=side>
+<DIV class=side>
+<DIV id=panel_Profile class=panel>
+<UL class=panel_head><SPAN>个人资料</SPAN></UL>
+<UL class="panel_body profile">
+  <DIV id=blog_userface><A href="http://my.csdn.net/luhuajcdd" 
+  target=_blank><IMG title=访问我的空间 style="MAX-WIDTH: 90%" 
+  src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/1_luhuajcdd.jpg"> 
+  </A><BR><SPAN><A class=user_name href="http://my.csdn.net/luhuajcdd" 
+  target=_blank>luhuajcdd</A></SPAN> </DIV>
+  <DIV class=interact><A id=span_add_follow title=[加关注] class=attent 
+  href="javascript:void(0);"></A><A 
+  onclick="window.open('http://msg.csdn.net/letters/model?receiver=luhuajcdd','_blank','height=350,width=700');_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_sixin'])" 
+  title=[发私信] class=letter href="javascript:void(0);"></A></DIV>
+  <DIV id=blog_medal>
+  <DIV id=bms_box></DIV></DIV>
+  <UL id=blog_rank>
+    <LI>访问：<SPAN>355899次</SPAN> 
+    <LI>积分：<SPAN>3836</SPAN> 
+    <LI>等级： <SPAN 
+    style="POSITION: relative; Z-INDEX: 1; DISPLAY: inline-block"><IMG 
+    id=leveImg style="VERTICAL-ALIGN: middle" alt="" 
+    src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/blog5.png"> 
+
+    <DIV id=smallTittle 
+    style="BORDER-TOP: #dddddd 2px solid; HEIGHT: 32px; BORDER-RIGHT: #dddddd 2px solid; WIDTH: 101px; BORDER-BOTTOM: #dddddd 2px solid; POSITION: absolute; TEXT-ALIGN: center; LEFT: -24px; BORDER-LEFT: #dddddd 2px solid; Z-INDEX: 999; DISPLAY: none; LINE-HEIGHT: 32px; TOP: 25px; BACKGROUND-COLOR: #fff; box-shadow: 0px 2px 2px rgba (0,0,0,0.1)">
+    <DIV 
+    style="HEIGHT: 0px; BORDER-RIGHT: transparent 10px solid; WIDTH: 0px; BORDER-BOTTOM: #eaeaea 8px solid; POSITION: absolute; LEFT: 42%; BORDER-LEFT: transparent 10px solid; TOP: -8px"></DIV>积分：3836 
+    </DIV></SPAN>
+    <LI>排名：<SPAN>第6115名</SPAN> </LI></UL>
+  <UL id=blog_statistics>
+    <LI>原创：<SPAN>110篇</SPAN> </LI>
+    <LI>转载：<SPAN>32篇</SPAN> </LI>
+    <LI>译文：<SPAN>0篇</SPAN> </LI>
+    <LI>评论：<SPAN>56条</SPAN> </LI></UL></UL></DIV>
+<DIV id=panel_Search class=panel>
+<UL class=panel_head><SPAN>文章搜索</SPAN></UL>
+<UL class=panel_body>
+  <FORM id=frmSearch class=form_search action=http://so.csdn.net/search 
+  target=_blank><SPAN><INPUT id=inputSearch title=请输入关键字 
+  class=blogsearch></SPAN> <INPUT id=btnSubmit title="search in blog" type=button value=搜索> <INPUT 
+  id=inputQ type=hidden name=q> <INPUT type=hidden value=blog name=t> <A 
+  id=btnSearchBlog target=_blank></A></FORM></UL></DIV>
+<SCRIPT type=text/javascript>
+    $(function () {
+        $("#btnSubmit").click(function () {           
+            search();
+        });
+
+        $("#frmSearch").submit(function () {
+            search();
+            return false;
+        });
+
+        function search()
+        {
+            var url = "http://so.csdn.net/so/search/s.do?q=" + encodeURIComponent($("#inputSearch").val()) + "&u=" + username + "&t=blog";
+            window.location.href = url;
+        }   
+    });
+</SCRIPT>
+
+<DIV id=panel_Category class=panel>
+<UL class=panel_head><SPAN>文章分类</SPAN></UL>
+<UL class=panel_body>
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/luhuajcdd/article/category/1331151">android 
+  基础</A><SPAN>(30)</SPAN> 
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/luhuajcdd/article/category/1441707">JSP</A><SPAN>(0)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/luhuajcdd/article/category/1077285">js</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/luhuajcdd/article/category/1346265">android</A><SPAN>(38)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/luhuajcdd/article/category/1331152">android-中级</A><SPAN>(27)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/luhuajcdd/article/category/1236245">Gson</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/luhuajcdd/article/category/1413040">android game 
+  development</A><SPAN>(2)</SPAN> 
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/luhuajcdd/article/category/1382128">photoshop</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/luhuajcdd/article/category/1331150">工具</A><SPAN>(4)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/luhuajcdd/article/category/1331153">android-高级</A><SPAN>(11)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/luhuajcdd/article/category/1270510">android_Maven</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/luhuajcdd/article/category/1187392">android-NDK</A><SPAN>(5)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/luhuajcdd/article/category/1484977">cocos2d-x</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/luhuajcdd/article/category/947411">Java</A><SPAN>(13)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/luhuajcdd/article/category/1484981">C++/C</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/luhuajcdd/article/category/1514625">JNI</A><SPAN>(5)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/luhuajcdd/article/category/1346904">数据库</A><SPAN>(2)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/luhuajcdd/article/category/1235177">maven</A><SPAN>(4)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/luhuajcdd/article/category/947702">设计模式</A><SPAN>(8)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/luhuajcdd/article/category/1226404">产品经理</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/luhuajcdd/article/category/1250071">android-test</A><SPAN>(1)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/luhuajcdd/article/category/1308411">综合</A><SPAN>(3)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/luhuajcdd/article/category/929330">ubuntu</A><SPAN>(15)</SPAN> 
+
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/luhuajcdd/article/category/2456375">android 
+  drawable</A><SPAN>(0)</SPAN> 
+  <LI><A 
+  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); " 
+  href="http://blog.csdn.net/luhuajcdd/article/category/2682349">计算机</A><SPAN>(1)</SPAN> 
+  </LI></UL></DIV>
+<DIV id=panel_Archive class=panel>
+<UL class=panel_head><SPAN>文章存档</SPAN></UL>
+<UL class=panel_body>
+  <DIV id=archive_list><!--归档统计-->
+  <LI><A 
+  href="http://blog.csdn.net/luhuajcdd/article/month/2014/12">2014年12月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/luhuajcdd/article/month/2014/11">2014年11月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/luhuajcdd/article/month/2014/08">2014年08月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/luhuajcdd/article/month/2014/04">2014年04月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/luhuajcdd/article/month/2013/09">2013年09月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/luhuajcdd/article/month/2013/08">2013年08月</A><SPAN>(2)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/luhuajcdd/article/month/2013/07">2013年07月</A><SPAN>(7)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/luhuajcdd/article/month/2013/06">2013年06月</A><SPAN>(5)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/luhuajcdd/article/month/2013/05">2013年05月</A><SPAN>(14)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/luhuajcdd/article/month/2013/04">2013年04月</A><SPAN>(38)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/luhuajcdd/article/month/2013/03">2013年03月</A><SPAN>(22)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/luhuajcdd/article/month/2013/02">2013年02月</A><SPAN>(3)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/luhuajcdd/article/month/2013/01">2013年01月</A><SPAN>(3)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/luhuajcdd/article/month/2012/12">2012年12月</A><SPAN>(3)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/luhuajcdd/article/month/2012/11">2012年11月</A><SPAN>(5)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/luhuajcdd/article/month/2012/10">2012年10月</A><SPAN>(5)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/luhuajcdd/article/month/2012/09">2012年09月</A><SPAN>(7)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/luhuajcdd/article/month/2012/08">2012年08月</A><SPAN>(3)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/luhuajcdd/article/month/2012/07">2012年07月</A><SPAN>(5)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/luhuajcdd/article/month/2012/06">2012年06月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/luhuajcdd/article/month/2012/05">2012年05月</A><SPAN>(3)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/luhuajcdd/article/month/2012/04">2012年04月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/luhuajcdd/article/month/2012/02">2012年02月</A><SPAN>(1)</SPAN></LI>
+  <LI><A 
+  href="http://blog.csdn.net/luhuajcdd/article/month/2011/12">2011年12月</A><SPAN>(6)</SPAN> 
+  </LI></DIV></UL></DIV>
+<DIV id=hotarticls class=panel>
+<UL class=panel_head><SPAN>阅读排行 </SPAN></UL>
+<UL class="panel_body itemlist">
+  <LI><A title="android bitmap compress（图片压缩）" 
+  href="http://blog.csdn.net/luhuajcdd/article/details/8948261">android bitmap 
+  compress（图片压缩）</A><SPAN>(94599)</SPAN> 
+  <LI><A title=自定义Dialog之Progress(二) 
+  href="http://blog.csdn.net/luhuajcdd/article/details/8986212">自定义Dialog之Progress(二)</A><SPAN>(23056)</SPAN> 
+
+  <LI><A title=配置android环境 
+  href="http://blog.csdn.net/luhuajcdd/article/details/8132429">配置android环境</A><SPAN>(15713)</SPAN> 
+
+  <LI><A title="java 同步块(Java Synchronized Blocks)" 
+  href="http://blog.csdn.net/luhuajcdd/article/details/9179511">java 同步块(Java 
+  Synchronized Blocks)</A><SPAN>(15459)</SPAN> 
+  <LI><A title="Android的NDK开发(1)————Android JNI简介与调用流程" 
+  href="http://blog.csdn.net/luhuajcdd/article/details/7750146">Android的NDK开发(1)————Android 
+  JNI简介与调用流程</A><SPAN>(14193)</SPAN> 
+  <LI><A title="android animator 动画" 
+  href="http://blog.csdn.net/luhuajcdd/article/details/8731425">android animator 
+  动画</A><SPAN>(7946)</SPAN> 
+  <LI><A title="java 处理高精度计算" 
+  href="http://blog.csdn.net/luhuajcdd/article/details/9056499">java 
+  处理高精度计算</A><SPAN>(7662)</SPAN> 
+  <LI><A title=android-包签名 
+  href="http://blog.csdn.net/luhuajcdd/article/details/9161979">android-包签名</A><SPAN>(5667)</SPAN> 
+
+  <LI><A title="android 照相" 
+  href="http://blog.csdn.net/luhuajcdd/article/details/8826587">android 
+  照相</A><SPAN>(5386)</SPAN> 
+  <LI><A title="Dialog 动画" 
+  href="http://blog.csdn.net/luhuajcdd/article/details/10924469">Dialog 
+  动画</A><SPAN>(5244)</SPAN> </LI></UL></DIV>
+<DIV id=hotarticls2 class=panel>
+<UL class=panel_head><SPAN>评论排行</SPAN></UL>
+<UL class="panel_body itemlist">
+  <LI><A title="android bitmap compress（图片压缩）" 
+  href="http://blog.csdn.net/luhuajcdd/article/details/8948261">android bitmap 
+  compress（图片压缩）</A><SPAN>(20)</SPAN> 
+  <LI><A title=自定义Dialog之Progress(二) 
+  href="http://blog.csdn.net/luhuajcdd/article/details/8986212">自定义Dialog之Progress(二)</A><SPAN>(10)</SPAN> 
+
+  <LI><A title=编译android源码二(下载源代码) 
+  href="http://blog.csdn.net/luhuajcdd/article/details/8779160">编译android源码二(下载源代码)</A><SPAN>(7)</SPAN> 
+
+  <LI><A title="Android的NDK开发(1)————Android JNI简介与调用流程" 
+  href="http://blog.csdn.net/luhuajcdd/article/details/7750146">Android的NDK开发(1)————Android 
+  JNI简介与调用流程</A><SPAN>(3)</SPAN> 
+  <LI><A title="JNI(4) JNI Functions" 
+  href="http://blog.csdn.net/luhuajcdd/article/details/9411223">JNI(4) JNI 
+  Functions</A><SPAN>(3)</SPAN> 
+  <LI><A title="android xml 解析" 
+  href="http://blog.csdn.net/luhuajcdd/article/details/8821835">android xml 
+  解析</A><SPAN>(2)</SPAN> 
+  <LI><A title="Dialog 动画" 
+  href="http://blog.csdn.net/luhuajcdd/article/details/10924469">Dialog 
+  动画</A><SPAN>(2)</SPAN> 
+  <LI><A 
+  title="android Collections.sort(List<T> list) 与JAVA Collections.sort(List<T> list)" 
+  href="http://blog.csdn.net/luhuajcdd/article/details/7533956">android 
+  Collections.sort(List&lt;T&gt; list) 与JAVA Collections.sort(List&lt;T&gt; 
+  list)</A><SPAN>(2)</SPAN> 
+  <LI><A title="android 照相" 
+  href="http://blog.csdn.net/luhuajcdd/article/details/8826587">android 
+  照相</A><SPAN>(1)</SPAN> 
+  <LI><A title=cygwin完全安装步骤方法（组图） 
+  href="http://blog.csdn.net/luhuajcdd/article/details/7038504">cygwin完全安装步骤方法（组图）</A><SPAN>(1)</SPAN> 
+  </LI></UL></DIV>
+<DIV id=homepageArticles class="panel tracking-ad" data-mod="popu_4">
+<UL class=panel_head><SPAN>推荐文章</SPAN></UL>
+<UL id=ad_commend class=panel_body>
+  <UL>
+    <LI><A href="http://blog.csdn.net/googdev/article/details/52575079" 
+    target=_blank>* 2016 年最受欢迎的编程语言是什么？</A> 
+    <LI><A href="http://blog.csdn.net/luoshengyang/article/details/52420761" 
+    target=_blank>* Chromium扩展（Extension）的页面（Page）加载过程分析</A> 
+    <LI><A href="http://blog.csdn.net/googdev/article/details/52598892" 
+    target=_blank>* Android Studio 2.2 来啦</A> 
+    <LI><A href="http://blog.csdn.net/anddlecn/article/details/52608697" 
+    target=_blank>* 手把手教你做音乐播放器（二）技术原理与框架设计</A> 
+    <LI><A href="http://blog.csdn.net/defonds/article/details/52605670" 
+    target=_blank>* JVM 性能调优实战之：使用阿里开源工具 TProfiler 在海量业务代码中精确定位性能代码</A> 
+</LI></UL></UL></DIV>
+<DIV id=newcomments class=panel>
+<UL class=panel_head><SPAN>最新评论</SPAN></UL>
+<UL class="panel_body itemlist">
+  <LI><A 
+  href="http://blog.csdn.net/luhuajcdd/article/details/8948261#comments">android 
+  bitmap compress（图片压缩）</A> 
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/renyi0109">renyi0109</A>: 
+  第三个参数不是压缩率，不要误导大家了啊，这个是指压缩质量，100 代表保持最大质量压缩，0表示能压缩... </P>
+  <LI><A 
+  href="http://blog.csdn.net/luhuajcdd/article/details/8948261#comments">android 
+  bitmap compress（图片压缩）</A> 
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/u013845064">u013845064</A>: 
+  bm.compress(Bitmap.CompressFormat.JPEG, 30, baos);... </P>
+  <LI><A 
+  href="http://blog.csdn.net/luhuajcdd/article/details/9719025#comments">android 
+  ORM 框架 search</A> 
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/snow12342234">snow12342234</A>: 
+  请问activeAndroid怎么做复杂查询啊，就是多条件与和多条件或 </P>
+  <LI><A 
+  href="http://blog.csdn.net/luhuajcdd/article/details/8806897#comments">设计模式-builder(构造器模式)</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/jinguol999">jinguol999</A>: 好像建造者模式和工厂模式混起来的样子？ 
+</P>
+  <LI><A 
+  href="http://blog.csdn.net/luhuajcdd/article/details/9179511#comments">java 
+  同步块(Java Synchronized Blocks)</A> 
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/blackhumor">blackhumor</A>: "java 同步可以避免资源竞争，避免死锁"? 
+  理解反了！同步使用不当是导致死锁的原因。同步解决的是... </P>
+  <LI><A 
+  href="http://blog.csdn.net/luhuajcdd/article/details/9179511#comments">android 
+  bitmap compress（图片压缩）</A> 
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/ZengTianShengZ">ZengTianShengZ</A>: 
+  那个为什么需要这句呢bm.compress(Bitmap.CompressFormat.JPEG, ... </P>
+  <LI><A 
+  href="http://blog.csdn.net/luhuajcdd/article/details/8986212#comments">自定义Dialog之Progress(二)</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/jieminuo">jieminuo</A>: 博主能给我发下源码吗？ </P>
+  <LI><A 
+  href="http://blog.csdn.net/luhuajcdd/article/details/7971271#comments">Gson 
+  使用简介</A> 
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/u012987272">u012987272</A>: 
+  https://github.com/google/gsonGoogle已经发布到github上了，... </P>
+  <LI><A 
+  href="http://blog.csdn.net/luhuajcdd/article/details/7971271#comments">android 
+  bitmap compress（图片压缩）</A> 
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/sinat_32127231">sinat_32127231</A>: 
+  新人求教。。。为什么开始options.inJustDecodeBounds = true; 后面... </P>
+  <LI><A 
+  href="http://blog.csdn.net/luhuajcdd/article/details/7971271#comments">自定义Dialog之Progress(二)</A> 
+
+  <P style="MARGIN: 0px"><A class=user_name 
+  href="http://blog.csdn.net/sgset">sgset</A>: 方法二不行啊 </P></LI></UL></DIV></DIV>
+<DIV class=clear></DIV><!-- 广告位开始 --><INS 
+data-revive-id="8c38e720de1c90a6f6ff52f3f89c4d57" 
+data-revive-zoneid="190"></INS><!-- 广告位结束 --></DIV>
+<DIV class=clear></DIV></DIV>
+<SCRIPT type=text/javascript 
+src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/cnick.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/newblog.min.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/showblogmedal.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/JavaScript1.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/login.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>document.write("<img src=http://counter.csdn.net/pv.aspx?id=24 border=0 width=0 height=0>");</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/counter.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/ad-blog.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+    $(function () {
+        function __get_code_toolbar(snippet_id) {
+            return $("<span class='tracking-ad' data-mod='popu_167'><a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "' target='_blank' title='在CODE上查看代码片'  style='text-indent:0;'><img src='https://code.csdn.net/assets/CODE_ico.png' width=12 height=12 alt='在CODE上查看代码片' style='position:relative;top:1px;left:2px;'/></a></span>"
+                    + "<span class='tracking-ad' data-mod='popu_170'><a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "/fork' target='_blank' title='派生到我的代码片' style='text-indent:0;'><img src='https://code.csdn.net/assets/ico_fork.svg' width=12 height=12 alt='派生到我的代码片' style='position:relative;top:2px;left:2px;'/></a></span>");
+        }
+        
+        $("[code_snippet_id]").each(function () {
+            __s_id = $(this).attr("code_snippet_id");
+            if (__s_id != null && __s_id != "" && __s_id != 0 && parseInt(__s_id) > 70020) {
+                __code_tool = __get_code_toolbar(__s_id);
+                $(this).prev().find(".tools").append(__code_tool);
+            }
+        });
+
+        $(".bar").show();
+    });
+</SCRIPT>
+</DIV><!--new top-->
+<SCRIPT id=csdn-toolbar-id type=text/javascript 
+src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/toolbar.js" 
+subCount="5" count="5" wrapId="note1" btnId="header_notice_num"></SCRIPT>
+<!--new top--><LINK rel=stylesheet type=text/css 
+href="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/ask_float_block.css">
+<SCRIPT language=JavaScript type=text/javascript 
+src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/wmd.js"></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript 
+src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/showdown.js"></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript 
+src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/prettify.js"></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript 
+src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/ask_float_block.js"></SCRIPT>
+
+<DIV id=a52b5334d style="HEIGHT: 1px; WIDTH: 1px; DISPLAY: none">
+<SCRIPT id=adJs52b5334></SCRIPT>
+
+<SCRIPT>document.getElementById("adJs52b5334").src = "http://ads.csdn.net/js/opt/52b5334.js?t=" + Math.random();</SCRIPT>
+</DIV><LINK rel=stylesheet 
+href="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/blog_code.css">
+<SCRIPT type=text/javascript 
+src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/saveToCode.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="java%20同步块(Java%20Synchronized%20Blocks)%20-%20luhuajcdd的专栏%20-%20博客频道%20-%20CSDN_NET_files/main(1).js"></SCRIPT>
+</BODY></HTML>

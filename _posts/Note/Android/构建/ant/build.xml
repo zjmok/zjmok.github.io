@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+<!DOCTYPE project SYSTEM "ant.dtd" >
+ -->
+<project name="MobileSafe" default="AndResGuard" >
+
+    <!-- eclipse原来内置的ant不支持jdk1.8 -->
+    <!-- Z:\ProgramMozhx\Java\jdk1.7.0_80 -->
+    <property name="java_home" location="Z:\ProgramMozhx\Java\jdk1.8.0_112"/>
+    <property name="android_home" location="E:\Android\sdk"/>
+	
+	<property name="zipalign.exe" location="${android_home}\build-tools\23.0.3\zipalign.exe" />
+    
+    <property name="buildDir" location="${basedir}\build"/>
+    <property name="genDir" location="${buildDir}\gen"/>
+    <property name="classesDir" location="${buildDir}\classes"/>
+    <property name="resDir" location="${basedir}\res"/>
+    <property name="srcDir" location="${basedir}\src"/>
+    <property name="libsDir" location="${basedir}\libs"/>
+    <property name="AndroidManifest.xml" location="${basedir}\AndroidManifest.xml"/>
+    <property name="classes.dex" location="${buildDir}\classes.dex"/>
+    <property name="assetsDir" location="${basedir}\assets"/>
+    <property name="resources.ap_" location="${buildDir}\resources.ap_"/>
+    <property name="unsignedApk" location="${buildDir}\App_unsigned.apk"/>
+    <property name="signedApk" location="${buildDir}\App_signed.apk"/>
+    <property name="jarsigner.exe" location="${java_home}\bin\jarsigner.exe"/>
+    <property name="mzhx.jks" location="${basedir}\mzhx.jks"/>
+    <property name="resGuardDir" location="${basedir}\tool_output"/>
+    <property name="outputDir" location="${resGuardDir}\output"/>
+    <property name="SevenZip-windows-x86_64.exe" location="${resGuardDir}\SevenZip-windows-x86_64.exe"/>
+    <property name="config.xml" location="${resGuardDir}\config.xml"/>
+
+    <property name="aapt.exe" location="${android_home}\build-tools\23.0.3\aapt.exe"/>
+    <property name="aidl.exe" location="${android_home}\build-tools\23.0.3\aidl.exe"/>
+    <property name="android.jar" location="${android_home}\platforms\android-19\android.jar"/>
+    <property name="framework.aidl" location="${android_home}\platforms\android-19\framework.aidl"/>
+    <property name="dx.bat" location="${android_home}\build-tools\23.0.3\dx.bat"/>
+    <property name="apkbuilder.bat" location="${android_home}\tools\apkbuilder.bat"/>
+    <property name="AndResGuard-cli-1.2.3.jar" location="${resGuardDir}\AndResGuard-cli-1.2.3.jar"/>    
+
+    <property name="javac.exe" location="${java_home}\bin\javac.exe"/>
+    <property name="java.exe" location="${java_home}\bin\java.exe"/>
+
+    <target name="init">
+        <echo>初始化</echo>
+        <delete dir="${buildDir}"/>
+        <mkdir dir="${genDir}"/>
+        <echo>初始化目录:${genDir}</echo>
+    </target>
+    
+    <!-- 1.生成R.java -->
+    <!-- 
+    aapt package -f -m -J [R文件目录(gen)] -S [资源文件目录(res)] 
+    -I [android环境jar(android.jar)] -M [清单文件(AndroidManifest.xml)]
+     -->
+    <target name="generateR" depends="init" >
+        <echo>1.生成R.java</echo>
+        <exec executable="${aapt.exe}">
+            <arg value="p"/>
+            <arg value="-f"/>
+            <arg value="-m"/>
+            <arg value="-J"/>
+            <arg value="${genDir}"/>
+            <arg value="-S"/>
+            <arg value="${resDir}"/>
+            <arg value="-I"/>
+            <arg value="${android.jar}"/>
+            <arg value="-M"/>
+            <arg value="AndroidManifest.xml"/>
+        </exec>
+    </target>
+    
+    <!-- 2.翻译aidl -->
+    <!-- 
+    aidl -I[项目的源文件目录(src)] -p[aidl框架环境文件(framework.aidl)] 
+    -o[aidl输出目录(gen)] [要转换的aidl文件(your.aidl)]
+     -->
+    <target name="compileAIDL" depends="generateR">
+        <echo>2.翻译aidl</echo>
+        <apply executable="${aidl.exe}">
+            <arg value="-I${srcDir}"/>
+            <arg value="-p${framework.aidl}"/>
+            <arg value="-o${genDir}"/>
+            <fileset dir="${srcDir}" includes="**/*.aidl"/>
+        </apply>
+    </target>
+    
+    <!-- 创建classes目录 -->
+    <target name="createClassesDir">
+        <mkdir dir="${classesDir}"/>
+    </target>
+    
+    <!-- 3.编译java文件 -->
+    <!-- 
+    javac -encoding [编码(gbk or utf-8)] -target [版本(1.6 or 1.7)] 
+    -bootclasspath [android环境jar(android.jar)] 
+    -cp [依赖的jar(多个用;隔开;结尾)] -d [class文件输出目录] [要编译的java文件(多个用空格分开)]
+     -->
+    <!-- jdk1.7? -->
+    <target name="compileJAVA" depends="compileAIDL,createClassesDir">
+        <echo>3.编译java文件</echo>
+        <!-- 内置解压javac标签, d - dest：解压到哪个路径-->
+        <!-- target="1.7"
+        source="1.7"
+        includeantruntime="true" -->
+        <javac executable="${javac.exe}"
+            encoding="utf-8"
+            target="1.7"
+            source="1.7"
+        	includeantruntime="true"
+            bootclasspath="${android.jar}"
+            destdir="${classesDir}">
+          	<!-- libs目录下依赖jar包 -->
+            <classpath>
+                <fileset dir="${libsDir}" includes="**/*.jar"/>
+            </classpath>
+            <!-- java文件有哪几个目录:build\gen,src -->
+            <src path="${srcDir}"/>
+            <src path="${genDir}"/>
+        </javac>
+    </target>
+    
+    <!-- 4.解压第三方jar包 -->
+    <target name="unJarLIBS" depends="compileJAVA">
+        <echo>4.解压第三方jar包</echo>
+        <!-- 内置解压jar包标签, dest：解压到哪个路径-->
+        <unjar dest="${classesDir}">
+            <fileset dir="${libsDir}" includes="**/*.jar"/>
+        </unjar>
+    </target>
+    
+    <!-- 5.生成dex文件 -->
+    <target name="compileDEX" depends="unJarLIBS">
+        <echo>5.生成dex文件</echo>
+        <exec executable="${dx.bat}">
+            <arg value="--dex"/>
+            <arg value="--output=${classes.dex}"/>
+            <arg value="${classesDir}"/>
+        </exec>
+    </target>
+    
+    <!-- 6.编译资源文件 -->
+    <!-- 
+    aapt package -f -M [清单文件(AndroidManifest.xml)] 
+    -S [资源文件目录(res)] -A [资产文件目录(assets)] 
+    -I [android环境jar(android.jar)] -F [输出的文件(resources.ap_)]
+     -->
+    <target name="compileRES" depends="compileDEX">
+        <echo>6.编译资源文件</echo>
+        <exec executable="${aapt.exe}">
+            <arg value="p"/>
+            <arg value="-f"/>
+            <arg value="-M"/>
+            <arg value="${AndroidManifest.xml}"/>
+            <arg value="-S"/>
+            <arg value="${resDir}"/>
+            <arg value="-A"/>
+            <arg value="${assetsDir}"/>
+            <arg value="-I"/>
+            <arg value="${android.jar}"/>
+            <arg value="-F"/>
+            <arg value="${resources.ap_}"/>
+        </exec>
+    </target>
+     
+     <!-- 7.生成未签名apk -->
+     <!-- apkbuilder [输出的全路径apk] -u -z [全路径打包好的资源文件包] -f [全路径dex文件]  
+    -rf  [全路径的src目录]  -rj  [全路径的libs目录]
+      -->
+     <target name="generateUnsignApk" depends="compileRES">
+        <echo>7.生成未签名apk</echo>
+        <exec executable="${apkbuilder.bat}">
+            <arg value="${unsignedApk}"/>
+            <arg value="-u"/>
+            <arg value="-z"/>
+            <arg value="${resources.ap_}"/>
+            <arg value="-f"/>
+            <arg value="${classes.dex}"/>
+            <arg value="-rf"/>
+            <arg value="${srcDir}"/>
+            <arg value="-rj"/>
+            <arg value="${libsDir}"/>
+        </exec>
+    </target>
+    
+	<!-- 8.生成签名apk -->
+	<!-- 
+    jarsigner -keystore 签名文件(jks文件) -storepass 签名文件的密码 -keypass 签名密码 -signedjar 
+   生成的签名apk 未签名的文件 签名的别名
+	 -->
+	<!-- 使用自己签名文件jks -->
+    <target name="generateSignApk" depends="generateUnsignApk">
+        <echo>8.生成签名apk</echo>
+        <exec executable="${jarsigner.exe}">
+            <arg value="-keystore"/>
+            <arg value="${mzhx.jks}"/>
+            <arg value="-storepass"/>
+            <arg value="ks621537"/>
+            <arg value="-keypass"/>
+            <arg value="621537"/>
+            <arg value="-signedjar"/>
+            <arg value="${signedApk}"/>
+            <arg value="${unsignedApk}"/>
+            <arg value="mzhx"/>
+        </exec>
+    </target>
+    
+    <!-- 微信资源包混淆 -->
+    <!-- 
+    java -jar AndResGuard-cli-1.2.3.jar ..\build\App_unsigned.apk -7zip SevenZip-windows-x86_64.exe -config config.xml -out ..\tool_output\output -zipalign sdk中zipalign全路径
+ 	 -->
+ 	<target name="initAndResGuard">
+ 	    <echo>初始化微信资源包混淆</echo>
+ 	    <delete dir="${outputDir}"/>
+ 	    <mkdir dir="${outputDir}"/>
+ 	</target>
+ 	<target name="AndResGuard" depends="generateUnsignApk,initAndResGuard">
+ 	    <echo>微信资源包混淆</echo>
+ 	    <exec executable="${java.exe}">
+ 	        <arg value="-jar"/>
+ 	        <arg value="${AndResGuard-cli-1.2.3.jar}"/>
+ 	        <arg value="${unsignedApk}"/>
+			<arg value="-7zip"/>
+			<arg value="${SevenZip-windows-x86_64.exe}"/>
+			<arg value="-zipalign"/>
+			<arg value="${zipalign.exe}"/>
+ 	        <arg value="-config"/>
+ 	        <arg value="${config.xml}"/>
+            <arg value="-out"/>
+            <arg value="${outputDir}"/>
+ 	    </exec>
+ 	</target>
+	
+</project>

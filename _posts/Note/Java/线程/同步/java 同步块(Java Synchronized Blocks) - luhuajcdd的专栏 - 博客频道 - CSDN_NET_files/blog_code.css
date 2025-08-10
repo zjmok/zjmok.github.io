@@ -1,0 +1,93 @@
+.dp-highlighter {
+	OVERFLOW-X: auto; OVERFLOW-Y: hidden; POSITION: relative
+}
+.prettyprint {
+	OVERFLOW-X: auto; OVERFLOW-Y: hidden; POSITION: relative
+}
+.pad_bot {
+	PADDING-BOTTOM: 45px !important
+}
+.save_code {
+	CURSOR: pointer; FONT-SIZE: 14px; HEIGHT: 60px; RIGHT: 30px; POSITION: absolute; COLOR: #fff; Z-INDEX: 2; DISPLAY: none; TOP: 5px
+}
+#mask_code {
+	HEIGHT: 100%; WIDTH: 100%; POSITION: fixed; LEFT: 0px; Z-INDEX: 990; DISPLAY: none; TOP: 0px
+}
+.gist_edit {
+	HEIGHT: 330px; WIDTH: 505px; POSITION: absolute; LEFT: 50%; MARGIN: -165px 0px 0px -252px; Z-INDEX: 9999; DISPLAY: none; TOP: 50%
+}
+.save_snippets {
+	BOX-SIZING: border-box; OVERFLOW: hidden; FONT-SIZE: 14px; BORDER-TOP: #dddcdd 1px solid; FONT-FAMILY: "Microsoft YaHei"; BORDER-RIGHT: #dddcdd 1px solid; BACKGROUND: #fff; BORDER-BOTTOM: #dddcdd 1px solid; CLEAR: both; BORDER-LEFT: #dddcdd 1px solid
+}
+.save_snippets .tit {
+	BOX-SIZING: border-box; OVERFLOW: hidden; HEIGHT: 45px; BORDER-BOTTOM: #dddcdd 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 20px; CLEAR: both; LINE-HEIGHT: 45px; PADDING-RIGHT: 20px
+}
+.save_snippets .tit H3 {
+	BOX-SIZING: border-box; FONT-SIZE: 16px; HEIGHT: 45px; FLOAT: left; FONT-WEIGHT: normal; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; LINE-HEIGHT: 45px; PADDING-RIGHT: 0px
+}
+.gist_edit_list {
+	BOX-SIZING: border-box; WIDTH: 100%; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px
+}
+.save_snippets .tit SPAN {
+	BOX-SIZING: border-box; HEIGHT: 45px; FLOAT: right; COLOR: #999; DISPLAY: block; LINE-HEIGHT: 45px
+}
+.save_snippets .tit SPAN A {
+	TEXT-DECORATION: underline; COLOR: #0000ff
+}
+.save_snippets .tit SPAN A:link {
+	TEXT-DECORATION: underline; COLOR: #0000ff
+}
+.save_snippets .tit SPAN A:visited {
+	TEXT-DECORATION: underline; COLOR: #0000ff
+}
+.save_snippets .tit SPAN A:hover {
+	TEXT-DECORATION: underline; COLOR: #0000ff
+}
+.save_snippets .tit SPAN A:active {
+	TEXT-DECORATION: underline; COLOR: #0000ff
+}
+.save_snippets .con_form {
+	BOX-SIZING: border-box; OVERFLOW: hidden; PADDING-TOP: 20px; CLEAR: both
+}
+.save_snippets .con_form .gist_edit_list LI {
+	LIST-STYLE-TYPE: none; BOX-SIZING: border-box; OVERFLOW: hidden; MARGIN-BOTTOM: 20px; CLEAR: both; MIN-HEIGHT: 32px
+}
+.save_snippets .con_form .gist_edit_list LI SPAN.red {
+	BOX-SIZING: border-box; HEIGHT: 32px; FLOAT: left; COLOR: #f00; MARGIN-LEFT: 20px; DISPLAY: block; LINE-HEIGHT: 36px; PADDING-RIGHT: 10px
+}
+.save_snippets .con_form .gist_edit_list LI SPAN.txt {
+	HEIGHT: 32px; FLOAT: left; DISPLAY: block; LINE-HEIGHT: 32px; PADDING-RIGHT: 20px
+}
+.save_snippets .con_form .gist_edit_list LI .form-input {
+	BOX-SIZING: border-box; BORDER-TOP: #dddcdd 1px solid; HEIGHT: 30px; FONT-FAMILY: "Microsoft YaHei"; BORDER-RIGHT: #dddcdd 1px solid; WIDTH: 398px; BACKGROUND: #fafafa; BORDER-BOTTOM: #dddcdd 1px solid; FLOAT: left; COLOR: #666; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 10px; BORDER-LEFT: #dddcdd 1px solid; PADDING-RIGHT: 10px
+}
+#divSearchTags {
+	BOX-SIZING: border-box; BORDER-TOP: #dddcdd 1px solid; FONT-FAMILY: "Microsoft YaHei"; BORDER-RIGHT: #dddcdd 1px solid; WIDTH: 398px; BACKGROUND: #fafafa; BORDER-BOTTOM: #dddcdd 1px solid; FLOAT: left; COLOR: #666; PADDING-BOTTOM: 0px; TEXT-ALIGN: left; PADDING-TOP: 0px; PADDING-LEFT: 10px; MARGIN-LEFT: 2px; BORDER-LEFT: #dddcdd 1px solid; PADDING-RIGHT: 10px
+}
+#divSearchTags .label SPAN {
+	COLOR: #666
+}
+.insertTag {
+	BORDER-TOP-STYLE: none; BOX-SIZING: border-box; HEIGHT: 30px; WIDTH: 208px; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM-STYLE: none; COLOR: #666; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none
+}
+#divSearchTags .blog_tag {
+	BOX-SIZING: border-box; BACKGROUND: #f3f3f3; FLOAT: left; COLOR: #666; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 5px; MARGIN: 7px 10px 7px 0px; DISPLAY: block; PADDING-RIGHT: 5px; border-radius: 10px
+}
+#divSearchTags .blog_tag SPAN {
+	FLOAT: left; DISPLAY: block
+}
+#divSearchTags .label A {
+	BOX-SIZING: border-box; COLOR: #666; MARGIN-LEFT: 8px
+}
+.save_snippets .con_form .gist_edit_list LI .form-textarea {
+	BOX-SIZING: border-box; FONT-SIZE: 12px; BORDER-TOP: #dddcdd 1px solid; HEIGHT: 60px; FONT-FAMILY: "Microsoft YaHei"; BORDER-RIGHT: #dddcdd 1px solid; WIDTH: 398px; BACKGROUND: #fafafa; BORDER-BOTTOM: #dddcdd 1px solid; FLOAT: left; COLOR: #666; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; PADDING-LEFT: 10px; BORDER-LEFT: #dddcdd 1px solid; PADDING-RIGHT: 10px
+}
+.save_snippets .bottom-bar {
+	OVERFLOW: hidden; BORDER-TOP: #dddcdd 1px solid; PADDING-BOTTOM: 17px; PADDING-TOP: 17px; PADDING-LEFT: 20px; CLEAR: both; PADDING-RIGHT: 20px
+}
+.save_snippets .bottom-bar .btn-submit {
+	FONT-SIZE: 12px; BORDER-TOP: #888 0px solid; HEIGHT: 20px; FONT-FAMILY: "Microsoft YaHei"; BORDER-RIGHT: #888 1px solid; WIDTH: 45px; BACKGROUND: #f0f0f0; BORDER-BOTTOM: #888 1px solid; FLOAT: right; COLOR: #333; TEXT-ALIGN: center; MARGIN-LEFT: 7px; BORDER-LEFT: #888 0px solid; LINE-HEIGHT: 20px; border-radius: 2px
+}
+.file_holder .code.file_content TABLE.lines PRE.line_numbers {
+	WIDTH: 40px !important
+}

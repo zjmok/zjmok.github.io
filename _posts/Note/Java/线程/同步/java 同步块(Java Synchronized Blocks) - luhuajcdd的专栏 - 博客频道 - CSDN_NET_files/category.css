@@ -1,0 +1,186 @@
+.article_manage {
+	OVERFLOW: hidden; BORDER-BOTTOM: #ededed 1px solid; COLOR: #999; PADDING-BOTTOM: 5px; TEXT-ALIGN: right; PADDING-TOP: 0px; FONT: 12px/22px Arial; PADDING-LEFT: 20px; MARGIN: 0px -20px; PADDING-RIGHT: 20px
+}
+.article_manage SPAN {
+	MARGIN: 0px 5px
+}
+.article_manage .link_postdate {
+	MARGIN: 0px 5px 0px 0px
+}
+.article_manage .link_view {
+	BACKGROUND: url(../../../images/ico_view.png) no-repeat left center; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 14px; PADDING-RIGHT: 0px; _background: url(../../../images/ico_view.gif) no-repeat left center
+}
+.article_manage .link_comments {
+	BACKGROUND: url(../../../images/ico_comm.png) no-repeat left center; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 14px; PADDING-RIGHT: 0px; _background: url(../../../images/ico_comm.gif) no-repeat left center
+}
+.article_manage .link_categories {
+	FLOAT: left
+}
+.list_view {
+	PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 0px; MARGIN: 0px 20px; PADDING-RIGHT: 0px
+}
+.list_view .article_title {
+	OVERFLOW: hidden; HEIGHT: 30px; WHITE-SPACE: nowrap; TEXT-OVERFLOW: ellipsis; FLOAT: left; FONT: 14px/30px Arial; MARGIN: 0px; DISPLAY: inline
+}
+.list_view .article_title:after {
+	CONTENT: "..."
+}
+.list_view .article_title H3 {
+	FONT: 12px/30px Arial
+}
+.list_view .article_title H1 {
+	FONT: 12px/30px Arial
+}
+.list_view .article_manage {
+	WHITE-SPACE: nowrap; FLOAT: right; PADDING-BOTTOM: 0px !important; TEXT-ALIGN: right !important; PADDING-TOP: 0px !important; PADDING-LEFT: 0px !important; DISPLAY: inline; LINE-HEIGHT: 30px !important; PADDING-RIGHT: 0px !important
+}
+.list_view .article_description {
+	DISPLAY: none !important
+}
+.list_view .article_manage SPAN {
+	MARGIN: 0px
+}
+.article_l {
+	WIDTH: 100%; FLOAT: left
+}
+.category_l IMG {
+	VERTICAL-ALIGN: middle
+}
+.category_l SPAN {
+	VERTICAL-ALIGN: middle; DISPLAY: inline-block
+}
+.article_l SPAN A {
+	DISPLAY: inline-block; MARGIN-RIGHT: 10px
+}
+.article_r .fa {
+	FONT-WEIGHT: normal
+}
+.category {
+	BORDER-BOTTOM: #ededed 1px solid; PADDING-BOTTOM: 5px; PADDING-TOP: 5px; PADDING-LEFT: 20px; MARGIN: 0px -20px; PADDING-RIGHT: 20px
+}
+.category_l {
+	DISPLAY: inline-block
+}
+.category_r {
+	DISPLAY: inline-block
+}
+.category_l {
+	FONT-SIZE: 14px; WIDTH: 70px; FLOAT: left; COLOR: #333; LINE-HEIGHT: 28px
+}
+.category_r {
+	FONT-SIZE: 14px; WIDTH: 90%; FLOAT: left; COLOR: #df3434
+}
+.category_r .subItem_t .J_close {
+	FONT-SIZE: 16px; FLOAT: right; FONT-WEIGHT: normal; COLOR: #ccc; FONT-STYLE: normal; LINE-HEIGHT: 42px
+}
+.category_r EM {
+	FONT-STYLE: normal
+}
+.category_r LABEL {
+	CURSOR: pointer; POSITION: relative; MARGIN-LEFT: 15px; DISPLAY: inline-block; LINE-HEIGHT: 28px
+}
+.category_r LABEL .fa {
+	COLOR: #999
+}
+.category_r LABEL .fa-caret-up {
+	DISPLAY: none; transform: all 2.2s
+}
+.subItem {
+	BORDER-TOP: #dcdcdc 1px solid; BORDER-RIGHT: #dcdcdc 1px solid; WIDTH: 400px; BACKGROUND: #fff; BORDER-BOTTOM: #dcdcdc 1px solid; POSITION: absolute; COLOR: #333; LEFT: -10px; BORDER-LEFT: #dcdcdc 1px solid; Z-INDEX: 9999; DISPLAY: none; TOP: 46px; MAX-HEIGHT: 400px; box-shadow: 5px 0 10px #dcdcdc
+}
+.subItem:after {
+	HEIGHT: 10px; WIDTH: 10px; BACKGROUND: url(../images/triangle.png) no-repeat; POSITION: absolute; CONTENT: ''; LEFT: 20px; DISPLAY: block; TOP: -10px
+}
+.subItem .subItem_l LI A {
+	COLOR: #333
+}
+.subItem_t {
+	HEIGHT: 42px; BORDER-BOTTOM: #dcdcdc 1px solid; COLOR: #999; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 15px; LINE-HEIGHT: 42px; PADDING-RIGHT: 20px
+}
+.category_r .subItem_t .fa-close {
+	FONT-SIZE: 16px; FLOAT: right; FONT-WEIGHT: normal; COLOR: #ccc; LINE-HEIGHT: 42px
+}
+.subItem_l {
+	LIST-STYLE-TYPE: none; OVERFLOW-Y: auto; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; MAX-HEIGHT: 358px
+}
+.subItem .subItem_l LI {
+	HEIGHT: 52px; BORDER-BOTTOM: #eeeeee 1px solid; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 20px; LINE-HEIGHT: 52px; PADDING-RIGHT: 20px
+}
+.subItem_l LI EM {
+	VERTICAL-ALIGN: middle; DISPLAY: inline-block; MARGIN-RIGHT: 10px
+}
+.subItem_l LI A {
+	OVERFLOW: hidden; FONT-SIZE: 14px; WIDTH: 95%; VERTICAL-ALIGN: middle; WHITE-SPACE: nowrap; TEXT-OVERFLOW: ellipsis; COLOR: #333; DISPLAY: inline-block
+}
+.similar_article {
+	OVERFLOW: hidden
+}
+.similar_article H4 {
+	FONT-SIZE: 16px; COLOR: #333
+}
+.similar_c {
+	BORDER-TOP: #bbb 1px solid; BORDER-RIGHT: #bbb 1px solid; BORDER-BOTTOM: #bbb 1px solid; BORDER-LEFT: #bbb 1px solid
+}
+.similar_c_t {
+	BORDER-BOTTOM: #dcdcdc 1px solid; LINE-HEIGHT: 45px
+}
+.similar_c_t LABEL {
+	FONT-SIZE: 16px; COLOR: #666; MARGIN-LEFT: 25px; DISPLAY: inline-block
+}
+.similar_c_t LABEL EM {
+	FONT-STYLE: normal
+}
+.similar_c_t .similar_cur {
+	FONT-WEIGHT: bold
+}
+.fl {
+	FLOAT: left
+}
+.fr {
+	FLOAT: right
+}
+.similar_wrap {
+	BACKGROUND: #fcfcfc; OVERFLOW-Y: auto; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; PADDING-LEFT: 20px; PADDING-RIGHT: 20px; MAX-HEIGHT: 180px
+}
+.similar_list {
+	LIST-STYLE-TYPE: none; WIDTH: 49%; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px
+}
+.similar_list LI {
+	LIST-STYLE-TYPE: none; LINE-HEIGHT: 30px
+}
+.similar_list LI EM {
+	VERTICAL-ALIGN: middle; FONT-STYLE: normal; DISPLAY: inline-block; MARGIN-RIGHT: 10px
+}
+.similar_list LI A {
+	OVERFLOW: hidden; WIDTH: 50%; VERTICAL-ALIGN: middle; WHITE-SPACE: nowrap; TEXT-OVERFLOW: ellipsis; COLOR: #333; DISPLAY: inline-block
+}
+.similar_list LI A:hover {
+	COLOR: #fe0000
+}
+.similar_list LI SPAN {
+	FONT-SIZE: 12px; COLOR: #bbbbbb; MARGIN-LEFT: 9px; DISPLAY: inline-block
+}
+.similar_list LI LABEL {
+	FONT-SIZE: 12px; COLOR: #bbbbbb; MARGIN-LEFT: 9px; DISPLAY: inline-block
+}
+.similar_list LI LABEL I {
+	FONT-WEIGHT: normal; FONT-STYLE: normal
+}
+.similar_list LI LABEL B {
+	FONT-WEIGHT: normal; FONT-STYLE: normal
+}
+.similar_list LI LABEL B {
+	MARGIN-LEFT: 5px
+}
+.MoreArticle {
+	FONT-SIZE: 12px; HEIGHT: 35px; BACKGROUND: #fcfcfc; COLOR: #666; TEXT-ALIGN: center; CLEAR: both; DISPLAY: block; LINE-HEIGHT: 35px
+}
+.MoreArticle:hover {
+	BACKGROUND: #f2f2f2
+}
+.bog_copyright {
+	PADDING-BOTTOM: 20px; PADDING-TOP: 20px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px
+}
+.copyright_p {
+	FONT-SIZE: 14px; HEIGHT: 14px; COLOR: #666; PADDING-LEFT: 10px; BORDER-LEFT: #e41c1e 3px solid; LINE-HEIGHT: 14px
+}
