@@ -202,6 +202,7 @@ exclude:
   - /screenshots
   - /test
   - /vendor
+  - /.idea
 #  - "*.txt" # 排除 *.txt 文件
 
 defaults:
