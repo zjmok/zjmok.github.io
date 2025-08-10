@@ -4,6 +4,7 @@ tags: Git
 ---
 
 ## 需求：
+
 将一份分离独立的 git 仓库 合并到 原来的 git 仓库，并且压缩历史提交。
 
 ## 分析：
@@ -25,9 +26,16 @@ tags: Git
 同时会将目标分支所有提交复制到新分支合并重新提交一次,  
 此分支从原来的 commit 线分离并且会压缩所有的 commit，  
 
-从 feature/xxx 分支创建一个孤立分支 orphan/xxx, 执行以下代码将会要求重新 commit 一次 (SourceTree 上显示历史暂时是空的，不用惊慌，commit 之后就显示正常了)
+从 feature/xxx 分支创建一个孤立分支 orphan/xxx,  
+执行以下代码将会要求重新 commit 一次 (SourceTree 上显示历史暂时是空的，不用惊慌，commit 之后就显示正常了)
+
 ```
-git checkout --orphan orphan/xxx feature/xxx
+# 创建新分支，暂存区有指定分支的文件，但分支不依赖任何节点
+git checkout --orphan 新分支名 指定分支名
+
+# or
+# 创建新分支，暂存区有当前工作区的文件，但分支不依赖任何节点
+git checkout --orphan 新分支名
 ```
 
 再 commit + rebase 即可
