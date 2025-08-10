@@ -20,6 +20,22 @@
 
 ---
 
+## 定制内容
+
+- txt 输出原内容：`_config.yml` 的 `defaults.values.layout`，修改默认布局
+
+- 修改网站名称的字体：`_includes/header.html`
+
+- 修改代码块和代码语句字体大小：`_sass/custom.scss`
+
+- 网站图标：`favicon.ico`，更多参考 <https://kitian616.github.io/jekyll-TeXt-theme/docs/zh/logo-and-favicon>
+
+- 导航：`_data/navigation.yml`，增加 "收藏"（对应文件 `favorites.md`、`favorites.html`）
+
+- About 页面：`about.md`
+
+---
+
 # Jekyll
 
 Jekyll 源码  
