@@ -1,0 +1,13 @@
+开发过程中一般打印日志用Log类 通常会封装一个工具类 如LogUtils 用开关控制打印
+
+----------
+public class LogUtils extends Log{
+	private static boolean isDebug=true;//上线时改为false;
+	public void d(String tag,String msg){
+		if(isDebug){
+			android.util.Log.d(tag,msg);
+		}
+	}
+	//e i v w
+	...
+}

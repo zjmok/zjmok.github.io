@@ -1,0 +1,17 @@
+继承 实现 匿名内部类
+
+//继承Thread类,调用start()
+new Thread(){
+	void run(){
+		//重写
+	}
+}.start();
+
+
+//实现Runnable接口,传入Thread构造,Thread.start()
+new Thread(new Runnable() {	
+	@Override
+	public void run() {
+		//重写
+	}
+}).start();

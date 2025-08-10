@@ -1,0 +1,13 @@
+CentOS Linux开启和关闭防火墙命令有两种，一种是临时的，重启即复原；另外一种是永久性的，重启不会复原。
+
+1） 临时生效，重启后复原
+开启： service iptables start
+关闭： service iptables stop
+
+2） 永久性生效，重启后不会复原
+开启： chkconfig iptables on
+关闭： chkconfig iptables off
+
+ 
+
+对于Linux下的其它服务都可以用以上命令执行开启和关闭操作。

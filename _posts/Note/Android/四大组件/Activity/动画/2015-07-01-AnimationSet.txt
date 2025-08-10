@@ -1,0 +1,1 @@
+Animation anim = new Animation(false);//参数:是否共享Interpolator（插值器）,插值器控制动画速度,慢-->快/慢-->快-->慢,等

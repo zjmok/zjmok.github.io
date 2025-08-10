@@ -1,0 +1,10 @@
+顶层是一个类 Throwable
+是类不是接口
+
+继承关系:
+Throwable 两大类 
+	Error 服务器宕机 数据库崩溃 等严重错误时
+	
+	Exception 异常 两大类
+		RumtimeException	--运行时异常
+		其他类			--编译时异常

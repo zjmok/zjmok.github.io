@@ -1,0 +1,32 @@
+使用引用数据类型的局部变量对象必须要用static修饰
+
+用继承的方法会new多个Thread的子类对象,所以不能用this,不能用普通局部对象
+class MyThread extends Thread {
+	run(){
+		synchronized(MyThread.class){
+			//
+		}
+	}
+}
+//创建多个线程
+new MyThread().start();
+new MyThread().start();
+new MyThread().start();
+new MyThread().start();
+//每一个线程对应一个MyThread的对象,不能用this,必须同一对象
+
+------------------------------
+用实现接口的方法只需new一个实现类子类,可以用this,因为this是同一个对象
+Runnable mt=new Runnable(){
+	run(){
+		synchronized(this){
+			//
+		}
+	}
+};
+//创建多个线程
+new Thread(mt).start();
+new Thread(mt).start();
+new Thread(mt).start();
+new Thread(mt).start();
+//mt是一个线程

@@ -1,0 +1,35 @@
+---
+layout: post
+title:  "Android7.0 fiddler无法抓包https的问题"
+# date:   date
+categories: ["test", "net"]
+author: "cymok"
+---
+
+### Android7.0 fiddler无法抓包https的问题
+
+> 重现步骤：手机端已经安装了证书，在7.0版本以下可以抓到包，但是在7.0上是无法抓取包的
+
+> 原因：android权限的问题
+
+> 修改方法：
+
+- 1.在你主工程的res文件下新建xml（如果有直接可以用），在xml中创建net_security_config.xml
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config xmlns:android="http://schemas.android.com/apk/res/android">
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" overridePins="true" />
+            <certificates src="user" overridePins="true" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>
+```
+ 
+- 2. 在主工程AndroidManifest.xml中的application标签下添加
+
+```
+android:networkSecurityConfig="@xml/net_security_config.xml"
+```

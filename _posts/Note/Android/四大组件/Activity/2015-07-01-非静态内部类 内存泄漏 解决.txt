@@ -1,0 +1,31 @@
+利用WeakReference
+
+private NoLeakHandler mHandler = new NoLeakHandler(this);
+
+private static class NoLeakHandler extends Handler {
+	private WeakReference<PayActivity> mActivity;
+
+	NoLeakHandler(PayActivity activity) {
+		mActivity = new WeakReference<>(activity);
+	}
+
+	@Override
+	public void handleMessage(Message msg) {
+		PayActivity payActivity = mActivity.get();
+		//...
+	}
+}
+
+
+===========
+
+private Permission mPermission = new Permission(this);
+
+public static class Permission{
+	private Activity mAty;
+
+	Permission(Activity activity) {
+		mAty = new WeakReference<>(activity).get();
+	}
+	//...
+}

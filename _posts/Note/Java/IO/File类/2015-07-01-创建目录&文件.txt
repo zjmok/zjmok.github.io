@@ -1,0 +1,9 @@
+File f=new File("aaa");
+dir.mkdir();  //文件夹不存在就创建文件夹并且返回true,文件夹已存在则直接返回false
+
+File f=new File("aaa\\bbb");
+dir.mkdirs();  //mkidrs可以创建多级目录
+
+
+File f=new File("abc.txt");
+f.createNewFile();  //不存在则创建并返回true,否则直接返回false

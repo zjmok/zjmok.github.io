@@ -1,0 +1,1 @@
+iterator 遍历过程中不能用集合的remove删除元素 只能用迭代器的remove

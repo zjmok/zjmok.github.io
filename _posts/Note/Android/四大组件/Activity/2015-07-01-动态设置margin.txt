@@ -1,0 +1,33 @@
+首先,margin不是所有ViewGroup的子类容器都有,
+LinearLayout有,所以LinearLayout.LayoutParams的对象可以设置setMargins
+
+-----
+
+Android的view中有setPadding，但是没有直接的setMargin方法。
+如果要在代码中设置该怎么做呢？
+可以通过设置view里面的 LayoutParams 设置，
+而这个LayoutParams是根据该view在不同的GroupView而不同的
+
+-----
+
+TextView tv = (TextView) findViewById(R.id.ceshi_tv);  
+LinearLayout.LayoutParams params = (LayoutParams) tv.getLayoutParams();  
+params.setMargins(30, 50, 22, 10);  
+tv.setLayoutParams(params); 
+
+-----
+
+<LinearLayout
+	android:id="@+id/ceshi_ly"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:background="@android:color/darker_gray" >
+
+	<TextView
+		android:id="@+id/ceshi_tv"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:background="@android:color/holo_green_dark"
+		android:text="测试动态设置margin" />
+</LinearLayout>
+

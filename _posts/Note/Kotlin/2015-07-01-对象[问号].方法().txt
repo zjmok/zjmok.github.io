@@ -1,0 +1,6 @@
+instance?.execute()
+//instance为null时不调用方法
+//即:
+if(instance!=null){
+	instance.execute();
+}

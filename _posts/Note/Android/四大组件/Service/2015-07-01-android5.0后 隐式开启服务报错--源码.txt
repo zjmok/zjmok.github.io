@@ -1,0 +1,13 @@
+    private void validateServiceIntent(Intent service) {  
+        if (service.getComponent() == null && service.getPackage() == null) {  
+            //当targetSdkVersion版本大于等于LOLLIPOP就会抛出异常
+            if (getApplicationInfo().targetSdkVersion >= Build.VERSION_CODES.LOLLIPOP) {  
+                IllegalArgumentException ex = new IllegalArgumentException(  
+                        "Service Intent must be explicit: " + service);  
+                throw ex;  
+            } else {  
+                Log.w(TAG, "Implicit intents with startService are not safe: " + service  
+                        + " " + Debug.getCallers(2, 3));  
+            }  
+        }  
+    }  

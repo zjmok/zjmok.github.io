@@ -1,0 +1,5 @@
+android:configChanges="keyboardHidden|orientation|screenSize"
+android:screenOrientation="landscape"
+
+清单文件aty中设置 
+orientation属性 和 screenSize属性

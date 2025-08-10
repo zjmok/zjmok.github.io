@@ -1,0 +1,7 @@
+运行tomcat7w.exe tomcat7.exe ,提示 指定的服务未安装 unable to open the service 'tomcat7'（用的是绿色的Tomcat7）
+
+解决方法：
+
+打开命令行提示符窗口=> 进入Tomcat安装目录==> 进入bin目录下==> 输入：service.bat install 即可
+
+直接到目录点击这个service.batt会不会也可以？经过验证：不可以

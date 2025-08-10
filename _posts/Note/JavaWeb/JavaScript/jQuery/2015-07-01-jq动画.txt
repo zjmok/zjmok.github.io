@@ -1,0 +1,4 @@
+jq.show()
+jq.hide()
+jq.slideDown()向下滑动
+jq.slideUp()向上滑动(顶部广告,先下滑再上滑,不能反序)

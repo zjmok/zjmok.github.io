@@ -1,0 +1,27 @@
+1.Statement
+
+...
+Statement st = conn.createStatement();
+//添加多条sql到st中
+st.addBatch(sql1);
+st.addBatch(sql2);
+st.addBatch(sql3);
+st.addBatch(sql4);
+//执行sql
+int[] result = st.executeBatch();
+...
+
+
+2.PreparedStatement
+//编译同一sql,只是参数不同,批量执行不同参数的sql
+
+...
+String sql="insert into t_stu values(null,?)";
+PreparedStatement ps = conn.preparedStatement(sql);
+for(int i=0;i<100;i++){
+	ps.setString(1,"用户"+i);
+	ps.addBatch();
+}
+//批量执行
+int[] results = ps.executeBatch();
+...

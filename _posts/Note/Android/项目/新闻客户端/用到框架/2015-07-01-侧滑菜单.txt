@@ -1,0 +1,11 @@
+SlidingMenu
+
+------------
+
+侧滑菜单
+
+	侧滑菜单的实现有很多方式，
+	可以自定义控件，
+	或者使用老牌的SlidingMenu，
+	或者使用谷歌亲生的DrawerLayout
+	

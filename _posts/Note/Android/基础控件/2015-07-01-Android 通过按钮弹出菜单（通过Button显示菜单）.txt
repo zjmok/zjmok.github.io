@@ -1,0 +1,10 @@
+只需调用openOptionsMenu();方法就可以了
+
+myButton.setOnClickListener(new OnClickListener()  
+{  
+    @Override  
+    public void onClick(View v)  
+    {  
+        openOptionsMenu();  
+    }  
+});  

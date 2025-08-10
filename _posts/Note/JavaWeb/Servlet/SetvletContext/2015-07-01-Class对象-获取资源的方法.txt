@@ -1,0 +1,7 @@
+与ServletContext获得路径相比,相对路径填法不同
+ServletContext		"/"代表项目根目录
+Class				"/"代表src目录或classes目录
+					(src目录的java文件被编译成class文件放到classes下而src的非java文件是直接被放到classes下)
+Class				不写"/",代表从类的所在包下查找,即class文件当前的目录
+
+Class对象也可以使用getResource方法获得文件的绝对路径url,同过url.getPath()即可获得路径字符串表示形式

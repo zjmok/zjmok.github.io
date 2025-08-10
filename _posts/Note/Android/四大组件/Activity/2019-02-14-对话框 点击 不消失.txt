@@ -1,0 +1,15 @@
+Button button = ((AlertDialog) dialog).getButton(AlertDialog.BUTTON_POSITIVE);
+button.setOnClickListener(new View.OnClickListener() {
+
+	@Override
+	public void onClick(View view) {
+		// TODO Do something
+
+		//Dismiss once everything is OK.
+		dialog.dismiss();
+	}
+});
+
+重写点击事件,可控制对话框是否消失
+注:必须在show之后,可在show后面的代码重写,可在setOnShowListener里重写
+

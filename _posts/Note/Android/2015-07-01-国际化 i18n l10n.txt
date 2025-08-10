@@ -1,0 +1,2 @@
+internationalization （国际化）简称：i18n，因为在i和n之间还有18个字符。
+同理，localization（本地化 ），简称L10n

@@ -1,0 +1,10 @@
+Date
+表示特定的瞬间,精确到毫秒
+
+构造方法
+public Date()
+public Date(long date)
+
+成员方法
+public long getTime()
+public void setTime(long time)

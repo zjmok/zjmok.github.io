@@ -1,0 +1,26 @@
+-- 需求:当想员工表插入一条记录时,希望mysql自动同时往日志表插入数据
+-- 1.创建触发器(添加)
+create trigger tri_empAdd after insert on employee for each row	-- 当员工表插入一条记录时
+	insert into test_log(content) values('员工表插入了一条记录');
+
+--------------
+-- 插入数据
+insert into employee(id,empName,deptId) values(7,'张三',1);
+insert into employee(id,empName,deptId) values(8,'李四',1);
+
+---------------
+select * from employee;
+select * from test_log;
+
+
+-----------------------------
+
+-- 2.创建触发器(修改)
+create trigger tri_empAdd after update on employee for each row	-- 当员工表插入一条记录时
+	insert into test_log(content) values('员工表修改了一条记录');
+
+-------------------------
+-- 创建触发器(删除)
+create trigger tri_empAdd after delect on employee for each row	-- 当员工表插入一条记录时
+	insert into test_log(content) values('员工表删除了一条记录');
+

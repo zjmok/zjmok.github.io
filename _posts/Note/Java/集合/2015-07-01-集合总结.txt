@@ -1,0 +1,24 @@
+集合
+	Collection
+		List(存取有序,有索引,可重复)
+			ArrayList	数组实现(超出时数组*1.5),线程不安全,改查快,增删慢
+			LinkedList	链表实现,线程不安全,增删快,改查慢
+			Vector		数组实现(超出时数组*2),线程安全的,增删改查都慢
+						Collections.synchronizedList同步List,所以该类淘汰了
+		Set(存取无序,无索引,不可重复)
+			HashSet		哈希算法实现
+				LinkedHashSet	链表实现,但可以保证元素唯一,和HashSet原理一样
+			TreeSet		二叉树算法实现,一般用来对对象排序
+			
+	Map	唯一性针对键
+			HashMap		哈希算法实现
+				LinkedHashMap		底层是链表
+			TreeMap		二叉树算法实现,一般用来对对象排序
+			Hashtable	不可存放null值,线程安全,Collections.synchronizedMap同步Map,所以该类淘汰了
+						类似ArrayList和Vector的关系
+				Properties	Hashtable基本被淘汰,但Properties这是Hashtable争气的子类,
+							正如它的名字所暗示的，该文件在处理属性文件
+
+
+Collection List Set Map 都是接口
+没有特殊要求一般用ArrayList,HashSet,HashMap

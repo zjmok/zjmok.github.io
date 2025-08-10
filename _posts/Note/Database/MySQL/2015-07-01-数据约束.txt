@@ -1,0 +1,83 @@
+1.默认值
+address varchar(20) default '默认地址';
+作用:当用户对使用默认值的字段不插入值的时候,就使用默认值
+注意:
+对默认值字段插入null是可以的
+对默认值字段可以插入非null
+
+2.非空
+非空字段必须赋值
+insert into student(id,name) values(1,'lisi');
+非空字段不能插入null
+--insert into student(id,name,gender) values(1,'lisi',null);
+
+3.唯一
+注意:
+唯一字段可以插入null
+唯一字段可以插入多个null
+唯一约束不对null起效因为是没值
+create table student(
+id int unique,--唯一
+name varchar(20)
+);
+
+4.主键
+作用:非空+唯一
+注意:
+用于标记表中记录的唯一性
+独立设计一个非业务含义的id字段
+create table(
+id int primary key;--主键
+name varchar(20)
+);
+
+5.自增长
+作用:自动递增
+create table student(
+id int(4) zerofill primary key auto_increment,
+name varchar(20)
+);
+--zerofill自动补充不够数字长度的前面的0,例如4和0004
+
+6.外键:
+作用:约束两种表的数据
+出现两种表的情况:
+解决数据冗余高的问题:独立出一张表
+例如:员工表和部门表
+...
+--部门表
+create table dept(
+id int primary key,
+deptName varchar(20)
+);
+--员工表
+create table employee(
+id int primary key,
+empName varchar(20),
+deptId int,--部门id
+--声明一个外键约束
+constraint employee_dept_fk foreign key(deptId) references dept(id)
+--	   外键名称			外键		   参考表(参考字段)
+);
+
+注意:
+1)被约束的表称为副表,约束别人的表称为主表,外键设置在副表上的
+2)主表的参考字段通用为主键
+3)添加数据:先添加主表,再添加副表
+4)修改数据:先修改副表,再修改主表
+5)删除数据:先修改副表,再删除主表
+
+7.联级修改
+问题:当有了外键约束的时候,必须先修改或删除副表中的所有关联数据,才能需改或删除主表,
+但是,我们希望直接修改或删除主表数据,从而影响副表的数据.可以使用级联操作实现!!
+
+联级修改: on update cascade
+联级删除: in delete cascade
+
+create table emloyee(
+id int primary key,
+empName varchar(20),
+deptId int,
+constraint employee_dept_fk foreign key(deptId) references dept(id) on update cascade on delete cascade
+);								    --  联级修改	联级删除
+注意:联级操作必须在外键基础上使用

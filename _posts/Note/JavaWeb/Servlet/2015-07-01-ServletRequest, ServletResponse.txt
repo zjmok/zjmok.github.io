@@ -1,0 +1,2 @@
+ServletRequest，概括从客户端到服务器之间的联系, 请求
+ServletResponse，概括从servlet返回客户端的联系, 响应

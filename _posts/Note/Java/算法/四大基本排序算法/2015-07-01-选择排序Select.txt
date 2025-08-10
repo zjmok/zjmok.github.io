@@ -1,0 +1,24 @@
+	/**
+	遍历过程中，给i位置取i后面最小的数
+	与i位置的数替换
+	*/
+	public static void selectSort(int[] arr) {
+		for (int i = 0; i < arr.length; i++) {
+			int min = arr[i];
+			int flag = i;
+			for (int j = i + 1; j < arr.length; j++) {
+				if (arr[j] < min) { // 如果i后面有比第i个数小的，替换
+					min = arr[j];
+					flag = j;
+				}
+			}
+			arr[flag] = arr[i];
+			arr[i] = min;
+			/* 下面的代码是为了打印出每一趟所排列的序列，方便理解各个算法 */
+			System.out.print(i + 1 + ":" + " ");
+			for (int y = 0; y < arr.length; y++) {
+				System.out.print(arr[y] + " ");
+			}
+			System.out.println();
+		}
+	}

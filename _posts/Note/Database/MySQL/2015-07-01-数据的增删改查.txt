@@ -1,0 +1,54 @@
+增加:
+insert into 表(字段1,字段2...) value(值1,值2...);
+
+删除:
+delect from 表 where 条件;
+
+修改:
+update 表 set 字段1=值1,字段2=值2... where 条件;
+
+
+查询:
+
+所有字段:
+select * from 表;
+
+指定字段:
+select 字段1,字段2... from 表;
+
+指定别名:
+select 字段1 as 别名 from 表;
+
+合并列:
+select (字段1+字段2) from 表;
+
+去重:
+select distinct 地段 from 表;
+
+条件查询:
+	逻辑条件:and or
+	select * from where 条件1 and/or 条件2;
+
+	比较条件:> < >= <= = <> between and(在...之间)
+	select * from 表 where servlet>=90;
+
+	判空条件:
+	判断null:is null  /  is not null
+	判断空串:="  /  <>"
+
+	模糊查询:like
+	&:替换任意个字符
+	_:替换一个字符
+
+分页查询:limit 起始行,查询行数
+起始行从0开始
+
+排序:order by 字段 asc/desc
+asc:正序,顺序
+desc:反序,倒序
+
+分组查询:group by字段
+
+分组后筛选:having 条件
+
+

@@ -1,0 +1,6 @@
+低版本默认背景可能是黑色的
+
+点击外围dismiss掉窗口：
+setOutsideTouchable(true)
+低版本还需要设置背景
+imageView.setBackgroundDrawable(new ColorDrawable());

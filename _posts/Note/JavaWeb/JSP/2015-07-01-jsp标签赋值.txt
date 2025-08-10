@@ -1,0 +1,13 @@
+...
+<body>
+  <%
+    int aaa=123;
+  %>
+  <jsp:forward page="/...">
+    <jsp:param name="username" value="<%=aaa %>">
+  </jsp:forward>
+</body>
+...
+
+参数(可以是其它类型Java参数和脚本表达式)
+<%=参数 >

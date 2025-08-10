@@ -1,0 +1,3 @@
+0代表当前位置
+
+属性动画包括ValueAnimator,ObjectAnimator

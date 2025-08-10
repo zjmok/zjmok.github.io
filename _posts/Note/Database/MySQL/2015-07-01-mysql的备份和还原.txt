@@ -1,0 +1,11 @@
+备份
+mysqldump -u root -p 数据库名 > d:/bak.sql
+
+恢复
+mysql -u root -p 数据库名 < d:/bak.sql
+
+在cmd下运行,先不用登录
+
+一般在windows下会用批处理定时运行备份
+
+注意,需要将备份数据库还原到一个数据库里面,可以新建一个和原来一样的空数据库

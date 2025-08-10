@@ -1,0 +1,8 @@
+jsp技术中的域:
+	pageContext域 page --页面
+Servlet三大域:
+	request域 --请求	
+	session域 --会话
+	servletContext域 application --应用程序
+
+在范围域里能用数据

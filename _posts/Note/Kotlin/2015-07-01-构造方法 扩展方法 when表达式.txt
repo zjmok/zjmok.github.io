@@ -1,0 +1,39 @@
+参数列表写在类的后面 方法体在init{}
+
+----------
+//枚举类
+enum class Lang(val hello:String){
+	ENGLISH("Hello"),
+	CHINESE("你好");
+	
+	init{
+		//构造方法的方法体
+	}
+	
+	fun sayHello(){
+		println(hello)
+	}
+	
+	companion object{
+		fun parse():Lang{
+			return Lang.valueOf(name.toUpperCase())
+		}
+	}
+}
+
+fun main(args:Array<String>){
+	if(args.size == 0) return
+	val lang = Lang.parse(args[0])
+	println(lang)
+	lang.sayHello()
+	lang.sayBye()
+}
+
+//扩展的方法
+fun Lang.bye(){
+	val bye = when(this){
+		Lang.ENGLISH -> "bye"
+		Lang.CHINESE -> "再见"
+	}
+	println(bye)
+}

@@ -1,0 +1,5 @@
+view动画 不对空间操作 只对图像进行改变
+属性动画 对控件操作
+
+
+属性动画包括ValueAnimator,ObjectAnimator

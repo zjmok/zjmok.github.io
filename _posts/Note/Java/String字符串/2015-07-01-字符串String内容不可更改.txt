@@ -1,0 +1,12 @@
+String str = "Hello";
+String str1 = str + "Word";
+system.out.print(str1);
+
+str先在堆空间开辟一个地址，该值是Hello
+然后Word开辟第二个地址，值Word
+最后str1指向新的地址，值是HelloWord
+
+字符串String的值是不可更改的，改变的是指向的地址
+
+String StringBuffer 都是方法
+StringBuffer可以更改

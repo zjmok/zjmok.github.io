@@ -1,0 +1,18 @@
+-- 创建存储过程
+delemiter $	-- 声明存储过程的结束符
+create procedure pro_test()	-- 存储过程名称(参数列表)
+begin	-- 开始
+	-- 可以写多个sql语句
+	select * from employee;
+end $		-- 结束 结束符号
+
+
+-- 执行存储过程
+call pro_test();	-- call 存储过程名称(参数)
+
+
+-- 参数有
+in:	表示输入参数,可以携带数据到存储过程中
+out:	表示输出参数,可以从存储过程中返回结果
+inout:	表示输入输出参数,既有输入功能,也有输出功能
+

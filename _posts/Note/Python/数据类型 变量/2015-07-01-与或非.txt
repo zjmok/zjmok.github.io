@@ -1,0 +1,9 @@
+>>> True and True
+True
+
+>>> True or True
+True
+
+>>> not True
+False
+

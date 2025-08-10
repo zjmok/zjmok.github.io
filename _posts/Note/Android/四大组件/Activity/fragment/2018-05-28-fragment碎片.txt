@@ -1,0 +1,46 @@
+定义一个布局,写一个Fragment的继承类,使用时fragment标签中android:name属性为全类名
+
+------
+使用v4包的Fragment兼容低版本
+
+-------------
+// 1.创建Fragment管理器
+//使用v4包时,activity中使用用getSupportFragmentManager方法,fragment嵌套fragment时使用getChildFragmentManager
+FragmentManager fragmentMgr = getFragmentManager();//使用v4包的Fragment时使用getSupportFragmentManager
+// 2.开始事务
+FragmentTransaction tr = fragmentMgr.beginTransaction();
+// 3.创建碎片
+SoundFragment fragment = new SoundFragment();
+// 4.替换容器中内容
+//tr.add(R.id.container, fragment);
+tr.replace(R.id.container, fragment);
+// 5.提交事务
+tr.commit();
+
+----------------------
+模拟返回栈:tr.addToBackStack(null);//参数是状态描述
+
+----------------
+生命周期:
+
+onAttach()//与aty关联
+|
+onCreate()
+|
+onCreateView()//创建视图(加载布局)	--<-|
+|										|
+onActivityCreated()//确保创建完毕		|
+|										|
+onStart()//可见							|
+|										|
+onResume()//可交互						|
+|										|
+onPause()//不可交互						|
+|										|
+onStopt()//不可见						|
+|										|
+onDestoryView()//视图被移除		------>-|
+|
+onDestory()
+|
+onDetach()//解除关联

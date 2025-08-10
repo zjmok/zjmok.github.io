@@ -1,0 +1,23 @@
+//1注册驱动
+//加载类时,会调用静态代码块,进行驱动注册:DriverManager.registerDriver(driver);
+Class.forName("com.mysql.jdbc.Driver");
+
+
+//2获得连接
+Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/shujukuName");
+
+
+//3创建st
+Statement st = conn.createStatement();
+
+//4书写sql
+
+String sql = "INSERT INTO 't_user' VALUES (NULL,'jerry',16)";
+
+//5执行sql
+st.execute(sql);
+//execult()返回boolean值可继续判断获取结果集等  execultUpdate()返回boolean值影响的行数  execultQuery()返回查询到的结果集
+
+//6关闭资源
+st.close();
+conn.close();

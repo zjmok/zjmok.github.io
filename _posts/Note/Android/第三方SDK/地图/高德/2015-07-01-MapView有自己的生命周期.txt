@@ -1,0 +1,12 @@
+必须在activity的生命周期里重写mapview的生命周期
+
+...
+public class ...{
+MapView mMapView;
+	... onCreate(...){
+		...
+		mMapView = findViewById(R.id.xx);
+		mMapView.onCreate(...);
+	}
+	...//其他生命周期也要写
+}

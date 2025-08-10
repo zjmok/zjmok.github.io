@@ -1,0 +1,13 @@
+配置java环境
+
+配置java环境时 检查是否配置成功时
+java -version命令只在编辑完环境变量后的root权限里能成功显示
+退出root或重新打开Terminal都不能显示版本信息 也就是检测方法只能在刚编辑完环境变量的时候能用
+
+配置tomcat
+
+在主机访问tomcat失败的话 尝试关闭防火墙 
+
+关闭虚拟机中的防火墙服务。桌面--管理--安全级别与防火墙，将防火墙设置为：disable即可。或用 root登录后，执行
+service iptables stop --停止
+service iptables start --启动 

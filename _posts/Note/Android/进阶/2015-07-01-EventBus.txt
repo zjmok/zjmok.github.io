@@ -1,0 +1,43 @@
+http://www.cnblogs.com/whoislcj/p/5595714.html
+
+====================================
+
+事件类
+	存放数据
+
+----------------------------
+订阅事件
+
+	先订阅事件
+
+		订阅
+			EventBus.getDefault().register(this);//订阅
+		解除订阅
+			EventBus.getDefault().unregister(this);//解除订阅
+
+	订阅
+	/*
+	线程模型
+		threadMode = ThreadMode.MAIN			在主线程接收
+		threadMode = ThreadMode.BACKGROUND		如果事件是在主线程发布，则在EventBus的线程池中的线程接收
+												如果事件是在子线程发布，则在子线程接收
+		threadMode = ThreadMode.POSTING 		在发布的线程接收
+		threadMode = ThreadMode.ASYNC 			都在EventBus的线程池中的线程接收
+	*/
+	@Subscribe(threadMode = ThreadMode.MAIN) //在ui线程执行
+    public void onDataSynEvent(DataSynEvent event) {//方法名可改变
+        Log.e(TAG, "event---->" + event.getCount());
+    }
+
+-----------------------
+发布事件
+	EventBus.getDefault().post(new DataSynEvent());
+	EventBus.getDefault().postSticky(new DataSynEvent())//粘性事件，类似粘性广播
+	
+========================================
+EventBus优缺点：
+
+	优点：简化组件之间的通信方式，实现解耦让业务代码更加简洁，可以动态设置事件处理线程以及优先级
+
+	缺点：目前发现唯一的缺点就是类似之前策略模式一样的诟病，每个事件都必须自定义一个事件类，造成事件类太多，无形中加大了维护成本
+	

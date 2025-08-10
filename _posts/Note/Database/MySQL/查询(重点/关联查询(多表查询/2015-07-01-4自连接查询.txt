@@ -1,0 +1,6 @@
+需求:查询员工及其上司
+select e.empName,b.empName
+	from employee e
+	left outer join employee b
+	on e.bossId=b.id;
+-- 根据需求,可以用内连接 左外连接 右外连接

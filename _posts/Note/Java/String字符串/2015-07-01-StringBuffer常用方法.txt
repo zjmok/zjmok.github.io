@@ -1,0 +1,5 @@
+在最后添加内容 append()
+插入内容 insert()
+替换内容 replace()
+indexOf()
+api

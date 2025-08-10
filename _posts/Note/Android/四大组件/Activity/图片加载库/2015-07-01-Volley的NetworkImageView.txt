@@ -1,0 +1,47 @@
+	NetworkImageView mNetImg = (NetworkImageView) findViewById(R.id.net_img);
+
+	...
+	
+	RequestQueue queue = Volley.newRequestQueue(this);
+	ImageLoader.ImageCache imageCache = new MyImageCache();
+	ImageLoader imageLoader = new ImageLoader(queue, imageCache);
+
+	mNetImg.setImageUrl(url, imageLoader);//核心代码 利用逆向编程生成上面的代码
+
+	...
+
+/**
+ * 图片缓存的核心
+ *
+ * 三大缓存：优先从内存读取->内存没有再从本地磁盘获取->没有，再从网络获取
+ * 1.网络
+ * 2.内存
+ * 3.本地磁盘
+ */
+private class MyImageCache implements ImageLoader.ImageCache{
+
+	private int maxCacheSize = 5 * 1024 * 1024;//单位要统一：最大缓存大小5M，每次存储一张图片，计算每张图片大小
+	LruCache<String ,Bitmap> lruCache = new LruCache<String ,Bitmap>(maxCacheSize){
+		@Override
+		protected int sizeOf(String key, Bitmap value) {
+			//计算每张图片大小
+			return value.getByteCount();
+		}
+	};
+
+	//从缓存中获取
+	@Override
+	public Bitmap getBitmap(String url) {
+		return lruCache.get(url);
+	}
+
+	/**
+	 * 存储到缓存中
+	 * @param url,图片地址
+	 * @param bitmap
+	 */
+	@Override
+	public void putBitmap(String url, Bitmap bitmap) {
+		lruCache.put(url, bitmap);
+	}
+}

@@ -1,0 +1,12 @@
+var jsObj = document.getElementById("id");  //js对象或DOM对象
+var $jqObj = $(jsObj);  //js对象转为jq对象
+
+--------------
+//jq对象转js对象
+
+var jsObj = $jqObj[0];
+
+或
+
+var jsObj2 = $jqObj.get(0);
+

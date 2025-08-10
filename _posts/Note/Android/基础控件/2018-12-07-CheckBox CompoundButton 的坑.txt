@@ -1,0 +1,13 @@
+问题:
+由于RadioGroup是继承LinearLayout的,所以不能直接实现多行的单(多)选功能
+需要自己写一个,如果用到CompoundButton及其子类(CheckBox,RadioButton等),
+在setOnCheckedChangeListener里面设置其它按钮的setChecked,
+此时setChecked和setOnCheckedChangeListener会冲突,他们之间循环调用导致崩溃
+
+CompoundButton及其子类的setOnCheckedChangeListener回调方法里,
+没有像SeekBar那样的formUser参数,无法判断是用户点击还是代码设置的,使用时容易陷入循环直接崩溃
+
+解决:
+1.不用CompoundButton及其子类,自己撸一个有选中功能的其它View,然后组成组
+2.点击时CompoundButton的setOnClickListener点击事件和setOnCheckedChangeListener回调会同时被调用,可以利用点击事件不会被执行来实现
+3.其它实现

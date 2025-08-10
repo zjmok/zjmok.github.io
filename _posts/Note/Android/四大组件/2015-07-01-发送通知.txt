@@ -1,0 +1,71 @@
+实现代码:
+
+Button sendNotice = (Button) findViewById(R.id.send_notice);
+        sendNotice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Notification.Builder builder = new Notification.Builder(MainActivity.this);
+                builder.setSmallIcon(R.mipmap.ic_launcher);  //设置状态栏里面的图标（小图标）
+                builder.setTicker("状态栏上显示");  //设置状态栏的显示的信息
+                builder.setWhen(System.currentTimeMillis());  //设置通知来到的时间
+                builder.setAutoCancel(true);  //设置可以清除
+                builder.setContentTitle("标题");  //设置通知的标题
+                builder.setContentText("内容");  //设置通知的内容
+                builder.setOngoing(true);
+
+            /*
+             * // 设置声音(手机中的音频文件) String path =
+             * Environment.getExternalStorageDirectory() .getAbsolutePath() +
+             * "/Music/a.mp3"; File file = new File(path);
+             * builder.setSound(Uri.fromFile(file));
+             */
+                //通知声音
+                builder.setSound(Uri.withAppendedPath(MediaStore.Audio.Media.INTERNAL_CONTENT_URI, "5"));  //获取Android多媒体库内的铃声
+                //振动
+                builder.setVibrate(new long[]{0, 200, 200, 200}); //需要真机测试
+
+
+                //通过getSystemService获取系统Service
+                NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+//                Notification notification = builder.build();  //提示api15不用build()
+                Notification notification = builder.getNotification();
+                // notification.flags =Notification.FLAG_ONGOING_EVENT;
+
+                Intent intent = new Intent(MainActivity.this, MainActivity.class);  //构建一个Intent
+                PendingIntent pendingIntent = PendingIntent.getActivity(MainActivity.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);  //封装一个Intent
+                builder.setContentIntent(pendingIntent);  //设置通知主题的意图
+
+                notificationManager.notify(1, notification);
+            }
+        });
+
+
+
+http://www.2cto.com/kf/201502/374946.html
+
+Bitmap btm = BitmapFactory.decodeResource(getResources(),
+ R.drawable.msg);
+ NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
+ MainActivity.this).setSmallIcon(R.drawable.msg)
+ .setContentTitle("5 new message")
+ .setContentText("twain@android.com");
+ mBuilder.setTicker("New message");//第一次提示消息的时候显示在通知栏上
+mBuilder.setNumber(12);
+ mBuilder.setLargeIcon(btm);
+ mBuilder.setAutoCancel(true);//自己维护通知的消失
+
+//构建一个Intent
+ Intent resultIntent = new Intent(MainActivity.this,
+ ResultActivity.class);
+ //封装一个Intent
+ PendingIntent resultPendingIntent = PendingIntent.getActivity(
+ MainActivity.this, 0, resultIntent,
+ PendingIntent.FLAG_UPDATE_CURRENT);
+ // 设置通知主题的意图
+mBuilder.setContentIntent(resultPendingIntent);
+ //获取通知管理器对象
+NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+ mNotificationManager.notify(0, mBuilder.build());
+ }
+ });

@@ -1,0 +1,3 @@
+IXposedHookInitPackageResources, 
+某些设备不兼容资源钩子
+导致实现了资源钩子的类会失效

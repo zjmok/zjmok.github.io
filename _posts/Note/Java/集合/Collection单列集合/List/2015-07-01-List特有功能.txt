@@ -1,0 +1,4 @@
+void add(int index,E element)
+E remove(int index)
+E get(int index)
+E set(int index,E element)

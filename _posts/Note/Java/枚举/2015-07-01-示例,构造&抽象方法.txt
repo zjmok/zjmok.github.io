@@ -1,0 +1,38 @@
+enum Color{
+	red("红色"),green("绿色"),blue("蓝色");
+	private String name;
+	Color(String name){
+		this.name=name;
+	}
+	public String getName() {
+		return name;
+	}
+}
+
+//通过构造方法,必须传入一个值,赋值给成员变量
+
+-------------------------
+
+enum Color2{
+	red() {
+		@Override
+		String getName() {
+			return "红色";
+		}
+	},
+	green {
+		@Override
+		String getName() {
+			return "绿色";
+		}
+	},
+	blue {
+		@Override
+		String getName() {
+			return "蓝色";
+		}
+	};
+	abstract String getName();
+}
+
+//通过抽象方法,必须子类重写抽象方法,这里用了匿名内部类

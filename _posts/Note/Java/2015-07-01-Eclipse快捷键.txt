@@ -1,0 +1,14 @@
+Ctrl+/: 注释或取消单行注释
+Ctrl+Shift+/: 对选定区域进行多行注释
+Ctrl+Shift+/: 取消多行注释。只要光标在单行注释内即可
+Ctrl+Shift+f: 格式化代码
+Ctrl+M: 将当前视窗最大化与原状态切换
+Ctrl+1: 在选中的出错位置给出解决方案
+F4: 列出指定类的层次关系 打开层次视窗
+F3: 列出置顶类或者方法的源码
+F2: 显示方法或者类的注释描述信息
+Alt+Shift+s: 调出Sourse菜单
+Ctrl+Shift+X: 变成大写
+Ctrl+Shift+Y: 变成小写
+
+Alt+Shift+R: 重命名光标所在位置的名称

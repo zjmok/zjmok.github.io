@@ -1,0 +1,10 @@
+		byte[] encode = Base64.encode("加密?".getBytes(), Base64.DEFAULT);
+		byte[] encode2 = Base64.encode(encode, Base64.DEFAULT+1);
+		System.out.println(new String(encode));
+		System.out.println(new String(encode2));
+		byte[] decode = Base64.decode(encode, Base64.DEFAULT);
+		byte[] decode2 = Base64.decode(encode2, Base64.DEFAULT);
+		System.out.println(new String(decode));
+		System.out.println(new String(decode2));
+		
+		

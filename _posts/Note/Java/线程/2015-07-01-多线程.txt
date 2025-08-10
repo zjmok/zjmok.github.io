@@ -1,0 +1,30 @@
+多线程-->
+
+
+1.继承Thread类，覆写run()方法作线程主体，调用继承而来的start()方法
+
+class 类 extends Thread{
+  void run(){
+    主体;
+  }
+}
+class ....{
+  ...main...{
+    new 类().start();
+  }
+}
+
+
+(共享资源)
+2.实现Runnable接口，覆写run()方法作线程主体，通过Thread()方法的对象调用start()方法
+
+class 类 implements Rannable{
+  void run(){
+    主体;
+  }
+}
+class ....{
+  ...main...{
+    new Thread(new 类()).start();
+  }
+}

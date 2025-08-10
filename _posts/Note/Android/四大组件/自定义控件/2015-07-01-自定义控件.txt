@@ -1,0 +1,102 @@
+view
+
+	-----
+	measure layout onDraw
+	xxx会走onXxx方法(measure() --> onMeasure())
+	-----
+
+	绘制
+
+		1.测量
+		onMeasure
+		
+			measure --> onMeasure
+			(measure被父容器调用，measure会调用onMeasure,可直接重写onMeasure,layout同~)
+			
+			onMeasure --> setMeasuredDimension
+			(必须被调用到，不调用会触发异常)
+			(super.onMeasure调用父类方法里的setMeasuredDimension,默认沿用布局文件中的父容器对宽高的期望)
+
+		2.布局
+		onLayout
+			
+			layout调用setFrame
+			四个参数是坐标,与原点(左上角)的距离
+
+		3.绘制
+		onDraw
+		
+			draw --> onDraw
+			(特别注意:在onDraw方法中不要去创建对象,因为View的onDraw方法调用频率高)
+			
+			-------画图-------
+			
+			直线:canvas.drawLine(startX, startY, stopX, stopY, mPaint)
+			
+			圆:canvas.drawCircle(cx, cy, radius, mPaint)
+			
+			三角形:	mPath = new Path();
+					int x1 = 250, y1 = 10;
+					int x2 = 10, y2 = 490;
+					int x3 = 490, y3 = 490;
+					mPath.moveTo(x1, y1);//移动到第一个点
+					mPath.lineTo(x2, y2);
+					mPath.lineTo(x3, y3);
+					mPath.lineTo(x1, y1);
+			
+			根据路径裁剪:canvas.clipPath(mPath)
+			
+			扇形:	float startAngle = 0;//起始角度
+					float sweepAngle = -30;//扫过的角度,顺时针旋转正数
+					boolean useCenter = false;//不画出扇形边界，只画出圆弧
+					canvas.drawArc(mRectF, startAngle, sweepAngle, useCenter, mPaint);
+			
+			设置style画空心图形:mPaint.setStyle(Paint.Style.STROKE)
+			
+			图片:canvas.drawBitmap
+			
+			------------------
+			
+
+	事件处理
+		
+		接口回调
+
+	-----------------
+
+viewgroup
+
+	--------
+	measure-->onMeasure
+		onMeasure中调用孩子的measure
+	layout-->onLayout
+		onLayout中调用孩子的layout
+	...
+	--------
+	View child = getChildAt(0);//第一个child
+	--------
+
+		1.测量
+		onMeasure
+
+			measure  -->  onMeasure
+			在onMeasure中获取孩子child
+
+			child.getLayoutParams可获得child的参数
+			child.measure测量孩子
+
+			(ViewGroup内有封装现成测量孩子的方法measureChilden)
+
+		2.布局
+		onLayout中
+		
+			onLayout中,child.layout布局孩子
+
+
+		3.绘制
+		onDraw
+		
+			draw --> onDraw一般不实现,不需要重写(父控件不需要自己绘制) -->　dispatchDraw需要重写绘制孩子
+			ViewGroup需要调用dispatchDraw方法绘制孩子，ViewGroup已经默认实现了dispatchDraw,
+			遍历每一个孩子,调用孩子的draw,所以孩子绘制也是父容器发起的
+			

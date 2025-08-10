@@ -1,0 +1,6 @@
+viewPager + RadioGroup
+viewPager + FragmentTabHost
+viewpager + TabLayout
+
+
+如果只使用FragmentTabHost 只能实现 点击tab切换 页面的效果 不能实现左右滑动 而 结合viewPager 刚好实现这一效果 

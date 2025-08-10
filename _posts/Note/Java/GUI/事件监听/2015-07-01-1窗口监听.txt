@@ -1,0 +1,5 @@
+fram对象调用addWindowListener(WindowListener l)
+
+WindowListener是接口,直接使用接口要重写接口的所有方法,
+WindowAdapter抽象类,实现了接口,类的方法是空的方法,
+但继承此类只需要重写需要的方法,代码简洁

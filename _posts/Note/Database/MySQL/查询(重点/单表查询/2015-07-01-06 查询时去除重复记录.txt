@@ -1,0 +1,2 @@
+SELECT DISTINCT gender FROM student;
+SELECT DISTINCT(gender)  FROM student;

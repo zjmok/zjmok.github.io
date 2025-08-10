@@ -1,0 +1,24 @@
+
+    var 可变变量 	相当于java变量
+    val 不可变变量 	相当于java常量
+
+---
+
+赋非空值
+
+var str: String = ""
+
+设为null
+
+var str: String? = null
+
+强制设为null
+
+var str: String = null!!
+
+Kotlin是空安全的，但是第三种是例外情况，如果给一个变量赋值为null!!，那么就等于声明这个变量不是空安全的，就算这样使用
+
+var str:String = null!!
+str.length
+
+编译器也不会报错

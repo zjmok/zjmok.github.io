@@ -1,0 +1,42 @@
+内容提供者
+
+	## 内容提供者-使用步骤
+
+	* 1.定义一个类继承ContentProvider
+	* 2.清单文件注册内容提供者
+	* 3.定义UriMatch匹配器，静态代码块预设匹配规则
+	* 4.在CRUD方法里面匹配uri
+	* 5.如果匹配成功，执行数据库操作
+
+
+
+
+	--------------
+	清单文件注册
+
+        <!-- 
+		authorities
+		翻译过来叫做： 作者名或者主机名 
+			http://www.baidu.com
+			tel://
+			http://
+		它的作用就是用来匹配其他的应用程序口令，不是随随便便一个人过来，我都帮他干活
+		，只有验证了口令之后，如果正确，那么才执行操作。
+	 -->
+	    <provider
+	        android:name="com.itheima.contentprovider.BankDoorProvider"
+			android:exported="true"
+	        android:authorities="com.itheima.contentprovider.BANK" >
+	    </provider>
+
+	代码:
+		//ContentProvider：内容提供者提供数据
+		//ContentResolver：内容解析者解析数据
+		
+		ContentResolver resolver = getContentResolver();
+		Uri uri = Uri.parse("content://com.itheima.contentprovider.BANK");
+		ContentValues values = new ContentValues();
+		resolver.insert(uri , values );
+		
+		
+-------------

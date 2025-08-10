@@ -1,0 +1,32 @@
+Ratingbar UseGuide
+
+	isIndicator true不能点击用于显示 false用于点击评分
+
+
+Ratingbar是一个评分控件，系统给我们提供了这样一个控件，样式如下：
+
+http://www.jianshu.com/p/06c321b7f19b
+
+------------
+
+<RatingBar
+	style="?android:attr/ratingBarStyleSmall"
+	android:id="@+id/item_appinfo_rb_stars"
+	android:layout_width="wrap_content"
+	android:layout_height="14dp"
+	android:layout_marginTop="2dp"
+	android:isIndicator="true"
+	android:numStars="5"
+	android:rating="4.5"/>
+	
+sdk中的style默认有三种
+可以添加自定义背景图片,使用层叠图片layer-list
+
+	android:progressDrawable="@drawable/xxx"
+
+	xxx.xml对应:
+	<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+		<item android:id="@+android:id/background" android:drawable="@android:drawable/rate_star_big_off" />
+		<item android:id="@+android:id/secondaryProgress" android:drawable="@android:drawable/rate_star_big_half" />
+		<item android:id="@+android:id/progress" android:drawable="@android:drawable/rate_star_big_on" />
+	</layer-list>

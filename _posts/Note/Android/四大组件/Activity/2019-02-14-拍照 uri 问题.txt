@@ -1,0 +1,18 @@
+
+启动相机时设置
+
+        intent.putExtra("return-data", false);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, mPhotoUri);
+		
+不从onActivityResult的data返回数据,而是通过设置的uri对应的文件path
+
+
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            // 授予目录临时共享权限
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        }
+		
+
+某些时候压缩时传入的 Uri uri = Uri.fromFile(file);//不需要FileProvider.getUriForFile
+原因,暂未研究
+

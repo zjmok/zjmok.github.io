@@ -1,0 +1,5 @@
+maven { url 'https://jitpack.io' }
+
+compile 'com.github.uncleleonfan:ViewPagerIndicator:1.0.0'
+
+ViewPagerIndicator使用

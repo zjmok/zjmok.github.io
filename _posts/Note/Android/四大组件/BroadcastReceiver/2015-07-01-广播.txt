@@ -1,0 +1,5 @@
+两种广播方式
+静态注册就是在AndroidManifest.xml文件中定义，注册的广播接收器必须继承BroadReceiver
+动态注册就是在程序中使用Context.registerReceiver注册。
+发送广播事件：通过Context.sendBroadcast来发送，由Intent来传递注册时用到的Action。
+接收广播：当发送的广播被接收器监听到后，会调用onReceive()方法，并将包含消息的Intent对象传回。

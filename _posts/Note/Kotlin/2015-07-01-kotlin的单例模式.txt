@@ -1,0 +1,72 @@
+写单例一般两个要求:线程安全,懒加载
+java中一般有5中常用写法:
+
+1懒人写法:
+	java:
+		私有构造,静态成员变量并实例化,提供get方法
+	kotlin:
+		object ClassName{}
+	
+2基本懒加载:(初始化时 线程不安全)
+	java:
+		私有构造,静态成员变量,但在getInstance()中才实例化
+	kotlin:
+		class LazyNotThreadSafe{
+			companion object{
+				val instance by lazy(LazyThreadSafetyMode.NONE){
+					LazyNotThreadSafe()
+				}
+				//上面方法等价于下面的java直译方法
+				private var instance2:LazyNotThreadSafe? = null
+				fun get():LazyNotThreadSafe{
+					if(instance2 == null){
+						instance2 = LazyNotThreadSafe()
+					}
+					return instance2!!
+				}
+			}
+		}
+	
+3同步锁
+	java:
+		在第二种方法的getInstance()方法加 synchronized 关键字
+	kotlin:
+		在第二种方法的get()加注解@Synchronized
+		即
+		private var instance2:LazyNotThreadSafe? = null
+		@Synchronized
+		fun get():LazyNotThreadSafe{
+			if(instance2 == null){
+				instance2 = LazyNotThreadSafe()
+			}
+			return instance2!!
+		}
+		
+4DoubleCheck
+	java:
+		在成员变量加java 1.5后的volatile关键字
+		
+	kotlin:
+		//只是换个模式LazyThreadSafetyMode.SYNCHRONIZED
+		class LazyNotThreadSafe{
+			companion object{
+				val instance by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED){
+					LazyNotThreadSafe()
+				}
+				//当然也还可以直译
+			}
+		}
+		
+5静态内部类
+	java:
+		私有构造,静态内部类成员变量实例化外部类的对象,提供getInstance()
+	kotlin:
+		只有直译方法:
+		class LazyThreadSafeStaticInnerObject private constructor(){
+			companion object{
+				fun getInstance() = Holder.instance
+			}
+			private object Holder{
+				val instance = LazyThreadSafeStaticInnerObject()
+			}
+		}

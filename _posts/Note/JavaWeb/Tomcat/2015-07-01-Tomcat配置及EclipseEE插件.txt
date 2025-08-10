@@ -1,0 +1,25 @@
+启动Tomcat服务
+
+方法两种：
+
+1，方法一：在CMD命令下输入命令：startup，出现如下对话框，表明服务启动成功。
+
+2，方法二：右键点击桌面上的“我的电脑”->“管理”->“服务和应用程序”->“服务”，找到“Apache     Tomcat”服务，右键点击该服务，选择“属性”，将“启动类型”由“手动”改成“自动”。
+tomcat如何配置环境变量
+
+六、测试Tomcat
+
+打开浏览器，在地址栏中输入http://localhost:8080回车，如果看到Tomcat自带的一个JSP页面，说明你的JDK和Tomcat已搭建成功。
+
+
+
+
+1.解压Tomcat 插件到eclipse目录下的plugins目录中。
+
+2.如果你的jdk是jkd1.6.0_21及之后的版本 可能在启动Eclipse时遇到Out of Memory的问题，解决方法是在eclipse.ini文件中添加一行：-XX:MaxPermSize=256m
+
+3. 启动Eclipse之后，开始着手配置Tomcat。Windows->preferences,找到Tomcat选项：选择Tomcat版本(没7.0，选6.x即可)，然后配置Tomcat安装目录
+
+4. 配置Server选项，找到Server->Server runtime environment,新建一个Server:
+
+最后OK，就完成了Tomcat和Eclipse的设置。正常的话，可以看到界面多了三个Tomcat按钮。没有看到的话，选择菜单Windows ->Custmize Perspective，展开other选项，在Tomcat上打勾。

@@ -1,0 +1,5 @@
+应用接收流量
+/proc/uid_stat/xxx/tcp_rcv
+
+应用发送流量
+/proc/uid_stat/xxx/tcp_snd

@@ -1,0 +1,21 @@
+show databases;
+
+drop database shujuku_name;/*删除*/
+create database shujuku_name;/*创建数据库*/
+use shujuku_name;
+
+show tables;
+drop table biao_name;
+create table biao_name{
+ziduan0 int,
+ziduan1 varchat(20),
+ziduan2 int(5)
+};
+desc biao_name;/*查看表结构*/
+alter table biao_name add colum ziduan_name varchat(10);/*添加字段*/
+/*添加删除修改字段时colum可以省略 如下*/
+alter table biao_name drop colum ziduan_name;/*删除字段*/
+/*adds是添加 drop是删除 modify是修改类型*/
+alter table biao_name change zifuan_name ziduan_new_name varchar(20);
+alter table biao_name change zifuan_new_name ziduan_name varchar(10);
+alter table biao_name rename to table_name;/*修改表名*/

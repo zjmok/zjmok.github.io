@@ -1,0 +1,38 @@
+
+获取到xml设置的对应值	
+方法1:
+	
+	在重写的ItemView方法中
+
+		//obtainStyledAttributes(AttributeSet set, int[] attrs)
+		//读取自定义属性,用完后recycle()释放
+		TypedArray ta=context.obtainStyledAttributes(attrs, R.styleable.ItemView);
+		
+		//R.styleable.ItemView_item_title
+		//R文件下自动生成attrs的declare-styleable标签下的属性列表对应的类和常量
+		//String getString (int index)
+		//getString,getBoolean等,可以获取到xml设置的对应值
+		
+		
+-----------------------------
+获取到xml设置的对应值
+方法2:
+
+	在重写的ItemView方法中
+	
+		/**
+		 * @param index R文件生成的列表的对应index
+		 * @param defaultValue 默认值
+		 */
+		boolean getAttributeBooleanValue (int index, boolean defaultValue)
+		
+		/**
+		 * @param namespace 自定义控件的命名空间 如:http://schemas.android.com/apk/res/cn.mozhx.mobilesafe
+		 * @param attribute 自定义控件的属性
+		 * @param defaultValue 默认值
+		 */
+		boolean getAttributeBooleanValue (String namespace, String attribute, boolean defaultValue)
+	
+-----------------------
+
+在自定义控件的类中直接findViewById获取view设置值...

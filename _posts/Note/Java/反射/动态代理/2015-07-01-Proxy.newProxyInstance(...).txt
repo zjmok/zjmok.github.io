@@ -1,0 +1,4 @@
+static Object newProxyInstance(ClassLoader loader, Class<?>[] interfaces, InvocationHandler h) 
+          返回一个指定接口的代理类实例，该接口可以将方法调用指派到指定的调用处理程序。 
+
+返回接口的代理类实例,所以只能用接口接收,不能用接口的实现类接收

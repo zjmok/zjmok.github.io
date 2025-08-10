@@ -1,0 +1,2 @@
+集合中 contains remove 依赖equals方法
+所以在自定义对象使用时需要重写 equals()

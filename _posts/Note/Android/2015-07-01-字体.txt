@@ -1,0 +1,6 @@
+IconTextView
+一个封装好的使用字体库fontawesome-web
+的TextView
+
+Typeface typeface = Typeface.createFromAsset(getAssets(), "fonnts/fangsongti.ttf");
+textView.setTypeface(typeface);

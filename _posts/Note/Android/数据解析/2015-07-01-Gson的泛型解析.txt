@@ -1,0 +1,11 @@
+/**
+ * 泛型解析
+ */
+private T paseJson(String json) {
+	Gson gson = new Gson();
+	ParameterizedType type = (ParameterizedType) getClass().getGenericSuperclass();
+	Type[] actualTypeArguments = type.getActualTypeArguments();
+	Type actualTypeArgument = actualTypeArguments[0];
+	T t = gson.fromJson(json, actualTypeArgument);
+	return t;
+}

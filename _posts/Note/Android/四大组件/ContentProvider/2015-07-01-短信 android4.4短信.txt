@@ -1,0 +1,19 @@
+
+4.4以上有两种短信广播，一种必须成为系统短信应用才能收到 另一种只要声明权限即可
+
+android.provider.Telephony.SMS_DELIVER 默认短信应用才可以收到、阻断
+
+android.provider.Telephony.SMS_RECEIVED 只要注册声明权限即可收到、阻断
+
+
+
+
+想要阻断短信通知必须成为系统默认短信应用，并且阻断两种广播才能做到
+
+具体操作搜索android4.4默认短信，一大把
+可以监听数据库变化，但是短信通知还是会出来，没有默认短信权限的话删不掉拦截的短信
+
+作者：SamuraiSong
+链接：https://www.zhihu.com/question/28521646/answer/80593002
+来源：知乎
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。

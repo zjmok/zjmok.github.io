@@ -1,0 +1,8 @@
+${表达式}
+
+功能1:
+获取Servlet四个对象的数据(applicationScope,SessionScope,requestScope,pageScope)(不用域调用时默认有值且相对小的域)
+${requestScope.属性名}
+${属性名}
+
+...

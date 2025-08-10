@@ -1,0 +1,22 @@
+>>>d={'a':1,'b':2,'c':3}
+
+>>> for v in d:
+...     print(v)
+...
+a
+b
+c
+
+>>> for v in d.values():
+...     print(v)
+...
+1
+2
+3
+
+>>> for v in d.items():
+...     print(v)
+...
+('a', 1)
+('b', 2)
+('c', 3)

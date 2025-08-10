@@ -1,0 +1,5 @@
+1.监听SD卡卸载  MEDIA_UNMOUNTED 需要data为 file
+2.监听开机广播  BOOT_COMPLETED  需要权限RECEIVE_BOOT_COMPLETED
+3.监听电话      NEW_OUTGOING_CALL 需要权限 PROCESS_OUTGOING_CALLS
+4.应用卸载和安装 PACKAGE_ADDED   PACKAGE_REMOVED  需要data  package
+5.短信监听  android.provider.Telephony.SMS_RECEIVED  需要权限  RECEIVE_SMS

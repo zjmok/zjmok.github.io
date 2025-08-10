@@ -1,0 +1,2 @@
+View view = mLayoutManager.findViewByPosition(index);
+可以根据list的index拿到可见的view,不可见的index时会返回view==null

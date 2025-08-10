@@ -1,0 +1,15 @@
+自然排序
+TreeSet类的add()方法中会把存入的对象提升为Comparable类型
+调用对象的compareTo方法和集合中的对象比较
+根据compareTo()方法返回的结果进行存储
+(所以如果是自定义类必须要实现Comparable接口重写compartTo()方法)
+
+比较器比较
+创建TreeSet的时候可以制定一个Comparator
+如果传入了Comparator的子类对象,那么TreeSet就会按照比较器中的顺序排序
+add()方法内部会自动调用Comparator接口中Compare()方法排序
+调用的对象是compare方法的第一个参数,集合中的对象是compare方法的第二个参数
+
+区别
+TreeSet构造函数什么都不传,默认按照类中Comparable的顺序(没有就报错ClassCastException)
+TreeSet如果传入Comparator,就优先按照Comparator

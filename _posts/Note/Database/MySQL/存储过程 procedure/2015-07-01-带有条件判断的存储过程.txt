@@ -1,0 +1,26 @@
+delimiter $
+create procedure pro_testIf(IN num INT, OUT str VARCHAR(20))
+BEGIN
+	IF num=1 THEN
+		SET str='星期一';
+	ELSEIF num=2 THEN
+		SET str='星期二';
+	ELSEIF num=3 THEN
+		SET str='星期三';
+	ELSEIF num=4 THEN
+		SET str='星期四';
+	ELSEIF num=5 THEN
+		SET str='星期五';
+	ELSEIF num=6 THEN
+		SET str='星期六';
+	ELSEIF num=7 THEN
+		SET str='星期日';
+	ELSE
+		SET str='输入错误';
+	END IF;
+END $
+
+-- ---------------
+
+CALL pro_testIf(1,@str);
+select @str;

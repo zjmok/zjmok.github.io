@@ -1,0 +1,6 @@
+响应头不能直接传输中文,需要转为拉丁文传输
+
+//先根据码表编码成机器码,二进制太长然后转为十六进制
+URLEncoder.encode(str, "utf-8");
+//再将十六进制解码成中文
+URLDecoder.decode(encode, "utf-8");

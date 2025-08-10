@@ -1,0 +1,17 @@
+delimiter $
+create procedure pro_testWhile(IN sum INT, OUT result INT)
+BEGIN
+	-- 定义一个局部变量
+	declare i int default 1;
+	declare vsum int default 0;
+	while i<=sum do
+		set vsum=vsum+i;
+		set i=i+1;
+	end while;
+	set result=vsum;
+END $
+
+-- ---------------
+
+CALL pro_testWhile(100,@result);
+select @result;

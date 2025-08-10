@@ -1,0 +1,13 @@
+
+
+1.页面转向新的页面:
+<input type="button" onclick="window.location.href('连接')">
+2.需要打开一个新的页面进行转向:
+<input type="button" onclick="window.open('连接')">
+
+由于浏览器内核不一样
+
+IE中使用:
+<input type="button" name="test" value="test" onClick="location.href='a.html'"/>
+firefox中使用:
+<a href="b.html"><input type="button" name="test" value="test"/></a>

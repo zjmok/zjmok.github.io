@@ -1,0 +1,5 @@
+OutputStream os=new FileOutputStream("xx.txt",true);  //带true的构造是追加写入
+os.write('M');
+os.write('Z');
+os.write('X');
+os.close();

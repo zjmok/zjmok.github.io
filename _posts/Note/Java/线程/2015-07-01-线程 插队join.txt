@@ -1,0 +1,6 @@
+ void join() 
+          等待该线程终止。 
+ void join(long millis) 
+          等待该线程终止的时间最长为 millis 毫秒。 
+ void join(long millis, int nanos) 
+          等待该线程终止的时间最长为 millis 毫秒 + nanos 纳秒。 

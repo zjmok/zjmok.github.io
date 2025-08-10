@@ -1,0 +1,6 @@
+进程的优先级
+	- Foreground process 前台进程  进程有一个前台activity  可以交互
+	- Visible process可见进程  进程中有一个可见的activity，不能交互
+	- Service process 服务进程 包好service
+	- Background process 后台进程 包含后台不可见activity
+	-  Empty process空进程  没有activity

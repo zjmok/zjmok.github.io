@@ -1,0 +1,4 @@
+cmd命令下安装apk：
+1.
+转到apk目录下
+adb install *.apk

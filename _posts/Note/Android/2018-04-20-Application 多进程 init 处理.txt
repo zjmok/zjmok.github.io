@@ -1,0 +1,7 @@
+默认每个进程走一遍Application,可以指定Application类
+
+
+判断是不是主进程([pkgName])
+不是的话([pkgName:process])不初始化
+
+https://blog.csdn.net/aaa466412913/article/details/50949630

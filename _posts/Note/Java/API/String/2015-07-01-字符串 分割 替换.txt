@@ -1,0 +1,10 @@
+将字符串分割成字符串数组
+str.split("以这个字符串为分割");
+String[] s="aabbcc".split("bb");
+System.out.println(Arrays.toString(s));
+输出aacc
+
+
+str.replace("要替换的字符串","替换成这个字符串");
+"aabbcc".replace("bb","dd");
+输出aaddcc

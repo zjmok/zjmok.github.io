@@ -1,0 +1,7 @@
+kotlin对比java 两个关键字变成注解了
+
+synchronized --> @Synchronized
+
+volatile --> @Volatile
+
+

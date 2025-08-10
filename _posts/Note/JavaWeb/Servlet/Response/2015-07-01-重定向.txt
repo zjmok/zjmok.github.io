@@ -1,0 +1,7 @@
+//原理,添加状态码,设置响应头
+response.setStatus(302);
+response.setHeader("Location","http://www.google.com");
+
+----------------------------
+//对上面两行代码的封装
+response.senRedirect("http://www.google.com");

@@ -1,0 +1,15 @@
+Volley是在2013年Google I/O大会上推出了一个新的网络通信框架，内部封装了HttpURLConnection和HttpClient, 解决了网络数据解析和线程切换的问题。
+
+---------------------
+
+volley开源 所以可以对此进行自定义
+
+-------------------
+
+
+Request request = new Request(...
+
+mRequestQueue = Volley.newRequestQueue(context);
+
+mRequestQueue.add(request);
+

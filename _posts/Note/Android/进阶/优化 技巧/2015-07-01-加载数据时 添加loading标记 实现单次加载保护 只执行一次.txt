@@ -1,0 +1,10 @@
+private boolean isLoading = false;
+执行加载的逻辑{
+	if(isLoading){
+		return;
+	}
+	isLoading = true;
+}
+成功加载回调中{
+	isLoadin = false;
+}

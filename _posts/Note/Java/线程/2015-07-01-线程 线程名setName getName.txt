@@ -1,0 +1,19 @@
+this.getName(); //获取当前线程名
+
+在构造里传入"name"或this.setName("name");
+可设置线程名
+
+MyThread mt=new MyThread("name");
+或 mt.setName("name");
+
+Thread.correntThread() //获取当前线程的对象 对象 对象
+由此方法可以在匿名接口获取和设置线程名,获取设置主线程名
+
+new Runnable(){
+	run(){
+		//因为是接口对象,不能直接使用Thread的方法getName()
+		//但可以利用Thread.correntThread()获取线程对象,
+		//Thread.correntThread().getName();
+		//Thread.correntThread().setName();
+	}
+};

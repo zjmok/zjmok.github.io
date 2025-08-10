@@ -1,0 +1,31 @@
+http://www.jianshu.com/p/ce402178b04a
+
+换肤的根本
+
+无论是通过更改主题的方式去更改主题，还是给每个控件设置新的资源而言，其根本都是通过将每个控件资源文件换下，
+
+理解这一点，对换肤的流程大致就有了初步的了解了，我们只需要在换肤的命令后，我们将每个需要换肤的控件重新设置新的资源文件即可，对，就是这么简单。
+那么摆在前面的问题就被分解了下面2个问题
+
+1,如何区别哪些控件需要在换肤的命令做做出响应的更改，哪些不是？
+2,如何找到我们真正需要的资源文件？
+
+-------------------------------
+
+知乎和简书的夜间模式实现套路
+http://www.jianshu.com/p/3b55e84742e5
+
+实现思路和代码解说：
+
+DayNightHelper 类是用于保存夜间模式设置到 SharePreferences 的工具类，在 initData 函数中被初始化，其他的 View 和 Layout 都是界面布局，在 initView 函数中被初始化；
+在 Activity 的 onCreate 函数调用 setContentView 之前，需要先去 setTheme，因为当 View 创建成功后 ，再去 setTheme 是无法对 View 的 UI 效果产生影响的；
+onCheckedChanged 用于监听日间模式和夜间模式的切换操作；
+refreshUI 是本实现的关键函数，起着切换效果的作用，通过 TypedValue 和 Theme.resolveAttribute 在代码中获取 Theme 中设置的颜色，来重新设置控件的背景色或者字体颜色等等。需要特别注意的是 RecyclerView 和 ListView 这种比较特殊的控件处理方式，代码注释中已经说明，大家可以看代码中注释；
+refreshStatusBar 用于刷新顶部通知栏位置的颜色；
+showAnimation 和 getCacheBitmapFromView 同样是本实现的关键函数，getCacheBitmapFromView 用于将 View 中的内容转换成 Bitmap（类似于截屏操作那样），showAnimation 是用于展示一个渐隐效果的属性动画，这个属性作用在哪个对象上呢？是一个 View ，一个在代码中动态填充到 DecorView 中的 View（不知道 DecorView 的童鞋得回去看看 Android Window 相关的知识）。知乎之所以在夜间模式切换过程中会有渐隐效果，是因为在切换前进行了截屏，同时将截屏拿到的 Bitmap 设置到动态填充到 DecorView 中的 View 上，并对这个 View 执行一个渐隐的属性动画，所以使得我们能够看到一个漂亮的渐隐过渡的动画效果。而且在动画结束的时候再把这个动态添加的 View 给 remove 了，避免了 Bitmap 造成内存飙升问题。对待知乎客户端开发者这种处理方式，我必须双手点赞外加一个大写的服。
+到这里，实现套路基本说完了，简书和知乎的实现套路如上所述，区别就是知乎多了个截屏和渐隐过渡动画效果而已
+
+作者：D_clock爱吃葱花
+链接：http://www.jianshu.com/p/3b55e84742e5
+來源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。

@@ -1,0 +1,4 @@
+Surcor surcor=..
+while(surcor.moveToNext()){
+	curcor.get...
+}

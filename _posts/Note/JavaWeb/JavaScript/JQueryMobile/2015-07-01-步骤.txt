@@ -1,0 +1,12 @@
+引入	css
+引入	jq
+引入	核心js(jqmobile.js)
+meta
+<body>
+<div data-role="page">
+<div data-role="header" data-position="fixed" date-theme="b"></div>
+<div...main...></div>
+<div...footer...></div>
+</div>
+</body>
+------

@@ -1,0 +1,18 @@
+ mysql启动问题access denied for user 'root'@'localhost'(using password:YES)
+
+安装Mysql后利用SQLyogEnt启动是提示“access denied for user 'root'@'localhost'(using password:YES)”，开始我还为是因为是密码问题，后来上网查了查才知道root权限问题，我想可能是因为win7系统我在安装时没用以管理员身份进行安装，所以root角色没有权限，从网上找了一个解决方案解决了，在这里记录一下：
+
+1. 管理员登陆系统,停止mysql服务或者结束mysqld-nt进程；
+2. 进入命令行,来到mysql的安装目录.假设安装目录为 d:\mysql\ , CMD进入命令行；
+3. 运行 D:\Program Files\MySQL\MySQL Server 5.5\bin\mysqld-nt --skip-grant-tables启动mysql,关闭权限的检查；
+4. 运行 D:\Program Files\MySQL\MySQL Server 5.5\bin\mysqladmin -u root flush-privileges password "newpassword" 重设root密码；
+5. 重新启动mysql服务；
+
+解决办法:
+
+跳过root用户检索
+mysqld -nt --skip-grant-tables
+重设密码 用户root密码admin
+mysqladmin -u root flush-privileges password "admin"
+
+出错原因:Password错误

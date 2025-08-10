@@ -1,0 +1,3 @@
+API11（Android3.0）的时候开始支持，开启硬件加速能够让我们的图形绘制更加流畅，API14的时候，默认所有的Activity都是开启硬件加速的
+
+http://blog.csdn.net/z82367825/article/details/53214385

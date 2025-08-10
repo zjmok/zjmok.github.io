@@ -1,0 +1,22 @@
+字体标签
+
+排版标签
+
+图片标签
+
+列表标签
+
+超链接标签	打开方式属性target: _self _blank
+
+表格标签	border边框 bgcolor背景颜色 background背景图片
+		单元格行列合并 rowspan colspan
+
+表单标签	form action method
+		input输入
+		select选择菜单
+		textarea文本域 cols rows
+
+框架标签	frameset框架集
+			frame框架体
+
+

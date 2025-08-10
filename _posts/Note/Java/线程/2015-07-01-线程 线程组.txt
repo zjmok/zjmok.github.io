@@ -1,0 +1,9 @@
+ThreadGroup tg=new ThreadGroup("新线程组名");
+Thread t=new Thread(tg,new Runnable(){},"线程名");;
+Thread t2=new Thread(tg,new Runnable(){},"线程名2");;
+
+System.out.println(t.getThreadGroup().getName());
+
+
+线程组作用,可以对整个组进行操作,例如
+tg.setDaemon(true); //对整个线程组的线程设置守护线程

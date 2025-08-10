@@ -1,0 +1,9 @@
+发送策略:启动时 or 按间隔
+
+事件类型:
+	...
+	自定义事件:
+		简单事件:友盟后台添加id,代码使用相同id,MobclickAgent.onEvent(Context context,String id)
+		复杂事件,添加map:
+	...
+

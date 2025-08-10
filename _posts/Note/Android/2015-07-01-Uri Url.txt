@@ -1,0 +1,44 @@
+通俗地说，URL和URN是URI的子集，URI属于URL更高层次的抽象，一种字符串文本标准。
+
+- 1. URI
+
+ - Web上可用的每种资源如HTML文档、图像、视频片段、程序等都是一个来URI来定位的；
+
+- 2. URL
+
+ - URL是Internet上用来描述信息资源的字符串，主要用在各种WWW客户程序和服务器程序上，特别是著名的Mosaic。
+采用URL可以用一种统一的格式来描述各种信息资源，包括文件、服务器的地址和目录等。
+
+---
+
+Uri 统一资源标识符(//可省略)
+tel://110 tel:110
+mailto:abc@163.com
+
+Url 统一资源定位符(//必须写)
+http://www.google.com
+
+---
+
+Uri是Android开发的，扩展了Java中URI的一些功能来特定的适用于Android开发，所以大家在开发时，只使用Android 提供的Uri即可；
+
+Uri结构
+（1）、基本形式：
+`[scheme:]scheme-specific-part[#fragment]`
+（2）、进一步划分：
+`[scheme:][//authority][path][?query][#fragment]`
+（3）、终极划分：
+`[scheme:][//host:port][path][?query][#fragment]`
+
+
+`http://www.java2s.com:8080/yourpath/fileName.htm?stove=10&path=32&id=4#harvic`
+
+getScheme() :获取Uri中的scheme字符串部分，在这里即，http
+getSchemeSpecificPart():获取Uri中的scheme-specific-part:部分，这里是：//www.java2s.com:8080/yourpath/fileName.htm?
+getFragment():获取Uri中的Fragment部分，即harvic
+getAuthority():获取Uri中Authority部分，即www.java2s.com:8080
+getPath():获取Uri中path部分，即/yourpath/fileName.htm
+getQuery():获取Uri中的query部分，即stove=10&path=32&id=4
+getHost():获取Authority中的Host字符串，即www.java2s.com
+getPost():获取Authority中的Port字符串，即8080
+

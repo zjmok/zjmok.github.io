@@ -1,0 +1,47 @@
+单例设计模式,保证工厂对象唯一
+内存缓存数组,保证产品对象唯一
+
+--------------
+
+public class FragmentFactory {
+
+    private static Map<Integer,Fragment> sFragmentCache = new HashMap<>();
+
+    private FragmentFactory() {
+    }
+
+    private static FragmentFactory sFragmentFactory;
+
+    public FragmentFactory getInstance(){
+        if(sFragmentFactory == null){
+            sFragmentFactory = new FragmentFactory();
+        }
+        return sFragmentFactory;
+    }
+
+    public static Fragment createFragment(int position){
+        //优先读取历史保存的fragment
+        if(sFragmentCache.containsKey(position)){
+            return sFragmentCache.get(position);
+        }
+
+        Fragment fragment;
+        switch (position){
+            case 0:
+                fragment = new HomeFragment();
+                break;
+            case 1:
+                fragment = new AppFragment();
+                break;
+            case 2:
+                fragment = new GameFragment();
+                break;
+            default:
+                fragment = new OtherFragment();
+                break;
+        }
+        sFragmentCache.put(position,fragment);
+        return fragment;
+    }
+
+}

@@ -1,0 +1,15 @@
+ReentrantLock r=new ReentrantLocj();
+Condition c1=r.newCondition();
+Condition c2=r.newCondition();
+Condition c3=r.newCondition();
+...
+r.lock()
+if(flag!=1){
+	c1.await();
+}
+...
+c2.signal();
+r.unlok()
+...
+可以替代Synchronized
+

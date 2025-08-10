@@ -1,0 +1,13 @@
+alter table 表 add 字段 类型;
+
+alter table 表 drop 字段;
+
+alter table 表 modify 字段 新类型;
+
+alter table 表 change 字段 新字段名 新类型;
+
+alter table 表 rename[to] 新表名;
+
+--------
+查看表结构:
+desc 表;

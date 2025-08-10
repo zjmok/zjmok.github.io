@@ -1,0 +1,55 @@
+## 访问
+
+gradle 常量 会被编译成java常量,BuildConfig.java
+- build.gradle 是 groove 语法,可直接读取常量
+- java 代码中也可以直接读取
+- xml中不可直接读取
+
+manifest 的 meta
+- 在 java代码 中可以通过api读取,ApplicationInfo,ActivityInfo,ServiceInfo
+
+## 赋值
+
+gradle常量
+- 可以在 build 赋值,buildConfigField
+
+manifest 的 meta
+- 可以在 build 赋值,manifestPlaceholders
+
+resValue
+- 可以在 build 赋值,利用 resValue 自定义各种资源,string,bool,color,dimen,integer
+
+===
+
+---
+
+### manifest meta 值 在 java 中使用
+
+- application标签下定义meta -> ApplicationInfo
+```
+try {
+	ApplicationInfo appInfo = getPackageManager().getApplicationInfo(getPackageName(),
+			PackageManager.GET_META_DATA);
+	String value = appInfo.metaData.getString("UMENG_APPKEY");
+} catch (PackageManager.NameNotFoundException e) {
+	e.printStackTrace();
+}
+```
+
+- activity标签下定义meta -> ActivityInfo
+```
+ComponentName cn = this.getComponentName()
+ActivityInfo info=context.getPackageManager().getReceiverInfo(cn, PackageManager.GET_META_DATA);
+```
+
+- service标签下定义meta -> ServiceInfo
+```
+ComponentName cn=new ComponentName(this, MetaDataService.class);
+ServiceInfo info=this.getPackageManager().getServiceInfo(cn, PackageManager.GET_META_DATA);
+```
+
+- receiver标签下定义meta -> ActivityInfo
+```
+ComponentName cn = new ComponentName(this, MetaDataReceiver.class);
+ActivityInfo info=context.getPackageManager().getReceiverInfo(cn, PackageManager.GET_META_DATA)
+```

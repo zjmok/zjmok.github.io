@@ -1,0 +1,10 @@
+* /data/data/应用包名/files	存储一般文件，清除数据会有提示
+	* 获得目录方式	getFilesDir()
+* /data/data/应用包名/cache	存储缓存文件，清除缓存，直接删除
+	* 获得目录方式	getCacheDir()
+	
+(android旧版本有外置sdcard需要挂载)
+sdcard当前状态获得 Environment.getExternalStorageState()
+
+		if(Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED){
+		

@@ -1,0 +1,3 @@
+adb shell
+cd xx
+cat xx.txt

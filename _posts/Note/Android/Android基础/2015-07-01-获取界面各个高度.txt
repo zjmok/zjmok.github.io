@@ -1,0 +1,39 @@
+	/**
+     * 获取状态栏高度
+     *
+     * @return
+     */
+    private int getStatusBarHeight() {
+        int statusBarHeight = -1;
+        //获取status_bar_height资源的ID
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            //根据资源ID获取响应的尺寸值
+            statusBarHeight = getResources().getDimensionPixelSize(resourceId);
+        }
+        return statusBarHeight;
+    }
+	
+	
+	
+	//    /**
+	//     * 获取虚拟功能键高度
+	//     */
+	//    public int getVirtualBarHeight() {
+	//        int vh = 0;
+	//        WindowManager windowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+	//        Display display = windowManager.getDefaultDisplay();
+	//        DisplayMetrics dm = new DisplayMetrics();
+	//        try {
+	//            @SuppressWarnings("rawtypes")
+	//            Class c = Class.forName("android.view.Display");
+	//            @SuppressWarnings("unchecked")
+	//            Method method = c.getMethod("getRealMetrics", DisplayMetrics.class);
+	//            method.invoke(display, dm);
+	//            vh = dm.heightPixels - windowManager.getDefaultDisplay().getHeight();
+	//        } catch (Exception e) {
+	//            e.printStackTrace();
+	//        }
+	//        return vh;
+	//    }
+

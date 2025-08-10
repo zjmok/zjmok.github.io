@@ -1,0 +1,18 @@
+public static <T> List<T> deepCopy(List<T> src) throws IOException, ClassNotFoundException {  
+    ByteArrayOutputStream byteOut = new ByteArrayOutputStream();  
+    ObjectOutputStream out = new ObjectOutputStream(byteOut);  
+    out.writeObject(src);  
+  
+    ByteArrayInputStream byteIn = new ByteArrayInputStream(byteOut.toByteArray());  
+    ObjectInputStream in = new ObjectInputStream(byteIn);  
+    @SuppressWarnings("unchecked")  
+    List<T> dest = (List<T>) in.readObject();  
+    return dest;  
+}  
+
+浅拷贝与深拷贝:
+	两者都对元素地址引用copy;
+	但前者指向的对象还是一样,后者对象也copy了
+
+注意:
+	Bean对象需要序列化(Serializable,貌似用Parcelable不行)

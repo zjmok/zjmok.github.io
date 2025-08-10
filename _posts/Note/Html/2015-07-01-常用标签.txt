@@ -1,0 +1,69 @@
+常用HTML标签元素结合及简介
+<html></html> 创建一个HTML文档
+<head></head> 设置文档标题和其它在网页中不显示的信息
+<title></title> 设置文档的标题        
+<h1></h1> 最大的标题
+<pre></pre> 预先格式化文本          
+<u></u> 下划线
+<b></b> 黑体字    
+<i></i> 斜体字    
+<tt></tt> 打字机风格的字体
+<cite></cite> 引用,通常是斜体        
+<em></em> 强调文本(通常是斜体加黑体)
+<strong></strong> 加重文本(通常是斜体加黑体)
+<font size="" color=""></font> 设置字体大小从1到7，颜色使用名字或RGB的十六进制值
+<BASEFONT></BASEFONT> 基准字体标记
+<big></big> 字体加大
+<SMALL></SMALL> 字体缩小        
+<STRIKE></STRIKE> 加删除线
+<CODE></CODE> 程式码          
+<KBD></KBD> 键盘字
+<SAMP></SAMP> 范例    
+<VAR></VAR> 变量
+<BLOCKQUOTE></BLOCKQUOTE> 向右缩排
+<DFN></DFN> 述语定义
+<ADDRESS></ADDRESS> 地址标记
+<sup></SUP> 上标字    
+<SUB></SUB> 下标字
+<xmp>...</xmp>固定寬度字体(在文件中空白、換行、定位功能有效)
+<plaintext>...</plaintext>固定寬度字體(不執行標記符號)
+<listing>...</listing> 固定寬度小字體  
+<font color=00ff00>...</font>字體顏色
+<font size=1>...</font>最小字體  
+<font style ='font-size:100 px'>...</font>無限增大 
+ 
+格式标志标签
+<p></p> 创建一个段落    
+<p align=""> 将段落按左、中、右对齐 　
+<br> 换行 插入换行符  
+<blockquote></blockquote> 从两边缩进文本
+<dl></dl> 定义列表
+<dt> 放在每个定义术语词前
+<dd> 放在每个定义之前
+<ol></ol> 创建一个标有数字的列表  
+<ul></ul> 创建一个标有圆点的列表
+<li> 放在每个列表项之前,若在<ol></ol>之间则每个列表项加上一个数字,
+  若在<ul></ul>之间则每个列表项加上一个圆点 　 　
+<div align=""></div> 用来排版大块HTML段落,也用于格式化表
+<MENU> 选项清单  
+<DIR> 目录清单  
+<nobr></nobr> 强行不换行
+<hr size='9' width='80%' color='ff0000'>水平線(設定寬度)  
+<center></center> 水平居中  
+链接标志表格标志
+<a href="URL"></a> 创建超文本链接  
+<a href="mailtEMAIL">
+</a> 创建自动发送电子邮件的链接  
+<a name="name"></a> 创建位于文档内部的书签
+<a href="#name"></a> 创建指向位于文档内部书签的链接
+<BASE> 文档中不能被该站点辨识的其它所有链接源的URL
+<LINK> 定义一个链接和源之间的相互关系 
+链接标记注解：
+◆target="..."决定链接源在什么地方显示(用户自定义的名字，_blank,_parent,_self,_top
+◆rel="..."发送链接的类型  
+◆rev="..."保存链接的类型
+◆accesskey="..."指定该元素的热键
+◆shape="..."允许我们使用已定义的形状定义客户端的图形镜像(default，rect，circle，poly
+◆coord="..."使用像素或者长度百分比来定义形状的尺寸
+◆tabindex="..."使用定义过的tabindex元素设置在各个元素之间的焦点获取顺序(使用tab键使元素获得焦点)
+大部分标签可以运用时候通过CSS控制改变样式达到我们想要的布局效果。

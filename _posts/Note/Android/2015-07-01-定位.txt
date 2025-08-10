@@ -1,0 +1,59 @@
+定位:是侵犯个人隐私的
+1.请求定位管理器
+2.设置定位监听(可在服务销毁时取消定位,即移除监听,定位会消耗性能
+
+----------------
+
+LocationManager locMgr=(LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+MyListener listener=new MyListener();
+
+locMgr.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, listener);//listener是LocationListener的实现类,
+
+locMgr.removeUpdates(listener);
+
+
+
+private class MyListener implements LocationListener{
+
+	//定位回调：经纬度
+	@Override
+	public void onLocationChanged(Location location) {
+		//获取定位经纬度
+		double lng = location.getLongitude();//精度
+		double lat = location.getLatitude();//维度
+		
+		System.out.println("lnt="+lng+",lat="+lat);
+		Toast.makeText(MainActivity.this, "定位成功=lng="+lng+",lat="+lat, Toast.LENGTH_LONG).show();
+		try {
+			InputStream is = getAssets().open("axisoffset.dat");
+			//火星坐标系-> 真实坐标
+			ModifyOffset offset = ModifyOffset.getInstance(is);
+			PointDouble pt = new PointDouble(lng, lat);
+			PointDouble result = offset.s2c(pt);
+			
+			System.out.println("result=lng"+result.x+",lat="+result.y);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	//状态发送改变回调
+	@Override
+	public void onStatusChanged(String provider, int status, Bundle extras) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void onProviderEnabled(String provider) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onProviderDisabled(String provider) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}

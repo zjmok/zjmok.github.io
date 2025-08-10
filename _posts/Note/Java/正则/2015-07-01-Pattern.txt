@@ -1,0 +1,8 @@
+String s="aa13542401537aaa17727055960aaabb13229145620bbbb";
+String regex="1[3578]\\d{9}";
+Pattern p=Pattern.compile(regex);
+Matcher m=p.matcher(s);
+while(m.find()){	//find()匹配下一个匹配的字符串
+	System.out.println(m.group());		//group()获取find到的字符串
+}
+

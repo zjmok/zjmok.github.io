@@ -1,0 +1,30 @@
+	public static void quickSort(int left, int right, int arr[]) { // arr排序的边界?
+		if (left < right) {
+			int flag = arr[left];
+			int i = left;
+			int j = right;
+			while (i < j) {
+				while (i < j && flag <= arr[j]) { // 从右边开始寻找比基数小的数，去填基数占的坑
+					j--;
+				}
+				if (i < j) {
+					arr[i++] = arr[j];
+				}
+				while (i < j && flag >= arr[i]) { // 从刚才填的坑左边开始寻找比基数大的数，去填上边留下的坑
+					i++;
+				}
+				if (i < j) {
+					arr[j--] = arr[i];
+				}
+			}
+			arr[i] = flag; // 最后将基数插入该放的位置
+			/* 打印出每一趟的序列状态 */
+			System.out.print(i + 1 + ":" + " ");
+			for (int y = 0; y < arr.length; y++) {
+				System.out.print(arr[y] + " ");
+			}
+			System.out.println();
+			quickSort(left, i - 1, arr); // 基线左边的递归
+			quickSort(i + 1, right, arr); // 基线右边的递归
+		}
+	}

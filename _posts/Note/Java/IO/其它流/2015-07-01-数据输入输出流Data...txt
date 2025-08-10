@@ -1,0 +1,20 @@
+DataOutputStream dos=new DataOutputStream(字节输出流对象);
+dos.writeInt(int类型数据x);
+dos.writeInt(int类型数据y);
+dos.writeInt(int类型数据z);
+...
+dos.close;
+
+
+---------------
+
+
+DataInputStream dis=new DataInputStream(字节输入流对象);
+int x=dis.readInt();
+int y=dis.readInt();
+int z=dis.readInt();
+
+System.out.println(x); //x
+System.out.println(y); //y
+System.out.println(z); //z
+

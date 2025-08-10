@@ -1,0 +1,21 @@
+## Fragment使用步骤
+
+* 1. 在activity布局中划分区域  （容器控件： FrameLayout）
+* 2. 定义Fragment使用的布局
+* 3. 定义Fragment 
+* 4.在activity中添加Fragment
+	
+		// 1. 获取碎片管理者
+		//FragmentManager manager = getFragmentManager();
+
+		// 2. 打开事务
+		FragmentTransaction tr = manager.beginTransaction();
+
+		// 3. 构建fragment对象
+		SaveFragment fragment = new SaveFragment();
+
+		// 4. 替换容器中的内容
+		tr.replace(R.id.container, fragment);
+
+		// 5. 提交事务
+		tr.commit();

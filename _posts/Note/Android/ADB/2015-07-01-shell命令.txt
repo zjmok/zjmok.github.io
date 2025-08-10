@@ -1,0 +1,489 @@
+android: shell 命令 
+
+
+
+
+adb是Android重要工具之一，以提供强大的特性，例如复制文件到设备或从设备复制文件。可以使用Android Shell命令行参数连接到手机本身，并发送基本的 shell 命令。
+进入命令行，使用
+
+ 
+1.adb shell 
+
+ 
+
+进入到Android Shell命令模式，注意，这时候模拟器或者手机要启用并且正确接通
+
+ 
+
+在这个Android Shell命令环境中，可以：
+
+显示网络配置，网络配置可显示多个网络连接。注意这多个网络连接：
+
+lo 是本地或 loopback 连接。
+
+tiwlan0 是 WiFi 连接，该连接由本地 DHCP 服务器提供一个地址。
+
+显示 PATH 环境变量的内容。
+
+执行 su 命令，以成为超级用户。
+
+将目录改为 /data/app，其中存放用户应用程序。
+
+列出包含某个应用程序的目录。Android 应用程序文件实际上是归档文件，可通过 WinZip 之类的软件查看。扩展名为 apk。 
+发出 ping 命令，查看 Google.com 是否可用。
+
+从相同的命令提示符环境中，还可以与 SQLite 数据库交互，启动程序以及执行许多其他系统级任务。想像一下您正在连接到电话，因此这是非常了不起的功能。
+
+ 
+
+一、adb命令
+
+ 
+1.Java代码   
+2.adb get-product // 获取设备的ID   
+3.adb get-serialno // 获取设备的序列号   
+4.adb devices // 得当前运行的模拟器/设备的实例的列表及每个实例的状态   
+5.adb bugreport // 查看bug报告 
+
+ 
+
+二、Android Shell命令
+
+ 
+
+通过adb shell命令进入shell后，执行下列命令。
+
+ 
+
+1、访问数据库：
+
+ 
+1.sqlite3  
+
+2、记录无线通讯日志：
+
+一般来说，无线通讯的日志非常多，在运行时没必要去记录，但我们还是可以通过命令，设置记录：
+
+ 
+1.logcat -b radio  
+
+3、删除应用：
+
+Android没有提供一个卸载应用的命令，需要自己手动删除：
+
+ 
+1.cd /data/app   
+2.m appName.apk   
+
+注：[appName]为应用的名称；
+
+ 
+
+三、可以在Android Shell命令下使用的一些linux命令
+
+命令：
+
+ 
+1.ls // 查看目录   
+2.date // 打印或设置当前系统时间   
+3.cat /proc/meminfo // 查看内存信息   
+4.cat /proc/cpuinfo // 查看CPU信息  
+
+Android Shell命令的相关内容就为大家介绍到这里。
+
+ 
+
+
+命令行工具ADB（Andvoid Debug Bridge）是Android提供的一个通用的调试工具，借助这个工具，我们可以管理设备或手机模拟器的状态。
+
+adb help
+
+AndroidDebugBridgeversion 1.0.20
+
+ -d                      - directs command to the only connected USB device
+
+                           returns an error if more than one USB device is present.
+
+ -e                      - directs command to the only running emulator.
+
+                           returns an error if more than one emulator is running.
+
+ -s <serial number>      - directs command to the USB device or emulator with
+
+                           the given serial number
+
+ -p <product name or path>  - simple product name like 'sooner', or
+
+                              a relative/absolute path to a product
+
+                                out directory like 'out/target/product/sooner'.
+
+                              If -p is not specified, the ANDROID_PRODUCT_
+
+                                environment variable is used, which must
+
+                              be an absolute path.
+
+ devices                 - list all connected devices
+
+ 
+
+device commands:
+
+ adb push <local> <remote>   - copy file/dir to device
+
+ adb pull <remote> <local>   - copy file/dir from device
+
+ adb sync [ <directory> ]    - copy host->device only if changed
+
+                                (see 'adb help all')
+
+ adb shell                   - run remote shell interactively
+
+ adb shell <command>         - run remote shell command
+
+ adb emu <command>           - run emulator console command
+
+ adb logcat [ <filter-spec> ] - View device log
+
+ adb forward <local> <remote> - forward socket connections
+
+                                  tcp:<port>
+
+                                  localabstract:<unix domain socket name>
+
+                                  localreserved:<unix domain socket name>
+
+                                  localfilesystem:<unix domain socket name>
+
+                                  dev:<character device name>
+
+                                  jdwp:<process pid> (remote only)
+
+ adb jdwp                    - list PIDs of processes hosting a JDWP transport
+
+ adb install [-l] [-r] <file> - push this package file to the device and install it
+
+                                ('-l' means forward-lock the app)
+
+                                ('-r' means reinstall the app, keeping its data)
+
+ adb uninstall [-k] <package> - remove this app package from the device
+
+                                ('-k' means keep the data and cache directories)
+
+ adb bugreport               - return all information from the device
+
+                                that should be included in a bug report.
+
+ adb help                    - show this help message
+
+ adb version                 - show version num
+
+ 
+
+DATAOPTS:
+
+ (no option)                  - don't touch the data partition
+
+ -w                          - wipe the data partition
+
+ -d                          - flash the data partition
+
+ 
+
+ 
+
+ adb wait-for-device         - block until device is online
+
+ adb start-server            - ensure that there is a server running
+
+ adb kill-server             - kill the server if it is running
+
+ adb get-state               - prints: offline | bootloader | device
+
+ adb get-product             - prints: <product-id>
+
+ adb get-serialno            - prints: <serial-number>
+
+ adb status-window           - continuously print device status for a specified device
+
+ adb remount                 - remounts the /system partition on the device read-write
+
+networking:
+
+ adb ppp <tty> [parameters]  - Run PPP over USB.
+
+ Note: you should not automatically start a PDP connection.
+
+ <tty> refers to the tty for PPP stream. Eg. dev:/dev/omap_csmi_tty1
+
+ [parameters] - Eg. defaultroute debug dump local notty usepeerdns
+
+adb sync notes: adb sync [ <directory> ]
+
+ <localdir> can be interpreted in several ways:
+
+ 
+
+ 
+
+ - If <directory> is not specified, both /system and /data partitions will be updated.
+
+ 
+
+ - If it is "system" or "data", only the corresponding partition  is updated.
+
+ 
+
+ 
+
+ADB还可以进行以下的操作：
+
+1、快速更新设备或手机模拟器中的代码，如应用或Android系统升级；
+
+2、在设备上运行shell命令；
+
+3、管理设备或手机模拟器上的预定端口；
+
+4、在设备或手机模拟器上复制或粘贴文件；
+
+5、安装.apk文件到仿真器上。
+
+以下为一些常用的操作：
+
+1、安装应用到模拟器：
+
+adb install
+
+比较郁闷的是，Android并没有提供一个卸载应用的命令，只能自己手动删除：
+
+adb shell
+
+cd /data/app
+
+rm app.apk
+
+2、进入设备或模拟器的shell：
+
+adb shell
+
+通过上面的命令，就可以进入设备或模拟器的shell环境中，在这个Linux Shell中，你可以执行各种Linux的命令，另外如果只想执行一条shell命令，可以采用以下的方式：
+
+adb shell [command]
+
+如：adb shell dmesg会打印出内核的调试信息。
+
+3、发布端口：
+
+你可以设置任意的端口号，做为主机向模拟器或设备的请求端口。如：
+
+adb forward tcp:5555 tcp:8000
+
+4、复制文件：
+
+你可向一个设备或从一个设备中复制文件，
+
+复制一个文件或目录到设备或模拟器上：
+
+adb push
+
+如：adb push test.txt /tmp/test.txt
+
+从设备或模拟器上复制一个文件或目录：
+
+adb pull
+
+如：adb pull /addroid/lib/libwebcore.so .
+
+5、搜索模拟器/设备的实例：
+
+取得当前运行的模拟器/设备的实例的列表及每个实例的状态：
+
+adb devices
+
+ 
+
+6、查看bug报告：
+
+adb bugreport
+
+ 
+
+7、记录无线通讯日志：
+
+一般来说，无线通讯的日志非常多，在运行时没必要去记录，但我们还是可以通过命令，设置记录：
+
+adb shell
+
+logcat -b radio
+
+ 
+
+8、获取设备的ID和序列号：
+
+adb get-product
+
+adb get-serialno
+
+ 
+
+9、访问数据库SQLite3
+
+adb shell
+
+sqlite3
+
+ 
+
+
+安卓网的一个帖子，写得不错，记下来
+
+ADB全称Android Debug Bridge, 是android sdk里的一个工具, 用这个工具可以直接操作管理android模拟器或者真实的andriod设备(如G1手机).
+
+它的主要功能有:
+
+?运行设备的shell(命令行)
+?管理模拟器或设备的端口映射
+?计算机和设备之间上传/下载文件
+?将本地apk软件安装至模拟器或android设备
+
+
+ADB是一个 客户端-服务器端 程序, 其中客户端是你用来操作的电脑, 服务器端是android设备.
+
+先说安装方法, 电脑上需要安装客户端. 客户端包含在sdk里. 设备上不需要安装, 只需要在手机上打开选项settings-applications-development-USBdebugging.
+
+对于Mac和Linux用户, 下载好的sdk解压后, 可以放~或者任意目录. 然后修改~/.bash_profile文件, 设置运行环境指向sdk的tools目录.
+具体是打开~/.bash_profile文件(如果没有此文件也可以自行添加), 在里面加入一行:
+
+export PATH=${PATH}:<你的sdk目录>/tools
+
+然后就可以使用adb命令了.
+
+
+
+ADB常用的几个命令
+1. 查看设备
+?adb devices
+
+这个命令是查看当前连接的设备, 连接到计算机的android设备或者模拟器将会列出显示
+
+2. 安装软件
+?adb install <apk文件路径>
+
+这个命令将指定的apk文件安装到设备上
+
+
+
+3. 卸载软件
+?adb uninstall <软件名>
+?adb uninstall -k <软件名>
+
+如果加 -k 参数,为卸载软件但是保留配置和缓存文件.
+
+4. 登录设备shell
+?adb shell
+?adb shell <command命令>
+
+这个命令将登录设备的shell.
+后面加<command命令>将是直接运行设备命令, 相当于执行远程命令
+
+5. 从电脑上发送文件到设备
+?adb push <本地路径> <远程路径>
+
+用push命令可以把本机电脑上的文件或者文件夹复制到设备(手机)
+
+6. 从设备上下载文件到电脑
+?adb pull <远程路径> <本地路径>
+
+用pull命令可以把设备(手机)上的文件或者文件夹复制到本机电脑
+
+7. 显示帮助信息
+?adb help
+
+这个命令将显示帮助信息
+
+ 
+
+删除Android系统Rom自带的软件
+
+ 
+
+Android系统没有卸载Rom自带软件的功能.可能有些同学很想删除废了武功的Youtube,想删除墙那边的Twitter.
+
+加上Android的快捷方式没法修改没法自己排序没法分页.
+
+安装的程序太多就会发现原来找到自己想要的东西很难.
+
+综上所述,我觉得告知各位菜鸟同学如何删除自带的程序是很有必要的一件事情.
+
+1.确定手机root了,取得了root权限才能删除系统文件呀.
+
+2.下载Android_db.rar,解压到%windir/%System32下.
+
+3.手机连接数据线,在电脑上打开cmd,然后输入命令
+
+ 
+
+adb remount
+
+adb shell
+
+su
+
+执行完成之后,你会看到:
+
+* daemon not running. starting it now *
+
+* daemon started successfully *
+
+4.接着就是Linux命令行模式了,输入
+
+ 
+
+cd system/app
+
+你会发现没啥变化,然后输入ls回车.
+
+这时候列表显示了system/app里面的所有文件,也就是Rom集成的一些软件了.
+
+5.开始删除吧.比如删除Youtube,他的文件名是Youtube.odex和Youtube.apk
+
+我们要删除这2个文件,敲入以下命令:
+
+ 
+
+rm Youtube.*
+
+重启,Youtube已经删除掉了,注意各位同学千万不要删除你不知道是啥的东西.
+
+ 
+
+指定允许AVD的内存大小：
+
+emulator -avd avdName -partition-size 256
+
+启动一个叫avdName的模拟器，允许内存最大为256M
+
+ 
+
+ 
+
+
+adb -d 当Android手机用USB连接计算机时可通过adb－d对该装置下命令
+adb -e对正在运行的仿真器下指令
+adb -s指定仿真器序号
+adb dervices显示当前启动的仿真器装置序号
+adb help显示adb指令用法
+adb verson显示adb版本
+adb install安装APK应用程序组件
+adb push上传文件或目录（adb push 文件所在PC的位置即文件名 目的位置）
+adb pull下载文件或目录（adb pull 文件所在手机的位置即文件名 目的位置）
+adb shell进入Android系统命令行模式
+adb logcat监控仿真器运行记录
+adb bugreport生成adb出错报告
+adb start－server启动adb服务器
+adb kill－server关闭adb服务器
+adb get－state取得adb服务器运行状态
+adb get－serialno获得仿真器运行序号
+adb forward tcp：port更改仿真器的网络TCP通信端口 

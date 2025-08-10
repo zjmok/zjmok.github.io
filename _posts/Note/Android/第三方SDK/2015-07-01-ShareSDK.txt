@@ -1,0 +1,10 @@
+ShareSDK 集成了 qq 微信 等等第三方sdk
+
+-----------------
+1.申请AppKey
+	mob 的 key
+
+2.下载sdk
+	www.mob.com
+
+3.

@@ -1,0 +1,5 @@
+if a>b:
+    print('a>b')
+	print('b<a')
+else:
+	print('a不=b')

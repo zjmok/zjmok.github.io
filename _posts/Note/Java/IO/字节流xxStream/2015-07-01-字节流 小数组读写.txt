@@ -1,0 +1,24 @@
+InputStream is=new FileInputStream(new File("xx.txt"));
+OutputStream os=new FileOutputStream(nwe File(xx_copy.txt));
+
+int len;	//int read(byte[] b, int off, int len) 将输入流中最多 len 个数据字节读入 byte 数组
+byte[] arr=new byte[1024];
+while((len=is.read(arr))!=-1){
+	os.write(arr,0,len);
+}
+
+is.close();
+os.close();
+
+
+-->
+read()方法的返回值为什么是int
+因为字节输入流可以操作任意类型的文件,文件的底层以二进制进行储存,如果返回byte,有可能读取到某个值时遇到11111111,而这11111111是byte类型的-1,程序遇到-1就停止不读了,后面数据将会读取不到,所以在读取的时候用int类型接收,如果11111111在前面补上24个0凑足4个字节,那么byte的-1就变成int的255,这样可以保证整个数据读完,而结束标记的-1就是int类型
+..
+
+int的数值是读取到的字节,前面加上24个0;
+byte是1位即8字节,对应的二进制-1是11111111
+int是4位即32字节,对应的二进制-1是32个1
+而int的255对应的二进制是24个0后面加11111111
+
+另外有人以int是一个标尺来记..

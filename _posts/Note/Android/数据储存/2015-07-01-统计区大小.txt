@@ -1,0 +1,31 @@
+File path = Environment.getExternalStorageDirectory();
+		File data = Environment.getDataDirectory();
+		File cache = Environment.getDownloadCacheDirectory();
+		File root = Environment.getRootDirectory();
+		//StatFs对象 获取sd信息
+		Log.i("MainActivity", "Storage--------------------");
+		calc(path);
+		Log.i("MainActivity", "Data--------------------");
+		calc(data);
+		Log.i("MainActivity", "Cache--------------------");
+		calc(cache);
+		Log.i("MainActivity", "Root--------------------");
+		calc(root);
+	}
+	
+	private void calc(File dir){
+		jisuan(dir.getAbsolutePath());
+	}
+
+	@SuppressLint("NewApi")
+	private void jisuan(String path) {
+		StatFs stat = new StatFs(path);
+		long size = stat.getBlockSizeLong(); //每块的大小
+		long count = stat.getBlockCountLong(); //总块数
+		long available = stat.getAvailableBlocksLong(); //可用块数
+		Log.i("MainActivity", "count="+count);
+		Log.i("MainActivity", "size="+size);
+		Log.i("MainActivity", "available="+available);
+		Log.i("MainActivity", "总共="+Formatter.formatFileSize(getApplicationContext(), (count*size)));
+		Log.i("MainActivity", "可用="+Formatter.formatFileSize(getApplicationContext(), (available*size)));
+	}

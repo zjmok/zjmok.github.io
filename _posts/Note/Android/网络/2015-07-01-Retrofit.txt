@@ -1,0 +1,28 @@
+可以将接口同一管理,利于开发,代码清晰
+
+-------------------
+
+可以将网络接口封装到一个Interface接口中
+public interface TakeoutService {
+
+    @GET("home")
+    Call<ResponseInfo> getHomeInfo();
+
+    @GET("login")
+    Call<ResponseInfo> loginbyPhone(@Query("phone") String phone, @Query("type") int type);
+
+    @GET("order")
+    Call<ResponseInfo> getOrderList(@Query("userId") String userId);
+}
+
+先进行初始化,Constant.HOST是为webapp的一个host地址,如http://localhost:8080/host/
+mRetrofit = new Retrofit.Builder().baseUrl(Constant.HOST).addConverterFactory(GsonConverterFactory.create()).build();
+mTakeoutService = mRetrofit.create(TakeoutService.class);
+
+使用
+Call<ResponseInfo> homeCall = mTakeoutService.getHomeInfo();
+homeCall.enqueue(mCallback);//传入回调,回调执行具体操作,一般放到基类,交给子类实现
+
+mCallback = new Callback<ResponseInfo>() {
+	...//各个回调方法
+}

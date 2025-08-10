@@ -1,0 +1,8 @@
+https://www.jianshu.com/p/f269bcda335f
+
+有些系统厂商的 ROM 会给自带相机应用做优化，当某个 app 通过 intent 进入相机拍照界面时，系统会把这个 app 当前最上层的 Activity 销毁回收。（注意：我遇到的情况是有时候很快就回收掉，有时候怎么等也不回收，没有什么必现规律）
+
+
+解决:
+
+既然涉及到 Activity 被回收的问题，自然要想起 onSaveInstanceState 和 onRestoreInstanceState 这对方法。去到 onSaveInstanceState 把数据保存，并在 onRestoreInstanceState 方法中进行恢复即可。

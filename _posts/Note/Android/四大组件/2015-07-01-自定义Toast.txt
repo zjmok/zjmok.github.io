@@ -1,0 +1,19 @@
+自定义xml布局
+
+java类 不需要继承
+	private WindowManager mWM;
+	private WindowManager.layout mParams;
+	private 控件..
+	构造{
+	//1.初始化mWM
+	//2.初始化mParams
+	//3.初始化控件
+	
+	}
+	show(){
+	//参考源码
+	}
+	hide(){
+	//参考源码
+	}
+	

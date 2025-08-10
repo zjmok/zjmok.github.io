@@ -1,0 +1,12 @@
+gradle.properties
+配置
+
+org.gradle.caching=true
+#启用 dexing-in-process,您需要将 Gradle 后台进程的最大堆大小设置为至少 2048 MB
+#如果您已经在模块级别的 build.gradle
+#文件中为 javaMaxHeapSize
+#定义值,则需要将后台进程的最大堆大小设置为 javaMaxHeapSize
+#的值 + 1024 MB
+org.gradle.jvmargs = -Xmx2048m
+#Android Studio2.2以上版本增加构建(build)高速缓存机制可以减少双方安全和增量构建时间
+android.enableBuildCache=true

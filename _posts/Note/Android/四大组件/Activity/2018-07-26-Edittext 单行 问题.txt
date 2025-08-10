@@ -1,0 +1,9 @@
+可以用
+	android:maxLines="1"
+	android:singleLine="true"
+
+会取消键盘的回车键
+
+singleLine被弃用了,可以用
+	android:inputType="text"
+	android:maxLines="1"

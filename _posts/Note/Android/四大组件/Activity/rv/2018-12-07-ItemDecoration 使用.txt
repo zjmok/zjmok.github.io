@@ -1,0 +1,16 @@
+链接：https://www.jianshu.com/p/b46a4ff7c10a
+
+主要有3个方法
+public void onDraw(Canvas c, RecyclerView parent, State state)
+public void onDrawOver(Canvas c, RecyclerView parent, State state)
+public void getItemOffsets(Rect outRect, View view, RecyclerView parent, State state)
+
+
+说明
+
+	getItemOffsets(),可以实现类似padding的效果
+
+	onDraw(),可以实现类似绘制背景的效果，内容在上面
+
+	onDrawOver()，可以绘制在内容的上面，覆盖内容
+

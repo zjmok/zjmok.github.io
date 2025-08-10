@@ -1,0 +1,12 @@
+BigInteger bi1=new BigInteger(100+"");
+
+可以装下更大的数字,并且能利用BigInteger的方法运算
+
+
+BigInteger.add(BigInteger);
+subtract
+multiply
+divide
+
+BigInteger[] divideAndTemainder(BigInteger)
+返回一个2长度的数组,元素分别是 商 和 余数

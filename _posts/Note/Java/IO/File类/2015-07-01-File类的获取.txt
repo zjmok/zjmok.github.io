@@ -1,0 +1,33 @@
+File.getPath()
+获取构造方法中传入的路径
+
+File.getAbsolutePath()
+获取绝对路径
+
+File.getName()
+获取文件名过文件夹名
+
+File.length()
+获取文件大小 byte
+
+File.lastModified()
+文件最后修改时间 毫秒值
+Date d=new Date(new File("abc.txt").lastModified);
+时间
+SimpleDateFormat sdf=new SimpleDateFormat(:yyyy年MM月dd日 HH:mm:ss");
+时间格式化
+
+File.list()
+获取目录下的文件或文件夹名称的数组
+
+File.listFiles()
+获取目录下的文件或文件夹File对象的数组
+
+File dir=new File("E:\\");
+File[] subFiles=dir.listFiles();
+for(File f:subFiles){
+	if(f.isFile()&&subFiles.getName.endsWith(".jpg")){
+		System.out.println(f);
+	}
+}
+获取目录下的.jpg文件

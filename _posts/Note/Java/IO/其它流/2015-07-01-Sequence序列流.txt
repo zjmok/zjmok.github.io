@@ -1,0 +1,7 @@
+构造
+SequenceInputStream(InputStream is1,InputStream is2)
+关输入流时只需关这个流,因为构造里已经把参数的输入流关了
+
+整合多个
+SequenceInputStream(Emulate em)
+利用枚举构造

@@ -1,0 +1,6 @@
+public <T> T create(final Class<T> service)
+
+
+使用
+create(String.class)
+将返回String类型

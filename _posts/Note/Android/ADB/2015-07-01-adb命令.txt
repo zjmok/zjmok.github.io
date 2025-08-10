@@ -1,0 +1,36 @@
+adb shell 
+adb start-server 
+adb kill-server 
+adb install -r 保留原有应用程序的所有数据。 adb install -r *.apk;/*-r替换安装*/
+adb uninstall 
+adb uninstall -k 卸载，保留配置文件和缓存。 
+
+adb push 本机文件或目录拷贝到目标设备文件系统。 
+	复制到设备(文件名有空格要用引号):
+		adb push "My file.apk"  /sdcard/download/
+adb pull 将目标设备的文件或目录拷贝到本机中。 
+	复制到D盘:
+		D:\>adb pull /sdcard/download/XposedInstaller.apk
+		有空格的情况:
+		D:\>adb pull /sdcard/download/"Xposed Installer.apk"
+	
+ps 查看运行的所有进程 
+exit 退出Linux环境。 
+adb shell dumpsys activity 查看目标设备activity栈和任务的信息，还有其他组件和一些进程的信息 
+adb shell dumpsys package 列出一些系统信息和所有应用的信息。 
+adb shell pm list permissions 列出目标平台上的所有权限 
+adb shell pm list feature设备特性硬件之类的性能。 
+adb shell input keyevent 82 解锁屏幕。
+
+adb version
+
+adb devices
+
+adb命令有三个重要的参数,当本机上连接了两个或以上的Android设备时,这三个参数就有用武之地了: 
+-d 说明adb命令的目标设备是唯一连接到adb的真机 
+-e 说明adb命令的目标设备是唯一连接到adb的模拟器 
+-s 指定adb命令的目标设备 
+如： 
+adb -e install weibo.apk 将weibo.apk安装到唯一连接到adb的模拟器上。
+
+adb -s 设备名 ... 指定设备使用命令

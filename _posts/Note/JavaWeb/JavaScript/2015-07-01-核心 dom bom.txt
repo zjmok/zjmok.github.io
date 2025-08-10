@@ -1,0 +1,9 @@
+核心:
+基本语法 
+
+dom:
+document object modle
+
+bom:
+browser o
+Window navigator screen history location

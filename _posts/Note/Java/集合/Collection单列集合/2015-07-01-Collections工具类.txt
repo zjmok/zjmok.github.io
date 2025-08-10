@@ -1,0 +1,6 @@
+sort		排序		字典顺序
+binarySearch	二分查找法	存在则返回索引,否则返回 (-(插入点)-1)
+max		最大值
+min		最小值
+reverse		反转
+shuffle		随机置换,可以用来洗牌

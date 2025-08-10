@@ -1,0 +1,9 @@
+kotlin中
+
+用internal修饰的类
+	对于java 都是public的 模块内 模块外 都可以访问
+	对于kotlin 只能在模块内访问
+	
+用internal修饰的方法 属性
+	对于java 模块内 模块外 都是不可访问的
+	

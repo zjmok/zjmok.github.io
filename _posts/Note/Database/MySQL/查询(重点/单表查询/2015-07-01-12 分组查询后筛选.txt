@@ -1,0 +1,5 @@
+--需求:查询总人数大于2的性别
+--1)查询男女的人数
+--2)筛选出人数大于2的记录(having)
+--注意:分组之前条件使用where关键字,分组之后条件使用having关键字
+SELECT gender,COUNT(*) FROM student GROUP BY gender HAVING COUNT(*)>2;

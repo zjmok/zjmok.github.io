@@ -1,0 +1,26 @@
+InputStream is=new FileInputStream(new File("xx.txt"));
+OutputStream os=new FileOutputStream(nwe File(xx_copy.txt));
+
+int len;	//len是arr数组的有效元素个数
+byte[] arr=new byte[1024];
+while((len=is.read(arr))!=-1){
+	os.write(arr,0,len);
+}
+
+is.close();
+os.close();
+
+
+
+-----------------------------------------------
+//普通方法
+InputStream is=new FileInputStream(new File("xx.txt"));
+OutputStream os=new FileOutputStream(nwe File(xx_copy.txt));
+
+int b;		//接收读取到的字节byte的int
+while((b=is.read())!=-1){
+	os.write(len);
+}
+
+is.close();
+os.close();

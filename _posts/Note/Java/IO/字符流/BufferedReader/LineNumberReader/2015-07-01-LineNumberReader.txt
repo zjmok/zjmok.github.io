@@ -1,0 +1,24 @@
+构造方法摘要 
+LineNumberReader(Reader in) 
+          使用默认输入缓冲区的大小创建新的行编号 reader。 
+LineNumberReader(Reader in, int sz) 
+          创建新的行编号 reader，将字符读入给定大小的缓冲区 
+
+
+方法摘要 
+ int getLineNumber() 
+          获得当前行号。 
+ void mark(int readAheadLimit) 
+          标记该流中的当前位置。 
+ int read() 
+          读取单个字符。 
+ int read(char[] cbuf, int off, int len) 
+          将字符读入数组中的某一部分。 
+ String readLine() 
+          读取文本行。 
+ void reset() 
+          将该流重新设置为最新的标记。 
+ void setLineNumber(int lineNumber) 
+          设置当前行号。 
+ long skip(long n) 
+          跳过字符。 

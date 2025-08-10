@@ -1,0 +1,3 @@
+@Override
+onNewIntent(Intent intent){
+}

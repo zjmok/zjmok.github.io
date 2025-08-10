@@ -1,0 +1,12 @@
+Java代码  收藏代码
+Paint p = new Paint(Paint.ANTI_ALIAS_FLAG);  
+p.setStyle(Style.STROKE);  
+p.setColor(Color.WHITE);  
+p.setStrokeWidth(1);  
+PathEffect effects = new DashPathEffect(new float[] { 1, 2, 4, 8}, 1);  
+p.setPathEffect(effects);  
+canvas.drawLine(0, 40, mWidth, 40, p);  
+ DashPathEffect是PathEffect类的一个子类,可以使paint画出类似虚线的样子,并且可以任意指定虚实的排列方式.
+ 
+代码中的float数组,必须是偶数长度,且>=2,指定了多少长度的实线之后再画多少长度的空白.
+如本代码中,绘制长度1的实线,再绘制长度2的空白,再绘制长度4的实线,再绘制长度8的空白,依次重复.1是偏移量,可以不用理会.

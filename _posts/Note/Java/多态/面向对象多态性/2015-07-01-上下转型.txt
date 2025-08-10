@@ -1,0 +1,9 @@
+
+B extends A
+
+向上转型
+A a = new B();
+
+向下转型，要先向上转型,然后要强制转换
+A a = new B();
+B b = (B)a;

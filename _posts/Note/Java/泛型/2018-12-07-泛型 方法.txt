@@ -1,0 +1,5 @@
+https://www.cnblogs.com/csyuan/p/6908303.html
+
+<T extends X> void func(List<T> list){ ... }，正确
+<T extends X> void func(T t){ ... }，正确
+<T> void func(List<T extends X> list){ ... } ，编译错误

@@ -1,0 +1,12 @@
+对象输出流 对象输入流,
+所操作的对象的类必须实现序列化接口Serializable,该接口没有任何方法但也要实现该接口
+实现接口后可以指定版本id号(不指定会随机生成),private static final long serialVersionUID=1L;//2L
+
+ObjectOutputStream(OutputStream out)
+	void writeObject(Object obj) //将指定的对象写入 ObjectOutputStream
+
+ObjectInputStream(InputStream in)
+	Object readObject() //从 ObjectInputStream 读取对象
+ 
+对象操作流
+优化,可以将多个对象装到容器里面写出写入,因为容器也是一个对象

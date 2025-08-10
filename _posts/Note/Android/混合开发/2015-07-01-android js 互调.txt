@@ -1,0 +1,72 @@
+---------
+/*android代码*/
+	java调用js
+		webView.loadUrl("javascript: "+"jsMethod('string')"));
+		
+	----------
+	
+		被js调用
+	
+		//必须在类中的方法才能被js调用
+		webView.addJavascriptInterface(new JSBinder(), "obj");
+		class JSBinder{
+			// android4.2后 为了安全问题 必须声明@JavascriptInterface 给js暴露接口 才能被js调用 
+			@JavascriptInterface
+			public void javaMethod(String str){
+				//todo
+			}
+		}
+
+
+	---------
+/*js代码*/
+	js调用java
+		//obj 对应java代码中的addJavascriptInterface参数
+		//javaMethod 对应java的javaMethod方法
+		window.obj.javaMethod("inputVal")
+
+
+------------------------------------------------------
+
+### JavaScript 和 Android(Java)互调 ###
+* 需求
+- Java中调用js代码(得到返回结果): 参数传到js代码, 放到htmlID标签中
+
+
+		// 从java执行js的callFromJava代码
+		public void javaCallJS(View v){
+		    Toast.makeText(this, "java调用js代码", Toast.LENGTH_SHORT).show();
+		
+		    // javascript: callFromJava('hahaha Java wawawa!')
+		    mWv.loadUrl(invokeJS("callFromJava('hahaha Java wawawa!')"));
+		}
+		
+		@NonNull
+		private String invokeJS(String jsStr) {
+		    return "javascript: " + jsStr;
+		}
+
+		// 声明函数, 用于获取js传过来的结果
+		// android4.2后 为了安全问题 必须声明@JavascriptInterface 给js暴露接口 才能被js调用 
+        @JavascriptInterface
+        public void onResultListener(final String result){
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(MainActivity.this, "java得到js返回的结果:" + result, Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
+- js中调用Java代码(得到返回结果): 参数传到Java代码, 放到吐司内容中
+
+
+		$("#btn").click(function () {
+			// 找到用户输入的吐司内容
+			var inputVal = $(".ui-content input").val();
+			console.log("inputVal: " + inputVal);
+
+			// 调用java的代码, 把内容传过去
+			var result = window.zhongjianren.callFromJS(inputVal)
+			console.log("inputVal-result: " + result);
+		})

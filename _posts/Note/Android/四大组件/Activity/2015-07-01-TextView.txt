@@ -1,0 +1,5 @@
+TextView低版本点击需要设置clickable为true
+
+---------------------
+
+TextView小图片-->属性android:drawableLift=	android:drawableRight=

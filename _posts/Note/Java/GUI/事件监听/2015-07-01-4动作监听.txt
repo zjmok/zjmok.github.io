@@ -1,0 +1,10 @@
+bt2.addActionListener(new ActionListener() {
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		System.exit(0);
+	}
+});
+
+
+//动作监听
+应用场景就是暂停视频和播放视频

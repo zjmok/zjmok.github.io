@@ -1,0 +1,1 @@
+不能在Windows服务里启动Apache Tomcat7.0 tomcat7,否则会占用8005 8080 8009端口导致Eclipse里出现Tomcat占用问题,更不要设置自动启动.

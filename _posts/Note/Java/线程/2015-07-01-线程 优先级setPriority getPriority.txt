@@ -1,0 +1,4 @@
+ int getPriority() 
+          返回线程的优先级。 
+ void setPriority(int newPriority) 
+          更改线程的优先级。

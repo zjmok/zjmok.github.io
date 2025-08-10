@@ -1,0 +1,12 @@
+1.字符串长度：length()方法
+2.字符串转换数组：toCharArray()
+3.从字符串中饭取出指定位置的字符：chatAt()
+4.字符串与byte数组的转换：getBytes()
+5.过滤字符串中存在的字符：indexOf()
+6.去掉字符串的前后空格：trim()
+7.从字符串中取出子字符串：subString()
+8.大小写转换：toLowerCase() toUpperCase()
+9.判断字符串的开头结尾字符：endsWith() startWith()
+10.替换String字符串中的一个字符：replace()
+
+更多在api

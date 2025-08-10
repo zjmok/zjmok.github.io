@@ -1,0 +1,19 @@
+可以使用 同步代码块 和 同步方法 两种方式完成 
+
+1.同步代码块
+在代码块上加上“synchronized”关键字的话，则此代码块就称为同步代码块
+
+synchronized(同步对象){  //synchronized(this)
+  需要同步的代码;
+}
+
+2.同步方法
+public synchronized void A(){
+  同步的代码;
+}
+
+
+方法定义的完整格式
+访问权限{public|default|protected|private} [final] [static] [synchronized] 返回值类型|void 方法名称(参数类型 参数名称,...) [throws Exception1,Exception2]{
+  [return [返回值|返回调用处]];
+}

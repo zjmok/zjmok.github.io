@@ -1,0 +1,3 @@
+Object的HashCode()利用哈希算法算出每个对象有不用的HashCode值
+HashSet需要比较自定义对象是否相同必须重写HashCode方法和equals方法
+eclipse可以自动生成..

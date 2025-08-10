@@ -1,0 +1,26 @@
+1.  集成准备
+	获得Appkey
+		友盟官网添加新应用，获得Appkey
+	下载 导入 SDK
+	http://dev.umeng.com/analytics/android-doc/sdk-download
+
+2.  基本功能集成
+	XML配置Appkey
+	权限
+	meta标签中声明channel渠道
+	或都可以在代码中配置
+
+	session的统计
+	在每个Activity的onResume方法中调用 MobclickAgent.onResume(Context) , 
+	onPause方法中调用 MobclickAgent.onPause(Context)
+
+	代码混淆
+
+3.  自定义事件的统计
+	计数
+	MobclickAgent.onEvent
+
+	计算
+	MobclickAgent.onEventValue
+
+...

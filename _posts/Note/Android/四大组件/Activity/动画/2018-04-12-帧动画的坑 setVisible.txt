@@ -1,0 +1,3 @@
+低版本再setvisible为visible时,帧动画会默认start,而高版本是默认不start的
+所以适配时,注意在setvisible时手动设置start/stop,需要时加上selectDrawable(0)表示显示第一帧
+版本<=4.4,具体版本未知

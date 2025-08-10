@@ -1,0 +1,37 @@
+ void setDaemon(boolean on) 
+          将该线程标记为守护线程或用户线程。 
+
+-----------
+
+设置为守护线程的线程,将会在其他非守护线程结束后停止执行,但会挣扎一瞬间
+
+---------
+
+		Thread t1 = new Thread() {
+			@Override
+			public void run() {
+				for (int i = 0; i < 1000; i++) {
+					System.out.println("aa" + i);
+				}
+			}
+		};
+		Thread t2 = new Thread() {
+			@Override
+			public void run() {
+				for (int i = 0; i < 2; i++) {
+					System.out.println("bbbbbbb" + i);
+				}
+			}
+		};
+		Thread t3 = new Thread() {
+			@Override
+			public void run() {
+				for (int i = 0; i < 1000; i++) {
+					System.out.println("cccc" + i);
+				}
+			}
+		};
+		t1.setDaemon(true);
+		t1.start();
+		t2.start();
+		t3.start();

@@ -1,0 +1,6 @@
+github pages服务:
+github新建仓库
+-->
+[github_name].github.io
+-->
+https://theone-mo.github.io/

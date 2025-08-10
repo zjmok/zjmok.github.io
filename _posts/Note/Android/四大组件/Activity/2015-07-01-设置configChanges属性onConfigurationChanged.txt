@@ -1,0 +1,4 @@
+- 在清单文件中设置
+android:configChanges="orientation|screenSize|keyboard"
+- 在activity中屏幕切换会调用下面方法
+onConfigurationChanged

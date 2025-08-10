@@ -1,0 +1,2 @@
+static Thread currentThread() 
+          返回对当前正在执行的线程对象的引用。 

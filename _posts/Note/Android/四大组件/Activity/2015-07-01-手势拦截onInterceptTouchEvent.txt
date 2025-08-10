@@ -1,0 +1,24 @@
+在重写的容器中onInterceptTouchEvent拦截到事件
+然后比较移动的x差值和y差值的大小,判断是横划或是竖划,根据情况返回是否拦截
+
+------------------------
+
+onInterceptTouchEvent:
+
+	onInterceptTouchEvent是在ViewGroup里面定义的。Android中的layout布局类一般都是继承此类的。
+	onInterceptTouchEvent是用于拦截手势事件的，每个手势事件都会先调用onInterceptTouchEvent。
+
+onTouchEvent:
+
+	onTouchEvent同样也是在view中定义的一个方法。处理传递到view 的手势事件。
+	手势事件类型包括ACTION_DOWN,ACTION_MOVE,ACTION_UP,ACTION_CANCEL等事件。
+	
+	
+===============
+总结
+
+ViewGroup里的onInterceptTouchEvent默认值是false这样才能把事件传给View里的onTouchEvent.
+
+ViewGroup里的onTouchEvent默认值是false。
+
+View里的onTouchEvent返回默认值是true.这样才能执行多次touch事件。

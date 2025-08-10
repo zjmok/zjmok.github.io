@@ -1,0 +1,9 @@
+当你获取root权限后通过adb访问 /system/app目录:
+
+	1.adb shell 进入shell模式
+	2.su 切换到root用户
+	3.chmod 777 /system/app 修改/system/app目录的权限为 777即可
+	4.exit 退出root用户
+	5.cd /system/app 即可进入/system/app 目录了
+
+获取root权限后，将apk复制到/system/app目录下即可。

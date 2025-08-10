@@ -1,0 +1,2 @@
+getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);  //隐藏状态栏
+requestWindowFeature(Window.FEATURE_NO_TITLE);  //隐藏Activity标题

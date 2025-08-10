@@ -1,0 +1,1 @@
+%Android_SDK%\extras\intel\Hardware_Accelerated_Execution_Manager目录下进行手动安装

@@ -1,0 +1,3 @@
+//viewpager fragment 更新问题 不能直接在 Adapter.notifyDataSetChanged 设置 需要另外设置 www.google.com
+//简单粗暴的方法是重新设置 ViewPager.setAdapter
+mViewPager.setAdapter(mAdapter);

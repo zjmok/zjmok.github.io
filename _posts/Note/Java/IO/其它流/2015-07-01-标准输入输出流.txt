@@ -1,0 +1,6 @@
+System.in	标准输入流	默认可以从键盘输入读取字节数据
+System.out	标准输出流	默认向Console中输出字符和字节数据
+
+System.setIn(InputStream)
+System.setOut(OutputStream)
+修改标准输入输出流

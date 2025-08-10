@@ -1,0 +1,1 @@
+SELECT id,name,(servlet+jsp) AS '总成绩' FROM student;

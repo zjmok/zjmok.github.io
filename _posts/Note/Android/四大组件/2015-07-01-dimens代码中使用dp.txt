@@ -1,0 +1,7 @@
+资源目录的values下dimens
+<Resources>
+	<dimen name="value">10dp</dimen>
+
+
+代码中引用
+int value = getResources().getDimensionPixelSize(R.dimen.value);

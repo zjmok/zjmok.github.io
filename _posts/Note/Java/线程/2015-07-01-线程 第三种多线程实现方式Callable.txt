@@ -1,0 +1,10 @@
+继承Thread
+实现Runnable
+实现Callable
+
+--------------
+线程池,可以接收Runnable和Callable对象
+提交Callable方式,Future<T>对象
+-----------
+子类实现Callable接口,通过线程池,将Callable子类对象传入submit()执行
+Callable方式,有返回值,可以抛异常

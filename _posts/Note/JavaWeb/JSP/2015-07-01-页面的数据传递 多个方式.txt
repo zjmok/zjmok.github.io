@@ -1,0 +1,4 @@
+form表单传递
+URL重写方式
+cookie方式
+session方式

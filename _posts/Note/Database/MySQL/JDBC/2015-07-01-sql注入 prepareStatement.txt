@@ -1,0 +1,27 @@
+sql注入:
+用户间接或直接参与了sql语句的拼装.
+并且用户填写的部分影响sql本身的逻辑.
+
+
+-----------------------
+
+例
+在jdbc中
+String user=... //获取用户输入的用户名
+String sql="select * from t_user where user = '"+user+"';"
+
+若user="tom' or 1=1";
+
+则影响了sql的逻辑:select * from t_user where user='tom' or 1=1
+
+---------------
+
+解决办法 
+用PreparedStatement对象
+
+			Connection conn = JDBC_Util.getConnection();
+			String sql = "select * from test where name=?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, name);
+//			ps.setInt(2, age);
+			ResultSet result = ps.executeQuery();

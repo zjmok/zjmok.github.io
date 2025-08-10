@@ -1,0 +1,3 @@
+可以解决并发修改异常
+直接用Iterator迭代输出List时,会出现并发修改异常
+需要用ListIterator

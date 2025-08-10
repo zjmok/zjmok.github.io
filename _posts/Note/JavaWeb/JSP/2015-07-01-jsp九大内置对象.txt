@@ -1,0 +1,19 @@
+JSP对象			Servlet对象
+
+out				JspWriter
+request			HttpServletRequest
+response		HttpServletResponse
+session			HttpSession
+page			Object
+pageContext		PageContext
+application		ServletContext
+config			ServletConfig
+exception		Throwable
+
+九大:
+包括 四大属性(四大域)
+(page request session application)
+out pageContext response config excetion
+
+-------------
+内置对象在翻译Servlet能看到..

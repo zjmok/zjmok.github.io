@@ -1,0 +1,8 @@
+Awt
+java.Awt 依赖平台 重量级控件
+
+Swing
+javax.Swing 基于Awt,却又提供了更多组件 轻量级控件
+
+Iwt
+Eclipse小组开发的界面外观包 Eclipse官网可以下载

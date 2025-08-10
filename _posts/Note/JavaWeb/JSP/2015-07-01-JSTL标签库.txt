@@ -1,0 +1,13 @@
+Java standard tag library
+java标准标签库
+
+----------
+		用于代替,简化页面中的java代码.
+		Java standard Tag Library   => java标准标签库
+		apache组织提供一套已经开发好的标签库.
+		这套标签库在javaee 5.0版本后已经纳入标准.(使用不需要导包)
+		该套标签库一共分为4个库:
+		core:核心库(用的最多的)****
+		fmt:格式化库(2个)
+		xml:xml的操作相关(废弃)
+		sql: 与数据库操作相关(废弃)

@@ -1,0 +1,35 @@
+public static void setSelectorFromUrls(Context context, String urlNoSelected, String urlSelected, ImageView imageView) {
+        List<String> urlList = new ArrayList<>();
+        urlList.add(urlNoSelected);
+        urlList.add(urlSelected);
+        imageView.post(() -> Observable.just(urlList)
+                .observeOn(Schedulers.io())
+                .map(list -> {
+                    Bitmap myBitmap = null;
+                    Bitmap myBitmap2 = null;
+                    try {
+                        myBitmap = Glide.with(context)
+                                .load(list.get(0))
+                                .asBitmap()
+                                .centerCrop()
+                                .into(imageView.getWidth(), imageView.getHeight())
+                                .get();
+                        myBitmap2 = Glide.with(context)
+                                .load(list.get(1))
+                                .asBitmap()
+                                .centerCrop()
+                                .into(imageView.getWidth(), imageView.getHeight())
+                                .get();
+                    } catch (Exception e) {
+                        Logger.t("ImageUtils").d(e.getMessage());
+                    }
+                    //状态选择器
+                    StateListDrawable stateListDrawable = new StateListDrawable();
+                    //给状态选择器添加状态
+                    stateListDrawable.addState(new int[]{android.R.attr.state_selected}, new BitmapDrawable(myBitmap2));
+                    stateListDrawable.addState(new int[]{}, new BitmapDrawable(myBitmap));
+                    return stateListDrawable;
+                })
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(imageView::setBackground));
+    }

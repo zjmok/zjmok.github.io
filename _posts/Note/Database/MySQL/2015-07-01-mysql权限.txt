@@ -1,0 +1,31 @@
+GRANT 权限 ON 数据库.表 TO '账户名'@'账户类型' IDENTIFIED BY '密码';
+
+权限:select insert delete update drop create 或 all
+all:代表所有权限
+
+---------------------
+
+root:拥有所有权限
+权限用户:只拥有部分权限(CURD)
+
+------------
+修改mysql的用户密码
+--password:md5加密函数(单向加密)
+select password('root');
+--返回的是字符串root的md5加密结果
+
+-- mysql数据库,用户配置:user表
+use mysql;
+select * from user;
+
+-- 修改密码
+update user set password=password('密码') where user='root';
+-- 重启mysql服务才会生效
+
+
+-------------------------------
+
+-- 分配权限账户
+GRANT SELECT ON day16.employee TO 'eric'@'localhost' IDENTIFIED BY '123456';
+-- eric用户名,123456密码,localhost登录ip,可以指定ip可以用%代替本地和远程即所有ip
+

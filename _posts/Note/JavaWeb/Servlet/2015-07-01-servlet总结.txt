@@ -1,0 +1,17 @@
+servlet ==> Server Applet ==> 运行在服务器端的小程序
+
+功能:接收请求并完成响应
+
+本质:就是一个Java类
+
+规则:
+	实现Servlet接口
+	继承GenericServlet
+	继承HttpServlet		(一般直接用这个)
+
+生命周期:
+	1.第一次访问时,服务器会创建servlet的实例,创建完成后调用init方法初始化.
+	2.会将请求交给Service方法处理
+		Service(Request,Response){}
+	3.服务器关闭时会调用Destory方法释放资源.
+	

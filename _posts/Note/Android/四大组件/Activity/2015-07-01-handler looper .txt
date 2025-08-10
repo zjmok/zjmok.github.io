@@ -1,0 +1,28 @@
+创建非主线程的Handler
+
+---------
+
+主线程自动会创建Looper轮询器对象和MessageQueue对象，所以可以直接创建Handler
+非主线程创建Handler时，需要手动关联收到写的Looper对象
+
+
+---------------
+核心代码
+
+	//创建Looper
+	Looper.prepare();//创建与当前线程相关的Looper
+	childLooper = Looper.myLooper();//获取当前线程的Looper对象
+	Looper.loop();//调用此方法，消息才会循环处理
+	
+	//Handler关联线程对应的Looper
+	Handler mHandler = new Handler(handlerThread.getLooper()){...}
+
+----------
+
+HandlerThread类 当我们getLooper()获取当前线程Looper对象的时候，
+会先判断当前线程是否存活，然后还要判断Looper对象是否为空，
+都满足之后才会返回给我Looper对象，否则处于等待状态！！
+
+HandlerThread类start的时候，Looper对象就初始化了，并唤醒之前等待的
+------------
+所以以后要想创建非主线程的Handler时，我们用HandlerThread类提供的Looper对象即可。

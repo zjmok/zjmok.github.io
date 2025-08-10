@@ -1,0 +1,22 @@
+发送-->
+------------
+		String str="中文不乱码乱码码~";
+		DatagramSocket socket=new DatagramSocket();
+		DatagramPacket packet=new DatagramPacket(str.getBytes(), str.getBytes().length, InetAddress.getByName("127.0.0.1"), 9527);
+		socket.send(packet);
+		socket.close();
+------------------
+//通过字节传送数据,所以没有中文乱码,
+//长度是转为字节数组的长度
+
+
+接收-->
+--------------
+		DatagramSocket socket = new DatagramSocket(9527);
+		DatagramPacket packet = new DatagramPacket(new byte[1024], 1024);
+		socket.receive(packet);
+		byte[] arr = packet.getData();
+		int len = packet.getLength();
+		System.out.println(new String(arr, 0, len));
+		socket.close();
+--------------------

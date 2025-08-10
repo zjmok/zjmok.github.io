@@ -1,0 +1,37 @@
+两个图片背景不断旋转
+
+indeterminate
+adj.  不确的, 含混的, 不确定的
+
+---------------------
+
+<ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:indeterminateBehavior="repeat"
+        android:indeterminateDrawable="@drawable/progress_big" />
+		
+----------------
+		
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <rotate
+            android:drawable="@drawable/spinner_big_inner"
+            android:fromDegrees="0"
+            android:toDegrees="-1080"/>
+    </item>
+
+    <item>
+        <rotate
+            android:drawable="@drawable/spinner_big_outer"
+            android:fromDegrees="0"
+            android:toDegrees="720"/>
+    </item>
+
+</layer-list>
+
+---------------------------
+

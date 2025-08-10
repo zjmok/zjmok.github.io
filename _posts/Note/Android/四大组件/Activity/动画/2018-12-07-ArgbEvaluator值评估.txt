@@ -1,0 +1,7 @@
+
+int sumY = 拖动的距离dp
+int distance = 最大距离
+int startColor = 开始颜色值(0x553190E8十六进制)
+int endColor = 最终点的颜色
+
+int bgColor = (int) mEvaluator.evaluate(sumY / distance, startColor, endColor);

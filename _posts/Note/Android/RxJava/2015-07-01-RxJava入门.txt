@@ -1,0 +1,48 @@
+三个步骤:
+	1.发射源
+	2.接收源
+	3.发射源与接收源关联
+
+===================
+
+发射源代码
+------------
+	Observable<String> sender = Observable.create(new Observable.OnSubscribe<String>() {
+
+	   @Override
+		public void call(Subscriber<? super String> subscriber) {
+
+			subscriber.onNext("Hi，Weavey！");  //发送数据"Hi，Weavey！"
+		}
+	});
+--------------
+	
+接收源代码
+-------------
+	Observer<String> receiver = new Observer<String>() {
+
+		@Override
+		public void onCompleted() {
+
+			//数据接收完成时调用
+		}
+
+		@Override
+		public void onError(Throwable e) {
+
+			//发生错误调用
+		}
+
+		@Override
+		public void onNext(String s) {
+
+		   //正常接收数据调用
+			System.out.print(s);  //将接收到来自sender的问候"Hi，Weavey！"
+		}
+	};
+--------------
+
+关联
+--------------
+	sender.subscribe(receiver);
+------------

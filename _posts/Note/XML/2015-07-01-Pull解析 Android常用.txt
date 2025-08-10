@@ -1,0 +1,110 @@
+类似sax解析,但
+sax解析一旦开始解析就是从头读到尾 ,不解析完整个文档不会停
+pull解析较为灵活 是以时间为单位 手动向下继续 如果获得我们要找的结果 可以停止解析
+基于事件驱动，
+
+基本套路：
+通过工厂实例 获取解析器 
+解析器可以判断头尾标签 可以判断标签名 可以获取属性或者内容
+
+------------------
+xml文件:
+<students>
+	<student id="111">
+	    <name>zhangsan</name>
+	    <age>13</age>
+	</student>
+	<student id="222">
+	    <name>lisi</name>
+	    <age>14</age>
+	</student>
+</students>
+
+java类:
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserFactory;
+
+public class PullTools {
+	public static List<Student> PullTool(InputStream is) throws Exception {
+		List<Student> list = new ArrayList<>();
+		Student stu = null;
+		XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+		XmlPullParser parser = factory.newPullParser();
+		parser.setInput(is, "utf-8");
+		for (int type = parser.getEventType(); type != XmlPullParser.END_DOCUMENT; type = parser.next()) {
+			switch (type) {
+			case XmlPullParser.START_TAG:
+				switch (parser.getName()) {
+				case "student":
+					stu = new Student();
+					int id = Integer.parseInt(parser.getAttributeValue(0));
+					stu.setId(id);
+					break;
+				case "name":
+					String name = parser.nextText();
+					stu.setName(name);
+					break;
+				case "age":
+					int age = Integer.parseInt(parser.nextText());
+					stu.setAge(age);
+					break;
+				}
+				break;
+			case XmlPullParser.END_TAG:
+				if ("student".equals(parser.getName())) {
+					list.add(stu);
+				}
+				break;
+			}
+		}
+		return list;
+	}
+
+	public static void main(String[] args) throws Exception {
+		InputStream is = new FileInputStream("stu.xml");
+		List<Student> list = PullTools.PullTool(is);
+		is.close();
+		System.out.println(list);
+	}
+}
+	
+public class Student {
+	private int id;
+	private String name;
+	private int age;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", name=" + name + ", age=" + age + "]";
+	}
+
+}

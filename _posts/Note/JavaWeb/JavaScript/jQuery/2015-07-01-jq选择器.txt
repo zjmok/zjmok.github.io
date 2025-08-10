@@ -1,0 +1,14 @@
+基本选择器:
+一些类似css的选择器
+
+层级选择器:
+parent > child
+在给定的父元素下匹配所有的子元素
+
+prev + next
+匹配所有紧接在 prev 元素后的 next 元素
+
+prev ~ siblings
+匹配 prev 元素之后的所有 siblings 元素
+
+

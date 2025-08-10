@@ -1,0 +1,2 @@
+单精度float=1.23f
+因为小数1.23默认双精度double，java要求转换为单精度float，所以要加f

@@ -1,0 +1,34 @@
+onMeasure传入的widthMeasureSpec和heightMeasureSpec不是一般的尺寸数值，
+而是将模式和尺寸组合在一起的数值(转为二进制,前两位表示模式,后面是数值)
+
+	得到模式:
+		int widthMode = MeasureSpec.getMode(widthMeasureSpec)
+		int heightMode = MeasureSpec.getMode(heightMeasureSpec)
+	得到尺寸:
+		int widthSize = MeasureSpec.getSize(widthMeasureSpec)
+		int heightSize = MeasureSpec.getSize(heightMeasureSpec)
+
+----------------------------
+
+MeasureSpec.getMode(widthMeasureSpec)//获取模式
+MeasureSpec.getSize(widthMeasureSpec)//获取数值
+MeasureSpec.makeMeasureSpec(childWidth, MeasureSpec.EXACTLY)//传入数值和模式,返回MeasureSpec数值模式组合
+
+-------------------
+
+Mode的三种类型:
+MeasureSpec.getMode(width)
+
+父View		-->	子View
+1.
+UNSPECIFIED:	AdapterView
+
+2.
+EXACTLY:		match_parent 、XXdp(固定数值dp)
+
+3.
+AT_MOST:		wrap_content
+
+------------------
+
+http://www.android100.org/html/201409/12/64338.html

@@ -1,0 +1,27 @@
+https://juejin.im/post/592d8f4e0ce46300579e1df7
+
+-----------------------
+	（过时）
+	WakeLock 主要是通过 PowerManager 获取，然后通过 acquire() 方法获取一个 WakeLock 资源，WakeLock 也是一种资源，在使用完成之后，别忘了调用 release() 方法进行释放。
+	使用 WakeLock 还需要额外的声明 WAKE_LOCK 权限。
+
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	
+-------------------------------
+
+	window对象
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+		
+------------
+
+	keepScreenOn
+		keepScreenOn() 是 View 对象上的方法，同时也提供了布局中的属性 android:keepScreenOn 来方便我们在布局中对其进行设置。
+		
+-----------------
+	MediaPlayer
+		如果我们是使用一个 MediaPlayer 来进行视频播放的话，MediaPlayer 还提供了 setScreenOnWhilePlaying() 方法，来设置屏幕常量
+		查看源码可以看到其实最终调用的还是 keepScreenOn() 方法
+		
+--------
+
+	

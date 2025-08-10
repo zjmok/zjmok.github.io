@@ -1,0 +1,6 @@
+ void wait() 
+          在其他线程调用此对象的 notify() 方法或 notifyAll() 方法前，
+导致当前线程等待。 
+
+ void notifyAll() 
+          唤醒在此对象监视器上等待的所有线程。 

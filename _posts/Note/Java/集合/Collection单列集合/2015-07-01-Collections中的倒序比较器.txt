@@ -1,0 +1,5 @@
+static <T> Comparator<T> reverseOrder() 
+          返回一个比较器，它强行逆转实现了 Comparable 接口的对象 collection 的自然顺序。 
+
+static <T> Comparator<T> reverseOrder(Comparator<T> cmp) 
+          返回一个比较器，它强行逆转指定比较器的顺序。 

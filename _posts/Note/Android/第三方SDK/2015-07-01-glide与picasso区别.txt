@@ -1,0 +1,4 @@
+glide的jar包体积比较大
+glide缓存的图片缓存小 内存占用小
+glide可以加载gif而picasso不可以
+glide效率相对高

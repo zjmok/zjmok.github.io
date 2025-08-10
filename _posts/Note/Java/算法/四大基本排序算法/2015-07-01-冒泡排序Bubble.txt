@@ -1,0 +1,19 @@
+	public static void bubbleSort(int[] arr) {
+		for (int i = 0; i < arr.length - 1; i++) {
+			for (int j = 0; j < arr.length - 1 - i; j++) {
+				if (arr[j] > arr[j + 1]) { // 一趟中通过两两比较，将最大的数放在最右
+					int temp = arr[j];
+					arr[j] = arr[j + 1];
+					arr[j + 1] = temp;
+				}
+			}
+			/* 下面函数是为了打印出每一趟过后，序列的状态，方便理解各个排序算法 */
+
+			System.out.print(i + 1 + ":" + " ");
+			for (int y = 0; y < arr.length; y++) {
+				System.out.print(arr[y]+" ");
+			}
+			System.out.println();
+
+		}
+	}

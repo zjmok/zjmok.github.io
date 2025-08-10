@@ -1,0 +1,8 @@
+常用的聚合函数: sum() avg() max() min() count()
+SELECT SUM(servlet) AS 'servlet的总成绩' FROM student;
+SELECT AVG(servlet) AS 'servlet的平均分' FROM student;
+SELECT MAX(servlet) AS 'servlet的最高分' FROM student;
+SELECT MIN(servlet) AS 'servlet的最低分' FROM student;
+SELECT COUNT(*) AS FROM student;
+SELECT COUNT(id) AS FROM student;
+不统计null,星号表示所有字段,如果用*会统计所有列有多少个数再使用最大的那个,如果用id只统计id有多少个值,

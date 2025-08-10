@@ -1,0 +1,44 @@
+因为有了虚拟功能键后，WindowManager的.getDefaultDisplay().getHeight()方法获取的是标准高度。 
+想要获得完整的高度的话，就得通过反射调用。
+先通过反射获得整个屏幕的完整高度，再用此减去标准高度，那么得到的就是虚拟键Bar的高度了。
+
+//-------------
+
+<View
+	android:id="@+id/virtual_bar"
+	android:layout_width="match_parent"
+	android:layout_height="0dp"/>
+
+View mVirtualBar = findViewById(R.id.virtual_bar);
+
+/**
+ * 设置view的高度 虚拟按键高度
+ */
+private void initVirtualBar() {
+	int virtualBarHeigh = getVirtualBarHeigh();
+	ViewGroup.LayoutParams layoutParams = mVirtualBar.getLayoutParams();
+	layoutParams.height = virtualBarHeigh;
+	mVirtualBar.setLayoutParams(layoutParams);
+}
+
+/**
+ * 获取虚拟功能键高度
+ */
+public int getVirtualBarHeigh() {
+	int vh = 0;
+	WindowManager windowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+	Display display = windowManager.getDefaultDisplay();
+	DisplayMetrics dm = new DisplayMetrics();
+	try {
+		@SuppressWarnings("rawtypes")
+		Class c = Class.forName("android.view.Display");
+		@SuppressWarnings("unchecked")
+		Method method = c.getMethod("getRealMetrics", DisplayMetrics.class);
+		method.invoke(display, dm);
+		vh = dm.heightPixels - windowManager.getDefaultDisplay().getHeight();
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	return vh;
+}
+

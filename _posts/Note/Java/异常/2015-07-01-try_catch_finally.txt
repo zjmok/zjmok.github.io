@@ -1,0 +1,16 @@
+int x=10;
+try{
+	x=20;
+	System.out.println(1/0);
+	return x;
+}catch(...){
+	x=30;
+	return x;
+}finally{
+	x=40;
+	return x;  //犯罪!覆盖try和catch的return了,
+}
+
+
+-->
+x=40

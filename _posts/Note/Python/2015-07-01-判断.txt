@@ -1,0 +1,43 @@
+if else 判断
+
+根据Python的缩进规则，如果if语句判断是True，就把缩进的两行print语句执行了，否则，什么也不做
+用缩进识别 不像java和c
+
+------------------------
+
+age = 3
+if age >= 18:
+    print('your age is', age)
+    print('adult')
+else:
+    print('your age is', age)
+    print('teenager')
+	
+----------------------
+	
+age = 3
+if age >= 18:
+    print('adult')
+elif age >= 6:
+    print('teenager')
+else:
+    print('kid')
+	
+--------------
+
+if判断条件还可以简写，比如写：
+
+if x:
+    print('True')
+只要x是非零数值、非空字符串、非空list等，就判断为True，否则为False。
+
+--------------------
+
+str不能直接和整数比较，必须先把str转换成整数。Python提供了int()函数来完成这件事情：
+
+s = input('birth: ')
+birth = int(s)
+if birth < 2000:
+    print('00前')
+else:
+    print('00后')

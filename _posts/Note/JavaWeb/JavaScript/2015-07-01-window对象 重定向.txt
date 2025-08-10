@@ -1,0 +1,5 @@
+<script lauguage="javascript">
+  function fun(url){
+    window.location=url;
+  }
+</script>

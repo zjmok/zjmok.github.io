@@ -1,0 +1,18 @@
+middle
+small
+x..
+
+-------------------
+一行分12列
+
+col-md-4	pc端	每个占4列即分3个
+col-sm-6	table端	每个占6列即分2个
+col-xs-12	phone端	每个占12列即分1个
+
+hidden-md	隐藏,占0列,下同
+hidden-sm
+hidden-xs
+
+------------------
+
+<div class="col-md-4 colsm-6 col-xs-12">...</div>

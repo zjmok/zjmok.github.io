@@ -1,0 +1,35 @@
+循环
+
+java的foreach循环
+
+names = ['Michael', 'Bob', 'Tracy']
+for name in names:
+    print(name)
+	
+-----------------
+
+Python提供一个range()函数，可以生成一个整数序列，再通过list()函数可以转换为list
+range(n) 等价 range(0,n)
+
+--------------
+>>> list(range(5))
+[0, 1, 2, 3, 4]
+
+------------
+sum = 0
+for x in range(101):
+    sum = sum + x
+print(sum)
+
+=====================================================
+
+while循环
+第二种循环是while循环，只要条件满足，就不断循环，条件不满足时退出循环
+
+sum = 0
+n = 99
+while n > 0:
+    sum = sum + n
+    n = n - 2
+print(sum)
+

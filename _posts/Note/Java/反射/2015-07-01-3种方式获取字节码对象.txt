@@ -1,0 +1,12 @@
+根据反射的3个阶段,获取字节码对象
+源文件阶段,字节码阶段,创建实例阶段
+
+//源文件阶段
+Class clazz1=Class.forName("com.heima.bean.Person");
+
+//字节码阶段
+Class clazz2=Person.class;
+
+//创建实例阶段
+Class clazz3=new Person.getClass();
+

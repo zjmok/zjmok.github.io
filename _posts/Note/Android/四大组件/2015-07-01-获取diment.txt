@@ -1,0 +1,6 @@
+xml中 
+@dement/xxx
+
+java中 
+getContext().getResources().getDemenion(R.dement/xxx)
+必须要有context环境

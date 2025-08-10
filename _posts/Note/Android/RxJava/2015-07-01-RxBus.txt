@@ -1,0 +1,18 @@
+*先订阅才能接收到消息
+
+RxBus类先定义,一般网上很多直接copy
+
+传递对象封装成bean较方便,如
+public EventMsg(int code, T msg) 
+
+订阅的
+RxBus.getInstance()
+                .register(EventMsg.class)
+                .subscribe(msgEvent -> {
+                    String text = msgEvent.getMessage().toString();
+                    Logger.i("" + text);
+                    ToastUtils.showToast(mContext, "消息 = " + text);
+                });
+				
+发送的
+RxBus.getInstance().post(new EventMsg<>(1,"qwer"));

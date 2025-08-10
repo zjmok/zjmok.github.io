@@ -1,0 +1,3 @@
+在布局配置文件设置了checked后,
+在java中设置监听,
+再用代码check设置同一个为checked时无效

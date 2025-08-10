@@ -1,0 +1,6 @@
+ArrayList<?> list=new ArrayList<String>();
+ArrayList<?> list=new ArrayList<Integer>();
+
+当右边不确定是返回什么类型是,左边可以用?问号通配符接收
+
+

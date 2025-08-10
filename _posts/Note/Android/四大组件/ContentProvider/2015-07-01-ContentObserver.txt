@@ -1,0 +1,3 @@
+内容观测者
+ContentObserver
+getContentResolver().registerContentObserver(uri, true, new MyContentObserver(new Handler()));

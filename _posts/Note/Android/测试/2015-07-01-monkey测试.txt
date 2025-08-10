@@ -1,0 +1,5 @@
+进入命令模式:
+adb shell
+
+monkey测试:
+monkey [-p 包名] 次数

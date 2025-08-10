@@ -1,0 +1,101 @@
+http://gank.io/post/560e15be2dca930e00da1083
+
+四个基本概念：
+	Observable(可观察者/被观察者/订阅源)
+	Observer/Subscriber(观察者/订阅者)
+	subscribe(订阅)
+	事件
+
+------------------
+Subject //比较特殊
+	subject及可以做observer也可以做observable 不能指定操作线程
+-------------------------
+
+基本实现：
+-----------------
+
+onStart
+	//Subscriber在Observer基础上的特有的方法
+	Subscriber.start()//在 subscribe 刚开始，而事件还未发送之前被调用 总是在 subscribe 所发生的线程被调用，而不能指定线程
+
+unsubscribe
+	//Subscriber实现了Subscription
+	Subscription.unsubscribe()//Subscriber 所实现的另一个接口 Subscription 的方法，用于取消订阅 一般在这个方法调用前，可以使用 isUnsubscribed() 先判断一下状态
+
+create
+	Observable.create(Observable.OnSubscribe对象)//会调用对象中的call方法
+
+just/from
+	just(...)//将传入的参数依次发送出来
+	from(...)//将传入的数组或 Iterable 拆分成具体对象后，依次发送出来
+	示例：
+		String[] words = {"Hello", "Hi", "Aloha"};
+		Observable observable = Observable.from(words);
+		// 将会依次调用：
+		// onNext("Hello");
+		// onNext("Hi");
+		// onNext("Aloha");
+		// onCompleted();
+
+subscribe //开启订阅,将发射源与接收源关联
+	observable.subscribe(observer);
+	// 或者：
+	observable.subscribe(subscriber);
+	//创建了 Observable 和 Observer 之后，再用 subscribe() 方法将它们联结
+
+-------------
+线程：
+subscribeOn //事件发出线程
+	Observable.subscribeOn(Schedulers.xx)//指定事件内容在xx线程发出//io()等
+
+observeOn //事件回调线程
+	Observable.observeOn(AndroidSchedulers.xxx)//指定 Subscriber 的回调发生在xxx线程//mainThread()等
+
+	示例：
+		Observable.just(1, 2, 3, 4) // IO 线程，由 subscribeOn() 指定
+		.subscribeOn(Schedulers.io())
+		.observeOn(Schedulers.newThread())
+		.map(mapOperator) // 新线程，由 observeOn() 指定
+		.observeOn(Schedulers.io())
+		.map(mapOperator2) // IO 线程，由 observeOn() 指定
+		.observeOn(AndroidSchedulers.mainThread) 
+		.subscribe(subscriber);  // Android 主线程，由 observeOn() 指定
+	如上，通过 observeOn() 的多次调用，程序实现了线程的多次切换。
+	不过，不同于 observeOn() ， subscribeOn() 的位置放在哪里都可以，但它是只能调用一次的。
+	
+doOnSubscribe
+	Observable.doOnSubscribe()//订阅前的线程指定
+	它和 Subscriber.onStart() 同样是在 subscribe() 调用后而且在事件发送前执行，但区别在于它可以指定线程。默认情况下， doOnSubscribe() 执行在 subscribe() 发生的线程；而如果在 doOnSubscribe() 之后有 subscribeOn() 的话，它将执行在离它最近的 subscribeOn() 所指定的线程
+
+--------------
+
+变换：
+----------------
+scan/				//sacn操作符是遍历源Observable产生的结果，
+						再按照自定义规则进行运算，依次输出每次计算后的结果给订阅者
+map/flatMap/lift //传入参数可转化为新的类型对象
+	map(FuncX对象)					普通直接转换
+	flatMap(FuncX对象)				平铺转换
+	lift(Observable.Operator对象)	//lift()是针对事件项和事件序列的
+
+compose
+	Observable.compose(Observable.Transformer) //compose()是针对Observable自身进行变换
+	
+------------------
+
+
+合并
+merge
+	可以将两个observable合并
+	例如将两个异步请求合并同步后再更新UI
+
+------------------
+
+其他操作符：
+defer				--defer操作符是直到有订阅者订阅时，才通过Observable的工厂方法创建Observable并执行，
+						defer操作符能够保证Observable的状态是最新的
+timer				--隔一段时间产生一个数字，然后就结束，可以理解为延迟产生数字
+interval			--每隔一段时间就产生一个数字，没有结束符，也就是是可以产生无限个连续的数字
+range				--range操作符是创建一组在从n开始，个数为m的连续数字，
+						比如range(3,10)，就是创建3、4、5…12的一组数字
+repeat/repeatWhen	--repeat操作符是对某一个Observable，重复产生多次结果

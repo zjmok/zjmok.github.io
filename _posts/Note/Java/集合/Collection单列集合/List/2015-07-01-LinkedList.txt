@@ -1,0 +1,10 @@
+void addFirst(E e)
+void addLast(E e)
+E getFirst()
+E getLast()
+E removeFirst()
+E removeLast()
+E get(int index)
+
+栈	--模拟栈,先进后出,addLast(),removeLast()
+队列	--模拟队列,先进先出,addLast(),removeFirst()

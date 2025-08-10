@@ -1,0 +1,8 @@
+Gson gson = new Gson();
+List<HomeBean.ListBean> appBean = gson.fromJson(json,
+	new TypeToken<List<HomeBean.ListBean>>() {}.getType());
+
+------
+
+Gson.fromJson(json,Class);//只能解析bean类型
+Gson.fromJson(json,Type);//更灵活,可以在TypeToken<T>() {}.getType()中添加任何类型

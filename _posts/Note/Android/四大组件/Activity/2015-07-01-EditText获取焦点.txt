@@ -1,0 +1,7 @@
+这三个属性必须同时设置： 
+
+
+ private EditText passwde = null;   
+?passwde.setFocusable(true);   
+?passwde.setFocusableInTouchMode(true);   
+?passwde.requestFocus();  

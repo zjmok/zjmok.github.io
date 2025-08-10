@@ -1,0 +1,2 @@
+getRawX	屏幕x
+getX	控件x

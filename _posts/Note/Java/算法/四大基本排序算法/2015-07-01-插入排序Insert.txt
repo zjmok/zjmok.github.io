@@ -1,0 +1,21 @@
+	/**
+	遍历过程中，假设i之前已排好
+	取i位置的数，插入到i之前序列对应的位置，同时插入位置后面都需要后移一位
+	*/
+	public static void insertSort(int arr[]) {
+		for (int i = 0; i < arr.length; i++) {
+			int insertNum = arr[i];
+			int index = i - 1;
+			while (index >= 0 && insertNum < arr[index]) { // 从第i个数，开始插入前面的有序数列
+				arr[index + 1] = arr[index];
+				index--;
+			}
+			arr[index + 1] = insertNum;
+			// 打印
+			System.out.print(i + 1 + ":" + " ");
+			for (int y = 0; y < arr.length; y++) {
+				System.out.print(arr[y] + " ");
+			}
+			System.out.println();
+		}
+	}

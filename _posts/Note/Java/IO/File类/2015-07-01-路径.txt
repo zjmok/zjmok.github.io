@@ -1,0 +1,2 @@
+相对路径,java的project下的路径
+绝对路径,完整路径,从盘符开始,例如"D:\\aaa\\bbbb\\abcd.txt"

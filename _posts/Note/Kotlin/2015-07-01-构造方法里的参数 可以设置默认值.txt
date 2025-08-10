@@ -1,0 +1,2 @@
+//使用时 不对value传值 则默认1L
+class Result(var value:BigInteger.valueOf(1L))

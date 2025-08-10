@@ -1,0 +1,14 @@
+
+int ordinal()		返回枚举常量的序数
+
+int compareTo(E o)	比较编号
+
+String name()		获取实例的名称
+
+String toString()	调用重写之后的toString()方法
+
+<T> T valueOf(Class<T> type,String name)
+			通过字节码对象获取枚举项
+
+values()		返回该枚举类数组,在api查不到,但每个枚举类都具有该方法,
+			它遍历枚举类的所有枚举值非常方便

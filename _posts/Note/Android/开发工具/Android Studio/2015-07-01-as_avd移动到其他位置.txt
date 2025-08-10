@@ -1,0 +1,1 @@
+只需要将  Nexus_5_API_21_x86.avd 文件夹      移出c盘，然后配置 Nexus_5_API_21_x86.ini  文件即可

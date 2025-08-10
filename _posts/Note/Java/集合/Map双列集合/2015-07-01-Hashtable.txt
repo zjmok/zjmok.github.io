@@ -1,0 +1,13 @@
+Hashtable	--JDK 1.0 的,
+当时命名规范还没出来,第二个单词首字母没有大写
+	被HashMap代替了,Collections.synchronizedMap方法同步，于是Hashtable就废了
+	但Hashtable有个子类Properties,一般被用来加载配置文件
+
+HashMap		--JDK 1.2
+
+-----------------
+Hashtable
+不可以存null键,不可以存null值
+
+HashMap
+可以存null键,可以存null值

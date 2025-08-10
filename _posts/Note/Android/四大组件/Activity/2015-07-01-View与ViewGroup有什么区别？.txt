@@ -1,0 +1,76 @@
+Android的UI界面都是由View和ViewGroup及其派生类组合而成的。
+　　其中，View是所有UI组件的基类，而 ViewGroup是容纳这些组件的容器，其本身也是从View派生出来的.
+　　View对象是Android平台中用户界面体现的基础单位。
+　　View类是它称为“widgets(工具)”的子类的基础，它们提供了诸如文本输入框和按钮之类的UI对象的完整实现。
+　　ViewGroup类同样为其被称为“Layouts(布局)”的子类奠定了基础，它们提供了象流式布局、表格布局以及相对布局之类的布局架构。
+　　一般来说，开发Android应用程序的UI界面都不会直接使用View和ViewGroup，而是使用这两大基类的派生类。
+　　View派生出的直接子类有：AnalogClock,ImageView,KeyboardView, ProgressBar,SurfaceView, TextView,ViewGroup,ViewStub
+　　View派生出的间接子类有：AbsListView,AbsSeekBar, AbsSpinner, AbsoluteLayout, AdapterView,AdapterViewAnimator, AdapterViewFlipper, AppWidgetHostView, AutoCompleteTextView,Button,CalendarView, CheckBox, CheckedTextView, Chronometer, CompoundButton,
+　　ViewGroup派生出的直接子类有：AbsoluteLayout,AdapterView,FragmentBreadCrumbs,FrameLayout, LinearLayout,RelativeLayout,SlidingDrawer
+　　ViewGroup派生出的间接子类有：AbsListView,AbsSpinner, AdapterViewAnimator, AdapterViewFlipper, AppWidgetHostView, CalendarView, DatePicker, DialerFilter, ExpandableListView, Gallery, GestureOverlayView,GridView,HorizontalScrollView, ImageSwitcher,ListView,
+　　这里特别指出，ImageView是布局具有图片效果的UI常用的类，SurfaceView是用来进行游戏开发的与一般View相比较为特殊的非常重要的类，而AbsoluteLayout、 FrameLayout,LinearLayout, RelativeLayout这几个ViewGroup的直接子类是Android UI布局中最基本的布局元素。
+　　自定义控件(自定义View和ViewGroup)
+　　DV6300-T的节目编辑就是自定义ViewGroup的使用
+　　关于自定义ViewGroup的知识，我们可以参考E:\JAVA\Android\资料\网络资料\应用列表滑动总结\AppList测试代码，会有更深刻的认识。
+　　给大家介绍下View和ViewGroup最重要的几个方法——
+　　protected void onDraw(Canvas canvas)：View类中用于重绘的方法，这个方法是所有View、ViewGroup及其派生类都具有的方法，也是Android UI绘制最重要的方法。开发者可重载该方法，并在重载的方法内部基于参数canvas绘制自己的各种图形、图像效果。
+　　protected void onLayout(boolean changed, int left, int top, int right, int bottom)：View类中布局发生改变时会调用的方法，这个方法是所有View、ViewGroup及其派生类都具有的方法，重载该类可以在布局发生改变时作定制处理，这在实现一些特效时非常有用。
+　　protected void dispatchDraw(Canvas canvas)：ViewGroup类及其派生类具有的方法，这个方法主要用于控制子View的绘制分发，重载该方法可改变子View的绘制，进而实现一些复杂的视效，典型的例子可参见Launcher模块Workspace的dispatchDraw重载。
+　　protected boolean drawChild(Canvas canvas, View child, long drawingTime))：ViewGroup类及其派生类具有的方法，这个方法直接控制绘制某局具体的子view，重载该方法可控制具体某个具体子View。
+　　addView方法这个方法是用来想View容器中添加组件用的。我们可以使用这个方法想这个ViewGroup中添加组件。
+　　getChildAt方法 这个方法用来返回指定位置的View。
+　　注意：ViewGroup中的View是从0开始计数的。
+　　View在屏幕上显示出来要先经过measure(计算)和layout(布局).
+　　onMeasure(int, int) View会调用此方法，来确认自己及所有子对象的大小
+　　onLayout(boolean, int, int, int, int, int, int) 当View要为所有子对象分配大小和位置时，调用此方法
+　　onSizeChanged(int, int, int, int) 当View大小改变时，调用此方法
+　　protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)介绍：
+　　onMeasure传入的widthMeasureSpec和heightMeasureSpec不是一般的尺寸数值，而是将模式和尺寸组合在一起的数值。
+　　一般是根据xml文件中定义得到的，我们可以根据这2个参数知道模式和size。
+　　我们需要通过int mode = MeasureSpec.getMode(widthMeasureSpec)得到模式，
+　　用int size = MeasureSpec.getSize(widthMeasureSpec)得到尺寸。
+　　mode共有三种情况，取值分别为MeasureSpec.UNSPECIFIED, MeasureSpec.EXACTLY, MeasureSpec.AT_MOST。
+　　对应关系:
+　　-2147483648----xml文件中的wrap_content----MeasureSpec.AT_MOST
+　　1073741824----xml文件中的fill_parent-----MeasureSpec.EXACTLY
+　　0-----MeasureSpec.UNSPECIFIED
+　　一般ViewGroup，我们是这样实现的：
+　　protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+　　super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+　　final int width = MeasureSpec.getSize(widthMeasureSpec);
+　　final int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+　　final int count = getChildCount();
+　　for (int i = 0; i < count; i++) {
+　　//其实，对于我们自己写的应用来说，最好的办法是去掉框架里的该方法，直接调用view.measure()，如下：
+　　//一般我们设定ViewGroup的XML布局是wrap_content，这样2个参数就是-2147483648,那么我们如下调用就是
+　　//让子组件自己适配大小
+　　getChildAt(i).measure(widthMeasureSpec, heightMeasureSpec);
+　　//还有下面的方法
+　　//整个measure()过程就是个递归过程
+　　//该方法只是一个过滤器，最后会调用measure()过程 ;或者 measureChild(child , h, i)方法
+　　//measureChildWithMargins(getChildAt(i). , h, i) ;
+　　}
+　　scrollTo(mControl.getCurScreen() * width, 0);
+　　}
+　　当然我们也可以调用setMeasuredDimension(h , l) ; 来设定ViewGroup的大小。
+　　至于View的onMeasure实现，我们其实一般都不覆写该方法，覆写的话也简单，根据需要，和上面一样，根据传入的2个参数获取当前的模式和大小。
+　　当然我们也可以自己计算大小，调用setMeasuredDimension设定。
+　　ViewGroup的onLayout实现：
+　　protected void onLayout(boolean changed, int l, int t, int r, int b) {
+　　int childLeft = 0;
+　　// 获取所有的子View的个数
+　　final int childCount = getChildCount();
+　　for (int i = 0; i < childCount; i++) {
+　　final View childView = getChildAt(i);
+　　final int childWidth = childView.getMeasuredWidth();
+　　final int childHeight = childView.getMeasuredHeight();
+　　childView.layout(childLeft, 0, childLeft + childWidth,childHeight);
+　　// 下一个VIew的左边左边+一个
+　　childLeft += childWidth;
+　　}
+　　}
+　　实际上很简单，就是调用layout方法来设定View在画布上的位置，可以超出屏幕宽度，然后我们可以滚动显示。
+　　当然我们也可以调用layout传入相关坐标来设定View显示位置(已验证OK)
+　　测试代码：
+　　E:\JAVA\Android\资料\网络资料\应用列表滑动总结\AppList
+　　E:\JAVA\Android\资料\网络资料\View和ViewGroup\ViewGruop_ViewTest 

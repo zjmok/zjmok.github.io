@@ -1,0 +1,6 @@
+注意:
+对于不同权限，有不同的获取方式。
+有三种权限：
+a、默认权限，默认需要加入 Declared
+b、public，public 不需要加入 Declared
+c、private，private 需要加入 Declared，还要设置 setAccessible(true)暴力反射

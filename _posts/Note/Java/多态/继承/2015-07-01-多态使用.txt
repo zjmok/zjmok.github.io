@@ -1,0 +1,5 @@
+不推荐使用 创建对象时用父类引用指向子类对象直接创建子类
+Animal a=new Cat();
+
+推荐使用 当作参数时使用多态 因为扩展性强
+public static void method(Animal a){...}

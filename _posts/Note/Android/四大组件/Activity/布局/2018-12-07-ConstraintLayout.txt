@@ -1,0 +1,42 @@
+ConstraintLayout
+
+居中 
+	实例代码
+	app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+
+	倾向 (bias)
+		居中搭配bias，能使约束偏向某一边，默认是0.5，有以下属性： 
+		* layout_constraintHorizontal_bias (0最左边 1最右边) 
+		* layout_constraintVertical_bias (0最上边 1 最底边)
+		
+比例 (Ratio)
+	为了做到这一点，需要将至少一个约束维度设置为0dp（即MATCH_CONSTRAINT） 
+	并将属性layout_constraintDimentionRatio设置为给定的比例。
+	示例代码
+	app:layout_constraintDimensionRatio="2:1"
+	android:layout_width="200dp"
+    android:layout_height="0dp"
+	
+链条 (Chains)
+	链条由在链的第一个元素（链的“头”）上设置的属性控制： 
+	头是水平链最左边的View，或垂直链最顶端的View。
+	
+	链条样式 (Chain Style)
+		链头设置属性 
+		layout_constraintHorizontal_chainStyle 
+		或
+		layout_constraintVertical_chainStyle
+		
+		取值如下： 
+			* spread - 元素将被展开（默认样式） 
+			* 加权链 - 在spread模式下，如果某些小部件设置为MATCH_CONSTRAINT，则它们将拆分可用空间 
+			* spread_inside - 类似，但链的端点将不会扩展 
+			* packed - 链的元素将被打包在一起。 孩子的水平或垂直偏差属性将影响包装元素的定位
+
+	加权链 (Weighted chains)
+		和LinearLayout的weight类似
+		
+参考线 (Guideline)
+
+挡板 (Barrier)

@@ -1,0 +1,31 @@
+show databases;
+
+drop database shujuku_name;/*删除*/
+create database shujuku_name;/*创建数据库*/
+use shujuku_name;
+
+show tables;
+drop table biao_name;
+create table biao_name{
+ziduan0 int,
+ziduan1 varchar(20),
+ziduan2 int(5)
+};
+desc biao_name;/*查看表结构*/
+alter table biao_name add colum ziduan_name varchar(10);/*添加字段*/
+/*添加删除修改字段时colum可以省略 如下*/
+alter table biao_name drop colum ziduan_name;/*删除字段*/
+/*adds是添加 drop是删除 modify是修改类型*/
+alter table biao_name change zifuan_name ziduan_new_name varchar(20);
+alter table biao_name change zifuan_new_name ziduan_name varchar(10);
+alter table biao_name rename to table_name;/*修改表名*/
+
+/*增删改查*/
+insert into table_name values(1,'字段1',666);
+insert into table_name(ziduan1,ziduan2) values('字段2',999)
+delete from table_name where ziduan2='字段2';
+delete from table_name where ziduan2='字段2' and ziduan1='字段1';
+/*不添加where这个条件时整个表全部的内容都删除*/
+update table_name set ziduan0=123,diduan1='字段one' where ziduan1='字段1' ziduan2=666;
+select * from table_name;
+select ziduan1,ziduan2 as '字段二' from table_name;/*查询时添加常量列别名*/

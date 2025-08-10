@@ -1,0 +1,1 @@
+SELECT id,name,gender,age,'java就业班' AS '年级' FROM student;

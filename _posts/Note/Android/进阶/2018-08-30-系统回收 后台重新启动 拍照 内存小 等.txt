@@ -1,0 +1,6 @@
+android:persistent="true"
+持久化为 true；防止你的app挂后台被回收。
+
+https://www.2cto.com/kf/201606/519729.html
+
+->剪藏

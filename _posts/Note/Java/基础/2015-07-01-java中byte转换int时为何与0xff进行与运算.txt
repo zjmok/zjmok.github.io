@@ -1,0 +1,26 @@
+public static String bytes2HexString(byte[] b) {
+   String ret = "";
+   for (int i = 0; i < b.length; i++) {
+    String hex = Integer.toHexString(b[ i ] & 0xFF);
+    if (hex.length() == 1) {
+     hex = '0' + hex;
+    }
+    ret += hex.toUpperCase();
+   }
+   return ret;
+ }
+上面是将byte[]转化十六进制的字符串,注意这里b[ i ] & 0xFF将一个byte和 0xFF进行了与运算,然后使用Integer.toHexString取得了十六进制字符串,可以看出
+b[ i ] & 0xFF运算后得出的仍然是个int,那么为何要和 0xFF进行与运算呢?直接 Integer.toHexString(b[ i ]);,将byte强转为int不行吗?答案是不行的.
+
+其原因在于:
+1.byte的大小为8bits而int的大小为32bits
+2.java的二进制采用的是补码形式
+
+Integer.toHexString的参数是int，如果不进行&0xff，那么当一个byte会转换成int时，由于int是32位，而byte只有8位这时会进行补位，
+ 例如补码11111111的十进制数为-1转换为int时变为11111111111111111111111111111111好多1啊，呵呵！即0xffffffff但是这个数是不对的，这种补位就会造成误差。
+ 和0xff相与后，高24比特就会被清0了，结果就对了。
+
+----
+Java中的一个byte，其范围是-128~127的，而Integer.toHexString的参数本来是int，如果不进行&0xff，那么当一个byte会转换成int时，对于负数，会做位扩展，举例来说，一个byte的-1（即0xff），会被转换成int的-1（即0xffffffff），那么转化出的结果就不是我们想要的了。
+
+ 而0xff默认是整形，所以，一个byte跟0xff相与会先将那个byte转化成整形运算，这样，结果中的高的24个比特就总会被清0，于是结果总是我们想要的

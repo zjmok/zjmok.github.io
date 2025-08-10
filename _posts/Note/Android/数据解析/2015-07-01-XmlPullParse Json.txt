@@ -1,0 +1,36 @@
+XmlPullParser
+	事件解析-->
+		可以获取每个节点事件,获取到属性或节点文本
+		
+		XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+		XmlPullParser parser = factory.newPullParser();
+		parser.setInput(is, "utf-8");
+		//获取类型
+		int eventType = parser.getEventType();
+		ArrayList<Student>list=new ArrayList<>();
+		ArrayList<Friend>friends=new ArrayList<>();
+		Student stu = null;
+		Friend f = null;
+		//不到达文档最后则继续循环操作
+		while(eventType!=XmlPullParser.END_DOCUMENT){
+			switch (eventType) {
+			case XmlPullParser.START_TAG:
+				switch (parser.getName()) {
+				case "student":
+
+
+XStream
+	xml-->javabean	将每节点转换,属性转换不了
+	
+	public static ArrayList<Student> streamToObject2(InputStream is){
+		XStream xStream = new XStream();
+		xStream.alias("students", ArrayList.class);
+		xStream.alias("student", Student.class);
+		xStream.alias("friends", ArrayList.class);
+		xStream.alias("friend", Friend.class);
+		ArrayList<Student> list = (ArrayList<Student>) xStream.fromXML(is);
+		
+		return list;
+	}
+	
+	

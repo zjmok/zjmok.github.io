@@ -1,0 +1,12 @@
+----------
+继承AndroidTestCase
+
+清单文件(自动补全)
+manifest标签下
+instrumentation
+
+application标签下
+uses-library
+
+------
+新建AndroidTest项目,自动生成

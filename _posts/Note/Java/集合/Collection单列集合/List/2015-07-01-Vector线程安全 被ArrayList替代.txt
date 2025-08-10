@@ -1,0 +1,1 @@
+Collections.synchronizedList方法同步List，于是Vector就废了

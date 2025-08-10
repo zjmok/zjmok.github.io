@@ -1,0 +1,29 @@
+函数递归调用的语句在函数最后一句
+
+简单理解为:
+只有递没有归 --> 尾递归
+递过去归回来 --> 不是尾递归
+
+----------
+java里没有支持尾递归,递归调用太多会爆栈StackOverflowError
+kotlin支持尾递归优化
+
+------
+
+Kotlin的尾递归优化:
+(注意:最后一句递归,不能是返回值的写法,可以将转换为参数形式)
+
+-->请使用 tailrec 关键字：
+
+代码:
+tailrec fun sum(n: Int, res: Int): Int {
+    if (n == 0) {
+        return res
+    } else {
+        return sum(n-1,res+n)
+    }
+}
+
+fun main(args: Array<String>) {
+    println(sum(5000000,0))
+}

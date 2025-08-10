@@ -1,0 +1,12 @@
+Cookie.setMaxAge(int s)
+设置cookie过去时间,单位秒
+-1 会话关闭时删除cookie
+0  删除已存在的cookie
+
+
+----------
+什么情况下服务器会发送cookie到浏览器:
+满足
+1.主机相同
+2.路径是cookie的资源的子路径
+

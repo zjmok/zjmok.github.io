@@ -1,0 +1,4 @@
+PrintWriter pw=new PrintWriter(new FileOutputStream("filePath"),true);
+pw.println("只针对println方法");
+pw.print("不针对");
+pw.write("不针对");

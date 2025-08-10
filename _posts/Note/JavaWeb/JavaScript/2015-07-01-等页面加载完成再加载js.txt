@@ -1,0 +1,16 @@
+window.onload = function(){
+	//
+}
+
+
+-----------------
+
+<javaScript>
+	function _load(){
+		//
+	}
+</javaScript>
+
+...
+<body onload="_load()">
+...

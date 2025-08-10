@@ -1,0 +1,8 @@
+http://www.jianshu.com/p/8c98df35d368
+
+可以在AndroidMainfest.xml给该Activity加入一个属性windowSoftInputMode，就可以让系统在弹起键盘时自动调整界面。如果没有stateHidden会自动弹出键盘。
+
+<activity android:name=".ui.activity.LoginActivity"    
+android:windowSoftInputMode="adjustResize|stateHidden" />
+
+但会压缩背景

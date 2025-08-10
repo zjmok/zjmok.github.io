@@ -1,0 +1,28 @@
+ //手势相关 双击
+        final GestureDetector detector = new GestureDetector(mContext, new GestureDetector.SimpleOnGestureListener());
+        detector.setOnDoubleTapListener(new GestureDetector.OnDoubleTapListener() {
+            @Override
+            public boolean onSingleTapConfirmed(MotionEvent e) {
+                return false;
+            }
+
+            @Override
+            public boolean onDoubleTap(MotionEvent e) {
+                Log.i(TAG, "onDoubleTap: " + e.getAction());
+//                        return !enableDoubleClick;//自定义是否支持双击响应
+                return true;
+            }
+
+            @Override
+            public boolean onDoubleTapEvent(MotionEvent e) {
+                return false;
+            }
+        });
+        view.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                // 原因就在这 复写了detector的onTouchEvent()方法后，要返回true，否则是没有效果的。
+                detector.onTouchEvent(event);
+                return true;
+            }
+        });

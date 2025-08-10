@@ -1,0 +1,16 @@
+http://www.163.com:80/1.html
+
+
+http协议 默认端口80
+
+URL:(整个)
+http://www.163.com/1.html
+
+主机名:
+www.163.com
+
+域名:
+163.com
+
+URI:(资源)
+/1.html

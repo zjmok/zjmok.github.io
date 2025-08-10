@@ -1,0 +1,9 @@
+-  写上传新闻页面
+	-  表单提交时使用post方式
+	-  post方式如果提交有文件 需要form标签加上enctype="multipart/form-data" 
+	
+-  上传页面的servlet
+	-  打开接收多部分数据 @MultipartConfig 
+	-  接收中文乱码问题： 由于servlet默认编码方式为iso-8859-1 所以需要重新按照utf-8进行编码  title = new String(title.getBytes("iso-8859-1"), "utf-8");
+	-  通过UUID生成一个不重复的文件名
+	

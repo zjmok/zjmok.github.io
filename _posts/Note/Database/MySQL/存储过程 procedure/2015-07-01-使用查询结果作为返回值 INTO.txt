@@ -1,0 +1,10 @@
+DELIMITER $
+CREATE PROCEDURE pro_findById(IN eid INT,OUT vname VARCHAR(20))
+BEGIN
+	-- 使用查询结果作为返回值 用INTO
+	SELECT empName INTO vname FROM employee WHERE id=eid;
+END $
+
+------------
+CALL pro_findById(1,@Name);
+SELECT @Name;

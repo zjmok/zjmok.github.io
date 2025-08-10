@@ -1,0 +1,6 @@
+trim()是去两边空格的方法
+
+String str="    abc  ";
+str.trim();
+
+得到str="abc"

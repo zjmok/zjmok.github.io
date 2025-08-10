@@ -1,0 +1,34 @@
+装饰设计模式
+
+优点
+与继承相比,偶合性不强
+
+例子
+BufferedReader br=new BufferedReader(new InputStreamReader(new FileInputStream("UTF-8.txt"),"UTF-8"));
+
+BufferedReader 对 InputStreamReader进行装饰
+
+----------------------------------
+//BB 包装 AA
+interface Fangfa{
+	void fangfa();
+}
+class AA implements Fangfa{
+	@Override
+	public void fangfa(){
+		System.out.println("javase");
+	}
+}
+
+class BB implements Fangfa{
+	private AA a;
+	public BB(AA a){
+		this.a=a;
+	}
+	@Override
+	public void fangfa(){
+		a.fangfa();
+		System.out.println("javaee");
+		System.out.println("Android");
+	}
+}

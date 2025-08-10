@@ -1,0 +1,14 @@
+提供的 图片 比例 分辨率 等
+接口字段 大小写 返回结构 错误码意义 等
+
+安卓的话尽量周五上午前给包  周末给包会存在应用市场搜索不到产品（周六及周日两天）
+
+序列化尽量用基本数据类型,如File序列化应该用filePath
+
+软键盘
+	KeyboardUtils.showSoftInput(getActivity());
+	finish时不会隐藏
+
+	KeyboardUtils.hideSoftInput(getActivity());
+	只能在onPause有效
+	onStop和onDestory无效

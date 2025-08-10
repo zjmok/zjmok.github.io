@@ -1,0 +1,9 @@
+emulator: ERROR: x86 emulation currently requires hardware acceleration!
+Please ensure Intel HAXM is properly installed and usable.
+CPU acceleration status: HAX kernel module is not installed!
+
+试用了这个方法，但还是没有安装成功。　
+一：在SDK Manager里下载Intel x86 Emulator Accelerator...以后，虽然显示Installed，但还得到SDK目录下extras\intel\Hardware_Accelerated_Execution_Manager手动安装（参数设为1024M够用了，需要改参数的话可以重新安装一次）
+　　二：在SDK Manager下载对应的x86镜像（Intel x86 Atom System Image或Intel x86 Atom_64 System Image）,对应的版本是你所用android版本（如5.1 4.4 4.3等等）下的x86镜像
+　　三：在SDK Manager中升级android Tools
+　　四：在AVD Manager中新建android模拟机时，CPU/ABI应选择x86（或x86_64），然后Emulated performance应选择use host GPU

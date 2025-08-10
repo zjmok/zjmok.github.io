@@ -1,0 +1,7 @@
+File
+isDirectory() 判断是否是目录
+isFile() 判断是否是文件
+exists() 是否存在
+canRead() 是否可读
+canWrite() 是否可写
+isHidden() 是否隐藏

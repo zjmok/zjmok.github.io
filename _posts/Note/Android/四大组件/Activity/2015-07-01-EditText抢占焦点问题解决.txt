@@ -1,0 +1,15 @@
+方法：
+在第一个EditText前面添加一个LinearLayout，并且一定要请求获得焦点，否则无效。网上很多都说到要添加一个LinearLayout，但是没有强调要使用
+<requestFocus />
+这句，发现不使用这句其实是没有效果的。
+
+	<LinearLayout
+		android:focusable="true" android:focusableInTouchMode="true"
+		android:layout_width="0px" android:layout_height="0px">
+		<requestFocus />
+	</LinearLayout>
+
+
+其实
+<requestFocus />标签 相对一个控件
+请求焦点 就够了

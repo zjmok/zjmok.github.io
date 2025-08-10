@@ -1,0 +1,14 @@
+//原则:凡是响应正文中需要的内容,一定要设置content-type头
+ServletContext sc=getServletContext();
+String type=sc.getMimeType("abc.apk");//获取该后缀类型的type类型,文件名可以随意写
+
+response.setContentType(type);
+
+//设置响应头,提示用户下载时保存的文件名称
+response.setHeader("Content-Disposition","attachment;filename="+"文件名和后缀");
+
+...
+InputStream is=getServletContext.getResourceAsStream("/WEB-INF/abc.apk");
+OutputStream os=response.getOutputStream();
+//两个流对接
+...

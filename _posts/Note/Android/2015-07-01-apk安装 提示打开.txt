@@ -1,0 +1,12 @@
+解决方案：
+
+Intent intent = new Intent(Intent.ACTION_VIEW);
+intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+intent.setDataAndType(Uri.fromFile(new File(mDownloadPath)),"application/vnd.android.package-archive");
+startActivity(intent);
+android.os.Process.killProcess(android.os.Process.myPid());
+
+说明：
+android.os.Process.killProcess(android.os.Process.myPid());如果不加，最后不会提示完成、打开。
+
+intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);如果不加，最后安装完成，点打开，无法打开新版本应用。

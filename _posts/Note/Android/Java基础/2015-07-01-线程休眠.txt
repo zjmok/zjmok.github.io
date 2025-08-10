@@ -1,0 +1,14 @@
+new Thread(){
+	@Override
+	public void run(){
+		super.run();
+		while(true){  //死循环
+		System.out.println("线程正在运行");
+		try{
+			sleep(1000);  //休眠1秒 
+		}catch(InterruptedException e){
+			e.printStackTrace();
+			}
+		}
+	}
+}.strat();

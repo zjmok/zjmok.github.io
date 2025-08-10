@@ -1,0 +1,9 @@
+跨域会出错
+1.直接放到同一个项目里
+2.添加跨域访问响应头
+----
+
+$.get(url,function(data,status){
+	//data返回的数据 state状态码
+	
+});

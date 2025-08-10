@@ -1,0 +1,2 @@
+var obj = document.getElementById("id");  //js对象或DOM对象
+var $obj = $(obj);  //js对象转为jq对象

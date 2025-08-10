@@ -1,0 +1,30 @@
+#列表：list
+#相当java的Arraylist
+
+#>>>
+classmates = ['Michael', 'Bob', 'Tracy']
+#>>>
+classmates
+#['Michael', 'Bob', 'Tracy']
+
+#变量classmates就是一个list。用len()函数可以获得list元素的个数
+#>>>
+len(classmates)
+#3
+
+#用索引来访问list中每一个位置的元素，记得索引是从0开始的：
+
+#>>> 
+classmates[0]
+#'Michael'
+
+#也可以用负数从后面数起
+#获取倒数第2个
+#>>>
+classmates[-2]
+#'Bob'
+
+classmates.append('Adam') #追加
+classmates.insert(1, 'Jack') #插入到指定位置
+classmates.pop() #删除后面一个
+classmates.pop(-1) #删除指定位置

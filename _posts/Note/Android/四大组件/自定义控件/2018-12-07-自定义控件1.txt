@@ -1,0 +1,35 @@
+	自定义View类
+		继承 重写构造(this()少参构造调用多参构造) 增加自定义方法逻辑
+
+	自定义属性
+
+		自定义属性的使用
+
+		----------------------		
+		<resources>
+			<declare-styleable name="TextView">
+			<!-- name填全类名 -->
+				<attr name="text" format="string" />
+				<!-- 枚举类型 -->
+				<attr name="bufferType">
+					<enum name="normal" value="0" />
+					<enum name="spannable" value="1" />
+					<enum name="editable" value="2" />
+				</attr>
+				
+	可以在源码上找到以上代码,
+	(android原生属性-->
+	%SDK_HOME%\platforms\android-25\data\res\values\attrs.xml)
+	自定义在工程目录res\values\attrs.xml
+		
+		-----------------
+
+			定义名空间-->(android改自己的,后面是包名)
+			xmlns:android="http://schemas.android.com/apk/res/android"
+			
+			改成:
+			xmlns:theone="http://schemas.android.com/apk/res/com.theone.safe"			
+			可写在自定义标签内可写在layout布局标签属性内
+			
+			则--> 例android:id="xxx"-->theone:title="xxx"
+			

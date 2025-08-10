@@ -1,0 +1,14 @@
+HttpURLConnection
+	API简单，体积较小，因而非常适用于Android项目，但是在android 2.2及以下版本中HttpUrlConnection存在着一些bug，所以建议在android 2.3以后使用HttpUrlConnection，之前使用HttpClient。
+
+Apache HttpClient
+	高效稳定，但是维护成本高昂，故android 开发团队不愿意维护该库更青睐轻便的HttpUrlConnection。Android 5.0后已废弃该库。
+
+OKHttp
+	Square公司产品，OkHttp相比HttpURLConnection和HttpClient功能更加强大。
+
+Volley
+	Volley是在2013年Google I/O大会上推出了一个新的网络通信框架，内部封装了HttpURLConnection和HttpClient, 解决了网络数据解析和线程切换的问题。
+
+Retrofit
+	Square公司产品，内部封装了OKhttp, 解决了网络数据解析和线程切换的问题。

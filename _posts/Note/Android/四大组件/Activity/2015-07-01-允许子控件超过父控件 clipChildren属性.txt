@@ -1,0 +1,3 @@
+andorid:clipChildren="false"
+
+布局父控件中声明该属性,将允许子控件超出限制范围

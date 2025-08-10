@@ -1,0 +1,36 @@
+
+Activity-->ViewGroup-->ViewGroup-->View
+									   |
+									   |
+Activity<--ViewGroup<--ViewGroup<------
+
+ViewGroup可以拦截onInterceptTouchEvent,
+若ViewGroup拦截,自己的onTouchEvent处理事件;若不拦截(默认),则向下分发
+View是否消费,消费onTouchEvent,否则向上传递给ViewGroup
+ViewGroup,这时取决ViewGroup是否消费onTouchEvent,不消费继续向上传
+直到 PhoneWindow中的DecorView 都不消费 则 调用到了Activity的onTouchEvnet方法(此时没有onTouch方法)
+都不消费则事件丢失
+------------------
+
+分发 true分发 按顺序分发
+拦截 true拦截 拦截事件交由onTouchEvent处理
+消费 true消费 消费后 只能消费一次 事件结束
+
+----------------------
+
+ViewGroup.java
+
+	public boolean dispatchTouchEvent(MotionEvent event)//分发
+	public boolean onTouchEvent(MotionEvent event) //消费
+	public boolean onInterceptTouchEvent(MotionEvent event)//拦截
+	
+
+------------------------
+
+View.java
+
+	public boolean dispatchTouchEvent(MotionEvent event)//分发
+	public boolean onTouchEvent(MotionEvent event) //消费
+
+
+	

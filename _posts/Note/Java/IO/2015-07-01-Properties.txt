@@ -1,0 +1,15 @@
+Properties
+
+是Hashtable的子类,所以可以当双列集合使用
+
+load()和store()方法
+load()是加载Properties文件的流对象,将文件上的键值对读取到集合中
+store()是将setProperty的结果保存到流文件中,
+
+-----------
+Properties prop=new Properties();
+prop.load(new FileInputStream("config.properties")); //将文件的键值对读取到集合中
+prop.setProperty("键","值");
+prop.store(new FileOutputStream("config.properties"),null); //第二个参数是对列表的描述,可以给值,可以是null
+//貌似要关流
+--------------

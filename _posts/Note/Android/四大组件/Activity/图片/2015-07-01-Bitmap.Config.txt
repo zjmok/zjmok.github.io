@@ -1,0 +1,4 @@
+Bitmap.Config.RGB_565	每个像素占5+6+5=16位,即2字节
+Bitmap.Config.ALPHA_8	每个像素占8位,1字节
+Bitmap.Config.ARGB_4444	每个像素占16位,2字节
+Bitmap.Config.ARGB_8888	每个像素占32位,4字节

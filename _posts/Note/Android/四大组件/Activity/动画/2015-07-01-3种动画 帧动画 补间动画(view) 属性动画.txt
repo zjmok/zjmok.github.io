@@ -1,0 +1,19 @@
+## 动画-介绍
+
+* 帧动画 | 图片动画  （Frame Animation）
+
+> 多张图片叠加起来，一张一张的播放。 AnimationDrawable
+ 
+* 补间动画 | View动画 （Tween Animation） View动画
+
+	1. 平移动画
+	2. 旋转动画
+	3. 缩放动画
+	4. 透明度渐变动画
+
+* 属性动画
+
+> 3.0之后出现的动画， 它修改了控件的属性。
+ObjectAnimator
+
+属性动画包括ValueAnimator,ObjectAnimator

@@ -1,0 +1,36 @@
+1.处理异常
+public class A{
+  public void A(){
+    try{
+      有可能出现异常的语句;
+    }catch(Exception e){  //出现匹配到的异常才执行下面代码
+      System.out.println(e);  //或 e.printStackTrace();
+    }finally{
+      这个语句一定会运行，没有异常也可以关闭操作流;
+    }
+  }
+}
+
+2.异常抛出
+public class A{
+  public void A() throws Exception{  //抛出的方法方法名后加throws Exception，暂不处理异常，交给调用出处理
+    try{
+      有可能出现异常的语句;
+    }catch(Exception e){
+      throw e;  //抛出异常对象e
+    }finally{
+      必执行的代码;
+    }
+  }
+}
+public class B{
+  public void B(){
+    try{
+      A();  // 调用了有异常对象的A();
+    }catch(Exception e){
+      e.printStackTrace();  // 处理异常对象
+    }finally{
+      必执行的代码;
+    }
+  }
+}

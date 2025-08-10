@@ -1,0 +1,11 @@
+<layer-list
+...>
+
+	<item>
+		<rotate android:drawable="@drawable/a" android:fromDefrees="0" android:toDefrees="720">
+	</item>
+	<item>
+		<rotate android:drawable="@drawable/b" android:fromDefrees="1080" android:toDefrees="0">
+	</item>
+
+</layer-list>

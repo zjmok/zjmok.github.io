@@ -1,0 +1,6 @@
+起始行从0开始
+--需求:查询第1,2条记录
+SELECT * FROM student 0,2;
+--需求:查询第3,4条记录
+SELECT * FROM student 2,2;
+没有记录不显示

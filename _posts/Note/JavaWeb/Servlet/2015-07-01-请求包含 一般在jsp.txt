@@ -1,0 +1,1 @@
+request.getRequestDispatcher("路径").include(request,response);

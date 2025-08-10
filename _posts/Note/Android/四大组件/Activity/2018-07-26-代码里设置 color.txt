@@ -1,0 +1,7 @@
+setTextColor(int color)
+
+color的值不能直接设置0x123abc
+会默认全透明
+必须设置完整值 加上透明度
+
+即 0xff123abc

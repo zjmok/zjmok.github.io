@@ -1,0 +1,44 @@
+ReentrantLock r=new ReentrantLocj();
+Condition c1=r.newCondition();
+Condition c2=r.newCondition();
+Condition c3=r.newCondition();
+
+方法1:
+r.lock()
+if(flag!=1){
+	c1.await();
+}
+//代码
+c2.signal();
+r.unlok()
+
+方法2:
+r.lock()
+if(flag!=1){
+	c2.await();
+}
+//代码
+c3.signal();
+r.unlok()
+
+方法3:
+r.lock()
+if(flag!=1){
+	c3.await();
+}
+//代码
+c1.signal();
+r.unlok()
+
+
+----------------
+new ReentrantLocj()互斥锁
+lock()
+//代码
+unlock()
+替代同步代码块
+
+newCondition()获取Condition对象
+await()等待,signal()唤醒指定线程.
+
+从而可以替代Synchronized

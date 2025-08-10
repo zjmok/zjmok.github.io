@@ -1,0 +1,7 @@
+
+
+onTouch中
+
+return
+	true	只响应按下(因为消费了事件)
+	false	响应多个动作

@@ -1,0 +1,2 @@
+socket.shutdownOutput();
+客户端socket发出输出完成

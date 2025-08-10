@@ -1,0 +1,22 @@
+
+判断是否打开该服务
+
+	1.通过获取系统服务 获取管理器
+	2.获取正在运行的服务的列表
+	3.遍历列表 判断 equals类名clazz.getName
+	4.返回
+
+--------
+
+/*android 8.0 已过时*/
+	public static boolean isServiceRunning(Context context,Class<? extends Service>clazz){
+		ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+		List<RunningServiceInfo> runningServices = am.getRunningServices(Integer.MAX_VALUE);
+		for (RunningServiceInfo runningServiceInfo : runningServices) {
+			String className = runningServiceInfo.service.getClassName();
+			if(className.equals(clazz.getName())){
+				return true;
+			}
+		}
+		return false;
+	}

@@ -1,0 +1,37 @@
+http://blog.csdn.net/suma_sun/article/details/51427312
+
+关联Looper 
+
+	在Handler的构造时，会先判断Handler引用//当子类是匿名类 或者 是成员类 或者 本地类时//用于警告开发者该类可能存在泄漏
+	然后执行looper获取对象
+
+	mLooper = Looper.myLooper();//关联Looper 
+
+	如果不在主线程，以上代码会抛异常
+
+	if (mLooper == null) {
+		throw new RuntimeException(
+			"Can't create handler inside thread that has not called Looper.prepare()");
+	}
+
+	因为//Return the Looper object associated with the current thread. Returns null if the calling thread is not associated with a Looper. 
+
+	所以当我们在Activity中创建Handler没问题，而在子线程中创建会报错的原因就在这里
+
+获取消息 
+
+	在Looper中有一函数loop();该函数会一直轮循获取消息，直到没有消息返回退出。
+	
+	在MessageQueue中找到next()方法
+	该方法也是一个轮循，并且是带同步块的操作，直到返回Message，或者调用quit(boolean safe)方法 改变mQuitting 使其返回null。
+	
+处理消息 
+
+	获取到Message后会调用其持有的Handler对象dispatchMessage(msg)方法
+	
+	通过回调函数返回主线程处理消息handleCallback(msg)
+	
+	Handler收到消息后，先判断消息内的回调Runnable是否为空//post(Runnable)等方法，
+	为空就调用Handler内部的Runnable
+
+	然后调用handleMessage(msg);

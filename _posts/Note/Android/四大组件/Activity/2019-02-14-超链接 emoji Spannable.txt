@@ -1,0 +1,33 @@
+String contractDesc = "已阅读<<Android&iOS不平等条约>>协议";
+String contractName = "<<Android&iOS不平等条约>>";
+SpannableString spannableString = new SpannableString(contractDesc);//还有个SpannableStringBuilder
+int startIndex = contractDesc.indexOf(contractName);
+int endIndex = startIndex + contractName.length();
+spannableString.setSpan(new ClickableSpan() {
+	@Override
+	public void onClick(@NonNull View widget) {
+		onClickContract();
+	}
+
+	@Override
+	public void updateDrawState(@NonNull TextPaint ds) {
+		super.updateDrawState(ds);
+		ds.setColor(getResources().getColor(R.color.ff0bd0b2));
+		ds.setUnderlineText(false);
+	}
+}, startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+spannableString.setSpan(new ClickableSpan() {
+	@Override
+	public void onClick(@NonNull View widget) {
+		ToastUtils.showShort("多个点击这样设置");
+	}
+},1,4,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+//设置透明背景
+mTvContract.setHighlightColor(Color.TRANSPARENT);
+mTvContract.setText(spannableString);
+//设置可点击
+mTvContract.setMovementMethod(LinkMovementMethod.getInstance());
+
+---
+
+还可以设置emoji

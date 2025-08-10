@@ -1,0 +1,4 @@
+底层
+Collection隐藏了Map的value,
+用的是同一套算法,
+因为用一套算法的话Collecion可以隐藏Map的某些功能,而反过来却不能增加

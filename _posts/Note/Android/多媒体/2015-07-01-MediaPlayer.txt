@@ -1,0 +1,1 @@
+播放网络资源 用异步 play.prepareAsync

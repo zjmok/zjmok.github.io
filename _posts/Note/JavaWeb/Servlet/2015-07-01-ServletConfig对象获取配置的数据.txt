@@ -1,0 +1,21 @@
+conf/web.xml配置文件
+
+<web.app...>
+  <servlet>
+    <init-patam>
+      <param-name>data</param-name>
+      <param-value>xxxxx</param-value>
+    <init-param>
+  </servlet>
+</web.app>
+
+
+servlet资源文件
+
+public class ServletDemo extends HttpServlet{
+  public void doGet{HttpServletRequest request, HttpServletResponse response}
+  throws ServletException, IOException{
+    String value = this.getServletConfig().getInitPatameter("data");
+    //将得到 value=xxxxx
+  }
+}

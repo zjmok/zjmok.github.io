@@ -1,0 +1,28 @@
+Timer t=new Timer();
+t.schedule(new MyTimeTask(),new Date(...),int 多久后重复执行任务(毫秒值));
+
+TimerTask抽象类,要子类继承重写抽象方法
+
+
+------------
+
+		Calendar cal = Calendar.getInstance();
+		cal.set(2017, 1, 15, 10, 54, 0);
+		Date date = cal.getTime();
+
+		SimpleDateFormat sdf=new SimpleDateFormat("YYYY年MM月dd日 HH时mm分ss秒");
+		
+		Timer t=new Timer();
+		t.schedule(new TimerTask() {
+			
+			@Override
+			public void run() {
+				System.out.println("------------");
+				System.out.println("hahaha");
+			}
+		}, new Date(2017-1900, 1, 15, 11, 05, 30), 2000);
+
+		while(true){
+			Thread.sleep(1000);
+			System.out.println(sdf.format(new Date()));
+		}

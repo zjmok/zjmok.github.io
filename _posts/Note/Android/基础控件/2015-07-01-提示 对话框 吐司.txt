@@ -1,0 +1,21 @@
+对话框：
+new AlertDialog.Builder(MainActivity.this).setTitle("标题").setMessage("消息框").setNeutralButton("中性",null).setPositiveButton("确定", null).setNegativeButton("取消",null).show();
+
+AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+builder.setTitle("标题");
+builder.setMessage("消息框");
+builder.setNeutralButton("中性",
+new DialogInterface.OnClickListener() {
+    @Override
+    public void onClick(DialogInterface dialog, int which) {
+        finish();
+    }
+});
+builder.setPositiveButton("确定", null);
+builder.setNegativeButton("取消",null);
+builder.show();
+
+
+提示：
+Toast.makeText(Register.this, "提示", Toast.LENGTH_SHORT).show();
+

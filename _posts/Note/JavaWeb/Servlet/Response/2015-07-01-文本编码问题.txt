@@ -1,0 +1,16 @@
+//设置编码码表
+response.setCharacterEncoding("gbk");
+
+//设置解码码表
+response.setHeader("Content-Type","text/html;charset=gbk");
+
+response.getWriter().write("中文");
+
+------------------
+//封装编码解码码表(一行代码解决上面两行)
+response.setContentType("text/html;charset=gbk");
+
+response.getWriter().write("中文");
+
+-----------------
+结论:建议使用字符流输出文本,并使用setContentType方法设置码表,而且码表设置要在输出文本前

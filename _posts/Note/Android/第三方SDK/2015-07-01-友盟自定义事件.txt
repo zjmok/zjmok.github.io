@@ -1,0 +1,33 @@
+1、计数事件
+	// 普通事件
+	MobclickAgent.onEvent(mContext, "event_Id");  
+	MobclickAgent.onEvent(mContext, "event_Id", "标签"); 
+
+	// 多属性（K-V）事件
+	Map<String, String> map_ekv = new HashMap<String, String>();  
+	map_ekv.put("type", "popular");  
+	map_ekv.put("artist", "JJLin");  
+	MobclickAgent.onEvent(mContext, "music", map_ekv); 
+
+2、计算事件
+	// 数值型统计
+	int num = 9527;//从逻辑中计算的值
+	Map<String, String> map_value = new HashMap<String, String>();  
+	map_value.put("type", "popular");  
+	map_value.put("artist", "JJLin");  
+	MobclickAgent.onEventValue(this, "music", map_value, num);  
+	
+	 事件开始与结束
+	// 事件开始
+	MobclickAgent.onEventBegin(mContext, "music");  
+	MobclickAgent.onEventBegin(mContext, "music", "one");  
+	Map<String, String> map = new HashMap<String, String>();  
+	map.put("type", "popular");  
+	map.put("artist", "JJLin");  
+	MobclickAgent.onKVEventBegin(mContext, "music", map, "flag0");  
+		
+	// 事件结束
+	MobclickAgent.onEventEnd(mContext, "music");   
+	MobclickAgent.onEventEnd(mContext, "music", "one");  
+	MobclickAgent.onKVEventEnd(mContext, "music", "flag0");
+	

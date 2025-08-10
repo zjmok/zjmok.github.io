@@ -1,0 +1,40 @@
+
+public class MyInvocationHandler implements InvocationHandler {
+
+	private Object obj;
+	
+	public MyInvocationHandler(Object obj) {
+		super();
+		this.obj = obj;
+	}
+
+	@Override
+	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+		//方法调用前的代理
+		System.out.println("已被代理");
+		//method.invoke(obj, args);
+		Object object = method.invoke(obj, args);
+		//方法调用后的代理
+		System.out.println("代理结束");
+		return object; // 后面需要用到object需要返回
+	}
+
+}
+
+--------------------
+Cat c=new Cat();
+		Class clazzCat=c.getClass();
+		MyInvocationHandler ihCat=new MyInvocationHandler(c);
+		Animal cat=(Animal) Proxy.newProxyInstance(clazzCat.getClassLoader(), clazzCat.getInterfaces(), ihCat);
+		cat.eat();
+		System.out.println("-------------------");
+		cat.sleep();
+
+被代理类的接口 x = (被代理类的接口) Proxy.newProxyInstance(被代理类的加载器,被代理类的接口,代理类的实例);
+x.需要调用的方法
+-----------------------
+
+
+ Class<?>[] getInterfaces() 
+          确定此对象所表示的类或接口实现的接口 
+

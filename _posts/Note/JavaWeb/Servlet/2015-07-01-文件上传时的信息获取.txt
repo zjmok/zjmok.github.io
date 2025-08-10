@@ -1,0 +1,8 @@
+请求头:
+	普通请求头:直接通过request.getHeader获取
+	
+	上传文件的信息 服务器端通过
+	Part part = request.getPart("image");
+	part.getHeader(arg0)//获取文件信息
+	//再截取获得文件名
+	...

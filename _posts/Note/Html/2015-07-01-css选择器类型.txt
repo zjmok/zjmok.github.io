@@ -1,0 +1,18 @@
+选择器类型
+ 	标签选择器：是指网页中已有的标签名作为名称的选择器。
+
+ 	id选择器：对于一个网页而言，其中的每个对象均可以指派一个id属性，这里的id可以理解为一个标识，每个id名称只能使用一次。在CSS样式中，id选择器使用“#选择器名称”进行定义。
+
+ 	class类选择器：对于网页设计而言，我们可以对XHTML标签指派一个class属性，与id不同的是，class允许重复使用，页面中的多个元素，可以使用同一个class定义。在CSS使用“.选择器名称”进行定义。
+
+ 	群组选择器：如 h1,h2,h3,p,span{ font-size: 12px; font-family: arial }
+
+ 	包含选择器：h1 span { font-weight: normal; }     #layout  h1 { color: green; }
+
+
+
+锚伪类:未访问,已访问,悬浮,点击
+a:link{}
+a:visited{}
+a:hover{}
+a:active{}

@@ -1,0 +1,7 @@
+生成:
+序列化器
+XmlSerializer serializer = Xml.newSerializer();
+
+解析:
+pull解析(内容中的换行空格会被保留解析成TEXT,所以服务器给的数据一般是一行)
+XmlPullParser parser = Xml.newPullParser();

@@ -1,0 +1,15 @@
+ITelephony
+	.endCall
+
+------------
+ITelephony对象的获取 
+导入源码的ITelephony.aidl,生成类,因为该类是隐藏的,google不允许被修改
+获取类 便可以导入类 使用对象
+
+根据系统源码ServiceManager.getITelephony-->
+Class clazz=Class.forName("android.os.ServiceManager");
+Method method = clazz.getDeclaredMethod("getService",String.class);
+IBinder iBinder = (IBinder) method.invoke(null, Context.TELEPHONY_SERVICE);
+ITelephony iTelephony = null;//利用aidl线程间通信获得该类的引用
+iTelephony = ITelephony.Stub.asInterface(iBinder)
+

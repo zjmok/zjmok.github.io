@@ -1,0 +1,3 @@
+select empName,deptName from employee,dept;
+会产生两个表各记录数的乘积个记录,有些是重复记录
+不推荐使用

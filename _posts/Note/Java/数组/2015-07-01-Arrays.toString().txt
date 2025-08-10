@@ -1,0 +1,8 @@
+Arrays.toString(字符串数组)
+输出[字,符,串]
+
+例
+String[] s={"aa","bb","cc"};
+String str=Arrays.toString(s);
+System.out.println(str);
+输出[aa, bb, cc]

@@ -1,0 +1,1 @@
+设置步骤如下： eclipse -- >perferences - >web ->jsp - jsp files -Editor ->templates 在这里可以设置模板。

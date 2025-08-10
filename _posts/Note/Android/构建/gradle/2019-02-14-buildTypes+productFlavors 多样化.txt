@@ -1,0 +1,11 @@
+## buildTypes+productFlavors,每一种组合就是一个Build Variant（构建变种版本）。
+
+---
+
+buildConfigField
+
+manifestPlaceholders
+
+resValue
+
+和利用其它值的不同赋值等,构建出不同的apk

@@ -1,0 +1,15 @@
+错误页面
+在web.xml
+<web-app...
+	<error-page>
+		<error-code>500</error-code>
+		<location>/page/error.jsp</location>
+...
+
+------------------
+在web.xml
+<web-app...
+	<error-page>
+		<exception-type>java.lang.Exception</exception-type>
+		<location>/page/error.jsp</location>
+...

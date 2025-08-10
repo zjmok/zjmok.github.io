@@ -1,0 +1,6 @@
+ActivityManager
+获取进程相关信息 可获取正在运行的所有进程
+
+--------
+ActivityManager am=(ActivityManager)context.getSystemService(Contest.ACTIVITY_SERVICE);//进程管理器
+List<RunningAppProcessInfo>progresses=am.getRunningAppProcesses();//正在运行进程List集合

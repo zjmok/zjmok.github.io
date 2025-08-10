@@ -1,0 +1,66 @@
+Statement 接口提供了三种执行 SQL 语句的方法：executeQuery、executeUpdate 和 execute。使用哪一个方法由 SQL 语句所产生的内容决定。
+
+
+
+
+         方法executeQuery 
+          用于产生单个结果集的语句，例如 SELECT 语句。 被使用最多的执行 SQL 语句的方法是 executeQuery。这个方法被用来执行 SELECT 语句，它几乎是使用最多的 SQL 语句。
+
+         方法executeUpdate
+          用于执行 INSERT、UPDATE 或 DELETE 语句以及 SQL DDL（数据定义语言）语句，例如 CREATE TABLE 和 DROP TABLE。INSERT、UPDATE 或 DELETE 语句的效果是修改表中零行或多行中的一列或多列。executeUpdate 的返回值是一个整数，指示受影响的行数（即更新计数）。对于 CREATE TABLE 或 DROP TABLE 等不操作行的语句，executeUpdate 的返回值总为零。
+
+         使用executeUpdate方法是因为在 createTableCoffees 中的 SQL 语句是 DDL （数据定义语言）语句。创建表，改变表，删除表都是 DDL 语句的例子，要用 executeUpdate 方法来执行。你也可以从它的名字里看出，方法 executeUpdate 也被用于执行更新表 SQL 语句。实际上，相对于创建表来说，executeUpdate 用于更新表的时间更多，因为表只需要创建一次，但经常被更新。
+
+
+
+
+         方法execute：
+         用于执行返回多个结果集、多个更新计数或二者组合的语句。因为多数程序员不会需要该高级功能
+
+         execute方法应该仅在语句能返回多个ResultSet对象、多个更新计数或ResultSet对象与更新计数的组合时使用。当执行某个已存储过程或动态执行未知 SQL 字符串（即应用程序程序员在编译时未知）时，有可能出现多个结果的情况，尽管这种情况很少见。
+         因为方法 execute 处理非常规情况，所以获取其结果需要一些特殊处理并不足为怪。例如，假定已知某个过程返回两个结果集，则在使用方法 execute 执行该过程后，必须调用方法 getResultSet 获得第一个结果集，然后调用适当的 getXXX 方法获取其中的值。要获得第二个结果集，需要先调用 getMoreResults 方法，然后再调用 getResultSet 方法。如果已知某个过程返回两个更新计数，则首先调用方法 getUpdateCount，然后调用 getMoreResults，并再次调用 getUpdateCount。
+         对于不知道返回内容，则情况更为复杂。如果结果是 ResultSet 对象，则方法 execute 返回 true；如果结果是 Java int，则返回 false。如果返回 int，则意味着结果是更新计数或执行的语句是 DDL 命令。在调用方法 execute 之后要做的第一件事情是调用 getResultSet 或 getUpdateCount。调用方法 getResultSet 可以获得两个或多个 ResultSet 对象中第一个对象；或调用方法 getUpdateCount 可以获得两个或多个更新计数中第一个更新计数的内容。
+         当 SQL 语句的结果不是结果集时，则方法 getResultSet 将返回 null。这可能意味着结果是一个更新计数或没有其它结果。在这种情况下，判断 null 真正含义的唯一方法是调用方法 getUpdateCount，它将返回一个整数。这个整数为调用语句所影响的行数；如果为 -1 则表示结果是结果集或没有结果。如果方法 getResultSet 已返回 null（表示结果不是 ResultSet 对象），则返回值 -1 表示没有其它结果。也就是说，当下列条件为真时表示没有结果（或没有其它结果）：
+
+((stmt.getResultSet() == null) && (stmt.getUpdateCount() == -1))
+
+         如果已经调用方法 getResultSet 并处理了它返回的 ResultSet 对象，则有必要调用方法 getMoreResults 以确定是否有其它结果集或更新计数。如果 getMoreResults 返回 true，则需要再次调用 getResultSet 来检索下一个结果集。如上所述，如果 getResultSet 返回 null，则需要调用 getUpdateCount 来检查 null 是表示结果为更新计数还是表示没有其它结果。
+
+         当 getMoreResults 返回 false 时，它表示该 SQL 语句返回一个更新计数或没有其它结果。因此需要调用方法 getUpdateCount 来检查它是哪一种情况。在这种情况下，当下列条件为真时表示没有其它结果：
+
+((stmt.getMoreResults() == false) && (stmt.getUpdateCount() == -1))
+
+         下面的代码演示了一种方法用来确认已访问调用方法 execute 所产生的全部结果集和更新计数：
+
+
+
+
+
+[java] view plain copy 
+01.stmt.execute(queryStringWithUnknownResults);  
+02.while (true) {  
+03.int rowCount = stmt.getUpdateCount();  
+04.if (rowCount > 0) { // 它是更新计数  
+05.System.out.println("Rows changed = " + count);  
+06.stmt.getMoreResults();  
+07.continue;  
+08.}  
+09.if (rowCount == 0) { // DDL 命令或 0 个更新  
+10.System.out.println(" No rows changed or statement was DDL  
+11.command");  
+12.stmt.getMoreResults();  
+13.continue;  
+14.}  
+15.  
+16.// 执行到这里，证明有一个结果集  
+17.// 或没有其它结果  
+18.  
+19.ResultSet rs = stmt.getResultSet;  
+20.if (rs != null) {  
+21.. . . // 使用元数据获得关于结果集列的信息  
+22.while (rs.next()) {  
+23.. . . // 处理结果  
+24.stmt.getMoreResults();  
+25.continue;  
+26.}  
+27.break; // 没有其它结果  

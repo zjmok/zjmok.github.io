@@ -1,0 +1,13 @@
+当前Servlet的相对路径 /项目/Servlet
+request.getServletPath()
+
+当前项目的绝对路径
+request.getSession().getServletContext().getRealPath("/")
+
+当前Servlet的绝对路径
+request.getSession().getServletContext().getRealPath(request.getServletPath())
+
+String dir=request.getContextPath()+"/image";//这个相对路径是在work下的项目路径,并非webapps下
+System.out.println(request.getSession().getServletContext().getRealPath("")); // ...项目路径
+System.out.println(request.getSession().getServletContext().getRealPath("/")); // ...项目路径\
+System.out.println(request.getSession().getServletContext().getRealPath("/image")); // ...项目路径\image

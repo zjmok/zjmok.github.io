@@ -1,0 +1,23 @@
+根据广播的发送方式，可以将其分为以下几种类型：
+1.Normal Broadcast：普通广播
+
+2.System Broadcast: 系统广播
+
+3.Ordered broadcast：有序广播
+
+4.Sticky Broadcast：粘性广播(在 android 5.0/api 21中deprecated,不再推荐使用，相应的还有粘性有序广播，同样已经deprecated)
+
+5.Local Broadcast：App应用内广播
+
+-----------------
+-	有序广播 传递方式
+	通过初始值sendOrderedBroadcast中指定初始值
+		-  获取getResultData
+		-  修改setResultData
+
+----------------------
+
+中断广播
+abortBroadcast();
+接收到有序广播之后，优先级高的可以将广播中断-->abortBroadcast();
+

@@ -1,0 +1,18 @@
+Integer.equals(Interger i)
+重写了equals,比较属性值
+
+
+------------------------------------
+
+Integer i1=127;
+Integer i2=127;
+System.out.println(i1==i2);//true
+
+Integer i3=128;
+Integer i4=128;
+System.out.println(i3==i4);//false
+
+------------------------------------
+-128到127是byte的取值范围,
+如果在这个取值范围内,自动装箱就不会新创建对象,而是从常量池中获取,
+如果超过了byte的取值范围就会新创建对象

@@ -1,0 +1,6 @@
+public interface Enumeration<E>实现 Enumeration 接口的对象，它生成一系列元素，一次生成一个。连续调用 nextElement 方法将返回一系列的连续元素。 
+
+例如，要输出 Vector<E> v 的所有元素，可使用以下方法： 
+
+   for (Enumeration<E> e = v.elements(); e.hasMoreElements();)
+       System.out.println(e.nextElement());

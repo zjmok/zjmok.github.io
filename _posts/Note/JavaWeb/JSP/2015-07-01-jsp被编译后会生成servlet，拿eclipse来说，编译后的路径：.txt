@@ -1,0 +1,2 @@
+jsp被编译后会生成servlet，拿eclipse来说，编译后的路径：
+工程.metadata.pluginsorg.eclipse.wst.server.coretmp0workCatalinalocalhostJspProjectorgapachejsp

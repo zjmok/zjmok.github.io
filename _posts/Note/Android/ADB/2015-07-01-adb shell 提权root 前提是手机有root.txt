@@ -1,0 +1,15 @@
+adb shell获取root权限
+转载 2015年02月27日 19:50:42 532601
+adb shell获取root权限
+因为开发需要，我经常会用到adb这个工具(Android Debug Bridge)，我们都知道adb shell默认是没有root权限的，修改系统文件就很不方便了，adb push一个文件就提示Permission Denied。删除system下的文件也没有权限。其实有两种方法可以获取adb shell的root权限，这两种方法的前提都是手机已经root。
+1、用su可以提权，直接执行su就会看到用户命令提示符由”$”变成了”#”，如果手机没有root，会提示su: Permission Denied。这个文件不是每个手机都有的，没有的可以在这里下载：
+
+解压后把su放在adb同一目录下，执行：
+adb push su /system/bin/ adb shell chmod 4755 /system/bin/su
+如果提示Read-only filesystem，那么就要重新挂载一下/system，把只读挂载成可读写，只有手机root了才能运行：
+mount -o remount,rw /dev/block/mtdblock0 /system /
+再运行su就能让adb shell获取root权限了。
+2、可以修改根目录下的default.prop提权：
+根目录默认是不允许修改的，执行
+mount -o remount,rw rootfs /
+用vi打开default.prop，找到ro.secure，修改为ro.secure=0，保存后重启，再adb shell一下，就会有root权限了。

@@ -1,0 +1,1 @@
+str.substring(str.lastIndexOf("\\")+1); 截取得到最后一个\后面的字符串

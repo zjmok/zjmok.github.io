@@ -1,0 +1,13 @@
+用PreparedStatement
+
+-----------
+
+Connection conn=JDBC_Util.getConnection();
+String sql="insert into test(text) values(?)";
+Preparedment ps=conn.preparedStatement();
+File file=new File("...");
+FileReader reader = new FileReader(file);
+ps.setCharacterStream(1,reader,(int)file.length());//length()返回值是long, mysql未实现jdbc接收long的方法
+int result = ps.executeUpdate();
+System.out.println(result);
+JDBC_Util.close();

@@ -1,0 +1,14 @@
+Frame f = new Frame("MyWindow");
+Button bt = new Button("按钮");
+bt.addMouseListener(new MouseAdapter() {
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		Frame f = new Frame("aiyawoqu");
+		f.setVisible(true);
+	}
+});
+f.add(bt);
+f.setVisible(true);
+
+//同样的,跟窗口监听一样,参数是监听接口,
+可以用父类引用指向子类对象,传入接口的实现类适配器的子类对象

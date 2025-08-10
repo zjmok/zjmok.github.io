@@ -1,0 +1,15 @@
+一个控件在其父窗口中的坐标位置
+View.getLocationInWindow(int[] location)
+
+一个控件在其整个屏幕上的坐标位置
+View.getLocationOnScreen(int[] location)
+
+
+mView.getY 获取控件实际坐标Y
+
+-----------
+int[] outLocation = new int[2];
+mView.getLocationInWindow(outLocation);
+int[] outLocation1 = new int[2];
+mView.getLocationOnScreen(outLocation1);
+

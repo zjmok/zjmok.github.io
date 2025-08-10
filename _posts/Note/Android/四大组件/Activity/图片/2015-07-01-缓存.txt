@@ -1,0 +1,7 @@
+一般的框架都实现三级缓存
+自己实现可以使用LRUCache (LRU算法)
+
+缓存淘汰算法
+FIFO	最近使用,First In First Out,队列,先进先出
+LFU		最少使用,Least Frequently Used,最不经常使用
+LRU		最近最少使用,Least Frequently Used

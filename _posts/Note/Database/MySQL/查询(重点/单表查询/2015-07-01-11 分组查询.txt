@@ -1,0 +1,4 @@
+--需求:查询男女的人数
+  --把学生按照性别分组(GROUP BY gender)
+  --统计每组的人数(COUNT(*))
+SELECT gender FROM student GROUP BY gender;

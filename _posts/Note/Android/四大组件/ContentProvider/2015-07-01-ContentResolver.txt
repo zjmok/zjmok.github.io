@@ -1,0 +1,13 @@
+ContentResolver resolver = getContentResolver();
+
+增	ContentValues键值对
+resolver.insert
+
+删
+
+
+改
+
+
+查
+resolver.query

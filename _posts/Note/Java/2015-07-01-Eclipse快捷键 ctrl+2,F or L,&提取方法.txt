@@ -1,0 +1,5 @@
+ctrl+2,F 分配一个成员变量/方法
+ctrl+2,L 局部
+先按ctrl+2,松开再按F或L
+
+alt+shift+m 提取为方法

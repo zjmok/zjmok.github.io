@@ -1,0 +1,3 @@
+用“str1.equals("str2")”进行比较,返回Boolean
+“==”比较的是堆地址
+“equals”比较的是内容

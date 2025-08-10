@@ -1,0 +1,8 @@
+1.永久序列化,可以让对象实现序列化接口,通过intent.putExtra(key,对象)发送,通过intent.getSerializableExtra(key)
+
+-------------------
+2.内存序列化,实现parcelable接口,通过intent.putExtra(key,对象)发送,通过intent.getParcelableExtra(key)
+
+
+-------------------------
+建议:保存到本地时用1,组件间传递用2

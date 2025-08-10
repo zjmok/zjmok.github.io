@@ -1,0 +1,28 @@
+//一个方法是可以使用 Thread 的 sleep 函数，但是这样对于某些场合并不好，比如一个 App，打开的时候进入欢迎页面，用 sleep 方法做停留的话，欢迎页面可能会显示不了的
+
+	private void startHome(long d) {
+		// 等待时间
+		/*
+		if (d < stayTime) {
+			//进入界面时马上sleep会停止绘制画面..
+			//用Timer
+			try {
+				Thread.sleep(stayTime - d);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			startActivity(new Intent(SplashActivity.this, HomeActivity.class));
+		}
+		*/
+		d=d<stayTime?stayTime-d:0;
+		LogUtils.i(tag, "等待时间="+d);
+		Timer timer=new Timer();
+		TimerTask task=new TimerTask(){
+			public void run(){
+				startActivity(new Intent(SplashActivity.this, HomeActivity.class));
+//					overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+				finish();
+			}
+		};
+		timer.schedule(task, d);
+	}

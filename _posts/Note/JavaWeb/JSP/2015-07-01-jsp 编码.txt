@@ -1,0 +1,10 @@
+ctrl+s 保存的编码
+page指令 
+pageEncoding 服务器读硬盘翻译成Servlet时保存到硬盘的编码
+charset 服务器通知浏览器读取的编码
+
+--------------
+page指令中pageEncoding和charset都是设置编码,但一般只需要设置一个即可,服务器会只能识别设置另一个
+
+pageEncoding,jsp到Servlet的编码
+charset网页的解码

@@ -1,0 +1,32 @@
+FragmentPagerAdapter 		缓存所有加载过的Fragment对象,销毁view(销毁默认的3个pager外的Fragment对象中的view?)
+FragmentStatePagerAdapter	销毁非当前的Fragment 只保存Fragment的状态(销毁前,会把状态onSaveInstanceState(Bundle outState)保存,等用户切回时，Fragment创建时会根据onCreateView的savedInstanceState恢复)
+
+===================================
+
+三种Adapter的缓存策略则各有不同：
+
+    PagerAdapter：缓存三个，通过重写instantiateItem和destroyItem达到创建和销毁view的目的。
+    FragmentPagerAdapter：内部通过FragmentManager来持久化每一个Fragment，在destroyItem方法调用时只是detach对应的Fragment，并没有真正移除！会调用事务中的detach,然后只是销毁view,而保留fragment对象
+    FragmentPagerStateAdapter：内部通过FragmentManager来管理每一个Fragment，在destroyItem方法 调用时移除对应的Fragment。但会在onSaveInstanceState保存fragment的Bundle,切换回来时会恢复
+
+所以，我们分情况使用这三个Adapter
+PagerAdapter：当所要展示的视图比较简单时适用
+FragmentPagerAdapter：当所要展示的视图是Fragment，并且数量比较少时适用
+FragmentStatePagerAdapter：当所要展示的视图是Fragment，并且数量比较多时适用
+
+源码分析:
+FragmentPagerAdapter源码中,ViewPager的Fragment子项并没有真正的被移除（FragmentTransaction没有调用remove方法），FragmentTransaction只是调用了detach方法。detach和remove不同，detach后Fragment的状态依然保持着,在使用attach()时会再次调用onCreateView()来重绘视图。而在FragmentStatePagerAdapter的destroyItem方法中是直接调用了remove方法
+
+====================
+
+定义
+
+    FragmentStatePagerAdapter
+    顾名思义，我们的这个FragmentStatePagerAdapter，在我们切换不同的Fragment的时候，我们会把前面的Fragment销毁，而我们系统在销毁前，会把我们的我们Fragment的Bundle在我们的onSaveInstanceState(Bundle)保存下来。等用户切换回来的时候，我们的Fragment就会根据我们的instance state恢复出来。
+
+    FragmentPagerAdapter
+    使用这种Adapter，我们的Fragment在切换的时候，不会销毁，而只是调用事务中的detach方法，这种方法，我们只会把我们的Fragment的view销毁，而保留了以前的Fragment对象。所以通过这种方式创建的Fragment一直不会被销毁。
+
+怎么用？
+
+通过上面，我们就可以很容易得出，我们的FragmentPagerAdapter适用于Fragment比较少的情况，因为我们会把每一个Fragment保存在内存中，不用每次切换的时候，去保存现场，切换回来在重新创建，所以用户体验比较好。而对于我们的Fragment比较多的情况，我们需要切换的时候销毁以前的Fragment以释放内存，就可以使用FragmentStatePagerAdapter。

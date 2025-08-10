@@ -1,0 +1,8 @@
+Android系统中,拥有事件传递能力的类有一下三种.
+
+	Activity:拥有 dispatchTouchEvent 和 onTouchEvent 两个方法.
+
+	ViewGroup:拥有 dispatchTouchEvent, onInterceptTouchEvent 和 onTouchEvent 三个方法.
+
+	View:拥有 dispatchTouchEvent 和 onTouchEvent 两个方法.
+

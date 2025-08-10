@@ -1,0 +1,1 @@
+SELECT id AS '编号',name AS '姓名' FROM student;

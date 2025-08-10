@@ -1,0 +1,6 @@
+用了单例设计模式,饿汉式
+
+私有了构造方法
+
+Runtime rt=Runtime.getRuntime(); //获取对象
+rt.exec("str"); // 运行windows的cmd下dos命令str

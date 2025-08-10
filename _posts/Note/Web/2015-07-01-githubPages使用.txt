@@ -1,0 +1,15 @@
+创建GithubPages
+（1）新建仓库
+这里只要注意一个地方，就是仓库的名称，必须是：你的用户名.github.io，例如我的用户名是theone-mo，我填写的仓库名称即为：theone-mo.github.io
+
+（2）更新内容
+将网站push到github仓库
+此时网站已经成功搭建了,默认的地址是:theone-mo.github.io
+
+专属域名解析
+（1）CNAME解析到 theone-mo.github.io
+但此时是404
+
+（2）仓库添加CNAME文件
+内容是解析的域名
+

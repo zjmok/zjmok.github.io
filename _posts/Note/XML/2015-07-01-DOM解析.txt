@@ -1,0 +1,16 @@
+Document Object Model 文档对象模型
+
+	核心思想:把文档中所有内容都封装成对象
+
+对象种类:
+Document 整个文档
+Element 每个标签
+Attribute 标签上的属性
+Text 标签内的文本
+Common 注释
+
+优点
+因为所有内容保存在内存中,操作方便
+
+缺点
+因为所有内容保存在内存中,内存占用大

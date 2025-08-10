@@ -1,0 +1,19 @@
+-- 需求:查询员工及其所在部门(显示员工姓名,部门名称)
+
+-- 多表查询规则:	1)确定查询哪些表	2)确定查询哪些字段	3)表与表之间的连接条件(规律:连接条件数量=表数量-1)
+
+select empName,deptName		-- 2)
+	from employee,dept	-- 1)
+	where employee.deptId=dept.id;	-- 3)
+-- 内连接的另一种语法:
+select empName,deptName
+	from employee
+	inner join dept
+	on employee.deptId=dept.id;
+
+-- 使用别名
+select e.empName,d.deptName
+	from employee as e
+	inner join dept d
+	on e.deptId=d.id;
+-- as可以省略

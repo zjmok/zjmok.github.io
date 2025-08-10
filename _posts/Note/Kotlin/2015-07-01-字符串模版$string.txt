@@ -1,0 +1,9 @@
+val user = User()
+//赋值
+user.name = "tutu"
+user.age = "23"
+//取值
+val name = user.name
+val age = user.age
+var userInfo = "name:${user.name},  age:$age"
+//输出结果：name:tutu, age:23

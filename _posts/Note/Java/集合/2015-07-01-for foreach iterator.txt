@@ -1,0 +1,10 @@
+foreach是迭代器Iterator的一种简写形式
+只要能用Iterator的都能用fore
+
+fore只能遍历集合 不能删除元素
+
+(以上只针对Collection集合)
+---------------------------
+foreach遍历数组时,底层创建一个新数组用for循环遍历
+
+foreach遍历Collection集合时,底层依赖迭代器

@@ -1,0 +1,9 @@
+Writer w=new FileWriter(file);
+		for (String string : arr) {
+			w.write(string+"\r\n");
+		}
+		w.close();
+
+字符输出流操作写出的时候可以直接讲字符串写出,不用转换为字节数组
+
+write可以接收字符串,字符,还有int

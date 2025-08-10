@@ -1,0 +1,21 @@
+前提是页面继承RxActivity RxFragment等
+ 
+ 
+ 自动周期 规则是在对应的周期解绑 onResume->onPause  onStart->onStop  onCreate->onDestory 类推.
+ 有一种特殊情况，如果在onPause/onStop方法中绑定，那么就会在它的下一个生命周期方法（onStop/onDestory）被调用后解除绑定
+ .compose(this.bindToLifecycle())
+ 
+ 
+ 指定生命周期
+ .compose(provider.<Long>bindUntilEvent(ActivityEvent.DESTROY)) //private final LifecycleProvider<ActivityEvent> provider = NaviLifecycle.createActivityLifecycleProvider(this);
+ 
+
+ ====================
+ 如果你使用的是MVP结构，这个LifecycleProvider对象可以直接传给Presenter层使用。
+ 
+ 
+ 
+ =====================
+ 注意compose方法需要在subscribeOn方法之后使用，因为在测试的过程中发现，将compose方法放在subscribeOn方法之前，
+ 如果在被观察者中执行了阻塞方法，比如Thread.sleep()，取消订阅后该阻塞方法不会被中断。
+ 

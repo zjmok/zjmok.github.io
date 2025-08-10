@@ -1,0 +1,16 @@
+TreeSet顺序 取决于compareTo方法的返回值
+返回值	==0	不存(只存第一个)
+	>0	正序(按存取顺序)
+	<0	反序
+
+重写compareTo方法
+
+自定义类-->重写compareTo
+
+@Override
+public int compareTo(Penson o){
+	int num =this.age-o.age; // 比较的主要条件,按照age排序
+	return  num == 0 ? this.name.compareTo(o.name) : num; // 当num等于0才比较name
+}
+
+可以比较name长度 字典顺序 age大小 等等,比较条件决定最后返回值

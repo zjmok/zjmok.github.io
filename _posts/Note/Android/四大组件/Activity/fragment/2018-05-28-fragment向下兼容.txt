@@ -1,0 +1,7 @@
+## Fragment向下兼容
+
+> **Fragment3.0后才出现，低于3.0系统使用兼容包**
+
+* 1. Fragment替换导包  android.app.Fragment --- andorid.support.v4.Fragment
+* 2. Activity 替换继承关系  extends Activity --- extends FragmentActivity
+* 3. 获取管理者  getFramgnetManager  --- getSupportFragmentManager

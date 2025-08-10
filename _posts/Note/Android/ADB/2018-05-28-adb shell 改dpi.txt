@@ -1,0 +1,9 @@
+http://www.oneplusbbs.com/thread-748068-1-1.html
+
+================
+
+adb shell dumpsys display
+//density 后面的数值就是当前的DPI值
+
+adb shell wm density 320
+//直接改dpi

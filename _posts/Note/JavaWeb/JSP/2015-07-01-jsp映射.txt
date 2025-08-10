@@ -1,0 +1,16 @@
+
+<!--jsp虚拟文件-->
+<servlet>
+  <servlet-name>SimpleJspServlet</servlet-name>
+  <jsp-file>/xxx/yyy.html</jsp-file>
+</servlet>
+
+
+
+<!--jsp虚拟目录-->
+<servlet-mapping>
+  <servlet-name>SimpleJspServlet</servlet-name>
+  <url-pattern>/xxx/yyy.html</url-pattern>
+</servlet-mapping>
+
+

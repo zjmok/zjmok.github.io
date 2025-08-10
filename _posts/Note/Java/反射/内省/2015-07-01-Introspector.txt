@@ -1,0 +1,17 @@
+方法摘要 
+static String decapitalize(String name) 
+          获得一个字符串并将它转换成普通 Java 变量名称大写形式的实用工具方法。 
+static void flushCaches() 
+          刷新所有 Introspector 的内部缓存。 
+static void flushFromCaches(Class<?> clz) 
+          刷新给定类的 Introspector 的内部缓存信息。 
+static BeanInfo getBeanInfo(Class<?> beanClass) 
+          在 Java Bean 上进行内省，了解其所有属性、公开的方法和事件。 
+static BeanInfo getBeanInfo(Class<?> beanClass, Class<?> stopClass) 
+          在给定的“断”点之下，在 Java Bean 上进行内省，了解其所有属性和公开的方法。 
+static BeanInfo getBeanInfo(Class<?> beanClass, int flags) 
+          在 Java Bean 上进行内省，了解其所有属性、公开的方法和事件，并将结果用一些控制标记表示。 
+static String[] getBeanInfoSearchPath() 
+          获得将用来查找 BeanInfo 类的包名称的列表。 
+static void setBeanInfoSearchPath(String[] path) 
+          更改将用来查找 BeanInfo 类的包名称的列表。 

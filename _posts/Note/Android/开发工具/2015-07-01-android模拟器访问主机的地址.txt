@@ -1,0 +1,2 @@
+sdk avd --> 10.0.2.2
+genymotion --> 10.0.3.2

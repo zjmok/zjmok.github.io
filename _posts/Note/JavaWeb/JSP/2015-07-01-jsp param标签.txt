@@ -1,0 +1,5 @@
+<jsp:param>操作被用来以“名-值”对的形式为其他标签提供附加信息。它和<jsp:include>、<jsp:forward>、<jsp:plugin>一起使用，方法如下：
+
+<jsp:param name=”paramName” value=”paramValue”/>
+
+其中，name为与属性相关联的关键词，value为属性的值。

@@ -1,0 +1,23 @@
+
+
+
+@Override  
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {  
+    switch (requestCode) {  
+    case REQUEST_CODE_CAMERA:  
+        if (resultCode == RESULT_OK) {  
+            if(data !=null){ //可能尚未指定intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);  
+                //返回有缩略图  
+                if(data.hasExtra("data")){  
+                    Bitmap thumbnail = data.getParcelableExtra("data");  
+                    //得到bitmap后的操作  
+                }
+            }else{  
+                //由于指定了目标uri，存储在目标uri，intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);  
+                // 通过目标uri，找到图片  
+                // 对图片的缩放处理  
+                // 操作  
+            }  
+        }  
+    }  
+}

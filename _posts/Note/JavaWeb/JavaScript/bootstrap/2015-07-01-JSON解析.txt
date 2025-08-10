@@ -1,0 +1,9 @@
+<script>
+$.get(url,function(result){
+	$(result).each(function(i,obj){
+		//
+		var key=obj.key;	//获取每个键
+		var value=obj.value1;	//获取每个值
+	});
+});
+</script>

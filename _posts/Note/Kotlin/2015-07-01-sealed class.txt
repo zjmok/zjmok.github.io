@@ -1,0 +1,24 @@
+sealed class PlayerCmd{
+	
+	class Play(val url:String, val position:Long = 0):PlayerCmd()
+	
+	class Seek(val position:Long):PlayerCmd()
+	
+	object Pause:PlayerCmd()
+	
+	object Resume:PlayerCmd()
+	
+	object Stop:PlayerCmd()
+	
+}
+
+----------------------------------------
+
+sealed class 与枚举的区别:
+
+	枚举的类型只能有单个实例
+
+	sealed class
+		各类型可以单个可以多个,单个用object,多个用class,类型有参数则可以有多种状态所以用class
+		是枚举的一种扩展
+		

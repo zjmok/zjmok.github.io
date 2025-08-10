@@ -1,0 +1,56 @@
+api文档有具体说明:
+
+    Develop
+		-->Administration
+			-->Device Administration
+
+----------
+---------
+
+自定义一个类继承广播接收者DeviceAdminReceiver
+清单文件注册
+				<receiver
+					android:name=".receiver.TheAdminReceiver"
+					android:label="@string/device_admin_lable"
+					android:description="@string/device_admin_des"
+					android:permission="android.permission.BIND_DEVICE_ADMIN" >
+					<meta-data
+						android:name="android.app.device_admin"
+						android:resource="@xml/device_admin" >
+					</meta-data>
+
+					<intent-filter>
+						<action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+					</intent-filter>
+				</receiver>
+
+-------------
+
+通过系统服务 获取设备管理器DevicePolicyManager
+判断用户是否激活
+				ComponentName who = new ComponentName(this, MyDeviceAdminReceiver.class)//DeviceAdminReceiver的空继承类不用重新任何方法
+				mgr.isAdminActive(who);
+若激活直接mgr.lockNow();
+若未激活,隐式启动设备管理器激活页面 回调后锁屏
+				隐式意图:
+				Intent intent = new Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
+				intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, who);
+				intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION,getString(R.string.admin_desc));
+
+-----------------
+
+    属性android:resource="@xml/device_admin_sample"
+	对应xml文件:
+
+				<device-admin xmlns:android="http://schemas.android.com/apk/res/android">
+				  <uses-policies>
+					<limit-password />
+					<watch-login />
+					<reset-password />
+					<force-lock />
+					<wipe-data />
+					<expire-password />
+					<encrypted-storage />
+					<disable-camera />
+				  </uses-policies>
+				</device-admin>

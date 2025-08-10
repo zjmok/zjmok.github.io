@@ -1,0 +1,6 @@
+Process proc = Runtime.getRuntime().exec("su");
+DataOutputStream os = new DataOutputStream(proc.getOutputStream());
+os.writeBytes("cmd1\n");
+os.writeBytes("cmd2\n");
+os.writeBytes("exit\n");
+os.flush();

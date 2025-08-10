@@ -1,0 +1,1 @@
+到eclipse的设置中找到compile项（或右键项目进入），看一下编译环境的Java版本。再到Server->Tomcat7.0->JDK中看一下，确保这两个是同一个版本就OK。如果已经是同一个版本了，执行project->clean重新编译一次。

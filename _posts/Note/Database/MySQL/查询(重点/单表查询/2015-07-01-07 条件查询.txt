@@ -1,0 +1,16 @@
+条件查询:
+	7.1 逻辑条件: and(与)  or(或)
+	SELECT * FROM student WHERE id=2 AND NAME='李四';
+	SELECT * FROM student WHERE id=2 OR NAME='张三';
+
+	7.2 比较条件: >  <  >=  <=  ==  <>(不等于)  between and
+	SELECT * FROM student WHERE jsp>75 AND jsp<=90;
+	SELECT * FROM student WHERE jsp BETWEEN 75 AND 90;
+
+	7.3 判空条件(null 空字符串): is null  /  is not null  /  =''  /  <>''
+	SELECT * FROM student WHERE address IS NULL OR address='';
+
+	7.4 模糊查询: like
+	%:表示任意个字符
+	_:表示一个字符
+	SELECT * FROM student WHERE name LIKE '李%';

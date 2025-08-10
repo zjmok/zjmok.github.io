@@ -1,0 +1,44 @@
+GradientDrawable	动态图形(圆角矩形等)
+
+StateListDrawable	动态选择器
+
+----------------
+
+for (int i = 0; i < mDatas.size(); i++) {
+	TextView view = new TextView(UiUtils.getContext());
+	view.setText(mDatas.get(i));
+//            view.setBackgroundResource(R.drawable.hot_item);//实现圆角矩形 会同时设置背景颜色
+	//所以要设置不同颜色的同时只能通过代码来实现圆角矩形
+	GradientDrawable state_nomal = new GradientDrawable();
+	state_nomal.setCornerRadius(8);
+	int a = 200 + mRandom.nextInt(55);
+	int r = 100 + mRandom.nextInt(155);
+	int g = 100 + mRandom.nextInt(155);
+	int b = 100 + mRandom.nextInt(155);
+	state_nomal.setColor(Color.argb(a, r, g, b));
+//            view.setBackgroundDrawable(state_nomal);
+
+	GradientDrawable state_pressed = new GradientDrawable();
+	state_pressed.setCornerRadius(8);
+	state_pressed.setColor(Color.GRAY);
+
+	//代码实现选择器
+	StateListDrawable stateListDrawable = new StateListDrawable();
+	stateListDrawable.addState(new int[]{android.R.attr.state_pressed}, state_pressed);  //按下状态
+	stateListDrawable.addState(new int[]{}, state_nomal);
+	view.setBackgroundDrawable(stateListDrawable);
+
+	view.setOnClickListener(new View.OnClickListener() {
+		@Override
+		public void onClick(View v) {
+			Toast.makeText(UiUtils.getContext(), ((TextView) v).getText(), Toast.LENGTH_SHORT).show();
+		}
+	});
+
+	view.setTextColor(Color.WHITE);
+	view.setPadding(5, 5, 5, 5);
+	view.setGravity(Gravity.CENTER);
+	view.setTextSize(14);
+
+	flowLayout.addView(view);//触发重绘
+}

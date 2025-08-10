@@ -1,0 +1,3 @@
+static <T> List<T> 
+ asList(T... a) 
+          返回一个受指定数组支持的固定大小的列表。 

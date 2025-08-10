@@ -1,0 +1,5 @@
+//int[] arr=list.toArray(new int[list.size()]);
+//不允许
+
+Integer[] arr=list.toArray(new Integer[list.size()]);
+//需要传入引用型数据类型的数组,int需要包装类

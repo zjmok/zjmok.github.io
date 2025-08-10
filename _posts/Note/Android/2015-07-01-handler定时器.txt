@@ -1,0 +1,46 @@
+postDelay(task,time);
+removeCallbacks(task);
+
+
+
+----------
+	private void startLoop() {
+        //延时切换
+        timer.schedule(task, 3000, 3000);
+    }
+	
+    Timer timer = new Timer();
+    TimerTask task = new TimerTask() {
+        @Override
+        public void run() {
+            mHandler.sendEmptyMessage(0);
+        }
+    };
+
+    Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            //切换到下一个页面
+            int next = mViewPager.getCurrentItem() + 1;//当前页面 + 1
+            mViewPager.setCurrentItem(next);
+        }
+    };
+
+    /**
+     * 当banner添加Window(PhoneWindow)
+     */
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        startLoop();//开启循环
+    }
+
+    /**
+     * 当Banner移除window时的调用 Activity销毁会调用
+     */
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        task.cancel();
+    }

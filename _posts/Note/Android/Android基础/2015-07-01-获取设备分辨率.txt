@@ -1,0 +1,20 @@
+private void getScreen() {
+	
+	//1
+	DisplayMetrics dm = getResources().getDisplayMetrics();
+	int x = dm.widthPixels;
+	int y = dm.heightPixels;
+	Toast.makeText(this, y+"_"+x, 0).show();
+	
+	//2
+	DisplayMetrics displayMetrics = new DisplayMetrics();
+	Display display = getWindowManager().getDefaultDisplay();
+	display.getMetrics(displayMetrics);
+	Toast.makeText(this, displayMetrics.heightPixels+"x"+displayMetrics.widthPixels, 0).show();
+	
+	//3 弃用 兼容低版本
+	Display dplay = getWindowManager().getDefaultDisplay();
+	int width = display.getWidth();
+	int height = display.getHeight();
+	Toast.makeText(this, height+"_"+width, 0).show();
+}

@@ -1,0 +1,51 @@
+Command line options（命令行选项）
+-h：Print help（打印帮助）；
+-r ip_address：Connect to specific Genymotion Virtual Device（连接到特定的Genymotion虚拟设备）；
+-c "command"：Execute the given command in genyshell environment and return（genyshell环境中执行给定的命令并返回）；
+-f：file Execute the content of the file. Each command per line（文件，执行的内容文件。每个命令每行。）
+ 
+Available commands（可用命令）
+1、battery getmode：Return the current battery mode of the selected virtual device. （返回当前的电池模式选择的虚拟设备。）The mode can only be（该模式仅限于）：
+host：The virtual battery reflect the host battery (if exists) （以虚拟电池显示为主机电池——如果存在）
+manual：In this mode, you can set the level and status battery values（在该模式下,可设置电池等级和电池状态）
+2、battery setmode：Set the battery mode.（设置电池模式。）The mode can only be（该模式仅限于）：          
+host：The virtual battery reflect the host battery (if exists) （以虚拟电池显示为主机电池——如果存在）
+ 
+manual：In this mode, you can set the level and status battery values（在该模式下,可设置电池等级和电池状态）
+3、battery getlevel：Return the current battery amount of power.（返回当前电池的电量。） The value can only be between 0% and 100%.（只能在0%到100%之间设置）；
+If the battery mode is "host", the returned value is the host value.（如果电池模式已设置为“主机电池”，返回的值便是该主机电池的值。）
+4、battery setlevel：Set the current battery amount of power.（设置当前电池的电量。） The value can only be between 0% and 100%.（只能在0%到100%之间设置）；
+Set the battery level force the "manual" mode（设置电池级别为强制“手动”模式）：if the last mode was "host", then it's turned to "manual"（如果之前模式为“主机电池”,即可仅有设定更换为“手动模式”；         
+5、battery getstatus：Return the current battery status.（返回当前电池状态。）There are 4 possible status（应该有4个状态）：           
+Discharging（放电）：The power supply is disconnected and the battery is discharging（断开电源和电池放电）；
+Charging（充电）：The power supply is connected and the battery is charging（电源连接和电池充电）；
+Full（充满）：The battery is full.（电池充满。）；
+Unknown（未知）：Sometimes, the battery status cannot be established, it happens when there is no host battery.（有时，如果显示为电池状态无法建立，一般是在没有设置主机电池的情况下。）
+6、battery setstatus：Set the current battery status（设置当前电池状态）. There are 4 possible status（应该有4个状态）：          
+Discharging（放电）：The power supply is disconnected and the battery is discharging. （断开电源和电池放电）；            
+Charging（充电）: The power supply is connected and the battery is charging. （电源连接和电池充电）；            
+Full（充满）：The battery is full. （电源连接和电池充电）；            
+Unknown（未知）：Sometimes, the battery status cannot be established, it happens when there is no host battery. （有时，如果显示为电池状态无法建立，一般是在没有设置主机电池的情况下。）
+7、devices list（设备列表）：List available Genymotion virtual devices and provides details like current states or IP address.（可用Gmotion虚拟设备，及其细节，如当前状态或IP地址等。）；
+8、devices ping（设备联通测试）：Send a ping message to check if virtual device if responding（发送端对端联通测试指令给虚拟设备，以检查其响应情况）；
+9、devices refresh（刷新设备）：Refresh Genymotion virtual device list. Use it to keep the list up-to-date. （刷新Gmotion虚拟设备列表。以保持最新）；
+10、devices select（设备选择）：Select the Genymotion virtual device you want to interact with.（选择你想启用的Gmotion虚拟设备）；
+11、devices show（设备显示）：List available Genymotion virtual devices and provides details like current states or IP address（可用的Gmotion虚拟设备列表，及其细节，如当前状态或IP地址等）；
+12、gps activate（GPS激活设定）：Activate the GPS sensor (if not already activated) （激活GPS传感器——如果该功能未启用）；
+13、gps desactivate（GPS禁用设定）：Desactivate the GPS sensor (if activated)（禁用GPS传感器——如果该功能已激活）；
+14、gps getlatitude（GPS纬度）：Return the actual latitude (if GPS is activated AND already has a latitude) or 0；（返回纬度调整项目——如果GPS已经激活且已有纬度参数，或为0）
+15、gps setlatitude（GPS纬度设置）：Set latitude (and activate GPS if not allready activated) （设置纬度——如果纬度设置功能尚未激活）；
+16、gps getlongitude（GPS经度）：Return the actual longitude (if GPS is activated AND allready has a longitude) or 0（返回经度调整项目——如果GPS已经激活且已有经度参数，或为0）；
+17、gps setlongitude（GPS经度设置）：Set longitude (and activate GPS if not allready activated) （设置经度——如果经度设置功能尚未激活）；
+18、gps getaltitude（GPS高度）：Return the actual altitude (if GPS is activated AND allready has a altitude) or 0（返回高度调整项目——如果GPS已经激活且已有高度参数，或为0）；
+19、gps setaltitude（GPS高度设置）：Set altitude (and activate GPS if not allready activated)（设置高度——如果高度设置功能尚未激活）；
+20、gps getaccuracy（GPS精度）：Return the actual accuracy in meters (if GPS is activated AND allready has a accuracy) or 0（返回精度调整项目——如果GPS已经激活且已有精度参数，或为0）；
+21、gps setaccuracy（GPS精度设置）：Set accuracy (and activate GPS if not allready activated) （设置精度——如果精度设置功能尚未激活)；
+22、gps getorientation（GPS方位设置）：Return the actual orientation in meters (if GPS is activated AND allready has a orientation) or 0（返回GPS方位设置——如果已被激活且已设方位，或为0）
+23、gps setorientation（GPS定位设置）：Set orientation (and activate GPS if not allready activated)（激活GPS功能——如果尚未激活的话）；
+24、android version（安卓版本）：Return the Android version of the selected virtual device（返回所选虚拟设备的安卓版本）；
+25、build number（构建数）：Return the genymotion shell build number（返回Gmotion shell构建数）；
+26、help（帮助）：Prompt the help.（帮助提示）；
+27、pause（暂停）：Pause execution (in number of seconds)（暂停执行——倒数读秒）；
+28、version（版本）:Return GenyShell version.（返回Gmotion Shell的版本说明）；
+29、exit or quit（退出或关闭）：Close Genymotion Shell.（关闭Gmotion Shell程序）。

@@ -1,0 +1,2 @@
+SharedPreferences sp=getPreferences("name",MODE_PRIVATE);
+sp.edit().putString("key","value").commit();

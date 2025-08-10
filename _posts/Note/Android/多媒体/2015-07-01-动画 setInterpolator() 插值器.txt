@@ -1,0 +1,9 @@
+ccelerateDecelerateInterpolator	@android:anim/accelerate_decelerate_interpolator	先加速再减速
+AccelerateInterpolator	@android:anim/accelerate_interpolator	加速
+AnticipateInterpolator	@android:anim/anticipate_interpolator	先回退一小步然后加速前进
+AnticipateOvershootInterpolator	@android:anim/anticipate_overshoot_interpolator	在上一个基础上超出终点一小步再回到终点
+BounceInterpolator	@android:anim/bounce_interpolator	最后阶段弹球效果
+CycleInterpolator	@android:anim/cycle_interpolator	周期运动
+DecelerateInterpolator	@android:anim/decelerate_interpolator	减速
+LinearInterpolator	@android:anim/linear_interpolator	匀速
+OvershootInterpolator	@android:anim/overshoot_interpolator	快速到达终点并超出一小步最后回到终点

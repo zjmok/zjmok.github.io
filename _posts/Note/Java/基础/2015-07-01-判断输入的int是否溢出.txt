@@ -1,0 +1,3 @@
+Integer.parseInt-->正常则在int范围内,异常则非法字符
+	-->先放到BigInteger,正常则超出int范围,异常则非整数,
+		非法字符-->放到BigDecimal,正常则是小数,异常则非法字符

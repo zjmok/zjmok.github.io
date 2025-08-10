@@ -1,0 +1,13 @@
+void methor(){
+	synchronized(d){	//d是任意对象
+		//
+	}
+}
+
+void methor2(){
+	synchronized(d){	//d是任意对象
+		//
+	}
+}
+
+要同步必须是同一对象

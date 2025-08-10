@@ -1,0 +1,4 @@
+//获取CheckBox实例
+CheckBox cb = (CheckBox)this.findViewById(R.id.checkbox);
+//设置Checkbox的状态,true 为选中,false为不选中
+cb.setChecked(true);

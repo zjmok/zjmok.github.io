@@ -1,0 +1,35 @@
+ private BroadcastReceiver mHomeKeyEventReceiver = new BroadcastReceiver() {
+	String SYSTEM_REASON = "reason";
+	String SYSTEM_HOME_KEY = "homekey";
+	String SYSTEM_HOME_KEY_LONG = "recentapps";
+
+	@Override
+	public void onReceive(Context context, Intent intent) {
+		String action = intent.getAction();
+		if (action.equals(Intent.ACTION_CLOSE_SYSTEM_DIALOGS)) { // 监听home键
+			String reason = intent.getStringExtra(SYSTEM_REASON);
+
+			// 表示按了home键,程序到了后台
+			Toast.makeText(context, "只能监听"+reason, Toast.LENGTH_SHORT).show();
+		}
+	}
+};	
+	
+registerReceiver(mHomeKeyEventReceiver, new IntentFilter(Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
+
+
+-------------
+
+@Override
+public boolean onKeyDown(int keyCode, KeyEvent event) {
+	switch (keyCode){
+		case KeyEvent.KEYCODE_BACK:
+			Toast.makeText(this, "拦截back", Toast.LENGTH_SHORT).show();
+			return true;
+
+		case KeyEvent.KEYCODE_HOME:
+			Toast.makeText(this, "拦截home成功了吗", Toast.LENGTH_SHORT).show();
+			return true;
+	}
+	return super.onKeyDown(keyCode, event);
+}

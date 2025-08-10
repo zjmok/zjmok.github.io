@@ -1,0 +1,1 @@
+String path = getServletContext().getRealPath(相对路径);

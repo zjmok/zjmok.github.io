@@ -1,0 +1,8 @@
+ndk r17 不支持mips了 
+
+解决1:
+换 ndk r16b
+下载地址:
+https://developer.android.google.cn/ndk/downloads/older_releases
+
+替换项目中的 local.properties 下 ndk.dir 的路径

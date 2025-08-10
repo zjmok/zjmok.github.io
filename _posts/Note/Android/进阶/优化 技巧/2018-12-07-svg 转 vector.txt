@@ -1,0 +1,13 @@
+svg是矢量图
+可以转成android支持的Vector
+
+用第三方工具或者直接转换
+
+
+用png转 需要android5.0+
+v7包
+
+
+使用v7兼容
+需要在android节点defaultConfig下设置
+vectorDrawables.userSupportLibrary = true

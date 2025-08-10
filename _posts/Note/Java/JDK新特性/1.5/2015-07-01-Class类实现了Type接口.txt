@@ -1,0 +1,1 @@
+因为Class实现了Type接口,所以区分是什么类可以用Class的上层的Type就可以区分了,不再需要用Class了,

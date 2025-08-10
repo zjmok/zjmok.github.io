@@ -1,0 +1,2 @@
+//View view = View.inflate(mContext, R.layout.item_dc_list, null);会导致item父布局match_parent失效
+View view = LayoutInflater.from(mContext).inflate(R.layout.item_dc_list, viewGroup, false);//使用父容器属性 解决

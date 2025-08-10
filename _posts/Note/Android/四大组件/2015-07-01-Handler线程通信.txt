@@ -1,0 +1,12 @@
+handler.obtainMessage(100, "string").sendToTarget();
+
+String str = (String) msg.obj;
+					
+-------------
+
+Message msg = Message.obtain();
+msg.what = 100;
+msg.obj = "string";
+mHandler.sendMessage(msg);
+
+String str = (String) msg.obj;

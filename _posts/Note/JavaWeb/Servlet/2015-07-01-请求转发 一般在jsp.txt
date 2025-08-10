@@ -1,0 +1,7 @@
+浏览器--(访问)-->Servlet--(转发)-->JSP
+分工,servlet处理数据,jsp展示
+
+---------
+在doXx方法里
+request.getRequestDispatcher("/otherPage").forward(request,response);
+//转发,Servlet或转发到的页面由服务器调用,由服务器控制生命周期,所以不要自己创建对象调用

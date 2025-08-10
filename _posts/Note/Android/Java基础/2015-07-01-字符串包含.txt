@@ -1,0 +1,3 @@
+aa包含a
+"aa".contains("a")   true
+aa.indexOf("a")!=-1    true

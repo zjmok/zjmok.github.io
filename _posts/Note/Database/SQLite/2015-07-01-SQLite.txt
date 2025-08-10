@@ -1,0 +1,35 @@
+
+创建 一个实现类 继承 SQLiteOpenHelper
+写一个单参Context的构造,super(context,"数据库名",null,1)//后面是版本号
+此类对象
+helper.getReadableDatabase();//获得可读db,用于查
+helper.getWritableDatabase();//获得可读写db,用于增删改
+返回db对象
+db对象可以excuse
+
+db.execSQL(sql);//直接执行sql语句
+db.execSQL(sql, bindArgs);//可以避免数据库注入的安全问题.用占位符的方式执行sql语句,先将sql语句在数据库编译,再放入参数
+//通过谷歌的api封装了执行sql的方法操作
+db.insert(table, nullColumnHack, values)
+db.delete(table, whereClause, whereArgs)
+db.update(table, values, whereClause, whereArgs)
+db.query(distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit, cancellationSignal)
+db.close();
+
+占位符方式-->例:
+db.execSQL("delete from account where name=?", new Object[]{name});
+
+谷歌api的方法一般返回一个Cursor对象,相当于一个指针,可以移动上一个下一个第一个最后一个等,获取 查询结果 成功与否 个数等各种相关的信息
+
+----------------------
+
+创建数据库时会调用onCreate	(可用于创建表 等)
+数据库版本升级时调用onUpgrade
+
+-----------
+dao:
+data access object
+数据访问对象
+
+一般数据库操作会封装在dao类中,
+dao类中,通过获取helper对象再获取db对象,执行sql操作,对外暴露相对应的方法,直接被调用于操作数据库

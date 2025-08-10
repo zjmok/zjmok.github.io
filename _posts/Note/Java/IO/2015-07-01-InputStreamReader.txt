@@ -1,0 +1,6 @@
+转换流
+
+InputStreamReader(字节输入流)
+OutputStreamWriter(字节输出流)
+
+字节流转为字符流

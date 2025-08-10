@@ -1,0 +1,21 @@
+事件传递:
+
+activity --> PhoneWindow --> ... --> ViewGroup --> ... --> ... --> View
+
+事件传递流程
+	父容器先获取到事件，不拦截，事件则会分发孩子，孩子看消不消费，如果孩子不消费，事件又会传递给父容器，看父容器消不费。
+	父容器先获取到事件，不拦截，事件则会分发孩子，孩子看消不消费，如果孩子消费，事件传递结束。
+	父容器先获取到事件，拦截，事件则不会分发孩子，交给父容器自己，看消不消费。
+
+Activity与事件传递
+	Activity首先获取到事件 调用Activity的dispatchTouchEvent去分发事件
+	将事件传递给Activity对应的PhoneWindow, phoneWindow继续将事件往下传递
+	如果传递下去没有任何控件消费事件，则会调用Activity的onTouchEvent
+
+----------
+	
+onInterceptTouchEvent返回true则拦截事件
+
+onTouchEvent返回true则消费事件
+
+

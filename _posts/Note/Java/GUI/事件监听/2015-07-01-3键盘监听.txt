@@ -1,0 +1,15 @@
+bt.addKeyListener(new KeyAdapter() {
+	@Override
+	public void keyReleased(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+			System.exit(0);
+		}
+		if (e.getKeyCode() >= KeyEvent.VK_A && e.getKeyCode() <= KeyEvent.VK_Z) {
+			System.out.println(e.getKeyCode());
+		}
+	}
+});
+
+//键盘监听,与鼠标监听一样也是在按钮等控件上的,
+按钮实例调用addKeyListener
+可以传入监听接口的实现类的子类对象..

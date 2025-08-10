@@ -1,0 +1,8 @@
+定义Reader,实例化FileReader传入File实例
+定义一个int,和char[]数组(是字符数组char[]不是字节数组byte[]),
+大小尽量1024字符左右(1字符=2字节),循环读取到小数组,
+while((len=r.read(arrCh))!=-1){
+直到读完即等于-1
+期间进行其它操作
+最后要关闭流
+close()

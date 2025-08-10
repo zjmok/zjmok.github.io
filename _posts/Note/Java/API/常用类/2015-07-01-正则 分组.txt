@@ -1,0 +1,4 @@
+
+String regex="(.)\\1+"
+
+String str=string.replaceAll("(.)\\1+","$1");  //$1代表第一组中的内容,第一个括号内,多组同理

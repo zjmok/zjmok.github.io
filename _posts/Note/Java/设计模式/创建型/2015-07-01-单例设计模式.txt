@@ -1,0 +1,38 @@
+操作同一对象--
+
+---------------
+
+饿汉式:
+class Singleton{
+	private static Singleton s=new Singleton();
+	private Singleton(){}
+	public Singleton getInstance(){
+		return s;
+	}
+}
+
+懒汉式:
+class Singleton{
+	private static Singleton s;
+	private Singleton(){}
+	public Singleton getInstance(){
+		if(s==null){
+			//多线程时,可能在这里发生线程安全问题
+			//一个线程在这里失去cpu执行权,另一个获得进入然后创建实例,原来线程之后会再创建实例,就不是单例了
+			//解决办法:将方法变成同步方法,加synchronized
+			s=new Singleton();
+		}
+		return s;
+	}
+}
+
+第三种:
+class Singleton{
+	public static final Singleton s=new Singleton();
+	private Singleton(){}
+}
+
+第四种:
+.
+.
+.

@@ -1,0 +1,3 @@
+新版本sdk的zipalign不在tools目录,而在build-tools各版本的目录,如\build-tools\23.0.3\zipalign.exe
+若没有设置环境变量,需要在ant中重新配置具体路径,才能使用命令
+java -jar AndResGuard-cli-1.2.3.jar ..\build\App_unsigned.apk -7zip SevenZip-windows-x86_64.7z -config config.xml -out ..\tool_output\output -zipalign sdk中zipalign全路径

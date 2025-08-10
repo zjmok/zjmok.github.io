@@ -1,0 +1,10 @@
+--语法:order by 字段 asc/desc
+--asc:顺序,正序,字典顺序
+--desc:倒序,反序.字典倒序
+--默认情况下,按照插入记录顺序排序
+SELECT * FROM student ORDER BY id ASC;
+SELECT * FROM student ORDER BY id;  --默认正序
+SELECT * FROM student ORDER BY id DESC;
+
+--多个排列顺序
+SELECT * FROM student ORDER BY servlet ASC,jsp DESC;

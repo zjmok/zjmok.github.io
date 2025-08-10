@@ -1,0 +1,17 @@
+会先将aty销毁再创建
+onPause
+onStop
+onDestory
+onCreate
+onStart
+onResume
+
+--------------------
+解决方案1
+在清单文件中强制锁定屏幕
+如锁定横屏
+android:screenOrientation="landscape"
+
+解决方案2
+即可以切换屏幕,有不让aty重新销毁重建
+在清单文件中设置configChange,aty会调用onConfigurationChanged,不会销毁aty

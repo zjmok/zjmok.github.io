@@ -1,0 +1,12 @@
+getWidth()
+	View在设定好布局后整个View的宽度。
+getMeasuredWidth()
+	对View上的内容进行测量后得到的View内容占据的宽度,
+	前提是你必须在父布局的onLayout()方法或者此View的onDraw()方法里调用measure(width,height),
+	否则你得到的结果和getWidth()得到的结果是一样的
+
+---------------
+
+①getMeasuredWidth方法获得的值是setMeasuredDimension方法设置的值，它的值在measure方法运行后就会确定
+②getWidth方法获得是layout方法中传递的四个参数中的mRight-mLeft，它的值是在layout方法运行后确定的
+③一般情况下在onLayout方法中使用getMeasuredWidth方法，而在除onLayout方法之外的地方用getWidth方法。

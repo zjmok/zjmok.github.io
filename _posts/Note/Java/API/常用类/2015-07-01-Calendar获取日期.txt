@@ -1,0 +1,6 @@
+Calendar c=Calendar.getInstance();
+
+System.out.println(c.get(Calendar.YEAR));
+System.out.println(c.get(Calendar.MONTH));  //月 0-11 ,所以用的时候需要+1
+System.out.println(c.get(Calendar.DAY_OF_MONTH));  //0-..
+System.out.println(c.get(Calendar.DAY_OF_WEEK));  //1-7 对应 周日-周六,可以用查表法获取星期..
