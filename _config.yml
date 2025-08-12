@@ -23,7 +23,7 @@ url     : https://zjmok.github.io # the base hostname & protocol for your site e
 baseurl : / # does not include hostname
 title   : Mok's Blog
 description: > # this means to ignore newlines until "Language & timezone"
-  我的技术笔记
+  长路漫漫，唯键作伴
 #  Your Site Description
 
 ## => Language and Timezone
