@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: Dev Android
+tags: Dev Android Build
 ---
 
 # Android 使用 Github Actions 自动构建 apk 发布 Github Release
@@ -20,8 +20,6 @@ name: Build APK and Release
 # on 监听 push 的 v 开头的 tag
 on:
   push:
-#    branches:
-#      - master
     tags:
       - v*
 
@@ -65,27 +63,32 @@ jobs:
 
 ---
 
-## 可以上传 keystore 到 secrets 然后使用上传的 keystore
+上面是打 debug 包，自动使用 .android 的 debug.keystore 签名。下面是打 release 包并使用自己的固定的签名
 
-1. 将 jks 编码为 base64 格式，得到 base64 字符串
-2. 打开项目 Settings --> Secrets and variables
+---
 
-添加机密（Secrets）
+## 可以上传 keystore（jks） 到 secrets 然后使用上传的 keystore
 
-添加机密到 环境机密 或 仓库机密
+没有签名文件可以使用 keytool 或 Android Studio 生成一个
+
+### 1. 将 jks 编码为 base64 格式，得到 base64 字符串
+
+### 2. 打开项目 Settings --> Secrets and variables --> Actions
+
+添加密钥相关内容到 Environment secrets 或 Repository secrets
 
 Secret Name			| Value（示例）
 ---					| ---
-KEYSTORE_BASE64		| Base64编码后的Keystore内容
-KEYSTORE_PASSWORD	| your_keystore_password
-KEY_ALIAS			| your_key_alias
-KEY_PASSWORD		| your_key_password
+KEYSTORE_BASE64		| Base64 编码后的 Keystore 内容
+KEYSTORE_PASSWORD	| keystore 密码
+KEY_ALIAS			| key 别名
+KEY_PASSWORD		| key 密码
 
 区别是：
-- 环境机密，有更多限制，可以限制分支或审批等。使用时要在 workflow 指定环境。gradle 不能直接读取，要在 workflow 传递给 gradle
-- 仓库机密，仓库全部分支有效，不需要声明环境，gradle 可以在环境变量直接读取
+Repository secrets 环境机密，有更多限制，可以限制分支或审批等。使用时要在 workflow 指定环境。gradle 不能直接读取，要在 workflow 传递给 gradle
+Repository secrets 仓库机密，仓库全部分支有效，不需要声明环境，gradle 可以在环境变量直接读取
 
-3. 使用 环境机密 的完整脚本
+### 3. 使用 环境机密 的完整脚本
 
 build_release.yaml
 ```yaml
@@ -94,8 +97,6 @@ name: Build APK and Release
 # on 监听 push 的 v 开头的 tag
 on:
   push:
-#    branches:
-#      - master
     tags:
       - v*
 
@@ -124,9 +125,7 @@ jobs:
       # 解码 Base64 签名
       - name: Decode Keystore
         # 输出路径对应 app/build.gradle 脚本中的 storeFile 路径
-        run: |
-          mkdir -p app/keystore
-          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > app/keystore/release.jks
+        run: echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > release.jks
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
@@ -152,7 +151,7 @@ android {
     signingConfigs {
         // 使用 workflow 解码生成的 keystore 文件
         release {
-            storeFile file("keystore/release.jks") // 解码文件对应此路径
+            storeFile file("../release.jks") // 解码文件对应此路径
             storePassword System.getenv("KEYSTORE_PASSWORD")
             keyAlias System.getenv("KEY_ALIAS")
             keyPassword System.getenv("KEY_PASSWORD")
