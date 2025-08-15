@@ -22,20 +22,24 @@ key: page-about
 
 ## 📂 个人主页
 
-- [https://github.com/zjmok](https://github.com/zjmok)
+- <https://github.com/zjmok>
 
   我的 Github。
 
-- [https://gitee.com/zjmok](https://gitee.com/zjmok)
+- <https://gitee.com/zjmok>
 
   我的 Gitee。
 
 ## 📂 开源项目
 
-- [https://github.com/zjmok/WanAndroid](https://github.com/zjmok/WanAndroid)
+- <https://github.com/zjmok/WanAndroid>
 
-  我的开源项目，一款原生 Android 端 App，基于 Kotlin，使用 WanAndroid 的 API。
+  原生 Android 端 App，基于 Kotlin，使用 WanAndroid 的 API。
 
-- [https://gitee.com/zjmok/WanAndroid](https://gitee.com/zjmok/WanAndroid)
+- <https://gitee.com/zjmok/WanAndroid>
 
-  我的开源项目，一款原生 HarmonyOS 端 App，基于 ArkTS，使用 WanAndroid 的 API。
+  原生 HarmonyOS 端 App，基于 ArkTS，使用 WanAndroid 的 API。
+
+- <https://github.com/zjmok/NotiDo>
+
+  Notification + TODO = NotiDo。让 Android 通知成为你的便签吧
