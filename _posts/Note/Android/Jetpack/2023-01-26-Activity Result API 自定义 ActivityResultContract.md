@@ -5,7 +5,9 @@ tags: Android
 
 # Activity Result API
 
-代替 onActivityResult
+作用，替代 onActivityResult，减少代码耦合
+
+## Android 预定义的 ActivityResultContract
 
 - ActivityResultContracts
 
@@ -23,7 +25,9 @@ ActivityResultContracts.GetContent
 
 ---
 
-- ActivityResultContract 自定义实现
+## 自定义实现 ActivityResultContract
+
+- 定义，继承 ActivityResultContract
 
 SecondActivityResultContract.kt
 ```
@@ -42,10 +46,13 @@ class SecondActivityResultContract : ActivityResultContract<String, String?>() {
 }
 ```
 
+- 使用，在 registerForActivityResult 注册自定义的 ActivityResultContract
+
+> registerForActivityResult 必须要在 onStart 之前执行（定义），可以放在成员变量或 onCreate 里
+
 MainActivity.kt
 ```
 // ...
-    // registerForActivityResult 必须要在 onStart 之前执行
     private val secondActivityLauncher = registerForActivityResult(SecondActivityResultContract()) {
         Toast.makeText(this, "返回 result: ${it}", Toast.LENGTH_SHORT).show()
     }
