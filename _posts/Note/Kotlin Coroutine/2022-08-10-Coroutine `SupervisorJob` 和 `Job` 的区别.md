@@ -5,7 +5,7 @@ tags: Kotlin
 
 # Kotlin Coroutine 中，`SupervisorJob` 和 `Job` 的区别
 
-`SupervisorJob` 和 `Job` 是 Kotlin 协程中的两种 `Job` 类型，它们的主要区别在于 **异常处理** 和 **子任务的传播行为**。让我们详细看看它们的不同点：
+`SupervisorJob` 和 `Job` 是 Kotlin 协程中的两种 `Job` 类型，它们的主要区别在于 **异常处理** 和 **子任务的传播行为**
 
 ### 1. **`Job` (默认 Job)**
 
@@ -83,5 +83,5 @@ runBlocking {
 
 ### 什么时候使用 `Job` vs `SupervisorJob`？
 
-- 如果你的协程需要彼此依赖，一个子协程失败时，你希望父协程和其他子协程都终止，使用 `Job`。
-- 如果你的协程相对独立，子协程的失败不应该影响父协程或其他子协程，使用 `SupervisorJob`。
+- 如果协程需要彼此依赖，一个子协程失败时，希望父协程和其他子协程都终止，使用 `Job`。
+- 如果协程相对独立，子协程的失败不应该影响父协程或其他子协程，使用 `SupervisorJob`。

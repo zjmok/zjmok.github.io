@@ -1,13 +1,14 @@
 ---
 layout: post
 tags: Flutter
+date: 2025-08-17
 ---
 
 # flutter 版本共存、版本历史、对应 dart 版本
 
 ## flutter 与 dart sdk 版本 对应关系
 
- Flutter版本		| 发布日期	| Dart版本	| 新特性
+ Flutter版本			| 发布日期	| Dart版本	| 新特性
  ---				| ---		| ---		| ---
 Flutter 1.0			| 2018.12	|			| First stable release, Android and iOS
 Flutter 1.2			| 2019.01	|			| DevTools
@@ -29,6 +30,18 @@ Flutter 3.16		| 2023.11	| Dart 3.2	| 默认启用 Material 3
 Flutter 3.19		| 2024.02	| Dart 3.3	| Windows Arm64 支持, 停止对 Windows 7 和 8 的支持, 自定义文本选择菜单项
 Flutter 3.22		| 2024.05	| Dart 3.4	| 预测返回手势支持, Gradle Kotlin DSL, 最低 Android 版本 api 21
 Flutter 3.24		| 2024.07	| Dart 3.5	| 全新 Sliver TreeView, 官方轮播图 CarouselView
+Flutter 3.27		| 2024.12	| Dart 3.6	| Cupertino 优化，Material 改进，桌面支持 Shift+Click 手势
+Flutter 3.29		| 2025.02	| Dart 3.7	| Widget 优化，Dart 运行由独立线程变为主 UI 线程，iOS 移除 Skia 仅支持 Impeller，新增 SelectionListener
+Flutter 3.32		| 2025.05	| Dart 3.8	| Widget 优化，Web 实验性支持热重载
+Flutter 3.35		| 2025.08	| Dart 3.9	| Widget 优化，Web 默认开启热重载，Windows MacOS 实验性支持多窗口
+
+## Flutter OH 支持情况，目前基于 3 个版本
+
+Flutter 基础版本	| Dart 版本	| Flutter OH 版 发布时间
+---				| ---		| ---
+3.7.12			| 2.19		| 2024.04 开始支持，2024.08 发布 1.0.0
+3.22.1			| 3.4		| 2025.03 开始支持，2025.05 发布 1.0.0
+3.27.5			| 3.6		| 2025.05 开始支持，2025.07 最新 0.1.0 beta
 
 ## `fvm` - flutter 多版本共存。（类似 rvm 使用 ruby 多版本）
 
@@ -44,12 +57,12 @@ github <https://github.com/leoafarias/fvm>
 
 下载安装后，把 fvm 配置到 Path 环境变量
 
-- `fvm use {version}` - 进入到 flutter 项目根目录使用，配置指定版本
+- `fvm use <version>` 进入到 flutter 项目根目录使用，配置指定版本
 
-- `fvm install` - # Installs version found in project config
-- `fvm install {version}` - # 安装指定版本
+- `fvm install` Installs version found in project config
+- `fvm install <version>` 安装指定版本
 
-- `fvm remove {version}` - 移除指定版本
+- `fvm remove <version>` 移除指定版本
 
 - `fvm releases`
 
@@ -57,7 +70,7 @@ github <https://github.com/leoafarias/fvm>
 
 ### fvm 的 flutter 使用
 
-直接在签名加上 fvm 就行
+直接在前面加上 fvm 就行
 
 例如
 
@@ -73,7 +86,7 @@ fvm flutter build apk
 
 ### fvm 使用 第三方 flutter
 
-例如，使用 支持鸿蒙的 flutter `https://gitee.com/openharmony-sig/flutter_flutter.git`
+例如，使用 支持鸿蒙的 flutter ~~`https://gitee.com/openharmony-sig/flutter_flutter.git`~~ `https://gitcode.com/openharmony-tpc/flutter_flutter.git`
 
 直接把 flutter sdk 克隆到 `~/fvm/versions` 目录下（自定义缓存目录可修改环境变量 `FVM_CACHE`）
 
