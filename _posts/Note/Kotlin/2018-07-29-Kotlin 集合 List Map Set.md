@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: Java Kotlin
+tags: Kotlin
 ---
 
 - List

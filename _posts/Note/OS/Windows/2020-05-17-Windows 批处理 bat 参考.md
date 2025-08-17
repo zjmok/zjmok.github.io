@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: Windows 批处理
+tags: Windows Batch
 ---
 
 ### Windows批处理(cmd/bat)常用命令教程
