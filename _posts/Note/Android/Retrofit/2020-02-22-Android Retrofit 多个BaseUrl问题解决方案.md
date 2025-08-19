@@ -3,7 +3,7 @@ layout: post
 tags: Android Retrofit
 ---
 
-# 方案1
+## 方案1
 ## 使用 `@Url` 注解直接使用完整Url
 
 ```
@@ -13,7 +13,7 @@ Observable<ResponseBody> downloadFile(@Url String fileUrl);//@Url使用参数url
 ```
 
 
-# 方案2
+## 方案2
 ## 利用`okhttp3.OkHttpClient.Builder#addInterceptor(okhttp3.Interceptor)`拦截器，和`service`的相关注解
 
 - 1.在相应的`service`设置一个用作标记的`@Header`
@@ -60,3 +60,6 @@ addInterceptor(chain -> {
 ```
 
 另外有一个注意点，拦截器会按顺序执行，若有log打印相关的拦截器，建议放到上面拦截器的后面，避免打印出来的是BaseUrl处理前的Request信息
+
+## 方案3 使用多个 Retrofit 实例
+
