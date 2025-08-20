@@ -3,6 +3,10 @@ layout: post
 tags: Android
 ---
 
+- `Preferences DataStore​` 类似 SharedPreferences，以键值对形式存储基本类型（如 Int、String），无需预定义数据结构，但缺乏类型安全保证
+
+- `Proto DataStore​` 通过 Protocol Buffers（Protobuf）定义自定义数据结构，支持复杂类型（如对象、枚举），严格保证类型安全
+
 # 使用 Proto DataStore
 
 参考 [Proto DataStore - 官方文档](https://developer.android.google.cn/codelabs/android-proto-datastore?%3Bauthuser=0&hl=vi#4)
@@ -52,7 +56,8 @@ protobuf {
 [Proto 语言指南](https://developers.google.cn/protocol-buffers/docs/overview?hl=vi)
 
 创建文件 `main/proto/UserPreferences.proto`
-```
+
+```proto
 syntax = "proto3";
 
 option java_package = "com.example.datastore";
@@ -72,7 +77,8 @@ UserPreferences 类在编译时会从 proto 文件中定义的 message 中生成
 如需告知 DataStore 如何读取和写入我们在 proto 文件中定义的数据类型，我们需要实现序列化器。如果磁盘上没有数据，序列化器还会定义默认返回值。
 
 创建序列化器，位置在 kotlin 代码的包名下即可
-```
+
+```kotlin
 object UserPreferencesSerializer : Serializer<UserPreferences> {
     override val defaultValue: UserPreferences = UserPreferences.getDefaultInstance()
     override suspend fun readFrom(input: InputStream): UserPreferences {
@@ -93,7 +99,7 @@ object UserPreferencesSerializer : Serializer<UserPreferences> {
 
 可以在 Activity 等页面创建
 
-```
+```kotlin
     // dataStore 实例
     private val dataStore: DataStore<UserPreferences> by dataStore(
         fileName = "user_preferences.pb", // 自定义名称
@@ -103,7 +109,7 @@ object UserPreferencesSerializer : Serializer<UserPreferences> {
 
 **使用 Proto DataStore**
 
-```
+```kotlin
 class DataStoreRepository(private val dataStore: DataStore<UserPreferences>) {
 
     // 写入数据
@@ -136,7 +142,7 @@ class DataStoreRepository(private val dataStore: DataStore<UserPreferences>) {
         // first 是收集最新的可用数据，最后 edit 的数据，没有 edit 则返回初始或空值
         // 读取数据 使用 data
         val userPreferences = dataStore.data
-            // 捕获 dataStore 的 data 流中的异常
+            // 捕获 dataStore 的 data 流中的异常，只能处理上游异常
             .catch { exception ->
                 // dataStore.data throws an IOException when an error is encountered when reading data
                 if (exception is IOException) {
@@ -147,7 +153,7 @@ class DataStoreRepository(private val dataStore: DataStore<UserPreferences>) {
                     throw exception
                 }
             }
-            .first()
+            .first() // 可以用 firstOrNull
         return userPreferences.username
     }
 	
@@ -180,7 +186,7 @@ class DataStoreRepository(private val dataStore: DataStore<UserPreferences>) {
 
 ## 定义 List
 
-```
+```proto
 syntax = "proto3";
 
 option java_package = "com.example.wan.android.data";
@@ -198,7 +204,7 @@ message WebHistory {
 }
 ```
 
-```
+```kotlin
     private val historyList = mutableListOf<WebPage>()
 
     // dataStore 实例

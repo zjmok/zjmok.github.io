@@ -85,8 +85,8 @@ KEY_ALIAS			| key 别名
 KEY_PASSWORD		| key 密码
 
 区别是：
-Repository secrets 环境机密，有更多限制，可以限制分支或审批等。使用时要在 workflow 指定环境。gradle 不能直接读取，要在 workflow 传递给 gradle
-Repository secrets 仓库机密，仓库全部分支有效，不需要声明环境，gradle 可以在环境变量直接读取
+- Repository secrets 环境机密，需要指定 environment，指定环境后优先使用指定环境的，可以在 GitHub 设置权限，可以隔离开不同的环境
+- Repository secrets 仓库机密，无需指定 environment，全部环境有效，所在仓库通用
 
 ### 3. 使用 环境机密 的完整脚本
 

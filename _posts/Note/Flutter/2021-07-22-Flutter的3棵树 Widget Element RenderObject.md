@@ -3,9 +3,13 @@ layout: post
 tags: Flutter
 ---
 
-在 Flutter 中，常常提到的 "三棵树" 是指 Widget 树、Element 树和 RenderObject 树。这些树形结构相互关联，用于描述和渲染 Flutter 应用程序的界面
-
 # 三棵树
+
+在 Flutter 中，常常提到的 "三棵树" 是指 `Widget` 树、`Element` 树和 `RenderObject` 树。
+这些树形结构相互关联，用于描述和渲染 Flutter 应用程序的界面
+
+Widget 树 → Element 树（Diff 更新） → RenderObject 树（渲染管线）。
+例如，点击按钮触发 setState()时，Flutter 仅更新变化的 Widget 和对应的 RenderObject 属性，而非全量重建
 
 ## Widget
 
@@ -21,7 +25,7 @@ tags: Flutter
 - Element 负责管理与 Widget 相关的状态和生命周期，并负责处理事件和更新 UI。
 - Element 树与 Widget 树有着一一对应的关系。
 
-## Render
+## RenderObject
 
 - RenderObject 树是 Flutter 渲染引擎内部使用的树形结构。
 - 它是从 Widget 树和 Element 树派生出来的，用于最终将界面渲染到屏幕上。
