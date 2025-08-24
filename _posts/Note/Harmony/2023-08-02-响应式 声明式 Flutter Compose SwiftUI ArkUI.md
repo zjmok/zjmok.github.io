@@ -13,12 +13,13 @@ tags: Android Flutter Compose
 
 - 响应式
 
-  指界面能自动响应数据的变化。当状态或数据发生变化时，界面会自动更新，不需要手动调用刷新操作。响应式更新是许多声明式框架的特性，但声明式本身不一定都是响应式的
+  指界面能自动响应数据的变化。当状态或数据发生变化时，界面会自动更新，不需要手动调用刷新操作。响应式更新是许多声明式框架的特性，但声明式本身不一定都是响应式的  
+  Android 的 LiveData Flow 也是响应式编程
 
 - 声明式
 
-  指的是描述界面应该是什么样子，而不是如何一步步实现。开发者只需要定义最终状态，框架负责自动将界面更新到这一状态。
-  Flutter Compose SwiftUI ArkUI React 都是声明式的 UI 框架，这样可以让代码更清晰，开发效率更高
+  指的是描述界面应该是什么样子，而不是如何一步步实现。开发者只需要定义最终状态，框架负责自动将界面更新到这一状态。  
+  Flutter Compose SwiftUI ArkUI React CMP Kuikly 都是声明式的 UI 框架，这样可以让代码更清晰，开发效率更高  
 
 ---
 
@@ -126,7 +127,11 @@ mutableStateOf、collectAsState、observeAsState 等，将数据转为 Compose �
 
 - 状态管理 V2 版
 
-略，目前还没 release
+@ObservedV2/@Trace 
+
+### CMP
+
+### Kuikly
 
 ## 路由
 
@@ -207,7 +212,7 @@ if (result != null) {
 
 NavHost + NavController，配置
 
-```
+```kotlin
 @Composable
 fun MyApp() {
     val navController = rememberNavController()  // 创建 NavController
@@ -223,13 +228,13 @@ fun MyApp() {
 
 页面跳转
 
-```
+```kotlin
 navController.navigate("detail/Hello")
 ```
 
 navController 通过传参获得，或者创建全局的 CompositionLocal
 
-```
+```kotlin
 // 1. 创建一个全局的 CompositionLocal 用于 NavController
 val LocalNavController = compositionLocalOf<NavController> {
     error("NavController not provided")
@@ -314,3 +319,7 @@ NavDestination() {
   return true // true 拦截返回键
 }
 ```
+
+### CMP
+
+### Kuikly

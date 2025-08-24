@@ -181,3 +181,14 @@ Flex({ direction: FlexDirection.Row }) {
     .backgroundColor(0xF5DEB3)  
 }.width(400).height(120).padding(10).backgroundColor(0xAFEEEE) 
 ```
+
+---
+
+Flexbox 布局是一款有标准规则的跨平台布局，非 ArkUI 独有，
+因此网上关于 Flexbox 的教程也适用于 ArkUI，这里推荐一些网上的教程
+
+- [Kuikly 的 Flexbox](https://kuikly.tds.qq.com/DevGuide/flexbox-basic.html)
+- [Andriod 的 FlexboxLayout](https://github.com/google/flexbox-layout#supported-attributes)
+- [阮一峰的FlexBox教程](https://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
+- [mdn Flexbox 教程](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox)
+- [w3c school的FlexBox教程](https://www.w3school.com.cn/css/css3_flexbox.asp)

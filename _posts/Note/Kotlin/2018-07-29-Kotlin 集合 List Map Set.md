@@ -1,31 +1,37 @@
 ---
 layout: post
-tags: Kotlin
+tags: Java Kotlin
 ---
 
-- List
+### List
 
-  - ArrayList 可变数组实现，查找快 增删慢
+- `ArrayList` 可变数组实现，查找快 增删慢
 
-  - LinkedList 链表实现，增删快 查找慢
+- `LinkedList` 链表实现，增删快 查找慢
 
-** 一般用 ArrayList，要插队(不是队尾)增删改用 LinkedList
+** 一般用 `ArrayList`，要插队(不是队尾)增删改用 `LinkedList`
 
-- Map
+Kotlin 中，
 
-  - HashMap 哈希表实现（数组+链表+红黑树实现），查找快，插入无序 迭代无序
+- `listOf` 返回值是 `List` 接口，对空列表和单元素有优化
 
-  - LinkedHashMap 哈希表+链表(保证有序)，查找相对Hash慢点(链表 内存消耗多点) 插入无序 迭代有序
+- `mutableListOf` 返回值是 `ArrayList`，无特殊优化
 
-  - TreeMap 红黑树，键不可null，查找相对Hash慢点(排序)，插入有序 迭代有序，所有的key都必须直接或间接的实现Comparable接口
+### Map
 
-只有TreeMap键不可null，值全可null
+- `HashMap` 哈希表实现（数组 + 链表 + 红黑树实现），查找快，插入无序 + 迭代无序
 
-** 一般用 HashMap，要求迭代有序用 LinkedHashMap，要排序用 TreeMap
+- `LinkedHashMap` 实现方式 哈希表 + 链表（保证有序），查找相对 `HashMap` 慢点（链表 内存消耗多点） 插入无序 + 迭代有序
 
-- Set
+- `TreeMap` 红黑树实现，键不可 `null`，查找相对 `HashMap` 慢点（排序），插入有序 + 迭代有序，所有的 `key` 都必须直接或间接的实现 `Comparable` 接口
 
-** 只是Map的键值对隐藏了值，同Map
+只有 `TreeMap` 键不可 `null`，值全可 `null`
+
+** 一般用 `HashMap`，要求迭代有序用 `LinkedHashMap`，要排序用 `TreeMap`
+
+- `Set`
+
+** 只是 `Map` 的键值对隐藏了值，同 `Map`
 
 ---
 
