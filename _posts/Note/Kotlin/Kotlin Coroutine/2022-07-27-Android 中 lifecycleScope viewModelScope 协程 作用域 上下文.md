@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: Android Coroutine
+tags: Android Kotlin Coroutine
 ---
 
 - `lifecycleScope` 的上下文是 `SupervisorJob() + Dispatchers.Main.immediate`

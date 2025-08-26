@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: Android Coroutine
+tags: Kotlin Coroutine
 ---
 
 ## `Flow` 常用操作符

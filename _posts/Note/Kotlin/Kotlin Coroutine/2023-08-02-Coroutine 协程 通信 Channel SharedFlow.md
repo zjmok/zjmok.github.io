@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: Android Coroutine
+tags: Android Kotlin Coroutine
 ---
 
 # 协程通信 Channel
