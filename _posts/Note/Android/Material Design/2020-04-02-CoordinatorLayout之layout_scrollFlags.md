@@ -7,22 +7,24 @@ tags: Android CoordinatorLayout
 
 ** 辅助理解 **
 
-- `enter` //进入页面
+- `enter` // 进入页面
 
-- `collapse` //折叠效果(minHeight)
+- `collapse` // 折叠效果(minHeight)
 
-- `snap` //自动贴边(SnapHelper类似)
+- `snap` // 自动贴边(SnapHelper类似)
 
 ---
 
 ** `app:layout_scrollFlags="xxx"` 的5个值 **
 
-- `scroll` //view可跟随滚动
+- `scroll` // view可跟随滚动
 
-- `enterAlways` //下拉时view会优先进入页面，必须配合scroll使用(即 `app:layout_scrollFlags="scroll|enterAlways"` 下同)
+- `snap` // 自动贴边效果，即手指放开时要么全部显示要么全部隐藏
 
-- `enterAlwaysCollapsed` //上拉时view会优先进入折叠，必须配合enterAlways使用
+以下为效果，必须配合 `scroll` 使用
 
-- `exitUntilCollapsed` //上拉时优先折叠到`minHeight`，必须配合scroll使用
+- `enterAlways` // 上拉时优先折叠，下拉时优先展开。滑动 AppbarLayout 可折叠可展开
 
-- `snap` //针对以上效果的自动贴边效果，五十五十，要么全部显示，要么全部隐藏
+- `enterAlwaysCollapsed` // 上拉时优先折叠，下拉时最后展开。下拉时会暂时展开 minHeight
+
+- `exitUntilCollapsed` // 上拉时优先折叠，下拉时最后展开。上拉时折叠到 minHeight 并保持，下拉过程会暂时展示 pin

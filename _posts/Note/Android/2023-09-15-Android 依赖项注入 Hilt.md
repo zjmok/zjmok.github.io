@@ -310,4 +310,5 @@ ActivityComponent + ViewModelScoped
 ActivityComponent + FragmentScoped  
 SingletonComponent + ActivityScoped  
 等，  
-需要选择适当的作用域与安装组件，避免以上列举的冲突组合
+需要选择适当的作用域与安装组件，避免以上列举的冲突组合  
+作用域 需要与 生命周期 对应，否则报错  
