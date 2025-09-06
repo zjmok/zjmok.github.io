@@ -161,3 +161,11 @@ Authorization: Bearer {{token}}
 GET {{baseUrl}}/v1/status
 Authorization: Bearer {{token}}
 ```
+
+---
+
+遇到的问题
+
+- 有些网站证书过期，https 访问握手失败 SSLHandshakeException，临时解决办法可以将 https 改成 http 去访问
+
+- Android Studio 的插件请求无反应，原因不知，换 IDEA 使用插件

@@ -1,11 +1,15 @@
 ---
 layout: post
 tags: Android 适配
+date: 2025-06-15
+title: Android 版本适配 （202506 整理更新 Android 6 到 Android 16）
 ---
 
-### 整理对 Android 版本的重点适配，尽量跟上 Android 正式版的更新
+# Android 版本适配 整理
 
-#### Android 6 M 23
+部分重点适配
+
+## Android 6 M 23
 
 - Runtime Permissions 动态权限
 
@@ -13,17 +17,19 @@ tags: Android 适配
 
 - 省电优化
 
-#### Android 7 N 24
+## Android 7 N 24
 
-- File Provider
+- File Provider 共享文件
 
   - `FileProvider.getUriForFile(context, getPkg() + "fileprovider", new File(path));`
   - 授予临时权限 `intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);`
   - 传递 `intent.setDataAndType(contentUri, "application/vnd.android.package-archive");`
 
-#### Android 8 O 26
+- 多窗口 分屏
 
-- 安装权限
+## Android 8 O 26
+
+- 安装权限 安装未知来源应用
 
 - 通知渠道(分组)
 
@@ -45,9 +51,9 @@ dialog.getWindow().setType(WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY);
 
 - 网页表单自动填充
 
-#### Android 9 P 28
+## Android 9 P 28
 
-- 刘海适配 `DisplayCutout`
+- 刘海适配 `DisplayCutout` 获取区域信息
 
 - 通知功能的变更
 
@@ -96,15 +102,15 @@ Reflection.unseal(this);
 
 - 不允许共享WebView数据目录: 应用程序不能再跨进程共享单个WebView数据目录
 
-#### Android 10 Q 29
+## Android 10 Q 29
 
 - 设备唯一标识符 被干掉了: 国内广告联盟出台 OAID （手机重置后OAID也会变化，还不如直接用Android_ID+UUID方案）
 
-- Scoped Storage（分区存储）
+- Scoped Storage（分区存储） 默认只能访问自身私有目录和特定类型的媒体文件，requestLegacyExternalStorage 可暂时不适配（Android 11 失效，强制适配）
 
 - 定位权限 `ACCESS_BACKGROUND_LOCATION`
 
-- 后台App启动限制: 通知启动页面需要设置`notificationBuilder.setFullScreenIntent(fullScreenPendingIntent, true)`
+- 后台启动 Activity 限制: 通知启动页面需要设置 `notificationBuilder.setFullScreenIntent(fullScreenPendingIntent, true)`
 
 ```
 Intent fullScreenIntent = new Intent(this, CallActivity.class);
@@ -129,9 +135,9 @@ notifyManager.notify(notifyId, builder.build());
 <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
 ```
 
-#### Android 11 R 30
+## Android 11 R 30
 
-- Scoped Storage（分区存储），公共分区目录不再需要权限
+- ​​强制 Scoped Storage（分区存储），requestLegacyExternalStorage 失效，公共分区目录不再需要权限
 
 - 废弃 Display.getSize() 和 Display.getMetrics()  
 现在推荐使用 `WindowMetrics`, 并且谷歌提供了一个兼容到 Android 4.0 的 `WindowManager` 兼容库。 通常情况可以使用如下代码代替以前计算屏幕宽高
@@ -157,9 +163,9 @@ android:maxSdkVersion="29" />
 
 - 新增支持 无线调试
 
-#### Android 12 S 31 / 12L Sv2 32
+## Android 12 S 31 / 12L Sv2 32
 
-- Splash Screen 官方闪屏页, 可在启动时的白屏上过渡
+- ​​SplashScreen API​ 官方闪屏页, 可在启动时的白屏上过渡
 
 - 组件导出行为 android:exported, 当为 false 时不允许被其它 APP 调用
 
@@ -201,11 +207,11 @@ Android 11 废弃 Display.getSize() 和 Display.getMetrics()
 
 - 提供获取屏幕圆角的 API: `RoundedCorner` 和 `WindowInsets.getRoundedCorner(int position)`
 
-#### Android 13 T 33
+## Android 13 T 33
 
-- 通知受限，默认关闭，请求用户授权后可打开
+- 通知受限，默认关闭，请求用户授权后可打开，新的运行时权限 POST_NOTIFICATIONS
 
-- 细化读取存储权限，READ_EXTERNAL_STORAGE 权限完全失去了作用，使用 READ_MEDIA_IMAGES、READ_MEDIA_VIDEO 替代 READ_EXTERNAL_STORAGE
+- 细化读取存储权限（媒体），`READ_EXTERNAL_STORAGE` 权限完全失去了作用，使用 `READ_MEDIA_IMAGES`、`READ_MEDIA_VIDEO` 替代 `READ_EXTERNAL_STORAGE`
 
 ```
 <!-- Devices running Android 12L (API level 32) or lower  -->
@@ -231,21 +237,21 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
 }
 ```
 
-- intent过滤器会屏蔽不匹配的intent
+- intent 过滤器会屏蔽不匹配的 intent
 
-- WIFI访问不再需要定位权限 `ACCESS_FINE_LOCATION` , 只需要申请 `NEARBY_WIFI_DEVICES` , 但是 `WifiManager` 的 `getScanResults()` 或 `startScan()` 扫描WIFI还是需要定位权限的
+- WIFI 访问不再需要定位权限 `ACCESS_FINE_LOCATION` , 只需要申请 `NEARBY_WIFI_DEVICES` , 但是 `WifiManager` 的 `getScanResults()` 或 `startScan()` 扫描 WIFI 还是需要定位权限的
 
 - 使用 Google Play 服务广告 ID 需要声明权限 `<uses-permission android:name="com.google.android.gms.permission.AD_ID"/>`
 
-- 废弃 PackageManager中的getPackageInfo、getApplicationInfo、resolveActivity等方法
+- 废弃 PackageManager 中的 `getPackageInfo`、`getApplicationInfo`、`resolveActivity` 等方法
 
 - 应用图标可以适应主题
 
 - 大屏多窗口显示  
 在Android 13中，用户可以在一个大屏幕上显示多个Activity，从而充分利用大屏幕的显示空间。
-开发者需要通过创建XML配置文件或调用Jetpack WindowManager API来确定多个Activity在同个大屏上的具体排布方式，如以切割任务窗口来显示两个Activity
+开发者需要通过创建 XML 配置文件或调用 Jetpack WindowManager API 来确定多个 Activity 在同个大屏上的具体排布方式，如以切割任务窗口来显示两个 Activity
 
-#### Android 14 U 34
+## Android 14 U 34
 
 - 前台服务需要指定服务类型，非在范围内的类型建议使用 WorkManager 或 jobs
 
@@ -257,9 +263,9 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
 
 - 运行时注册的广播接收器必须指定导出行为
 
-- Android 14+ 的设备，无法安装 targetSdkVersion 低于 23 的应用，但可以使用 adb 安装 `adb install --bypass-low-target-sdk-block FILENAME.apk` (允许开发者对较旧 API 级别的应用进行测试)
+- Android 14+ 的设备，无法安装 targetSdkVersion 低于 23 的应用，但可以使用 adb 安装 `adb install --bypass-low-target-sdk-block FILENAME.apk` （允许开发者对较旧 API 级别的应用进行测试）
 
-- 设备可授予对照片和视频的部分访问权限, 新增用户选择的照片或影片, 即在 Android  13 基础上增加 READ_MEDIA_VISUAL_USER_SELECTED
+- 设备可授予对照片和视频的部分访问权限，新增用户选择的照片或影片，即在 Android  13 基础上增加 `READ_MEDIA_VISUAL_USER_SELECTED`
 
 ```
 <!-- Devices running Android 12L (API level 32) or lower  -->
@@ -291,18 +297,77 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
 }
 ```
 
-#### Android 15 V 35
+- 动态提醒用户开启"允许安装未知应用"的权限
+
+## Android 15 V 35
 
 - Window Insets。强制 edge-to-edge 全面屏
 
-- 16k Page Size
+- 16k Page Size，页面对齐​
+
+  - 使用 AGP 8.5.1+ 时 临时豁免 16k
+  ```
+  android {
+    packagingOptions {
+        jniLibs {
+          useLegacyPackaging true
+        }
+    }
+  }
+  ```
+
+  - 适配 16k
+    - 原生库（.so文件）
+    - AGP 8.5.1+
+    - NDK r28+
+    - 构建脚本用 CMake 的话 在 CMakelists.txt 添加
+    ```cmake
+    # CMake 3.13+
+    target_link_options(your_library_name PRIVATE
+        "-Wl,-z,max-page-size=16384",
+        "-Wl,-z,common-page-size=16384"
+    )
+    ```
+    - 构建脚本用 ndk-build​​ 的话 在 Android.mk 添加
+    ```makefile
+    LOCAL_LDFLAGS += -Wl,-z,max-page-size=16384 -Wl,-z,common-page-size=16384
+    ```
+    - 使用 readelf 工具或 Android Studio 的 ​​APK Analyzer​​ 检查所有 .so 文件的对齐方式。16KB 对齐要求 p_align 值为 0x4000(16KB)
+    - 如果使用第三方 so 库，查看官方渠道是否有新版本支持 16k，是否提供源码编译
+    - 临时方案 `objcopy --adjust-section-alignment .text=0x4000 input.so output.so`
 
 - Android 15 添加了一个标志，阻止与堆栈上顶部 UID 不匹配的应用启动 activity
   - 可以通过在 AndroidManifest.xml 文件中配置 allowCrossUidActivitySwitchFromBelow 属性，指定任务的 activity 是否可以启动其他 activity 或结束 task
   - 也可单独在 onCreate 里执行 setAllowCrossUidActivitySwitchFromBelow(true)，覆盖 AndroidManifest 设置的属性
 
+## Android 16 B 36
+
+- 强制通知权限 POST_NOTIFICATIONS
+
+- 媒体权限细分 `READ_MEDIA_IMAGES`, `READ_MEDIA_VIDEO`, `READ_MEDIA_AUDIO`
+
+- 后台行为 JobScheduler setExpedited(true) 设置为高优先级 替换失效的 setImportantWhileForeground
+
+- 预测性返回 OnBackInvokedCallbackAPI 处理返回逻辑，可提供更流畅的返回手势体验
+
+- 边缘到边缘 Edge-to-Edge 强制启用
+
+- 自适应布局 (大屏设备)，设备最小宽度 >= 600dp 生效，清单中 `screenOrientation` `resizeableActivity` `minAspectRatio/maxAspectRatio` 和 运行时代码 `setRequestedOrientation` 将会忽略 ，  
+但 `android:appCategory` 设置为游戏应用可例外，清单的 application 添加属性 `PROPERTY_COMPAT_ALLOW_RESTRICTED_RESIZABILITY` 可临时豁免（估计下半部失效）
+
+```
+<!-- 为 application 或 特定 activity 禁用 -->
+<activity ...>
+    <property android:name="android.window.PROPERTY_COMPAT_ALLOW_RESTRICTED_RESIZABILITY" android:value="true" />
+</activity>
+```
+
+## Andriod 17
+
+- 暂未发布
+
 ---
 
-### 权限文档
+## 权限文档
 
 [https://developer.android.com/reference/android/Manifest.permission](https://developer.android.com/reference/android/Manifest.permission)

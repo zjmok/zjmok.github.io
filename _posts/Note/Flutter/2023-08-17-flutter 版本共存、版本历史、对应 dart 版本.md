@@ -2,6 +2,7 @@
 layout: post
 tags: Flutter
 date: 2025-08-17
+title: Flutter 版本共存、版本历史、对应 Dart 版本（202508 整理更新至 Flutter 3.35）
 ---
 
 # flutter 版本共存、版本历史、对应 dart 版本

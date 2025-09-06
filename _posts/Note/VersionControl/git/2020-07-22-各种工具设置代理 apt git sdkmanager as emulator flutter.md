@@ -5,6 +5,9 @@ tags: Linux Git Flutter
 
 注意，一般代理协议都是 socks5 和 http, 并没有 https
 
+**TUN** 模式，直接从底层接管代理，无需系统或工具单独设置代理，反而设置了代理会有问题，
+如果开启 TUN 就需要关掉手动设置的代理，例如 `.gitconfig` 或 IDE 的代理设置
+
 #### apt
 
 apt 使用 socks5 代理
