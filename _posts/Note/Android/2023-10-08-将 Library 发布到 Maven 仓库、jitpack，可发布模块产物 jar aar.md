@@ -197,3 +197,15 @@ mavenPassword=your_password
 ```bash
 ./gradlew publish
 ```
+
+---
+
+# 在 jitpack.io 发布
+
+github 仓库可直接到 jitpack.io 发布
+
+- 登录后
+- 输入 `用户名称/仓库名称`，Look up 查找
+- 选择对应版本，可选 Tag 对应版本（语义化版本 v1.0.0 或 1.0.0 格式），或指定 commitId，或使用 `-SNAPSHOT` `master-SNAPSHOT` 最新版本（但不建议，不固定）
+- 进入 jitpack 会自动构建 Tag 版本，或点击 `Get it` 开始构建其它版本（在项目中使用依赖时拉取依赖也会触发构建未构建过的版本，此时可能会拉取失败，因为需要等待构建完才能成功拉取）
+- 等构建完即可使用
