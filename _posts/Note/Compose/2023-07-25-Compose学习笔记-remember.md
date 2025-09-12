@@ -91,8 +91,30 @@ tags: Android Compose
 
 ---
 
-rememberCoroutineScope 获取组合感知作用域，以便可以在组合外启动协程
+- rememberCoroutineScope 获取组合感知作用域，以便可以在组合外启动协程
 
-derivedStateOf 如果某个状态是从其他状态对象计算或者派生出来的，请使用 derivedStateOf，使用此函数可以确保当计算中使用的状态之一发生变化时才会进行计算
+```
+@Composable
+fun MyButton() {
+    // 获取与当前 Composable 生命周期绑定的协程作用域
+    val scope = rememberCoroutineScope()
 
-snapshotFlow 将 Compose 的 State 转为 Flow
+    Button(
+        onClick = {
+            // 在点击事件中启动协程
+            scope.launch {
+                // 在这里执行你的协程代码，例如：
+                delay(1000L) // 模拟一个耗时操作，比如网络请求
+                println("协程执行完毕！")
+                // 之后可以更新状态（State），UI 会自动重组
+            }
+        }
+    ) {
+        Text("点击我执行协程")
+    }
+}
+```
+
+- derivedStateOf 如果某个状态是从其他状态对象计算或者派生出来的，请使用 derivedStateOf，使用此函数可以确保当计算中使用的状态之一发生变化时才会进行计算
+
+- snapshotFlow 将 Compose 的 State 转为 Flow

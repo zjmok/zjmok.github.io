@@ -3,13 +3,13 @@ layout: post
 tags: Android Coroutine
 ---
 
-Kotlin 协程 与 异常
+Kotlin 协程 与 异常, Couroutine and Exception
 
 ---
 
 - 协程中的抛异常
 
-若子协程抛出异常，只有外层父协程能 handle 到异常，中间层的协程 handle 不到，若外层父协程不 handle , 程序会报错
+若子协程抛出异常，只有根协程能 handle 到异常，子协程 handle 不到，若根协程不 handle , 程序会报错
 
 协程内抛出的异常可以通过传入 `CoroutineExceptionHandler` 对象去处理，操作符 `+` 可处理 上下文 和 handler
 ```
@@ -81,7 +81,7 @@ try {
 }
 ```
 
-launch 必须在block里面 catch
+launch 必须在 block 里面 catch，因为子协程不能 handler，只能 catch
 ```
 val job = launch(lifecycleScope.coroutineContext) {
     try {
@@ -93,7 +93,7 @@ val job = launch(lifecycleScope.coroutineContext) {
 job.join()
 ```
 
-withContext 可以在block外面 catch
+withContext 可以在 block 外面 catch
 ```
 try {
     val result = withContext(lifecycleScope.coroutineContext) {
@@ -104,7 +104,7 @@ try {
 }
 ```
 
-async 可以在block外面 catch，具体是 await 时
+async 可以在 block 外面 catch，具体是 await 时
 ```
 try {
     val deferred = async(lifecycleScope.coroutineContext) {
